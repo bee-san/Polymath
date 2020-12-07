@@ -2,3 +2,75 @@ baseURL: "https://objective-euler-c9ee1b.netlify.app/"
 languageCode: "en-us"
 title: "My New Hugo Site"
 theme: "hugo-PaperMod"
+enableInlineShortcodes: true
+enableRobotsTXT: true
+
+languages:
+    en:
+        languageName: "English"
+        weight: 1
+        menu:
+            main:
+                - name: Archive
+                  url: archives
+                  weight: 5
+                - name: Search
+                  url: search/
+                  weight: 10
+                - name: Tags
+                  url: tags/
+                  weight: 10
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
+
+params:
+    env: production
+    description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
+    author: Theme PaperMod
+    # author: ["Me", "You"] # multiple authors
+    ShowReadingTime: true
+    defaultTheme: auto
+    ShowShareButtons: true
+    displayFullLangName: true
+    # images: ""
+    # assets:
+    #   favicon: '<path / external url>'
+
+    profileMode:
+        enabled: false
+        title: PaperMod
+        imageUrl: "#"
+        imageTitle: my image
+        # imageWidth: 120
+        # imageHeight: 120
+        buttons:
+            - name: Archives
+              url: archives
+            - name: Tags
+              url: tags
+
+    homeInfoParams:
+        Title: "Hi there \U0001F44B"
+        Content: >
+            Welcome to demo of hugo's theme PaperMod.
+            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+    socialIcons:
+        - name: twitter
+          url: "#"
+        - name: stackoverflow
+          url: "#"
+        - name: codepen
+          url: "#"
+        - name: linkedin
+          url: "#"
+        - name: github
+          url: "https://github.com/adityatelange/hugo-PaperMod"
+
+taxonomies:
+    category: categories
+    tag: tags
+    series: series
