@@ -1,6 +1,6 @@
 baseURL: "https://objective-euler-c9ee1b.netlify.app/"
 languageCode: "en-us"
-title: "My New Hugo Site"
+title: "Polymath.cloud"
 theme: "hugo-PaperMod"
 enableInlineShortcodes: true
 enableRobotsTXT: true
@@ -29,8 +29,8 @@ outputs:
 
 params:
     env: production
-    description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
-    author: Theme PaperMod
+    description: "Computer Science Blog"
+    author: Bee
     # author: ["Me", "You"] # multiple authors
     ShowReadingTime: true
     defaultTheme: auto
@@ -56,19 +56,15 @@ params:
     homeInfoParams:
         Title: "Hi there \U0001F44B"
         Content: >
-            Welcome to demo of hugo's theme PaperMod.
-            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+            I write about esoteric computer science topics that you'd love.
+            - Writer, Hacker, Author, Programmer.
     socialIcons:
         - name: twitter
-          url: "#"
-        - name: stackoverflow
-          url: "#"
-        - name: codepen
           url: "#"
         - name: linkedin
           url: "#"
         - name: github
-          url: "https://github.com/adityatelange/hugo-PaperMod"
+          url: "https://github.com/bee-san"
 
 taxonomies:
     category: categories
