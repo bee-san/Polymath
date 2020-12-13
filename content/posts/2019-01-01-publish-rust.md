@@ -102,11 +102,11 @@ Let's assume we are using GitHub to store our code.
 Homebrew expects a `TAR` archive. To get this, we create a new release on GitHub.
 
 On the GitHub repo's homepage, click "Releases" on the right hand side menu.
-![](/content/images/2020/08/image-1.png)
+![](https://skerritt.blog/content/images/2020/08/image-1.png)
 You should be taken to this page. Click "Draft a new release".
-![](/content/images/2020/08/image-2.png)
+![](https://skerritt.blog/content/images/2020/08/image-2.png)
 Now create a new release.
-![](/content/images/2020/07/image-3.png)
+![](https://skerritt.blog/content/images/2020/07/image-3.png)
 Use semantic versioning to create the Tag Version. Create a new release title, and describe the release.
 
 A good format for release descriptions is:
@@ -122,7 +122,7 @@ Similar to the semantic versioning rules. I normally pull these from pull reques
 Once we've entered some information, click `Publish release`. We now have a published release of our app!
 
 Our code is now in `.tar.gz` format if we look on the releases page again. GitHub does it for us!
-![](/content/images/2020/07/image-4.png)
+![](https://skerritt.blog/content/images/2020/07/image-4.png)
 Right click **Source code (tar.gz) **and click on "get link". Now we have the link to our `tar.gz` folder.
 
 Go into a terminal, and type:
@@ -155,17 +155,9 @@ In my case, it is:
 
     homebrew-rustscan
 
-\[
+[RustScan's HomeBrew Repository. ](https://github.com/RustScan/homebrew-rustscan)
 
-RustScan/homebrew-rustscan
-
-RustScan’s HomeBrew repo. Contribute to RustScan/homebrew-rustscan development by creating an account on GitHub.
-
-![](https://github.githubassets.com/favicons/favicon.svg)RustScanGitHub
-
-![](https://avatars3.githubusercontent.com/u/68809321?s=400&v=4)
-\](https://github.com/RustScan/homebrew-rustscan)
-Now clone your new repo onto your machine:
+ Now clone your new repo onto your machine:
 
     git clone homebrew-<project>
 
@@ -361,35 +353,13 @@ Now to run this builder:
 
 And it will build 3 Debian binaries for you.
 
-See how we did it with RustScan here:
-\[
-
-RustScan/RustScan
-
-Faster Nmap Scanning with Rust. Contribute to RustScan/RustScan development by creating an account on GitHub.
-
-![](https://github.githubassets.com/favicons/favicon.svg)RustScanGitHub
-
-![](https://repository-images.githubusercontent.com/278933035/386d6100-c9d9-11ea-84d6-3818ddabe7c2)
-\](https://github.com/RustScan/RustScan/tree/master/rustscan-debbuilder)
-
 ### Installation of .deb files
 
 To install `.deb` files, you can run `dpkg -i` on the file, or you can double-click the file (on some systems).
 
-# Arch
+# Arc
 
-The easiest way to distribute for AUR is to use the Cargo package `cargo-aur`.
-\[
-
-fosskers/cargo-aur
-
-Prepare Rust projects to be released on the Arch Linux User Repository - fosskers/cargo-aur
-
-![](https://github.githubassets.com/favicons/favicon.svg)fosskersGitHub
-
-![](https://avatars1.githubusercontent.com/u/229679?s=400&v=4)
-\](https://github.com/fosskers/cargo-aur)
+The easiest way to distribute for AUR is to use the [Cargo package](https://github.com/fosskers/cargo-aur) `cargo-aur`. 
 Cargo-aur automatically builds a PKGBUILD file, which is the file needed by Arch package management tools to install the software.
 
 The PKGBUILD file is similar to `cargo.toml`, or our Homebrew file.
@@ -439,7 +409,7 @@ Finally, `package()` shows Arch how to install our package.
 
 1. `cargo aur` built a tarball `.tar` file. Create a new `release on GitHub and attach the`.tar\` file that was just created.
 
-![](/content/images/2020/08/image.png)
+![](https://skerritt.blog/content/images/2020/08/image.png)
 2\. Create an account on the AUR [https://aur.archlinux.org/](https://aur.archlinux.org/)
 
 1. Upload your SSH public key to your account.
