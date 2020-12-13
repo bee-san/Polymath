@@ -62,7 +62,7 @@ params:
         - name: twitter
           url: "#"
         - name: linkedin
-          url: "#"
+          url: "https://twitter.com/bee_sec_san"
         - name: github
           url: "https://github.com/bee-san"
 

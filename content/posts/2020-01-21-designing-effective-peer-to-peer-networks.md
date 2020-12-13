@@ -1,0 +1,447 @@
+---
+title: Designing Effective Peer to Peer Networks
+slug: designing-effective-peer-to-peer-networks
+date_published: 2020-01-21T23:08:09.000Z
+date_updated: 2020-04-26T00:03:06.000Z
+tags: 
+    - University
+    - Networking
+excerpt: Learn how to design effective P2P networks with this guide.
+---
+
+This is an informed opinion piece on designing effective peer to peer (P2P) networks. I've written extensively about peer to peer networks, and have even designed my [own](https://github.com/brandonskerritt/Brandon_coin) (albeit, bad) cryptocurrency.
+
+By the end of the article, we should have a good understanding of the important questions to answer when designing effective P2P networks.
+
+    #myemail {
+    background-color: #f0f0f0;
+    color: black;
+    padding: 15px;
+    border-radius: 25px;
+            width: 80%;
+        margin: 0 auto;
+    }
+    #little {
+    color: grey;
+        font-size: 10px;
+        }
+    #email {
+        width: 100%;
+        padding: 10px;
+        
+        }
+    #submit {
+        width: 100%;
+        background: rgb(36,255,204);
+        }
+        #gdpr { width: 15px; height: 15px; }
+    
+
+## Want the ebook?
+
+        This blog post is from my 79 page ebook on effective peer to peer networks.
+ 
+    Sign up now and get the ebook for free along with:
+       
+- A free 81 page book on algorithmic design paradigms
+- A free 107 page book on employability skills
+- And much more to help you become an awesome developer!
+
+Email
+
+GDPR: I consent to receive promotional emails about your products and services.
+HP
+
+One click unsubscribe anytime.
+
+Alternatively, **[you can buy the ebook for £49.99 from Gumroad.](https://gumroad.com/l/p2palgos)**
+
+---
+
+## When Should I Use a Peer to Peer Network?
+![](/content/images/2020/01/undraw_code_thinking_1jeh--1-.svg)
+P2P networks can be used for all networking. We need to use the right tool for the job.
+
+Quickly & automatic scaling is their game. P2P networks enhance with more users, not degrade.
+
+If we are building a platform with a shared goal (i.e. shares files) and we can imagine the platform growing uncontrollably big, P2P networks are good. 
+
+Or if we do not want anyone to shut down our network (in a client-server model, turn off your servers) a P2P network is effective.
+
+There are 2 types of P2P Networks:
+
+- Full P2P networks
+
+These are networks where everyone node is equal.
+
+- Hybrid P2P networks
+
+Certain nodes have more power than others.
+
+Let's walk through what all good peer to peer networks share.
+
+---
+
+# Rewards
+![](/content/images/2020/01/undraw_cookie_love_ulvn.svg)
+All great peer to peer networks have reward systems. The user does some work, and they are rewarded. 
+
+Even if the reward isn't clearly defined, there is always a reward for taking part in the peer to peer network. And always a reward for giving back to the network.
+
+Rewards are paramount to P2P networks and my favourite thing to talk about!
+
+In Bitcoin, this is earning Bitcoin. BitTorrent rewards participants with faster download speeds. Tor rewards other Tor members with more privacy. 
+
+All of these rewards are given for contributing to the network.
+
+The idea of a reward is to eliminate free-riders who partake in the network without giving anything back. There are 2 ways to discourage free-riders:
+
+- Forcing every user to give back.
+- Rewarding users who give back.
+
+Tor is the former. The only reward that can be given is to become a guard node, which provides no obvious benefit for the user other than to feel good about themselves.
+
+The latter is what most peer to peer networks use, rewarding users who give back.
+
+In BitTorrent, those who seed (upload) are rewarded with higher download rates. The more you seed, the faster you can download.
+
+In Bitcoin, users are rewarded for mining the blockchain with Bitcoin.
+
+This leads us to look at peer to peer networks from 2 interesting perspectives. Human civilisations, or reinforcement learning machines.
+
+Let's start with human civilisations.
+
+---
+
+## Human Civilisations
+![](/content/images/2020/01/undraw_Savings_dwkw-1.svg)
+We do work, and we get rewarded. [Capitalism](https://archive.org/details/DmytriKleiner-P2pCommunismVsClient-serverCapitalism2012). In semi P2P networks (where one node has more power than the others) we can almost perfectly replicate capitalism.
+
+If we force everyone to do the same work for the same reward then it is [communism](https://www.marxists.org/archive/marx/works/download/pdf/Manifesto.pdf).
+
+[Luxury communism](https://www.theguardian.com/sustainable-business/2015/mar/18/fully-automated-luxury-communism-robots-employment) uses machines to do the heavy lifting leaving humans to do other things and is a new 21st-century take. This more closely relates to P2P networks than traditional communism.
+
+As P2P networks grow, eventually **if not governed properly** it will fall back into an client-server architecture. Why use Jim's computer to download `ubuntu.iso` when you can download it from LargeCorp which has a much faster speed.
+
+With planning, we can build a [dictatorship of the proletariat](https://www.britannica.com/topic/dictatorship-of-the-proletariat) where every ordinary node has power in the network. Not just those with higher rewards.
+
+There will always be those with more power than others (perhaps they have more computers on the network) but the point is that everyone has *some* power over the network.
+
+And the ordinary nodes will likely always have more power than larger clusters of nodes, [as seen in Bitcoin](https://www.bloomberg.com/news/articles/2017-12-08/the-bitcoin-whales-1-000-people-who-own-40-percent-of-the-market).
+
+Modelling P2P networks as political movements allows us to talk about P2P networks as more than just networks, as entire communities. 
+
+Eventually people with little to no knowledge about networking can discuss and change how the network operates using these abstractions.
+
+---
+
+## Reinforcement Learning
+![](/content/images/2020/01/undraw_good_team_m7uu-1.svg)
+We can use artificial intelligence to automatically optimise a P2P network. Humans are slow when it comes to making changes compared to computers.
+
+P2P networks already use technology to find the shortest routes or preferred routes. As networks become more and more complicated, simple handwritten algorithms might not be enough.
+
+Picture this nifty example.
+
+In our network, we have multiple nodes all interconnected. Each node has a rating.
+
+This rating signifies how good that node is. A good rating based on how much reward an individual has. Whether that reward is from speed, accuracy or trust is problem dependant.
+
+Every time this node is used, its personal reward is increased. Much like [Kohonen's competitive learning rules](https://en.wikipedia.org/wiki/Competitive_learning).
+
+But why stop there? If the node is faster, trustworthy, contributes heavily to the network it should have a higher reward rating.
+
+And our goal is to create the "best" path across the network, taking into account all of these numbers and to maximise our reward, whatever that may be.
+
+Tor already has a similar (albeit smaller) system in place like this. [Guard nodes, bridge nodes, and more](/how-does-tor-really-work/#how-is-a-circuit-created-).
+
+This seems like the perfect scenario for reinforcement learning. Multiple inputs to maximise our reward. Exploratory choices, meaning that a node with a "bad" reating is chosen, preventing some nodes from hogging all the resources.
+
+Reinforcement learning is the closet computer learning to how humans learn according to [Sutton & Barto](https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf). 
+
+Humans will eventually optimise manually. Where good nodes have better jobs or are chosen more than others. Reinforcement learning is much faster than any human could be.
+
+We, as humans, naturally & manually improve the network over time. What if we could use AI to speed this process up?
+
+---
+
+# Optimisation of the Network
+![](/content/images/2020/01/undraw_performance_overview_p9bm.svg)
+An ideal P2P network will improve the more people that use it.
+
+In Tor, the more people that use it the more privacy is given. I talk more about this in my [Tor blog post.](/how-does-tor-really-work/)
+
+A simple distinction, but one that must be made. **As the network grows older, ideally, it reaches its global optimised state.**
+
+Unlike client-server, where the more users there are the harder it becomes to maintain the network**.**
+![](/content/images/2020/01/image-4.png)
+Take the example of downloading a file. Client-Server starts out being incredibly fast, but over time as the file becomes more popular that download speed degrades.
+![](/content/images/2020/01/image-3.png)
+With a P2P network, at the start it is slow to download (assuming the initial uploader is slow) but the speed increases over time. What's important is that over ttime, client-server gets worse with more users but P2P gets better.
+
+Optimisation of the network as it grows is often done through the rewards system. 
+
+As Tor grows, the privacy of each user increases. Thus, the more that use Tor, the better the privacy. 
+
+Each user has their personal reward, but together this creates a positive reward for the whole network.
+
+In Bitcoin, the more that mine Bitcoin, the harder it is to mine, and the larger incentive it is to use better computers. Better computers = faster mines = more money. 
+
+This creates competition amongst users. **Who can contribute to the network the most? **Users are fighting for their own personal reward, but this fight improves the network as a whole.
+
+It is almost impossible to perform a 51% attack on the network when miners are hyper-competitive like this.
+
+**Users work towards their own personal rewards, which means the network gets better from not only more users but better rewards. **The entire network scales majestically upward.
+
+When choosing a reward, it is important to look at the local rewards (what the user gets) and to look at the greater rewards (what the network will get for participating).
+
+I also recommend rewards which increase as the network grows. Scalable rewards. If the price of Bitcoin did not scale with how many users it had, the network degrades or upgrades much slower over time.
+
+---
+
+## Humble Beginnings
+![](/content/images/2020/01/undraw_work_together_h63l.svg)
+With a client-server architecture, it can be amazing from the start. But with a peer to peer network, it sucks for the first few users. 
+
+With Bitcoin, what was the incentive? You get this worth coin.... nothing at all.
+
+Tor. The incentive? Well, if there are only 3 users then there is no incentive. No privacy. 51% attacks is a matter of whether someone loses WiFi on the train or not.
+
+BitTorrent. The incentive? You can download this one person's files.
+
+In peer to peer networks, generally, they suck for the first couple users and are only worthwhile over time. 
+
+So how then, do we build an effective peer to peer network that other people will want to use?
+
+There are 2 methods to this.
+
+- Forceful use
+
+You can force users to use the network. This is how Tor got its start. The [US Naval Resarch Labs](https://www.torproject.org/about/history/) built Tor, and effectively they could force others in the Navy to use it.
+
+- Incredible technology
+
+The other option is incredible technology. In a peer to peer network, the first few users are often those who recognise how incredible the technology is. 
+
+Think about Bitcoin. The [first few users](https://www.amazon.co.uk/Bitcoin-Future-Money-Dominic-Frisby-ebook/dp/B00VSVBIXS/ref=sr_1_31?keywords=bitcoin&amp;qid=1579361154&amp;sr=8-31) fell in love with the technology behind it, and truly believed it could one day be great.
+
+With a great rewards system in place, the first users of Bitcoin realised it could grow up to be something huge. **Amazing technology attracts the first few users, and those users are often technologically minded.**
+
+---
+
+## Jobs for the People
+![](/content/images/2020/01/undraw_interview_rmcf.svg)
+In almost all peer to peer networks, jobs are assigned to nodes.
+
+In Bitcoin, we have miners whose job it is to mine the blockchain. 
+
+In Tor, we have guard nodes.
+
+If a node has proven to be trustworthy than we shall make it a guard node. If a node wants to mine the blockchain, it becomes a miner.
+
+These nodes do not have more rights than the other nodes, they simply have a job to do. And sometimes this job provides a reward, and sometimes it doesn't.
+
+If we give everyone the same job, the network will tend towards global optimisation much slower. 
+
+Let's say we have a new file-sharing system. Our system will let you download files from others.
+
+We have a file, `Ubuntu.iso`, which is being seeded by 10 people. 
+
+We choose at randomly a seed to download from. This seed has an upload speed of 1 Mbps while all the other seeders have an upload speed of 200mbps. 
+
+It makes logical sense to use the uploaders with faster speed.
+
+It makes sense logically to choose from a subsection of people with high upload speeds. Effectively, we have given these people 'jobs'.
+
+There are 2 types of jobs in peer to peer networks:
+
+- Rewarded Jobs
+- Unpaid Internships (jobs)
+
+With rewarded jobs, the uploaders get a higher reward for working. This reward might be faster download speeds, such as in BitTorrent.
+
+With unpaid jobs, there is no reward. There is no incentive for one to choose a job, it is gifted to those. This is how guard nodes work in Tor.
+
+If we have a job which peopl have to opt-in to, but doesn't provide a reward it is unlikely for many people to opt-in. 
+
+Deciding on what jobs to give, and whether it is rewarded or not is problem specific. 
+
+For example, we have a job called "maintainer of the Blockchain". This job means people have a copy of the blockchain and maintains it. And only they do, no one else can. Any cryptocurrency nerd reading this may already see the problem.
+
+To view the blockchain, you need to have this job. But not every citizen of the world has a spare 300gb to view the chain. They cannot get the job, because they do not meet the required specification.
+
+You also have to meet a plethora of other specifications. Most of them a normal home user cannot achieve.
+
+This is another issue. Can we reject people if they do not meet the job specification? Again, problem specific.
+
+With only a small per cent controlling the blockchain, it leaves it open to a 51% attack. A small few will hold all the power. It will not work well in this instance.
+
+I propose that jobs are automatically assigned based on the specification of the user, but any user can request a job. 
+
+The only jobs they should be rejected for is high trust jobs, such as guard nodes. But, the specification of their computer should not be taken into account for trust jobs.
+
+Humans picking jobs are too slow. The network needs to react fast and scale fast. Humans are not fast. So automatic assignment it is.
+
+But we do not want to prevent humans from accessing resources because of their circumstances.
+
+When assigning jobs, the jobs must work in harmony.
+
+We should take inspiration from beehives or [ant colonies](http://www.antday.com/?lang=en&amp;pageid=workjobs) for this. Human jobs are simply too hard to model, to focus on a much smaller example is wise.
+
+Should there be a punishment if someone takes a job for which they are unfit? Should a 30gb computer take the punishment for trying to maintain a 300gb file?
+
+On the one hand, only a very small per cent of the population will ignore the assigned job and choose something for which they are unfit. 
+
+But, to achieve global optimisation we must make sure every single thing is accounted for. 
+
+Unfortunately, in this world, those that do jobs that they are not capable of should be punished. **I would not say to reduce the resources available to them** through the job, but perhaps **reduce the reward of using the network in some way.**
+
+---
+
+# Data Structures
+![](/content/images/2020/01/undraw_software_engineer_lvl5.svg)
+Every single effective peer to peer network uses data structures. 
+
+The blockchain is just a fancy linked list with some extra properties. 
+
+BitTorrent's magnet links work based on distributed hash tables.
+
+Data structures are vital to peer to peer networks. I do not want to get into every data structure available, but knowledge of them is important.
+
+We can design a network using a [distributed data structure](https://en.wikipedia.org/wiki/Category:Distributed_data_structures) that already exists, or we can build a new data structure/algorithm based on pre-existing ones.
+
+---
+
+# Policy Changes
+![](/content/images/2020/01/undraw_judge_katerina_limpitsouni_ny1q.svg)
+Throughout this article, I have talked about designing the network to be perfect from the get-go. Anyone knows this isn't possible. So how then, do we change the network when it's already running? How do we implement policy changes?
+
+1. Dictatorship
+2. Let the people decide
+3. The people can form a democracy
+
+In our first instance, we have a dictatorship. 
+
+You, the creator decides on changes. You create these changes, and they go out to the network. We don't care what the participants think, only that the change has taken place.
+
+This is the most effective for easily implementing policy changes, but it ruins the trust. 
+
+Good peer to peer networks reduces trust. We should not need to trust anyone. However, trust is important in some networks. It depends on the network itself.
+
+If the network was for a digital currency, why would you trust this entire currency in the hands of a single person? 
+
+But for a privacy centred network, having this trust in one person or body of people can increase the trust throughout the network. It reduces the chance of a 51% attack backdoor in the early days, building trust from day 0.
+
+As the network progresses, it strays further and further away from a 51% attack. Which means we lose trust, we do not need to trust that it is safe from a 51% attack if the network is large enough.
+
+In the early days of a P2P network, it is very much a dictatorship. A few small people decide on changes to the network (think of the early days of Bitcoin) and this eventually moves towards democracy as the network grows.
+
+But again, this brings problems. What if there is a critical failure in the code and there needs to be a change made during the networks primetime? This is for the designer to decide.
+
+We can alternatively let the people decide. 
+
+From the get-go, no single person has full control. Every time a change is made, a % of the network (likely 51) will need to agree to the change. Complete control for the network. No trusting the developer involved.
+
+At the start, this may be problematic. What if we have a node in the network purely from FOMO and doesn't care about updates?
+
+Humans are incredibly slow too. Imagine a critical bug in the code that had to be fixed right there and then. Humans may take weeks to decide. Many will not even respond to the decision.
+
+The alternative is a democracy. 
+
+Give certain people more power than others. Have the community vote in leaders, or have the leaders be pre-selected. 
+
+These leaders then decide on changes to the codebase. This reduces trust, especially if they are voted in. 
+
+But nothing is stopping them from teaming together to get the maximum personal reward while not doing anything for the many.
+
+All in all, deciding on policy changes is a tricky subject. And one that should be decided before the network is made.
+
+Although something to remember is trust. Will the users need to trust you, personally? 
+
+If so, try and work towards a goal where that trust is reduced. Diversify that trust over to others. Remove trust completely, make them only trust themselves.
+
+Effective peer to peer networks is unlike client-server models where one person controls all the power. Effective P2P networks are for the people.
+
+---
+
+## The Cathedral or the Bazaar
+![](/content/images/2020/01/undraw_deliveries_131a.svg)
+[The Cathedral](https://monoskop.org/images/e/e0/Raymond_Eric_S_The_Cathedral_and_the_Bazaar_rev_ed.pdf) is waterfall development. Slow, well planned. The people working on it are cathedral builders. The final product is presented and sold to the public as the final product.
+
+[The Bazaar](https://monoskop.org/images/e/e0/Raymond_Eric_S_The_Cathedral_and_the_Bazaar_rev_ed.pdf) is the opposite. Work fast. Break things. Release early. Release often. Listen to your customers.
+
+When building a **full **P2P network, we would build both the cathedral and the bazaar.
+
+In an ideal **full **P2P network, eventually, the creator's power dwindles to almost nothing (they become just another normal node in the network). 
+
+This is what Satoshi Nakamoto did. They created the cathedral first, and then over time moved to the bazaar - eventually losing all power to change anything in the network without the permission of the network.
+
+Our P2P network could explode on day 1 and we would have no control to finish building the cathedral. 
+
+For this reason, in a full P2P network where all nodes are equal, we should build a cathedral and then transition naturally to a bazaar.
+
+In semi P2P network where some nodes have more power than others, the developer doesn't have to give up their child anytime soon. 
+
+However, this requires the nodes to trust the developers. Something that not all P2P networks have the liberty of.
+
+---
+
+## Open Source or Not?
+![](/content/images/2020/01/undraw_open_source_1qxw.svg)
+The main thing in P2P networks is removing trust. We don't necessarily want people to trust us when building a network, preferably we would want to remove as much trust as possible.
+
+Closed source systems do not instil much trust, therefore we must choose an open-source system.
+
+---
+
+# Conclusion
+![](/content/images/2020/01/undraw_result_5583.svg)
+We now know the biggest questions to ask when desiging effective P2P networks.
+
+1. What will the rewards be?
+2. What jobs are there?
+3. Can users choose their own jobs?
+4. Should there be a punishment? If so, what punishment?
+5. Are jobs paid or unpaid?
+6. Is it hybrid, or a full network?
+
+    #myemail {
+    background-color: #f0f0f0;
+    color: black;
+    padding: 15px;
+    border-radius: 25px;
+            width: 80%;
+        margin: 0 auto;
+    }
+    #little {
+    color: grey;
+        font-size: 10px;
+        }
+    #email {
+        width: 100%;
+        padding: 10px;
+        
+        }
+    #submit {
+        width: 100%;
+        background: rgb(36,255,204);
+        }
+        #gdpr { width: 15px; height: 15px; }
+    
+
+## Want the ebook?
+
+        This blog post is from my 79 page ebook on effective peer to peer networks.
+ 
+    Sign up now and get the ebook for free along with:
+       
+- A free 81 page book on algorithmic design paradigms
+- A free 107 page book on employability skills
+- And much more to help you become an awesome developer!
+
+Email
+
+GDPR: I consent to receive promotional emails about your products and services.
+HP
+
+One click unsubscribe anytime.
