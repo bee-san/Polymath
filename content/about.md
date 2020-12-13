@@ -1,11 +1,10 @@
 ---
-title: "About Me" # in any language you want
-# layout: "archives" # is necessary
+title: About Me
 url: "/about"
-summary: "about me"
----
+summary: about me
 
-I'm a computer science graduate from a Russel Group university (2020) and now I'm working for TryHackMe
+---
+I'm a computer science graduate from a Russel Group university (2020) and now I'm working for TryHackMe.
 
 Some of the things I'm more well known for include:
 
