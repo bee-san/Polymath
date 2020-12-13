@@ -5,7 +5,6 @@ date_published: 2020-08-07T17:34:49.000+00:00
 date_updated: 2020-08-07T17:35:33.000+00:00
 tags: rust
 excerpt: The ultimate guide on packaging & distributing your Rust binary
-draft: true
 
 ---
 I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
