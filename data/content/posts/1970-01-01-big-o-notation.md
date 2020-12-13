@@ -6,7 +6,7 @@ date_updated: 2019-10-08T16:43:37.000Z
 draft: false
 math: true
 maths: true
-ShowToC: true
+ShowToc: true
 tags:
   - "Computer Science"
   - "Algorithms and Datastructures"
