@@ -13,6 +13,17 @@ tags:
 
 $$6 + 3$$
 
+$$
+ \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$
+
+{{< math.inline >}}
+
+<p>
+Inline math: \(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…\)
+</p>
+{{</ math.inline >}}
+
 By the end of this article, you'll thoroughly understand Big O notation. You'll also know how to use it in the real world, and even the mathematics behind it!
 
 In computer science, **time complexity** is the computational **complexity** that describes the amount of **time** it takes to run an algorithm.

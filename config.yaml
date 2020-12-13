@@ -65,6 +65,8 @@ params:
           url: "https://twitter.com/bee_sec_san"
         - name: github
           url: "https://github.com/bee-san"
+        - name: kofi
+          url: "https://kofi.com/hacker"
 
 taxonomies:
     category: categories
