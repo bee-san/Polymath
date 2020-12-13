@@ -72,10 +72,9 @@ This is [RustScan's](https://github.com/brandonskerritt/RustScan)`Cargo.toml`:
 
 For more information on the manifest file, look [here](https://doc.rust-lang.org/cargo/reference/manifest.html):
 
-
 Now we're ready to publish! Go to the [Crates.io](https://crates.io/) website and register an account. Then, go into the settings and create a new API key.
 
-![](https://skerritt.blog/content/images/2020/07/image.png)
+![API Access, generate a new token](https://skerritt.blog/content/images/2020/07/image.png)
 Now in a terminal, execute `cargo login <API_KEY>`. You're now logged into Crates.io and can publish!
 
 Build your Rust package using the release profile, which optimises it at the highest level Rust can provide:
