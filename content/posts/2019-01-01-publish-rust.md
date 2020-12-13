@@ -1,14 +1,14 @@
 ---
 title: Packaging Your Rust Code
 slug: packaging-your-rust-package
-date_published: 2020-08-07T17:34:49.000Z
-date_updated: 2020-08-07T17:35:33.000Z
-tags: 
-    - "Rust"
+date_published: 2020-08-07T17:34:49.000+00:00
+date_updated: 2020-08-07T17:35:33.000+00:00
+tags:
+- Rust
 excerpt: The ultimate guide on packaging & distributing your Rust binary
 template: post
----
 
+---
 I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
 
 Follow me as we publish my package, RustScan, to multiple distributions.
@@ -17,9 +17,7 @@ Follow me as we publish my package, RustScan, to multiple distributions.
 
 Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:
 
-```
-Major.Minor.Bugs
-```
+    Major.Minor.Bugs
 
 If you have fixed some bugs, increment the bugs counter.
 
@@ -31,69 +29,65 @@ We can signify whether a release is still being rested or not by adding "rc" (re
 
 # Cargo
 
-Cargo is a package registry system for Rust. Imagine it as PyPi (Pip for Python) or NPM (for JavaScript). 
+Cargo is a package registry system for Rust. Imagine it as PyPi (Pip for Python) or NPM (for JavaScript).
 
 As a rustacean, you may have heard of this – and even used it to download packages yourself. So let's skip right to the good part.
 
-Before publishing to Cargo, we need to make sure our `cargo.toml` file has the required information. 
+Before publishing to Cargo, we need to make sure our `cargo.toml` file has the required information.
 
 There are 3 things we need:
 
-- Name
+* Name
 
 The name of our project.
 
-- Description
+* Description
 
 Describe what the project does.
 
-- License
+* License
 
 What license do you use? Specifically, we need to use a license identification code. View the [Linux Foundation's SPDX](https://spdx.org/licenses/) website for all the license identification codes.
 
 However, you will probably want more than these for your package. Some good ones are:
 
-- Readme
+* Readme
 
 The location of your README file, which is used to fill out the README on the Cargo website.
 
-- Keywords
+* Keywords
 
 This is tags for your project. When a user searches a keyword such as "sewing", and your project has that keyword, your project will come up in the search results.
 
 This is [RustScan's](https://github.com/brandonskerritt/RustScan)`Cargo.toml`:
-```
-[package]
-name = "rustscan"
-version = "1.0.1"
-authors = ["Brandon <my_email@skerritt.blog>"]
-edition = "2018"
-description = "Faster Nmap Scanning with Rust"
-homepage = "https://github.com/brandonskerritt/rustscan"
-repository = "https://github.com/brandonskerritt/rustscan"
-license = "MIT"
-keywords = ["port", "scanning", "nmap"]
-categories = ["command-line-utilities"]
-readme="README.md"
-```
+
+    [package]
+    name = "rustscan"
+    version = "1.0.1"
+    authors = ["Brandon <my_email@skerritt.blog>"]
+    edition = "2018"
+    description = "Faster Nmap Scanning with Rust"
+    homepage = "https://github.com/brandonskerritt/rustscan"
+    repository = "https://github.com/brandonskerritt/rustscan"
+    license = "MIT"
+    keywords = ["port", "scanning", "nmap"]
+    categories = ["command-line-utilities"]
+    readme="README.md"
 
 For more information on the manifest file, look [here](https://doc.rust-lang.org/cargo/reference/manifest.html):
 
 Now we're ready to publish! Go to the [Crates.io](https://crates.io/) website and register an account. Then, go into the settings and create a new API key.
-![](/content/images/2020/07/image.png)
+
+![](https://skerritt.blog/content/images/2020/07/image.png)
 Now in a terminal, execute `cargo login <API_KEY>`. You're now logged into Crates.io and can publish!
 
 Build your Rust package using the release profile, which optimises it at the highest level Rust can provide:
 
-```
-cargo build --release
-```
+    cargo build --release
 
 And then publish it.
 
-```
-cargo publish
-```
+    cargo publish
 
 Ta-da! Your package is now available on the Crates.io website, and can be installed with `cargo <your_package_name>`.
 
@@ -161,7 +155,7 @@ In my case, it is:
 
     homebrew-rustscan
 
-[
+\[
 
 RustScan/homebrew-rustscan
 
@@ -169,8 +163,8 @@ RustScan’s HomeBrew repo. Contribute to RustScan/homebrew-rustscan development
 
 ![](https://github.githubassets.com/favicons/favicon.svg)RustScanGitHub
 
-![](https://avatars3.githubusercontent.com/u/68809321?s=400&amp;v=4)
-](https://github.com/RustScan/homebrew-rustscan)
+![](https://avatars3.githubusercontent.com/u/68809321?s=400&v=4)
+\](https://github.com/RustScan/homebrew-rustscan)
 Now clone your new repo onto your machine:
 
     git clone homebrew-<project>
@@ -213,7 +207,6 @@ Now copy and paste the following file into your `rustscan.rb` (or whatever your 
 Change the class name to match the name of your program:
 
     class Rustscan < Formula
-    
 
 Then add a short description and link the homepage (in my case, the GitHub repo).
 
@@ -259,7 +252,7 @@ Let's install the package to double check everything went well.
 
 Where `brandonskerritt/rustscan` is your GitHub username combined with the project's name.
 
-My username is Brandonskerritt, and the project is called rustscan. 
+My username is Brandonskerritt, and the project is called rustscan.
 
 I created a one command install for my users. which is just the 2 commands combined. You may find this helpful.
 
@@ -283,9 +276,9 @@ Luckily I've created a (albeit badly made) Docker script to package for other ar
 
 The script packages the project for:
 
-- Amd64
-- Arm64
-- i386
+* Amd64
+* Arm64
+* i386
 
 It requires some editing (as it was made for RustScan), but once done it will automatically package your script for you.
 
@@ -369,7 +362,7 @@ Now to run this builder:
 And it will build 3 Debian binaries for you.
 
 See how we did it with RustScan here:
-[
+\[
 
 RustScan/RustScan
 
@@ -378,15 +371,16 @@ Faster Nmap Scanning with Rust. Contribute to RustScan/RustScan development by c
 ![](https://github.githubassets.com/favicons/favicon.svg)RustScanGitHub
 
 ![](https://repository-images.githubusercontent.com/278933035/386d6100-c9d9-11ea-84d6-3818ddabe7c2)
-](https://github.com/RustScan/RustScan/tree/master/rustscan-debbuilder)
+\](https://github.com/RustScan/RustScan/tree/master/rustscan-debbuilder)
+
 ### Installation of .deb files
 
 To install `.deb` files, you can run `dpkg -i` on the file, or you can double-click the file (on some systems).
 
 # Arch
 
-The easiest way to distribute for AUR is to use the Cargo package `cargo-aur`. 
-[
+The easiest way to distribute for AUR is to use the Cargo package `cargo-aur`.
+\[
 
 fosskers/cargo-aur
 
@@ -394,9 +388,9 @@ Prepare Rust projects to be released on the Arch Linux User Repository - fossker
 
 ![](https://github.githubassets.com/favicons/favicon.svg)fosskersGitHub
 
-![](https://avatars1.githubusercontent.com/u/229679?s=400&amp;v=4)
-](https://github.com/fosskers/cargo-aur)
-Cargo-aur automatically builds a PKGBUILD file, which is the file needed by Arch package management tools to install the software. 
+![](https://avatars1.githubusercontent.com/u/229679?s=400&v=4)
+\](https://github.com/fosskers/cargo-aur)
+Cargo-aur automatically builds a PKGBUILD file, which is the file needed by Arch package management tools to install the software.
 
 The PKGBUILD file is similar to `cargo.toml`, or our Homebrew file.
 
@@ -433,7 +427,7 @@ The `pkgname` is the name of the package. Please see the [Arch wiki](https://wik
 
 `options` per the [Arch Wiki](https://wiki.archlinux.org/index.php/PKGBUILD#pkgrel):
 
-> This array allows overriding some of the default behavior of *makepkg*, defined in `/etc/makepkg.conf`. To set an option, include the name in the array. To disable an option, place an **`!`** before it.
+> This array allows overriding some of the default behavior of _makepkg_, defined in `/etc/makepkg.conf`. To set an option, include the name in the array. To disable an option, place an **`!`** before it.
 
 Personally, I don't know why this is needed. But it's an automated generation, so we can't complain too much.
 
@@ -443,12 +437,12 @@ Finally, `package()` shows Arch how to install our package.
 
 ## Uploading this package to the AUR
 
-1. `cargo aur` built a tarball `.tar` file. Create a new `release on GitHub and attach the `.tar` file that was just created.
+1. `cargo aur` built a tarball `.tar` file. Create a new `release on GitHub and attach the`.tar\` file that was just created.
 
 ![](/content/images/2020/08/image.png)
-2. Create an account on the AUR [https://aur.archlinux.org/](https://aur.archlinux.org/)
+2\. Create an account on the AUR [https://aur.archlinux.org/](https://aur.archlinux.org/)
 
-3. Upload your SSH public key to your account. 
+1. Upload your SSH public key to your account.
 
 Check for SSH keys with:
 
@@ -464,9 +458,9 @@ And follow the on-screen prompts. Or follow this [guide](https://docs.github.com
 
 Next, go to your account page on the AUR and upload your public SSH key.
 
-4. In a new directory, git clone your repo on the AUR. 
+1. In a new directory, git clone your repo on the AUR.
 
-This is kind of confusing. But say the package name is `rustscan` (confirm there is no other package on the AUR using your projects name by [searching here](https://aur.archlinux.org/)). 
+This is kind of confusing. But say the package name is `rustscan` (confirm there is no other package on the AUR using your projects name by [searching here](https://aur.archlinux.org/)).
 
     git clone ssh://aur@aur.archlinux.org/rustscan.git
 
@@ -479,24 +473,20 @@ I normally clone this in a folder format like:
 
 Make sure to change the name of the package `rustscan` to the name you want.
 
-5. Copy the PKGBUILD you built in stage 1 into the new Git repo. 
+1. Copy the PKGBUILD you built in stage 1 into the new Git repo.
+2. Run `makepkg --printsrcinfo > .SRCINFO` in the repo.
+3. Your directory should now look like:
+   * rustscan /
+     * rustscan / # the rust package
+     * rustscan / # the package we have git cloned
+       * PKGBUILD
+       * .SRCINFO
+     * homebrew-rustscan /
+4. Now push these:
 
-6. Run `makepkg --printsrcinfo > .SRCINFO` in the repo.
-
-7. Your directory should now look like:
-
-    - rustscan /
-        - rustscan / # the rust package
-        - rustscan / # the package we have git cloned
-        	- PKGBUILD
-            - .SRCINFO
-        - homebrew-rustscan /
-
-8. Now push these:
-
-    git add .
-    git commit -m 'initial release'
-    git push
+   git add .
+   git commit -m 'initial release'
+   git push
 
 And Ta-Da! We now have an Arch Linux AUR package!
 
@@ -529,4 +519,4 @@ Eventually, you may want to clean up the default Rust AUR package for whatever r
       install -Dm755 target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}
     }
 
-Note: someone else made this for RustScan. 
+Note: someone else made this for RustScan.
