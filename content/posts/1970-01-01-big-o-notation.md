@@ -5,14 +5,13 @@ date_published: 1970-01-01T00:00:00.000Z
 date_updated: 2019-10-08T16:43:37.000Z
 draft: false
 math: true
-maths: true
+ShowToc: true
 tags:
   - "Computer Science"
   - "Algorithms and Datastructures"
 ---
 
 $$6 + 3$$
-
 
 By the end of this article, you'll thoroughly understand Big O notation. You'll also know how to use it in the real world, and even the mathematics behind it!
 
@@ -22,42 +21,20 @@ Big O notation is a method for determining how fast an algorithm is. Using Big O
 
 This article is written using agnostic Python. That means it will be easy to port the Big O notation code over to Java, or any other language. If the code isn't agnostic, there's Java code accompanying it.
 
-# Table of Contents
+<hr>
 
-1. [❓ How Do We Measure How Long an Algorithm Takes to Run?](#-how-do-we-measure-how-long-an-algorithm-takes-to-run)
-2. [🤔 What Is Big O Notation?](#-what-is-big-o-notation)
 
-2.1. [🟢 Constant Time](#-constant-time)
-
-2.2. [🔵 Logarithmic Time](#-logarithmic-time)
-
-2.3. [🟡 Linear Time](#-linear-time)
-
-2.4. [🔴 Polynomial Time](#-polynomial-time)
-
-2.5. [❌ Exponential Time](#-exponential-time)
-3. [😌 Simplifying Big O notation](#-simplifying-big-o-notation)
-4. [☁ Other Big O Times to Learn (But Not Essential)](#-other-big-o-times-to-learn-but-not-essential-)
-
-4.1. [🥇 O(n log n)](#-o-n-log-n-)
-
-4.2. [👿 O(n!)](#-o-n-)
-5. [🧮 How to Calculate Big O Notation for Our Own Algorithms with Examples](#-how-to-calculate-big-o-notation-for-our-own-algorithms-with-examples)
-6. [🤯 Big O Notation Cheat Sheet](#-big-o-notation-cheat-sheet)
-7. [🎓 How to Calculate Big O Notation of a Function (Discrete Maths)](#-how-to-calculate-big-o-notation-of-a-function-discrete-maths-)
-8. [👋 Summary](#-summary)
-
----
-o
 ## ❓ How Do We Measure How Long an Algorithm Takes to Run?
 ![Image used to breakup text](/content/images/2019/09/undraw_time_management_30iu.svg)
 We could run an algorithm 10,000 times and measure the average time taken.
 
-    ➜ python3 -m timeit '[print(x) for x in range(100)]'
-    100 loops, best of 3: 11.1 msec per loop 
-    ➜ python3 -m timeit '[print(x) for x in range(10)]'
-    1000 loops, best of 3: 1.09 msec per loop
-    # We can see that the time per loop changes depending on the input!
+```console
+➜ python3 -m timeit '[print(x) for x in range(100)]'
+100 loops, best of 3: 11.1 msec per loop 
+➜ python3 -m timeit '[print(x) for x in range(10)]'
+1000 loops, best of 3: 1.09 msec per loop
+# We can see that the time per loop changes depending on the input!
+```
 
 Say we have an algorithm that takes a shopping list and prints out every item on the shopping list. If the shopping list has 3 items, it'll execute quickly. If it has 10 billion items, it'll take a long time.
 
