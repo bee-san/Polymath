@@ -4,10 +4,15 @@ slug: big-o-notation
 date_published: 1970-01-01T00:00:00.000Z
 date_updated: 2019-10-08T16:43:37.000Z
 draft: false
+math: true
+maths: true
 tags:
   - "Computer Science"
   - "Algorithms and Datastructures"
 ---
+
+$$6 + 3$$
+
 
 By the end of this article, you'll thoroughly understand Big O notation. You'll also know how to use it in the real world, and even the mathematics behind it!
 
@@ -43,7 +48,7 @@ This article is written using agnostic Python. That means it will be easy to por
 8. [👋 Summary](#-summary)
 
 ---
-
+o
 ## ❓ How Do We Measure How Long an Algorithm Takes to Run?
 ![Image used to breakup text](/content/images/2019/09/undraw_time_management_30iu.svg)
 We could run an algorithm 10,000 times and measure the average time taken.
