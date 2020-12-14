@@ -2,7 +2,7 @@
 title: Packaging Your Rust Code
 slug: packaging-your-rust-package
 date_published: 2020-08-07T17:34:49.000+00:00
-date_updated: 2020-08-07T17:35:33.000+00:00
+date: 2020-08-07T17:35:33.000+00:00
 tags:
   - "Rust"
 excerpt: The ultimate guide on packaging & distributing your Rust binary

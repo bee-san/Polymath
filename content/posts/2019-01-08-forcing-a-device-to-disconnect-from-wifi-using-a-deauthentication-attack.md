@@ -2,10 +2,10 @@
 title: Forcing a device to disconnect from WiFi using a deauthentication attack
 slug: forcing-a-device-to-disconnect-from-wifi-using-a-deauthentication-attack
 date_published: 2019-01-08T00:02:38.000Z
-date_updated: 2019-11-28T17:39:23.000Z
+date: 2019-11-28T17:39:23.000Z
 tags: 
   - "University"
-  - "Computer Science"
+  - "Infosec"
 draft: true
 ---
 

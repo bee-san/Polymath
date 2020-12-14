@@ -2,7 +2,7 @@
 title: "Book Review: Atomic habits"
 slug: book-review-atomic-habits
 date_published: 2019-01-27T13:51:03.000Z
-date_updated: 2019-11-08T23:03:12.000Z
+date: 2019-11-08T23:03:12.000Z
 tags: 
     - Books
 excerpt: Atomic habits builds on the sensational work of Charles Duhigg's The Power of Habit by applying more new & groundbreaking research as well as the work of many others into this short textbook on habits.

@@ -2,7 +2,7 @@
 title: How to Share a Secret (Diffie-Hellman-Merkle)
 slug: diffie-hellman-merkle
 date_published: 2019-02-21T13:35:23.000Z
-date_updated: 2019-11-19T01:46:20.000Z
+date: 2019-11-19T01:46:20.000Z
 tags: 
     - Datastructures and Algorithms
     - Computer Science
@@ -11,45 +11,6 @@ excerpt: Diffie-Hellman-Merkle is a way to share a secret key with someone (or s
 ---
 
 Diffie-Hellman-Merkle is a way to share a secret key with someone (or something) without actually sending them the key. Before we look into how we share keys let's first look into what keys are and why we would want to invent a method to share keys without giving the other person the key.
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 ---
 
@@ -355,44 +316,6 @@ Diffie-Hellman-Merkle is a fascinating way of sharing a secret over an unsecured
 
 If you want to learn about the different attacks that have been attempted on Diffie-Hellman and one attack which might be a very big problem, sign up to my email list below and I'll send you the PDF 😁✨
 
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 ---
 

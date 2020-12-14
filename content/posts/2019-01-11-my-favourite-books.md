@@ -2,7 +2,7 @@
 title: These books will change your life
 slug: my-favourite-books
 date_published: 2019-01-11T19:53:00.000Z
-date_updated: 2019-04-14T13:40:32.000Z
+date: 2019-04-14T13:40:32.000Z
 tags: 
   - Books
 excerpt: Here are all of my favourite books, ordered by how much I liked them!

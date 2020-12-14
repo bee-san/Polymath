@@ -2,7 +2,7 @@
 title: "Book Review: Meditations"
 slug: book-review-meditations
 date_published: 2019-01-10T01:27:45.000Z
-date_updated: 2019-11-28T17:53:54.000Z
+date: 2019-11-28T17:53:54.000Z
 tags: 
     - Books
 draft: true

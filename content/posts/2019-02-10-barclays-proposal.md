@@ -2,7 +2,7 @@
 title: Barclays proposal
 slug: barclays-proposal
 date_published: 2019-02-10T20:55:50.000Z
-date_updated: 2019-02-10T20:58:49.000Z
+date: 2019-02-10T20:58:49.000Z
 ---
 
 As a diverse team of students, at the University of Liverpool, from China, United Kingdom and Ukraine, we are engaging with the local community and enhancing safety for residents. Our idea is to develop an app to determine the 'safest' route from your location to where you want to be.  In Liverpool there is a lot of crimes committed to people walking from once place to another. Examples of crimes which occur commonly are mugging or anti-social behavior induced violence.

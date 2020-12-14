@@ -2,7 +2,7 @@
 title: Set Theory for Competitive Programming
 slug: set-theory-for-competitive-programming
 date_published: 2020-07-18T11:23:48.000Z
-date_updated: 2020-07-25T11:56:39.000Z
+date: 2020-07-25T11:56:39.000Z
 tags: 
     - Computer Science
 excerpt: The best introduction to using set theory in competitive programming

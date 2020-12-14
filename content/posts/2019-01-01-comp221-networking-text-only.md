@@ -2,7 +2,7 @@
 title: Comp221 Networking text only
 slug: comp221-networking-text-only
 date_published: 2019-01-01T21:00:00.000Z
-date_updated: 2019-06-19T13:52:36.000Z
+date: 2019-06-19T13:52:36.000Z
 draft: true
 ---
 

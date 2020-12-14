@@ -2,7 +2,7 @@
 title: Mathematical Logic
 slug: mathematical-logic
 date_published: 2019-01-08T00:39:20.000Z
-date_updated: 2019-01-27T16:08:10.000Z
+date: 2019-01-27T16:08:10.000Z
 tags: 
   - "University"
   - "Computer Science"

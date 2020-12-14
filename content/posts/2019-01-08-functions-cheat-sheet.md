@@ -2,7 +2,7 @@
 title: Functions cheat sheet
 slug: functions-cheat-sheet
 date_published: 2019-01-08T00:41:37.000Z
-date_updated: 2019-01-26T15:13:40.000Z
+date: 2019-01-26T15:13:40.000Z
 tags: 
   - "University"
   - "Computer Science"

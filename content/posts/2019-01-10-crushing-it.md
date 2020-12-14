@@ -2,7 +2,7 @@
 title: "Book Review: Crushing It"
 slug: crushing-it
 date_published: 2019-01-10T01:25:21.000Z
-date_updated: 2019-11-28T17:53:43.000Z
+date: 2019-11-28T17:53:43.000Z
 tags: 
   - Books
 draft: true

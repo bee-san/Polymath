@@ -1,14 +1,13 @@
 ---
 title: All You Need to Know About Big O Notation [Python Examples]
 slug: big-o-notation
-date_published: 1970-01-01T00:00:00.000Z
-date_updated: 2019-10-08T16:43:37.000Z
+date: 2019-10-08T16:43:37.000Z
 draft: false
 math: true
 ShowToc: true
 tags:
   - "Computer Science"
-  - "Algorithms and Datastructures"
+  - "Datastructures and Algorithms"
 ---
 
 $$6 + 3$$

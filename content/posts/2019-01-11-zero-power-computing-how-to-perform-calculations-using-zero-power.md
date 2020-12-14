@@ -2,7 +2,7 @@
 title: Zero Power Computing — How to Perform Calculations Using Zero Power
 slug: zero-power-computing-how-to-perform-calculations-using-zero-power
 date_published: 2019-01-11T09:00:00.000Z
-date_updated: 2019-04-08T00:28:02.000Z
+date: 2019-04-08T00:28:02.000Z
 tags: 
   - Computer Science
 ---

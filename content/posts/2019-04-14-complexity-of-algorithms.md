@@ -2,7 +2,7 @@
 title: Complexity of algorithms (notes)
 slug: complexity-of-algorithms
 date_published: 2019-04-14T00:01:00.000Z
-date_updated: 2019-05-22T15:41:55.000Z
+date: 2019-05-22T15:41:55.000Z
 tags: 
     - University
 draft: true

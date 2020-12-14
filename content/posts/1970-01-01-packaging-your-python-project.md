@@ -2,8 +2,8 @@
 title: Packaging your Python Project
 slug: packaging-your-python-project
 date_published: 1970-01-01T00:00:00.000Z
-date_updated: 2020-07-18T13:17:32.000Z
-draft: true
+date: 2020-07-18T13:17:32.000Z
+draft: false
 ---
 
 I was looking to package my project, Ciphey, for operating systems and for managers that isn't PyPi. Unforuantely, there seemed to be very little information on the web about this.

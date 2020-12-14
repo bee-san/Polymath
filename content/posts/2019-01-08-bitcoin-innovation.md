@@ -2,7 +2,7 @@
 title: Bitcoins biggest innovation wasn’t the currency
 slug: bitcoin-innovation
 date_published: 2019-01-08T00:51:35.000Z
-date_updated: 2019-04-06T10:50:35.000Z
+date: 2019-04-06T10:50:35.000Z
 tags: 
   - "University"
   - "Computer Science"

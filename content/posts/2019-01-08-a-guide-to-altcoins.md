@@ -2,7 +2,7 @@
 title: A guide to Altcoins.
 slug: a-guide-to-altcoins
 date_published: 2019-01-08T00:44:16.000Z
-date_updated: 2019-04-14T13:27:03.000Z
+date: 2019-04-14T13:27:03.000Z
 tags: 
   - "Computer Science"
 excerpt: An in-depth guide to altcoins

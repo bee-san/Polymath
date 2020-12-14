@@ -2,7 +2,7 @@
 title: Greedy Algorithms In Python
 slug: greedy-algorithms
 date_published: 2019-10-18T13:22:00.000Z
-date_updated: 2019-11-19T00:58:00.000Z
+date: 2019-11-19T00:58:00.000Z
 tags: 
     - University
     - Computer Science

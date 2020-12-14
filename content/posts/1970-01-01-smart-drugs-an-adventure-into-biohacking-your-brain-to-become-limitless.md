@@ -2,7 +2,7 @@
 title: Smart Drugs - an adventure into biohacking your brain to become limitless
 slug: smart-drugs-an-adventure-into-biohacking-your-brain-to-become-limitless
 date_published: 1970-01-01T00:00:00.000Z
-date_updated: 2019-01-31T17:49:44.000Z
+date: 2019-01-31T17:49:44.000Z
 draft: true
 ---
 

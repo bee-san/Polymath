@@ -2,7 +2,7 @@
 title: What Is Dynamic Programming With Python Examples
 slug: dynamic-programming
 date_published: 2019-06-05T16:03:32.000Z
-date_updated: 2019-11-19T01:44:21.000Z
+date: 2019-11-19T01:44:21.000Z
 tags: 
     - University
     - Computer Science

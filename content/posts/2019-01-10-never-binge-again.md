@@ -2,7 +2,7 @@
 title: Book Review - Never Binge Again
 slug: never-binge-again
 date_published: 2019-01-10T01:24:22.000Z
-date_updated: 2019-09-22T22:58:52.000Z
+date: 2019-09-22T22:58:52.000Z
 tags: 
     - Books
 draft: true

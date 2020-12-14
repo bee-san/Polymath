@@ -2,7 +2,7 @@
 title: Comp219 Advance AI Blog Post
 slug: comp219-advance-ai-blog-post
 date_published: 2019-01-08T00:55:17.000Z
-date_updated: 2019-04-28T11:22:17.000Z
+date: 2019-04-28T11:22:17.000Z
 tags: 
   - "University"
   - "Computer Science"

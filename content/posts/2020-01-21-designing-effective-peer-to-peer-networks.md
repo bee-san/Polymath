@@ -2,7 +2,7 @@
 title: Designing Effective Peer to Peer Networks
 slug: designing-effective-peer-to-peer-networks
 date_published: 2020-01-21T23:08:09.000Z
-date_updated: 2020-04-26T00:03:06.000Z
+date: 2020-04-26T00:03:06.000Z
 tags: 
     - University
     - Networking

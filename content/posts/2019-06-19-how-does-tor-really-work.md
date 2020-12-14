@@ -2,7 +2,7 @@
 title: How Does Tor Really Work? The Definitive Visual Guide (2020)
 slug: how-does-tor-really-work
 date_published: 2019-06-19T13:33:00.000Z
-date_updated: 2020-09-19T11:53:11.000Z
+date: 2020-09-19T11:53:11.000Z
 tags: 
     - University
     - Computer Science

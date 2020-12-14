@@ -2,10 +2,10 @@
 title: Timsort — the fastest sorting algorithm you’ve never heard of
 slug: timsort
 date_published: 2019-01-11T16:00:00.000Z
-date_updated: 2019-10-10T16:17:20.000Z
+date: 2019-10-10T16:17:20.000Z
 tags: 
     - Computer Science
-    - popular
+    - Popular
 excerpt:  A very fast , O(n log n), stable sorting algorithm built for the real world — not constructed in academia.
 ---
 

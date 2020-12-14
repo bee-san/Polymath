@@ -2,7 +2,7 @@
 title: Divide and Conquer Algorithms with Python Examples
 slug: divide-and-conquer-algorithms
 date_published: 2019-10-24T10:00:00.000Z
-date_updated: 2019-11-20T16:28:45.000Z
+date: 2019-11-20T16:28:45.000Z
 tags: 
     - University
     - Computer Science

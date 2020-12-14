@@ -2,7 +2,7 @@
 title: How To Get Any Job You Want - The Definitive Guide To Employability Skills (2019)
 slug: employability-skills
 date_published: 2019-08-15T21:18:00.000Z
-date_updated: 2019-12-03T17:38:15.000Z
+date: 2019-12-03T17:38:15.000Z
 tags: 
     - Ebook
 draft: true

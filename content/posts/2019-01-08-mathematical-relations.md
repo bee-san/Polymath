@@ -2,7 +2,7 @@
 title: Mathematical Relations
 slug: mathematical-relations
 date_published: 2019-01-08T00:38:33.000Z
-date_updated: 2019-01-26T15:15:39.000Z
+date: 2019-01-26T15:15:39.000Z
 tags: 
   - "University"
   - "Computer Science"

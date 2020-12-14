@@ -2,7 +2,7 @@
 title: Packaging Your Rust Code
 slug: packaging-your-rust-package
 date_published: 2020-08-07T17:34:49.000Z
-date_updated: 2020-08-07T17:35:33.000Z
+date: 2020-08-07T17:35:33.000Z
 tags: 
     - rust
 excerpt: The ultimate guide on packaging & distributing your Rust binary
@@ -11,54 +11,7 @@ excerpt: The ultimate guide on packaging & distributing your Rust binary
 I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
 
 Follow me as we publish my package, RustScan, to multiple distributions.
-[
 
-brandonskerritt/RustScan
-
-Faster Nmap Scanning with Rust. Contribute to brandonskerritt/RustScan development by creating an account on GitHub.
-
-![](https://github.githubassets.com/favicons/favicon.svg)brandonskerrittGitHub
-
-![](https://repository-images.githubusercontent.com/278933035/386d6100-c9d9-11ea-84d6-3818ddabe7c2)
-](https://github.com/brandonskerritt/RustScan)
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 # Semantic Versioning
 

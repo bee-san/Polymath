@@ -2,7 +2,7 @@
 title: "Book Review: The Miracle Morning"
 slug: book-review
 date_published: 2019-01-10T01:23:25.000Z
-date_updated: 2019-11-28T17:53:40.000Z
+date: 2019-11-28T17:53:40.000Z
 tags: 
     - Books
 draft: true

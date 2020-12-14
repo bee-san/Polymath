@@ -2,7 +2,7 @@
 title: Learn Functional Python in 10 Minutes
 slug: learn-functional-python-in-10-minutes
 date_published: 2019-09-05T11:30:00.000Z
-date_updated: 2019-11-20T22:55:19.000Z
+date: 2019-11-20T22:55:19.000Z
 tags: 
     - University
     - Computer Science

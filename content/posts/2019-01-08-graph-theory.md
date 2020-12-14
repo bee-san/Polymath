@@ -2,7 +2,7 @@
 title: Graph Theory
 slug: graph-theory
 date_published: 2019-01-08T00:22:54.000Z
-date_updated: 2019-10-10T16:18:20.000Z
+date: 2019-10-10T16:18:20.000Z
 tags: 
   - "University"
   - "Computer Science"

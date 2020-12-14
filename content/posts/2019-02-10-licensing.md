@@ -2,7 +2,7 @@
 title: Licensing
 slug: licensing
 date_published: 2019-02-10T23:31:58.000Z
-date_updated: 2019-02-10T23:31:58.000Z
+date: 2019-02-10T23:31:58.000Z
 ---
 
 You are allowed to reprint anything from my website so long as it follows these rules:

@@ -2,54 +2,16 @@
 title: Public Key Cryptography Simply Explained
 slug: how-does-public-key-cryptography-work
 date_published: 2019-02-05T10:31:00.000Z
-date_updated: 2019-11-19T01:47:08.000Z
+date: 2019-11-19T01:47:08.000Z
 tags: 
     - University
     - Computer Science
-    - Datastructures and ALgorithms
+    - Datastructures and Algorithms
+    - Infosec
 excerpt: Public key cryptography seems magical to everyone, even those who understand it. In this post, I'm going to explain public key cryptography. Public Key Cryptography is based on asymmetric cryptography, so first let us talk about symmetric cryptography.
 ---
 
 Public key cryptography seems magical to everyone, even those who understand it. In this post, I'm going to explain public key cryptography. Public Key Cryptography is based on asymmetric cryptography, so first let us talk about symmetric cryptography.
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 ---
 
@@ -400,46 +362,5 @@ Not to mention how suspicious it looks for one person to send encrypted emails o
 ### Conclusion
 
 Cryptography has been used for thousands of years, almost as long as mankind has held secrets. In our constant effort to keep our secrets secret to everyone apart from a select few we've found this magical algorithm that works pretty well. No doubt, in 300 or 400 years it will have been broken much like how Caeser thought his cipher would never be broken.
-
-Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won't spam you. I will only send you posts similar to this one 😊✨
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 If you're feeling extra generous, I have a [PayPal ](https://www.paypal.me/BrandonSkerritt) and even a [Patreon](https://www.patreon.com/user?u=15993188). I'm a university student who writes these articles in my spare time. This blog is my full time job, so any and all donations are appreciated

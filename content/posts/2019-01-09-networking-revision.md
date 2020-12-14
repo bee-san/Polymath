@@ -2,7 +2,7 @@
 title: COMP211 - Networking revision blog post
 slug: networking-revision
 date_published: 2019-01-09T15:59:00.000Z
-date_updated: 2019-04-28T11:21:57.000Z
+date: 2019-04-28T11:21:57.000Z
 tags: 
   - University
 draft: true

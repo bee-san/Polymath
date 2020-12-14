@@ -2,7 +2,7 @@
 title: An Introduction to Combinatorics
 slug: an-introduction-to-combinatorics
 date_published: 2019-01-08T00:37:44.000Z
-date_updated: 2019-01-26T15:16:12.000Z
+date: 2019-01-26T15:16:12.000Z
 tags: 
   - "University"
   - "Computer Science"

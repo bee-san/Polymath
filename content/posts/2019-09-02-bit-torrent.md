@@ -2,7 +2,7 @@
 title: How Does BitTorrent Work? a Plain English Guide
 slug: bit-torrent
 date_published: 2019-09-02T19:50:55.000Z
-date_updated: 2019-11-20T13:02:50.000Z
+date: 2019-11-20T13:02:50.000Z
 tags: 
     - University
     - Computer Science
@@ -20,45 +20,6 @@ Anyone can read this article. Requires ZERO knowledge on networking or BitTorren
 BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for [3.35% of all worldwide bandwidth](https://blog.paloaltonetworks.com/app-usage-risk-report-visualization/), more than half of the 6% of total bandwidth dedicated to file sharing.
 
 Let's dive right in.
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 # Table of Contents
 
@@ -603,41 +564,3 @@ Here are some things you may choose to do:
 - [Explore BitTorrent's proposals (BEPs) to learn more about how it works, and what's next for the algorithm](https://www.bittorrent.org/beps/bep_0000.html)
 - [Read the official BitTorrent specification](https://www.bittorrent.org/beps/bep_0003.html)
 
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.

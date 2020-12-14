@@ -2,11 +2,12 @@
 title: A Primer on Set Theory
 slug: a-primer-on-set-theory
 date_published: 2019-01-08T00:45:46.000Z
-date_updated: 2019-04-14T13:27:22.000Z
+date: 2019-04-14T13:27:22.000Z
 tags: 
   - "University"
   - "Computer Science"
 excerpt: An introduction to set theory
+draft: true
 ---
 
 > “No one shall expel us from the paradise which [Cantor](https://www.goodreads.com/author/show/1010536.Cantor) has created for us.” — Hilbert on Cantor’s creation of Set Theory

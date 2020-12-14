@@ -2,7 +2,7 @@
 title: A Primer on Search Algorithms
 slug: a-primer-on-search-algorithms
 date_published: 2019-01-08T00:46:34.000Z
-date_updated: 2019-10-10T16:17:55.000Z
+date: 2019-10-10T16:17:55.000Z
 tags: 
   - "University"
   - "Computer Science"

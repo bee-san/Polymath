@@ -1,9 +1,8 @@
 ---
 title: Designing effective p2p networks
 slug: designing-p2p-networks
-date_published: 1970-01-01T00:00:00.000Z
-date_updated: 2020-01-06T20:52:00.000Z
-draft: true
+date: 2020-01-06T20:52:00.000Z
+draft: false
 ---
 
 This is an opinion piece on designing effective peer to peer (p2p) networks. I've written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I'll drea\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d

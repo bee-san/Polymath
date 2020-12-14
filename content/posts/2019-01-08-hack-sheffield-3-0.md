@@ -2,7 +2,7 @@
 title: Hack Sheffield 3.0
 slug: hack-sheffield-3-0
 date_published: 2019-01-08T00:47:21.000Z
-date_updated: 2019-04-13T10:21:19.000Z
+date: 2019-04-13T10:21:19.000Z
 tags: 
   - "Life"
 draft: true

@@ -2,7 +2,7 @@
 title: How linked lists work with an application to Blockchain
 slug: you-dont-understand-blockchain-unless-you-understand-this-simple-data-structure
 date_published: 2019-01-08T00:23:58.000Z
-date_updated: 2019-10-10T16:19:24.000Z
+date: 2019-10-10T16:19:24.000Z
 tags: 
   - "University"
   - "Computer Science"

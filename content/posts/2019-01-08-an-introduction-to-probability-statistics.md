@@ -2,7 +2,7 @@
 title: An Introduction to Probability & Statistics
 slug: an-introduction-to-probability-statistics
 date_published: 2019-01-08T00:28:13.000Z
-date_updated: 2019-01-26T15:23:06.000Z
+date: 2019-01-26T15:23:06.000Z
 tags: 
   - "University"
   - "Computer Science"

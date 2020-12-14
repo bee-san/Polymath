@@ -2,7 +2,7 @@
 title: "Book Review: Money: Master the game"
 slug: book-review-money-master-the-game
 date_published: 2019-01-10T01:26:55.000Z
-date_updated: 2019-11-28T17:53:50.000Z
+date: 2019-11-28T17:53:50.000Z
 tags: 
     - Books
 draft: true

@@ -2,7 +2,7 @@
 title: This Simple Trick will Save you Hours of Expanding Binomials
 slug: this-simple-trick-will-save-you-hours-of-expanding-binomials
 date_published: 2019-01-08T00:37:01.000Z
-date_updated: 2019-01-26T15:17:14.000Z
+date: 2019-01-26T15:17:14.000Z
 tags: 
   - "University"
   - "Computer Science"

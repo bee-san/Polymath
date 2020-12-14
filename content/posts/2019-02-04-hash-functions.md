@@ -2,7 +2,7 @@
 title: Hash functions explained for non cryptographers
 slug: hash-functions
 date_published: 2019-02-04T13:15:26.000Z
-date_updated: 2019-11-19T01:47:38.000Z
+date: 2019-11-19T01:47:38.000Z
 tags: 
     - University
     - Computer Science

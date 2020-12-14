@@ -2,7 +2,7 @@
 title: Weekly Thoughts
 slug: weekly_thoughts_1
 date_published: 2020-08-04T21:31:12.000Z
-date_updated: 2020-08-04T22:05:26.000Z
+date: 2020-08-04T22:05:26.000Z
 tags: 
     - Newsletter
 excerpt: An Algorithm for Clouds, Thoughts on GitHub popularity, Cool Rust Tools, Sibling Plants

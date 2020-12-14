@@ -2,7 +2,7 @@
 title: "Book Review: The 7 Habits of Highly Effective People"
 slug: book-review-the-7-habits-of-highly-effective-people
 date_published: 2019-01-10T01:26:13.000Z
-date_updated: 2019-11-28T17:53:47.000Z
+date: 2019-11-28T17:53:47.000Z
 tags: 
     - Books
 draft: true

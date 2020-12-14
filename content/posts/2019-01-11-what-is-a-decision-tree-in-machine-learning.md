@@ -2,7 +2,7 @@
 title: What is a Decision Tree in Machine Learning?
 slug: what-is-a-decision-tree-in-machine-learning
 date_published: 2019-01-11T19:38:00.000Z
-date_updated: 2019-04-07T17:34:08.000Z
+date: 2019-04-07T17:34:08.000Z
 tags: 
     - University
     - Computer Science

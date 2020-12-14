@@ -1,9 +1,8 @@
 ---
 title: NeoDeath - What happens when you die in the age of information?
 slug: neodeath-digital-death
-date_published: 1970-01-01T00:00:00.000Z
-date_updated: 2020-07-01T12:00:40.000Z
-draft: true
+date: "2020-07-01T12:00:40.000Z"
+draft: false
 ---
 
 This article was written in collaboration with Emily. Emily is an artist specialising in Digital Culture and is currently writing for Daily Art Magazine, she also didn't ask me to write this about her.

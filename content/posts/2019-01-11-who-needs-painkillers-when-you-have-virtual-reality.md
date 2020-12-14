@@ -2,7 +2,7 @@
 title: Who needs painkillers when you have virtual reality?
 slug: who-needs-painkillers-when-you-have-virtual-reality
 date_published: 2019-01-11T14:06:00.000Z
-date_updated: 2019-04-07T17:35:16.000Z
+date: 2019-04-07T17:35:16.000Z
 tags: 
   - Computer Science
 excerpt: Virtual reality, in most cases, can replace pain medication or be used as a sedative.

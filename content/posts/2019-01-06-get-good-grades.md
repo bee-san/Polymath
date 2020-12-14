@@ -2,7 +2,7 @@
 title: 11 Steps to Getting Better Grades
 slug: get-good-grades
 date_published: 2019-01-06T14:03:09.000Z
-date_updated: 2019-11-28T17:53:35.000Z
+date: 2019-11-28T17:53:35.000Z
 tags: 
   - "University"
 draft: true
