@@ -5,8 +5,7 @@ date_published: 2019-01-08T00:48:25.000Z
 date: 2019-04-13T10:21:14.000Z
 tags: 
   - "Life"
-  - "Bees"
-draft: true
+draft: false
 ---
 
 > *“The bee is more honored than other animals, not because she labors, but because she labors for others.”*

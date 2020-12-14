@@ -21,6 +21,9 @@ languages:
                   url: tags/
                   weight: 10
 
+permalinks:
+  posts: :slug
+
 outputs:
     home:
         - HTML

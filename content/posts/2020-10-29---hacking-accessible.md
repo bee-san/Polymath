@@ -6,7 +6,7 @@ draft: false
 slug: "a11y"
 category: "Accessibility"
 tags:
-  - "Hacking"
+  - "Infosec"
   - "A11Y"
 description: "Let's talk about making hacking accessible!"
 socialImage: "/media/p2p.jpg"

@@ -5,7 +5,7 @@ date_published: 2019-08-15T21:18:00.000Z
 date: 2019-12-03T17:38:15.000Z
 tags: 
     - Ebook
-draft: true
+draft: false
 excerpt: 34,000 word ultimate guide to everything you could ever want to know about employabilty skills. 100% free.
 ---
 
