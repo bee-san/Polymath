@@ -1,7 +1,7 @@
 baseURL: "https://polymath.cloud"
 languageCode: "en-us"
 title: "Polymath.cloud"
-theme: "bee-Papermod"
+theme: "hugo-PaperMod"
 enableInlineShortcodes: true
 enableRobotsTXT: true
 
