@@ -10,19 +10,6 @@ tags:
   - "Datastructures and Algorithms"
 ---
 
-$$6 + 3$$
-
-$$
- \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
-$$
-
-{{< math.inline >}}
-
-<p>
-Inline math: \(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…\)
-</p>
-{{</ math.inline >}}
-
 By the end of this article, you'll thoroughly understand Big O notation. You'll also know how to use it in the real world, and even the mathematics behind it!
 
 In computer science, **time complexity** is the computational **complexity** that describes the amount of **time** it takes to run an algorithm.
@@ -35,7 +22,9 @@ This article is written using agnostic Python. That means it will be easy to por
 
 
 ## ❓ How Do We Measure How Long an Algorithm Takes to Run?
-![Image used to breakup text](/content/images/2019/09/undraw_time_management_30iu.svg)
+
+![Image used to breakup text](/static/media/bigo/undraw_1.svg)
+
 We could run an algorithm 10,000 times and measure the average time taken.
 
 ```console
@@ -60,13 +49,40 @@ For this reason, we use Big O (pronounced Big Oh) notation.
 ---
 
 ## 🤔 What Is Big O Notation?
-![Image used to breakup text](/content/images/2019/09/undraw_questions_75e0.svg)
+![Image used to breakup text](/static/media/bigo/undraw_2.svg)
+
 Big O is a formal notation that describes the behaviour of a function when the argument tends towards the maximum input. It was invented by [Paul Bachmann](https://www-history.mcs.st-andrews.ac.uk/Biographies/Bachmann.html), [Edmund Landau](https://en.wikipedia.org/wiki/Edmund_Landau) and others between 1894 and 1820s. Popularised in the 1970s by [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/). Big O takes the upper bound. The worst-case results in the worst execution of the algorithm. For our shopping list example, the worst-case is an infinite list.
 
 Instead of saying the input is 10 billion, or infinite - we say the input is n size. The exact size of the input doesn't matter, only how our algorithm performs with the worst input. We can still work out Big O without knowing the exact size of an input.
 
 Big O is easy to read once we learn this table:
-The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponential O($1$)O($log\;n$)O($n$)O($n^2$), O($n^3$), O($n^x$)O($2^n$)
+The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponential
+
+<table style="font-size: 18px;">
+    <thead style="font-size: 0;">
+        <tr>
+            <th colspan="5" style="font-size: 20px; text-transform: capitalize;"><center>The Big O Notation's Order of Growth<center></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <strong>Constant </td>
+        <td> <strong>Logarithm </td>
+        <td> <strong>Linear </td>
+        <td> <strong>Polynomial </td>
+        <td> <strong>Exponential </td>
+      </tr>
+        <tr>
+            <td>O($1$)</td>
+            <td>O($log\;n$)</td>
+            <td>O($n$)</td>
+          <td>O($n^2$), O($n^3$), O($n^x$)</td>
+          <td>O($2^n$)</td>
+        </tr>
+    </tbody>
+</table>
+
+
 Where the further right they are, the longer it takes. `n` is the size of the input. Big O notation uses these functions to describe algorithm efficiency. 
 
 In our shopping list example, in the worst-case of our algorithm it prints out every item in the list sequentially. Since there are `n` items in the list, it takes $O(n)$ polynomial time to complete the algorithm. 
