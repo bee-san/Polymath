@@ -24,6 +24,9 @@ languages:
 permalinks:
   posts: :slug
 
+custom_css:
+  - "css/custom.css"
+
 outputs:
     home:
         - HTML

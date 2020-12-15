@@ -45,11 +45,12 @@ Other things we need to consider:
 - Languages matter. Assembly is faster than Scratch; how do we consider this?
 
 For this reason, we use Big O (pronounced Big Oh) notation. 
-
 ---
 
+
 ## 🤔 What Is Big O Notation?
-![Image used to breakup text](/static/media/bigo/undraw_2.svg)
+{{ readFile “static/media/bigo/undraw_2.svg” | safeHTML }}
+![Image used to breakup text]()
 
 Big O is a formal notation that describes the behaviour of a function when the argument tends towards the maximum input. It was invented by [Paul Bachmann](https://www-history.mcs.st-andrews.ac.uk/Biographies/Bachmann.html), [Edmund Landau](https://en.wikipedia.org/wiki/Edmund_Landau) and others between 1894 and 1820s. Popularised in the 1970s by [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/). Big O takes the upper bound. The worst-case results in the worst execution of the algorithm. For our shopping list example, the worst-case is an infinite list.
 
@@ -58,6 +59,7 @@ Instead of saying the input is 10 billion, or infinite - we say the input is n s
 Big O is easy to read once we learn this table:
 The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponential
 
+{{< rawhtml >}}
 <table style="font-size: 18px;">
     <thead style="font-size: 0;">
         <tr>
@@ -79,17 +81,48 @@ The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponen
           <td>O($n^2$), O($n^3$), O($n^x$)</td>
           <td>O($2^n$)</td>
         </tr>
+
     </tbody>
 </table>
 
+{{< /rawhtml >}}
 
 Where the further right they are, the longer it takes. `n` is the size of the input. Big O notation uses these functions to describe algorithm efficiency. 
 
 In our shopping list example, in the worst-case of our algorithm it prints out every item in the list sequentially. Since there are `n` items in the list, it takes $O(n)$ polynomial time to complete the algorithm. 
 
 Other asymptotic (time-measuring) notations are:
+
+{{< rawhtml >}}
+<table style="font-size: 18px;">
+    <thead style="font-size: 0;">
+        <tr>
+            <th colspan="3" style="font-size: 20px; text-transform: capitalize;"><center>Asymptotic Notation<center></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <strong>Big Omega (lower bound)</td>
+                    <td> <strong>Big Theta (average bound)</td>
+
+        <td> <strong>Big O (max bound)</td>
+      </tr>
+        <tr>
+            <td>$\omega (n)$</td>
+            <td>$\theta (n)$</td>
+            <td>$O(n)$</td>
+            
+        </tr>
+
+    </tbody>
+</table>
+
+{{< /rawhtml >}}
+
 Asymptotic NotationBig Omega (lower bound)Big Theta (average bound)Big O (max bound)$\omega (n)$$\theta (n)$$O(n)$
-**Informally **this is:
+
+
+**Informally** this is:
 
 - Big Omega (best case)
 - Big Theta (average case)
@@ -98,7 +131,13 @@ Asymptotic NotationBig Omega (lower bound)Big Theta (average bound)Big O (max bo
 Let's walk through every single column in our "The Big O Notation Table".
 
 ## 🟢 Constant Time
-![A straight line representing constant complexity](/content/images/2019/09/big_o_constant_time-1.png)No matter how many elements, it will always take x operations to perform. In this case, 2.
+
+<figure>
+	<img src="/media/bigo/big_o_constant_time-1.png" alt="A straight line representing constant complexity">
+	<figcaption>No matter how many elements, it will always take x operations to perform. In this case, 2.</figcaption>
+</figure>
+
+No matter how many elements, it will always take x operations to perform. In this case, 2.
 Constant algorithms do not scale with the input size, they are constant no matter how big the input. An example of this is addition. $1 + 2$ takes the same time as $500 + 700$. They may take more *physical time, *but we do not add more steps in the algorithm for addition of big numbers. The underlying algorithm doesn't change at all.
 
 We often see constant as $O(1)$, but any number could be used and it would still be constant. We sometimes change the number to a 1, because it doesn't matter at all about how many steps it takes. What matters is that it takes a constant number of steps.
