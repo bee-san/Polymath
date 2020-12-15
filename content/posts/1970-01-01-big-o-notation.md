@@ -108,7 +108,7 @@ Other asymptotic (time-measuring) notations are:
         <td> <strong>Big O (max bound)</td>
       </tr>
         <tr>
-            <td>$\omega (n)$</td>
+            <td>\\(omega (n)\\)</td>
             <td>$\theta (n)$</td>
             <td>$O(n)$</td>
             
