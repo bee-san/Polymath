@@ -22,8 +22,12 @@ This article is written using agnostic Python. That means it will be easy to por
 
 
 ## ❓ How Do We Measure How Long an Algorithm Takes to Run?
+![](/media/bigo/undraw_1.svg)
 
-![Image used to breakup text](/static/media/bigo/undraw_1.svg)
+<figure>
+	<img src="/static/media/bigo/undraw_1.svg" alt="A straight line representing constant complexity">
+	<figcaption>No matter how many elements, it will always take x operations to perform. In this case, 2.</figcaption>
+</figure>
 
 We could run an algorithm 10,000 times and measure the average time taken.
 
@@ -49,8 +53,9 @@ For this reason, we use Big O (pronounced Big Oh) notation.
 
 
 ## 🤔 What Is Big O Notation?
-{{ readFile “static/media/bigo/undraw_2.svg” | safeHTML }}
-![Image used to breakup text]()
+![](/media/bigo/undraw_2.svg)
+
+/media/bigo/big_o_constant_time-1.png
 
 Big O is a formal notation that describes the behaviour of a function when the argument tends towards the maximum input. It was invented by [Paul Bachmann](https://www-history.mcs.st-andrews.ac.uk/Biographies/Bachmann.html), [Edmund Landau](https://en.wikipedia.org/wiki/Edmund_Landau) and others between 1894 and 1820s. Popularised in the 1970s by [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/). Big O takes the upper bound. The worst-case results in the worst execution of the algorithm. For our shopping list example, the worst-case is an infinite list.
 
@@ -85,6 +90,7 @@ The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponen
     </tbody>
 </table>
 
+
 {{< /rawhtml >}}
 
 Where the further right they are, the longer it takes. `n` is the size of the input. Big O notation uses these functions to describe algorithm efficiency. 
@@ -108,7 +114,7 @@ Other asymptotic (time-measuring) notations are:
         <td> <strong>Big O (max bound)</td>
       </tr>
         <tr>
-            <td>\\(omega (n)\\)</td>
+            <td>$\omega (n)$ </td>
             <td>$\theta (n)$</td>
             <td>$O(n)$</td>
             
@@ -119,9 +125,6 @@ Other asymptotic (time-measuring) notations are:
 
 {{< /rawhtml >}}
 
-Asymptotic NotationBig Omega (lower bound)Big Theta (average bound)Big O (max bound)$\omega (n)$$\theta (n)$$O(n)$
-
-
 **Informally** this is:
 
 - Big Omega (best case)
@@ -131,6 +134,8 @@ Asymptotic NotationBig Omega (lower bound)Big Theta (average bound)Big O (max bo
 Let's walk through every single column in our "The Big O Notation Table".
 
 ## 🟢 Constant Time
+
+![](/media/bigo/big_o_constant_time-1.png)
 
 <figure>
 	<img src="/media/bigo/big_o_constant_time-1.png" alt="A straight line representing constant complexity">
@@ -144,23 +149,33 @@ We often see constant as $O(1)$, but any number could be used and it would still
 
 Constant time is the fastest of all Big O time complexities. The formal definition of constant time is:
 
+
 > It is upper-bounded by a constant
 
 An example is:
 
-    def OddOrEven(n):
-    	return "Even" if n % 2 else "Odd"
+```python
+def OddOrEven(n):
+    return "Even" if n % 2 else "Odd"
+```
 
 Or in Java:
 
-    boolean isEven(double num) { return ((num % 2) == 0); }
+```java
+boolean isEven(double num) { return ((num % 2) == 0); }
+```
 
 In most programming languages, all integers have limits. Primitive operations (such as modulo, `%`) are all upper-bounded by this limit. If we go over this limit, we get an overflow error. 
 
 Because of this upper-bound, it satisfies $O(1)$. 
 
 ## 🔵 Logarithmic Time
-![A line starting at the straight line but this time curving logarithmically](/content/images/2019/09/big_o_log_time-2.png)Log is less than O(1) with 1 element, but in Big O we don't care about element sizes
+
+<figure>
+	<img src="/media/bigo/logarithm.png" alt="A straight line representing constant complexity">
+	<figcaption>Log is less than O(1) with 1 element, but in Big O we don't care about element sizes</figcaption>
+</figure>
+
 Here's a quick explainer of what a logarithm is.
 
 $$Log_{3}^{9}$$
@@ -173,28 +188,32 @@ A logarithmic algorithm **halves **the list every time it’s run.
 
 Let's look at binary search. Given the below sorted list:
 
-    a = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+```python
+a = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+```
 
 We want to find the number "2". 
 
 We implement Binary Search as:
 
-    def binarySearch(alist, item):
-        first = 0
-        last = len(alist)-1
-        found = False
-    
-        while first <= last and not found:
-            midpoint = (first + last)//2
-            if alist[midpoint] == item:
-                found = True
+```python
+def binarySearch(alist, item):
+    first = 0
+    last = len(alist)-1
+    found = False
+
+    while first <= last and not found:
+        midpoint = (first + last)//2
+        if alist[midpoint] == item:
+            found = True
+        else:
+            if item < alist[midpoint]:
+            last = midpoint-1
             else:
-                if item < alist[midpoint]:
-                last = midpoint-1
-                else:
-                    first = midpoint+1
-    
-        return found
+                first = midpoint+1
+
+    return found
+```
 
 In English this is:
 
@@ -204,7 +223,13 @@ In English this is:
 - If it is, ignore the right-hand side (all the numbers higher than the midpoint) of the list and choose a new midpoint.
 - Start over again, by finding the midpoint in the new list. 
 
-![Gif showing how binary search works](/content/images/2019/10/bePceUMnSG-binary_search_gif.gif)[From here](https://brilliant.org/wiki/binary-search/)
+binary_search_gif
+
+<figure>
+	<img src="/media/bigo/binary_search_gif.gif" alt="A straight line representing constant complexity">
+	<figcaption><a href="https://brilliant.org/wiki/binary-search/">From here</a></figcaption>
+</figure>
+
 The algorithm halves the input every single time it iterates. Therefore it is logarithmic. Other examples include:
 
 - [Fibonacci number calculations](https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/)
@@ -212,7 +237,11 @@ The algorithm halves the input every single time it iterates. Therefore it is lo
 - [Searching AVL trees](https://www.cs.auckland.ac.nz/software/AlgAnim/AVL.html)
 
 # 🟡 Linear Time
-![Linear time increases linearly. [2, 2], [4, 4] and so on.](/content/images/2019/09/big_o_linear_time-2.png)
+<figure>
+	<img src="/media/bigo/linear.png" alt="A straight line representing constant complexity">
+	<figcaption>Linear time increases linearly. [2, 2], [4, 4] and so on.</figcaption>
+</figure>
+
 Linear time algorithms mean that every single element from the input is visited exactly once, O(n) times. As the size of the input, N, grows our algorithm's run time scales exactly with the size of the input.
 
 > **Linear** running **time algorithms** are widespread. **Linear** runtime means that the program visits every element from the input. **Linear time** complexity O(n) means that as the input grows, the **algorithms** take proportionally longer to complete.2 Apr 2019
@@ -223,9 +252,11 @@ Linear time is where every single item in a list is visited once, in a worst-cas
 
 To read out our shopping list, our algorithm **has** to read out each item. It can't half the list, or add more items that we didn't add. It has to list all n items, one at a time.
 
-    shopping_list = ["Bread", "Butter", "The Nacho Libre soundtrack from the 2006 film Nacho Libre", "Reusable Water Bottle"]
-    for item in shopping_list:
-    	print(item)
+```python
+shopping_list = ["Bread", "Butter", "The Nacho Libre soundtrack from the 2006 film Nacho Libre", "Reusable Water Bottle"]
+for item in shopping_list:
+    print(item)
+```
 
 Let's look at another example.
 
@@ -233,59 +264,76 @@ Let's look at another example.
 
 Given the list:
 
-    a = [2, 16, 7, 9, 8, 23, 12]
+```python
+a = [2, 16, 7, 9, 8, 23, 12]
+```
 
 How do we work out what the largest item is?
 
 We need to program it like this:
 
-    a = [2, 16, 7, 9, 8, 23, 12]
-    max_item = a[0]
-    for item in a:
-    	if item > max_item:
-        	max_item = item
-    
+```python
+a = [2, 16, 7, 9, 8, 23, 12]
+max_item = a[0]
+for item in a:
+    if item > max_item:
+        max_item = item
+```
 
 We have to go through every item in the list, 1 by 1. 
 
 ## 🔴 Polynomial Time
-![Polynomial time curves upwards](/content/images/2019/09/big_o_polynomial_time-1.png)Notice how polynomial time dwarfs the others?
+<figure>
+	<img src="/media/bigo/polynomial.png" alt="A straight line representing constant complexity">
+	<figcaption>Notice how polynomial time dwarfs the others?</figcaption>
+</figure>
+
+Notice how polynomial time dwarfs the others?
 Polynomial time is a polynomial function of the input. A polynomial function looks like $n^2$ or $n^3$ and so on.
 
 If one loop through a list is $O(n)$, 2 loops must be $O(n^2)$. For each loop, we go over the list once. For each item in that list, we go over the entire list once. Resulting in n2 operations.
 
-    a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    for i in a:
-    	for x in a:
-    		print("x")
+```python
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for i in a:
+    for x in a:
+        print("x")
+```
 
 For each nesting on the same list, that adds an extra +1 onto the powers.
 
-So a triple nested loop is $O(n^3)$.
+A triple nested loop is $O(n^3)$.
 
 Bubblesort is a good example of an $O(n^2)$ algorithm. The sorting algorithm takes the first number and swaps it with the adjacent number if they are in the wrong order. It does this for each number, until all numbers are in the right order - and thus sorted.
 
-    def bubbleSort(arr):
-        n = len(arr)
-     
-        # Traverse through all array elements
-        for i in range(n):
-     
-            # Last i elements are already in place
-            for j in range(0, n-i-1):
-     
-                # traverse the array from 0 to n-i-1
-                # Swap if the element found is greater
-                # than the next element
-                if arr[j] > arr[j+1] :
-                    arr[j], arr[j+1] = arr[j+1], arr[j]
-     
-    # Driver code to test above
-    arr = [64, 34, 25, 12, 22, 11, 90]
-     
-    bubbleSort(arr)
+```python
+def bubbleSort(arr):
+    n = len(arr)
+    
+    # Traverse through all array elements
+    for i in range(n):
+    
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+    
+            # traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+            if arr[j] > arr[j+1] :
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    
+# Driver code to test above
+arr = [64, 34, 25, 12, 22, 11, 90]
+    
+bubbleSort(arr)
+```
 
-![](/content/images/2019/09/Bubble-sort.gif)[Bubblesort Gif](https://upload.wikimedia.org/wikipedia/commons/0/06/Bubble-sort.gif)
+<figure>
+	<img src="/media/bigo/bubble.gif" alt="A straight line representing constant complexity">
+	<figcaption><a href="https://upload.wikimedia.org/wikipedia/commons/0/06/Bubble-sort.gif">From here</a></figcaption>
+</figure>
+
+
 As a side note, my professor refers to any algorithm with a time of polynomial or above as:
 
 > A complete and utter disaster! This is a disaster! A catastrophe!
@@ -294,14 +342,16 @@ But the thing with large time complexities is that they often show us that somet
 
 For instance, a problem I had. Given a sentence, how many of those words appear in the English Dictionary? We can imagine the $O(n^2)$ method. One `for loop` through the sentence, another through the dictionary.
 
-    dictionary = ["a", "an"] # imagine if this was the dictionary
-    sentence = "hello uu988j my nadjjrjejas is brandon nanndwifjasj banana".split(" ")
-    
-    counter = 0
-    for word in sentence:
-    	for item in dictionary:
-        	if word == item:
-            	counter = counter + 1
+```python
+dictionary = ["a", "an"] # imagine if this was the dictionary
+sentence = "hello uu988j my nadjjrjejas is brandon nanndwifjasj banana".split(" ")
+
+counter = 0
+for word in sentence:
+    for item in dictionary:
+        if word == item:
+            counter = counter + 1
+```
 
 $O(n^2)$! A disaster! But, knowing that this is a disaster means we can speed it up. Dictionaries are sorted by default. What if we sort our list of words in the sentence, and checked each word that way? We only need to loop through the dictionary once. And if the word we want to check is less than the word we're on in the dictionary, we switch to the second word in the list.
 
@@ -310,12 +360,16 @@ Now our algorithm is $O(n log n)$. We recognise that this isn't a disaster, so w
 We can hasten many polynomial algorithms we construct using knowledge of [algorithmic design](https://skerritt.blog/dynamic-programming/).
 
 ## ❌ Exponential Time
-![Exponential time looks like a line going straight up](/content/images/2019/09/big_o_exponential_time-1.png)
+<figure>
+	<img src="/media/bigo/exponential.png" alt="A straight line representing constant complexity">
+	<figcaption>Exponential time looks like a line going straight up</figcaption>
+</figure>
+
 Exponential time is $2^n$, where 2 depends on the permutations involved.
 
 This algorithm is the slowest of them all. You saw how my professor reacted to polynomial algorithms. He was jumping up and down in furiosity at exponential algorithms!
 
- An example of this is say we have a password consisting only of numbers (so that’s 10 numbers, 0 through to 9). we want to crack a password which has a length of n, so to bruteforce through every combination we'll have:
+Say we have a password consisting only of numbers (so that’s 10 numbers, 0 through to 9). we want to crack a password which has a length of n, so to bruteforce through every combination we'll have:
 
 $$10^n$$
 
@@ -323,24 +377,30 @@ Combinations to work through.
 
 One example of exponential time is to [find all the subsets of a set.](https://skerritt.blog/a-primer-on-set-theory/)
 
-    >>> subsets([''])
-    ['']
-    >>> subsets(['x'])
-    ['', 'x']
-    >>> subsets(['a', 'b'])
-    ['', 'a', 'b', 'ab']
+```console
+>>> subsets([''])
+['']
+>>> subsets(['x'])
+['', 'x']
+>>> subsets(['a', 'b'])
+['', 'a', 'b', 'ab']
+```
 
 We can see that when we have an input size of 2, the output size is $2^2 = 4$. 
 
 Now, let's code up `subsets`.
 
-    from itertools import chain, combinations
-    
-    def subsets(iterable):
-        s = list(iterable)
-        return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
+```python
+from itertools import chain, combinations
 
-[Taken from the documentation for itertools.](https://docs.python.org/3/library/itertools.html#itertools-recipes) What's important here is to see that it exponentially grows depending on the input size. [Java code can be found here.](https://www.geeksforgeeks.org/power-set/)
+def subsets(iterable):
+    s = list(iterable)
+    return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
+```
+
+[Taken from the documentation for itertools.](https://docs.python.org/3/library/itertools.html#itertools-recipes) 
+
+What's important here is to see that it exponentially grows depending on the input size. [Java code can be found here.](https://www.geeksforgeeks.org/power-set/)
 
 Exponential algorithms are horrific, but like polynomial algorithms we can learn a thing or two. Let's say we have to calculate $10^4$. We need to do this:
 
@@ -353,13 +413,18 @@ When we see an exponential algorithm, [dynamic programming](https://skerritt.blo
 Again, **knowing time complexities allows us to build better algorithms.**
 
 Here's our Big O notation graph where the numbers are reduced so we can see all the different lines.
-![All complexities put together on one graph](/content/images/2019/09/big_o_all_times_time-1.png)
-[You can find the code for this graph here.](https://gist.github.com/brandonskerritt/eff0665b1ac5f99d8f403c75912e9787)
+
+<figure>
+	<img src="/media/bigo/all.png" alt="A straight line representing constant complexity">
+	<figcaption><a href="https://gist.github.com/brandonskerritt/eff0665b1ac5f99d8f403c75912e9787">Code to generate this can be found here.</a></figcaption>
+</figure>
+
 
 ---
 
 ## 😌 Simplifying Big O notation
-![Image not used for illustration](/content/images/2019/09/undraw_smart_resize_wpn8.svg)
+![](/media/bigo/simplfy.svg)
+
 Rarely will time complexity be as easy as counting how many for loops we have. What if our algorithm looks like $O(n + n^2)$? We can simplify our algorithm using these simple rules:
 
 ### Drop the constants
@@ -383,7 +448,14 @@ Yup! The hardest part is figuring out what our program's complexity is first. Si
 ## ☁ Other Big O Times to Learn (But Not Essential)
 
 ### 🥇 O(n log n)
-![Showing that n log n is between log n and n^2](/content/images/2019/09/big_o_nlogn_time-1.png)It falls between O(n) and O(n2)
+
+<figure>
+	<img src="/media/bigo/nlogn.png" alt="A straight line representing constant complexity">
+	<figcaption>$n log n$ is between $log n$ and $n^2$
+    </figcaption>
+</figure>
+
+It falls between O(n) and O(n2)
 **This is the fastest time possible for a comparison sort.** We cannot get any faster unless we use some special property, like Radix sort. O(n log n) is the fastest comparison sort time. 
 
 It's rather famous, because Mergesort runs in O(n log n). Mergesort is a great algorithm not only because it sorts fast, but because the idea is used to build other algorithms. 
@@ -391,58 +463,73 @@ It's rather famous, because Mergesort runs in O(n log n). Mergesort is a great a
 Mergesort is used to teach [divide & conquer algorithms](https://skerritt.blog/divide-and-conquer-algorithms/). And for good reason, it's a fantastic sorting algorithm that has roots outside of sorting. 
 
 Mergesort works by breaking down the list of numbers into individual numbers:
-![](/content/images/2019/09/image.png)
+<figure>
+	<img src="/media/bigo/merge1.png" alt="A straight line representing constant complexity">
+	<figcaption></figcaption>
+</figure>
 And then sorting each list, before merging them:
-![](/content/images/2019/09/image-1.png)
-    def mergeSort(alist):
-        print("Splitting ",alist)
-        if len(alist)>1:
-            mid = len(alist)//2
-            lefthalf = alist[:mid]
-            righthalf = alist[mid:]
-    
-            mergeSort(lefthalf)
-            mergeSort(righthalf)
-    
-            i=0
-            j=0
-            k=0
-            while i < len(lefthalf) and j < len(righthalf):
-                if lefthalf[i] <= righthalf[j]:
-                    alist[k]=lefthalf[i]
-                    i=i+1
-                else:
-                    alist[k]=righthalf[j]
-                    j=j+1
-                k=k+1
-    
-            while i < len(lefthalf):
+<figure>
+	<img src="/media/bigo/merge2.png" alt="A straight line representing constant complexity">
+	<figcaption></figcaption>
+</figure>
+
+```python
+def mergeSort(alist):
+    print("Splitting ",alist)
+    if len(alist)>1:
+        mid = len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+
+        i=0
+        j=0
+        k=0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] <= righthalf[j]:
                 alist[k]=lefthalf[i]
                 i=i+1
-                k=k+1
-    
-            while j < len(righthalf):
+            else:
                 alist[k]=righthalf[j]
                 j=j+1
-                k=k+1
-        print("Merging ",alist)
-    
-    alist = [54,26,93,17,77,31,44,55,20]
-    mergeSort(alist)
-    print(alist)
+            k=k+1
+
+        while i < len(lefthalf):
+            alist[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+
+        while j < len(righthalf):
+            alist[k]=righthalf[j]
+            j=j+1
+            k=k+1
+    print("Merging ",alist)
+
+alist = [54,26,93,17,77,31,44,55,20]
+mergeSort(alist)
+print(alist)
+```
 
 [Read more on Mergesort here.](https://skerritt.blog/divide-and-conquer-algorithms#merge-sort-)
 
 ### 👿 O(n!) 
-![Looks like a straight line going straight up](/content/images/2019/09/big_o_factorial_time.png)
-Notice the `le10` at the top? This one is so large, it makes all other times look constant!
+<figure>
+	<img src="/media/bigo/factorial.png" alt="A straight line representing constant complexity">
+	<figcaption>Factorial dwarfs all over complexities.
+    </figcaption>
+</figure>
+
+This one is so large, it makes all other times look constant!
 
 This time complexity is often used as a joke, referring to Bogo Sort. I have yet to find a real life (not-a-joke) algorithm that runs in O(n!) that isn't an algorithm calculating O(6!) or the likes.
 
 ---
 
 ## 🧮 How to Calculate Big O Notation for Our Own Algorithms with Examples
-![Image not used for illustration](/content/images/2019/09/undraw_ideas_flow_cy7b.svg)
+![](/media/bigo/calculate.svg)
+
 Our own algorithms will normally be based on some famous algorithm that already has a Big O notation. If it's not, do not worry! Working out the Big O of our algorithm is easy.
 
 Just think:
@@ -451,30 +538,38 @@ Just think:
 
 Take, for instance, a sequential searching algorithm. 
 
-    def search(listInput, toFind):
-    	for counter, item in enumerate(listInput):
-        	if toFind == item:
-            	return (counter, item)
-    	return "did not find the item!"
+```python
+def search(listInput, toFind):
+    for counter, item in enumerate(listInput):
+        if toFind == item:
+            return (counter, item)
+    return "did not find the item!"
+```
 
 The best input would be:
 
-    search(["apples"], "apples")
+```python
+search(["apples"], "apples")
+```
 
 But the worst input is if the item was at the end of a long list.
 
-    search(["apples", "oranges", "The soundtrack from the 2006 film Nacho Libre", "Shrek"], "Shrek")
+```python
+search(["apples", "oranges", "The soundtrack from the 2006 film Nacho Libre", "Shrek"], "Shrek")
+```
 
 The worst-case scenario is $O(n)$, because we have to go past every item in the list to find it.
 
 What if our search algorithm was binary search? We learnt that binary search divides the list into half everytime. This sounds like `log n`! 
 
-What if our binary search looks for an object, and then looks to find other similar objects? 
+What if our binary search looks for an object, and then looks to find other similar objects?
 
-    # here we want to find the film shrek, find its IMDB rating and find other films with that IMDB rating. We are using binary search, then sequential search
-    toFind = {title: "Shrek", IMDBrating: None}
-    ret = search(toFind)
-    ret = search(ret['IMDBrating'])
+```python
+# here we want to find the film shrek, find its IMDB rating and find other films with that IMDB rating. We are using binary search, then sequential search
+toFind = {title: "Shrek", IMDBrating: None}
+ret = search(toFind)
+ret = search(ret['IMDBrating'])
+```
 
 We find Shrek with an IMDB score of 7.8. But we're only sorted on the title, not the IMDB rating. We have to use sequential search to find all other films with the same rating. 
 
@@ -484,17 +579,19 @@ Even in the instances where our algorithms are not strictly related to other alg
 
 One last thing, we don't always deal with `n`. Take this below algorithm:
 
-    x = [1, 2, 3, 4, 5]
-    y = [2, 6]
-    y = iter(y)
-    counter = 0
-    total = 0.0
-    while counter != len(x):
-    	# cycles through the y list.
-        # multiplies 2 by 1, then 6 by 2. Then 2 by 3. 
-    	total = total + x[counter] * next(y)
-        counter += 1
-    print(total)
+```python
+x = [1, 2, 3, 4, 5]
+y = [2, 6]
+y = iter(y)
+counter = 0
+total = 0.0
+while counter != len(x):
+    # cycles through the y list.
+    # multiplies 2 by 1, then 6 by 2. Then 2 by 3. 
+    total = total + x[counter] * next(y)
+    counter += 1
+print(total)
+```
     	
 
 We have 2 inputs, x and y. Our notation is then $$O(x + y)$$. Sometimes we cannot make our notation smaller without knowing more about the data. 
@@ -504,11 +601,15 @@ We have 2 inputs, x and y. Our notation is then $$O(x + y)$$. Sometimes we canno
 # 🤯 Big O Notation Cheat Sheet
 
 I made this little infographic for you! The "add +1 for every nested for loop" depends on the for loop, as we saw earlier. But explaining that all over again would take up too much space 😅
-![The Ultimate Big O Cheatsheet with polynomial, linear, exponential, log, and constant times.](/content/images/2019/10/Big-O-notation-cheatsheet.png)![The Big O cheatsheet for simplification.](/content/images/2019/10/Simplfying-big-o.png)This was an excuse to build an infographic
+
+![](/media/bigo/cheatsheet.png)
+![](/media/bigo/cheatsheet2.png)
+
 ---
 
 ## 🎓 How to Calculate Big O Notation of a Function (Discrete Maths)
-![Image not used for illustration](/content/images/2019/09/undraw_Graduation_ktn0.svg)
+![](/media/bigo/hat.svg)
+
 Okay, this is where it gets hard. A lot of complaints against Big O notation is along the lines of:
 
 > "You didn't really teach it, to really understand it you have to understand the maths!"
@@ -728,5 +829,5 @@ When we write big o, we often want to use the closet function. Otherwise we coul
 ---
 
 ## 👋 Summary
-![Image not used for illustration](/content/images/2019/10/undraw_coffee_break_j3of.svg)
+![](/media/bigo/coffee.svg)
 Big O represents how long an algorithm takes but sometimes we care about how much memory (space complexity) an algorithm takes too. If you're ever stuck, come back to this page and check out the infographics! 
