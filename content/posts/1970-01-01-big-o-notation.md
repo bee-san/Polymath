@@ -22,7 +22,7 @@ This article is written using agnostic Python. That means it will be easy to por
 
 
 ## ❓ How Do We Measure How Long an Algorithm Takes to Run?
-![](/media/bigo/undraw_1.svg)
+![](/static/media/bigo/undraw_1.svg)
 
 <figure>
 	<img src="/static/media/bigo/undraw_1.svg" alt="A straight line representing constant complexity">
