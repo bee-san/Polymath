@@ -1,7 +1,7 @@
 ---
 title: All You Need to Know About Big O Notation [Python Examples]
 slug: big-o-notation
-date: 2019-10-08T16:43:37.000Z
+date: 2020-10-08T16:43:37.000Z
 draft: false
 math: true
 ShowToc: true

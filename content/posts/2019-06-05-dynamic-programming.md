@@ -3,6 +3,8 @@ title: What Is Dynamic Programming With Python Examples
 slug: dynamic-programming
 date_published: 2019-06-05T16:03:32.000Z
 date: 2019-11-19T01:44:21.000Z
+math: true
+ShowToc: true
 tags: 
     - University
     - Computer Science
@@ -17,98 +19,30 @@ It is both a [mathematical optimisation](https://en.wikipedia.org/wiki/Mathemati
 
 *Optimisation problems* seek the maximum or minimum solution. The general rule is that if you encounter a problem where the initial algorithm is solved in O(2n) time, it is better solved using Dynamic Programming.
 
-# Table of Contents
-
-1. [Why Is Dynamic Programming Called Dynamic Programming?](#why-is-dynamic-programming-called-dynamic-programming)
-2. [What are Sub-Problems?](#what-are-sub-problems)
-3. [What is Memoisation in Dynamic Programming?](#what-is-memoisation-in-dynamic-programming)
-4. [How to Identify Dynamic Programming Problems](#how-to-identify-dynamic-programming-problems)
-5. [How to Solve Problems using Dynamic Programming](#how-to-solve-problems-using-dynamic-programming)
-
-5.1. [Step 1. Write the Problem out](#step-1-write-the-problem-out)
-
-5.2. [Step 2. Mathematical Recurrences](#2-mathematical-recurrences)
-
-5.2.1 [1: Define the Base Case](#1-define-the-base-case)
-
-5.2.2 [2: What Decision Do I Make at Step n?](#2-what-decision-do-i-make-at-step-n)
-
-5.3. [Step 3. Determine the Dimensions of the Memoisation Array and the Direction in Which It Should Be Filled](#3-determine-the-dimensions-of-the-memoisation-array-and-the-direction-in-which-it-should-be-filled)
-
-5.4 [Step 4. Coding Our Solution](#4-coding-our-solution)
-6. [Knapsack Problem](#knapsack-problem)
-
-6.1. [Maths](#maths)
-
-6.2. [Tabulation of Knapsack Problem](#tabulation-of-knapsack-problem)
-
-6.3. [Finding the Optimal Set for {0, 1} Knapsack Problem Using Dynamic Programming](#finding-the-optimal-set-for-0-1-knapsack-problem-using-dynamic-programming)
-
-6.4. [Coding It](#coding-it)
-7. [Time Complexity of a Dynamic Programming Problem](#time-complexity-of-a-dynamic-programming-problem)
-8. [Dynamic Programming vs Divide & Conquer vs Greedy](#dynamic-programming-vs-divide-conquer-vs-greedy)
-9. [Tabulation (Bottom-Up) vs Memoisation (Top-Down)](#tabulation-bottom-up-vs-memoisation-top-down-)
-
-9.1. [Memoisation (Top-Down)](#memoisation-top-down-)
-
-9.2. [Tabulation (Bottom-Up)](#tabulation-bottom-up-)
-
-9.3. [Tabulation & Memosation - Advantages and Disadvantages](#tabulation-memosation-advantages-and-disadvantages)
-10. [Conclusion](#conclusion)
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
-
 ---
 
 ## Why Is Dynamic Programming Called Dynamic Programming?
-![](/content/images/2019/06/undraw_logo_design_bjnx.svg)
+![](/media/dp/undraw1.svg)
+
 [Richard Bellman](https://en.wikipedia.org/wiki/Richard_E._Bellman) invented DP in the 1950s. [Bellman named it Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming#History) because at the time, RAND (his employer), disliked mathematical research and didn't want to fund it. He named it Dynamic Programming to hide the fact he was really doing mathematical research.
 
 Bellman explains the reasoning behind the term Dynamic Programming in his autobiography, Eye of the Hurricane: An Autobiography (1984, page 159). He explains:
 
-> "I spent the Fall quarter (of 1950) at RAND. My first task was to find a name for multistage decision processes. An interesting question is, Where did the name, dynamic programming, come from? The 1950s were not good years for mathematical research. We had a very interesting gentleman in Washington named Wilson. He was Secretary of Defense, and he actually had a pathological fear and hatred of the word research. I’m not using the term lightly; I’m using it precisely. His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. You can imagine how he felt, then, about the term mathematical. The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that I was really doing mathematics inside the RAND Corporation. What title, what name, could I choose? In the first place I was interested in planning, in decision making, in thinking. But planning, is not a good word for various reasons. I decided therefore to use the word “programming”. I wanted to get across the idea that this was dynamic, this was multistage, this was time-varying. I thought, let's kill two birds with one stone. Let's take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. It also has a very interesting property as an adjective, and that is it's impossible to use the word dynamic in a pejorative sense. Try thinking of some combination that will possibly give it a pejorative meaning. It's impossible. Thus, I thought dynamic programming was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities."
+> "I spent the Fall quarter (of 1950) at RAND. 
+> 
+> My first task was to find a name for multistage decision processes. An interesting question is, Where did the name, dynamic programming, come from? 
+> 
+> The 1950s were not good years for mathematical research. We had a very interesting gentleman in Washington named Wilson. He was Secretary of Defense, and he actually had a pathological fear and hatred of the word research. I’m not using the term lightly; I’m using it precisely. 
+> 
+> His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. You can imagine how he felt, then, about the term mathematical. The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that I was really doing mathematics inside the RAND Corporation. 
+> What title, what name, could I choose? In the first place I was interested in planning, in decision making, in thinking. But planning, is not a good word for various reasons. I decided therefore to use the word “programming”. I wanted to get across the idea that this was dynamic, this was multistage, this was time-varying. I thought, let's kill two birds with one stone. Let's take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. 
+> It also has a very interesting property as an adjective, and that is it's impossible to use the word dynamic in a pejorative sense. Try thinking of some combination that will possibly give it a pejorative meaning. It's impossible. Thus, I thought dynamic programming was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities."
 
 ---
 
 ## What are Sub-Problems?
-![](/content/images/2019/06/undraw_process_e90d.svg)
+![](/media/dp/undraw2.svg)
+
 Sub-problems are smaller versions of the original problem. Let's see an example. With the equation below:
 
 $$1 + 2 + 3 + 4$$
@@ -136,7 +70,8 @@ In Dynamic Programming we store the solution to the problem so we do not need to
 ---
 
 ## What is Memoisation in Dynamic Programming?
-![](/content/images/2019/06/undraw_task_31wc.svg)
+![](/media/dp/undraw3.svg)
+
 Let's see why storing answers to solutions make sense. We're going to look at a famous problem, *[Fibonacci sequence](https://www.mathsisfun.com/numbers/fibonacci-sequence.html)*. This problem is normally solved in Divide and Conquer. 
 
 There are 3 main parts to [divide and conquer](/divide-and-conquer-algorithms/):
@@ -161,18 +96,25 @@ $$5 + 3 = 8$$
 
 In Python, this is:
 
-    def F(n):
-      if n == 0 or n == 1:
-    	return n
-      else:
-    	return F(n-1)+F(n-2)
+```python
+def F(n):
+    if n == 0 or n == 1:
+    return n
+    else:
+    return F(n-1)+F(n-2)
+```
     
 
 If you're not familiar with recursion I have a [blog post written for you that you should read first.](/divide-and-conquer-algorithms/)
 
 Let's calculate F(4). In an execution tree, this looks like:
 
-![Starts at 4, it splits into two. Fibonacci 3 and 2. Each of these 2 then split into 2 more for a total of 4. 1, 2, 0, and 1. We stop splitting when we reach 0 or 1. 2 is split again, into 1 and 0. The levels go from top to bottom. They look like this: 4 new level 3, 2 new level 1, 2,  0, 1 new level 1, 0](/content/images/2019/06/image-8.png)
+![](/content/images/2019/06/image-8.png)
+
+<figure>
+	<img src="/media/dp/execution_tree.png" alt="Starts at 4, it splits into two. Fibonacci 3 and 2. Each of these 2 then split into 2 more for a total of 4. 1, 2, 0, and 1. We stop splitting when we reach 0 or 1. 2 is split again, into 1 and 0. The levels go from top to bottom. They look like this: 4 new level 3, 2 new level 1, 2,  0, 1 new level 1, 0">
+	<figcaption><figcaption>
+</figure>
 
 We calculate F(2) twice. On bigger inputs (such as F(10)) the repetition builds up. The purpose of dynamic programming is to not calculate the same thing twice.
 
@@ -180,16 +122,19 @@ Instead of calculating F(2) twice, we store the solution somewhere and only calc
 
 We'll store the solution in an array. F[2] = 1. Below is some Python code to calculate the Fibonacci sequence using Dynamic Programming.
 
-    def fibonacciVal(n):
-    	memo[0], memo[1] = 0, 1
-    	for i in range(2, n+1):
-    		memo[i] = memo[i-1] + memo[i-2]
-    	return memo[n]
+```python
+def fibonacciVal(n):
+    memo[0], memo[1] = 0, 1
+    for i in range(2, n+1):
+        memo[i] = memo[i-1] + memo[i-2]
+    return memo[n]
+```
 
 ---
 
 ## How to Identify Dynamic Programming Problems
-![](/content/images/2019/06/undraw_file_searching_duff.svg)
+![](/media/dp/undraw4.svg)
+
 In theory, Dynamic Programming can solve every problem. The question is then:
 
 > "When should I solve this problem with dynamic programming?"
@@ -219,11 +164,15 @@ Mastering dynamic programming is all about understanding the problem. List all t
 Then, figure out what the recurrence is and solve it. When we're trying to figure out the recurrence, remember that whatever recurrence we write has to help us find the answer. Sometimes the answer will be the result of the recurrence, and sometimes we will have to get the result by looking at a few results from the recurrence.
 
 Dynamic Programming can solve many problems, but that does not mean there isn't a more efficient solution out there. Solving a problem with Dynamic Programming feels like magic, but remember that dynamic programming is merely a clever brute force. Sometimes it pays off well, and sometimes it helps only a little.
-![](/content/images/2019/06/dynamic-Programming-Process.png)
+<figure>
+	<img src="/media/dp/flow.png">
+	<figcaption><figcaption>
+</figure>
 ---
 
 ## How to Solve Problems using Dynamic Programming
-![](/content/images/2019/06/undraw_problem_solving_ft81.svg)
+![](/media/dp/undraw5.svg)
+
 Now we have an understanding of what Dynamic programming is and how it generally works. Let's look at to create a Dynamic Programming solution to a problem. We're going to explore the process of Dynamic Programming using the *[Weighted Interval Scheduling Problem](https://courses.cs.washington.edu/courses/cse521/13wi/slides/06dp-sched.pdf)*.
 
 Pretend you're the owner of a dry cleaner. You have *n* customers come in and give you clothes to clean. You can only clean one customer's pile of clothes (PoC) at a time. Each pile of clothes, *i*, must be cleaned at some pre-determined start time $s_i$ and some predetermined finish time $f_i$.
@@ -235,7 +184,8 @@ As the owner of this dry cleaners you must determine the optimal schedule of clo
 You will now see 4 steps to solving a Dynamic Programming problem. Sometimes, you can skip a step. Sometimes, your problem is already well defined and you don't need to worry about the first few steps.
 
 ## Step 1. Write the Problem out
-![](/content/images/2019/06/undraw_typewriter_i8xd.svg)
+![](/media/dp/undraw6.svg)
+
 Grab a piece of paper. Write out:
 
 - What is the problem?
@@ -251,7 +201,8 @@ We can find the maximum value schedule for piles $n - 1$ through to n. And then 
 With the interval scheduling problem, the only way we can solve it is by brute-forcing all subsets of the problem until we find an optimal one. What we're saying is that instead of brute-forcing one by one, we divide it up. We brute force from $n-1$ through to n. Then we do the same for $n - 2$ through to n. Finally, we have loads of smaller problems, which we can solve dynamically. We want to build the solutions to our sub-problems such that each sub-problem builds on the previous problems.
 
 ## 2. Mathematical Recurrences
-![](/content/images/2019/06/undraw_mathematics_4otb.svg)
+![](/media/dp/undraw7.svg)
+
 I know, mathematics sucks. If you'll bare with me here you'll find that this isn't that hard. [Mathematical recurrences](https://en.wikipedia.org/wiki/Recurrence_relation) are used to:
 
 > Define the running time of a divide and conquer (dynamic programming) technique
@@ -307,7 +258,13 @@ Now that we’ve answered these questions, we’ve started to form a  recurring
 
 Here’s our recurrence:
 
-$$  OPT(i) = \begin{cases} 0, \quad \text{If i = 0} \\ max{v_i + OPT(next[i]), OPT(i+1)},  \quad \text{if n > 1} \end{cases}$$
+{{< math.inline >}}
+<p>
+$$
+OPT(i) = \begin{cases} 0, \quad \text{If i = 0} \\ max{v_i + OPT(next[i]), OPT(i+1)},  \quad \text{if n > 1} \end{cases}\end{cases}
+$$
+</p>
+{{< /math.inline >}}
 
 Let's explore in detail what makes this mathematical recurrence. OPT(i) represents the maximum value schedule for PoC *i* through to *n* such that PoC is sorted by start times. OPT(i) is our subproblem from earlier.
 
@@ -328,7 +285,8 @@ $$OPT(i + 1)$$
 If we decide not to run *i*, our value is then OPT(i + 1). The value is not gained. OPT(i + 1) gives the maximum value schedule for i+1 through to n, such that they are sorted by start times. 
 
 ## 3. Determine the Dimensions of the Memoisation Array and the Direction in Which It Should Be Filled
-![](/content/images/2019/06/undraw_design_thinking_x8f6.svg)
+![](/media/dp/undraw8.svg)
+
 The solution to our Dynamic Programming problem is OPT(1). We can write out the solution as the maximum value schedule for PoC 1 through n such that PoC is sorted by start time. This goes hand in hand with "maximum value schedule for PoC i through to n". 
 
 From step 2:
@@ -343,7 +301,9 @@ We can see our array is one dimensional, from 1 to n. But, if we couldn't see th
 
 If we know that *n* = 5, then our memoisation array might look like this:
 
+```python
 memo = [0, OPT(1), OPT(2), OPT(3), OPT(4), OPT(5)]
+```
 
 0 is also the base case. memo[0] = 0, per our recurrence from earlier.
 
@@ -357,54 +317,63 @@ To find the profit with the inclusion of job[i]. we need to find the latest job 
 
 First, let's define what a "job" is. As we saw, a job consists of 3 things:
 
+```python
     # Class to represent a job 
-    class Job: 
-    	def __init__(self, start, finish, profit): 
-    		self.start = start 
-    		self.finish = finish 
-    		self.profit = profit 
+class Job: 
+    def __init__(self, start, finish, profit): 
+        self.start = start 
+        self.finish = finish 
+        self.profit = profit 
+```
 
 Start time, finish time, and the total profit (benefit) of running that job.
 
 The next step we want to program is the schedule.
 
-    # The main function that returns the maximum possible 
-    # profit from given array of jobs
-    def schedule(job): 
-    	# Sort jobs according to start time 
-    	job = sorted(job, key = lambda j: j.start) 
-    
-    	# Create an array to store solutions of subproblems. table[i] 
-    	# stores the profit for jobs till arr[i] (including arr[i]) 
-    	n = len(job) 
-    	table = [0 for _ in range(n)] 
-    
-    	table[0] = job[0].profit;
+```python
+# The main function that returns the maximum possible 
+# profit from given array of jobs
+def schedule(job): 
+    # Sort jobs according to start time 
+    job = sorted(job, key = lambda j: j.start) 
+
+    # Create an array to store solutions of subproblems. table[i] 
+    # stores the profit for jobs till arr[i] (including arr[i]) 
+    n = len(job) 
+    table = [0 for _ in range(n)] 
+
+    table[0] = job[0].profit
+```
 
 Earlier, we learnt that the table is 1 dimensional. We sort the jobs by start time, create this empty table and set table[0] to be the profit of job[0]. Since we've sorted by start times, the first compatible job is always job[0].
 
 Our next step is to fill in the entries using the recurrence we learnt earlier. To find the next compatible job, we're using Binary Search. In the full code posted later, it'll include this. For now, let's worry about understanding the algorithm.
 
-If the next compatible job returns -1, that means that all jobs before the index, i, conflict with it (so cannot be used).  Inclprof means we're including that item in the maximum value set. We then store it in table[i], so we can use this calculation again later.
+If the next compatible job returns -1, that means that all jobs before the index, i, conflict with it (so cannot be used). `Inclprof` means we're including that item in the maximum value set. We then store it in table[i], so we can use this calculation again later.
 
-    	# Fill entries in table[] using recursive property 
-    	for i in range(1, n): 
-    
-    		# Find profit including the current job 
-    		inclProf = job[i].profit 
-    		l = binarySearch(job, i) 
-    		if (l != -1): 
-    			inclProf += table[l]; 
-    
-    		# Store maximum of including and excluding 
-    		table[i] = max(inclProf, table[i - 1]) 
+```python
+    # Fill entries in table[] using recursive property 
+    for i in range(1, n): 
+
+        # Find profit including the current job 
+        inclProf = job[i].profit 
+        l = binarySearch(job, i) 
+        if (l != -1): 
+            inclProf += table[l]; 
+
+        # Store maximum of including and excluding 
+        table[i] = max(inclProf, table[i - 1]) 
+```
 
 Our final step is then to return the profit of all items up to n-1.
 
+```python
     	return table[n-1] 
+```
 
 The full code can be seen below:
 
+```python
     # Python program for weighted job scheduling using Dynamic 
     # Programming and Binary Search 
     
@@ -472,9 +441,13 @@ The full code can be seen below:
     print("Optimal profit is"), 
     print(schedule(job))
     
+```
 
 Congrats! 🥳 We've just written our first dynamic program!  Now that we’ve wet our feet,  let's walk through a different type of dynamic programming problem.
-![](/content/images/2019/06/dynamic-programming-process.jpg)I made this infographic for you 😁
+
+
+![](/media/dp/infographic.jpg)
+
 ---
 
 # Knapsack Problem
@@ -485,16 +458,19 @@ You can only fit so much into it. Let’s give this an arbitrary number. The bag
 
 The greedy approach is to pick the item with the highest value which can fit into the bag. Let's try that. We're going to steal Bill Gates's TV. £4000? Nice. But his TV weighs 15. So... We leave with £4000.
 
-    TV = (£4000, 15)
-    # (value, weight)
+```python
+TV = (£4000, 15)
+# (value, weight)
+```
 
 Bill Gates has a lot of watches. Let's say he has 2 watches. Each watch weighs 5 and each one is worth £2250. When we steal both, we get £4500 with a weight of 10.
 
-    watch1 = (£2250, 5)
-    watch2 = (£2250, 5)
-    watch1 + watch2
-    >>> (£4500, 10)
-    
+```python
+watch1 = (£2250, 5)
+watch2 = (£2250, 5)
+watch1 + watch2
+>>> (£4500, 10)
+```
 
 In the greedy approach, we wouldn't choose these watches first. But to us as humans, it makes sense to go for smaller items which have higher values. The Greedy approach cannot optimally solve the {0,1} Knapsack problem. The {0, 1} means we either take the item whole item {1} or we don't {0}. However, Dynamic programming can optimally solve the {0, 1} knapsack problem.
 
@@ -532,44 +508,445 @@ Then we define B[0, w] = 0 for each $w \le W_{max}$.
 
 Our desired solution is then B[n, $W_{max}$].
 
-$$  OPT(i) = \begin{cases} B[k - 1, w], \quad \text{If w < }w_k \\ max{B[k-1, w], b_k + B[k - 1, w - w_k]}, \; \quad \text{otherwise} \end{cases}$$
+{{< math.inline >}}
+<p>
+$$
+OPT(i) = \begin{cases} B[k - 1, w], \quad \text{If w < }w_k \\ max{B[k-1, w], b_k + B[k - 1, w - w_k]}, \; \quad \text{otherwise} \end{cases}
+$$
+</p>
+{{< /math.inline >}}
+
 
 ### Tabulation of Knapsack Problem
 
 Okay, pull out some pen and paper. No, really. Things are about to get confusing real fast. This memoisation table is 2-dimensional. We have these items:
 
-    (1, 1), (3, 4), (4, 5), (5, 7)
+```
+(1, 1), (3, 4), (4, 5), (5, 7)
+```
 
 Where the tuples are `(weight, value)`.
 
 We have 2 variables, so our array is 2-dimensional. The first dimension is from 0 to 7. Our second dimension is the values. 
 
 And we want a weight of 7 with maximum benefit.
-01234567(1, 1) (4, 3) (5, 4)(7, 5)
+
+{{ rawhtml }}
+<table >
+	<tbody>
+		<tr>
+          	<td> </td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			
+		</tr>
+		<tr>
+			<td>(1, 1)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (4, 3)</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (5, 4)</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td>(7, 5)</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+{{ /rawhtml }}
+
 The weight is 7. We start counting at 0. We put each tuple on the left-hand side. Ok. Now to fill out the table!
-01234567(1, 1)0 (4, 3) 0 (5, 4) 0(7, 5) 0
+
+{{ rawhtml }}
+<table >
+	<tbody>
+		<tr>
+          	<td> </td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			
+		</tr>
+		<tr>
+			<td>(1, 1)</td>
+			<td>0</td>
+			<td></td>
+			<td></td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (4, 3)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (5, 4)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td>(7, 5)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+
+{{ /rawhtml }}
+
+
 The columns are weight. At weight 0, we have a total weight of 0. At weight 1, we have a total weight of 1. Obvious, I know. But this is an important distinction to make which will be useful later on.
 
 When our weight is 0, we can't carry anything no matter what. The total weight of everything at 0 is 0.
-01234567(1, 1)01 (4, 3) 0 (5, 4) 0(7, 5) 0
+
+{{ rawhtml }}
+
+<table >
+	<tbody>
+		<tr>
+          	<td> </td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			
+		</tr>
+		<tr>
+			<td>(1, 1)</td>
+			<td>0</td>
+			<td>1</td>
+			<td></td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (4, 3)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (5, 4)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td>(7, 5)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+
+{{ /rawhtml }}
+
 If our total weight is 1, the best item we can take is (1, 1). As we go down through this array, we can take more items. At the row for (4, 3) we can either take (1, 1) or (4, 3). But for now, we can only take (1, 1). Our maximum benefit for this row then is 1. 
-01234567(1, 1)01111 1 1  1 (4, 3) 0 (5, 4) 0(7, 5) 0
+
+
+{{ rawhtml }}
+
+<table >
+	<tbody>
+		<tr>
+          	<td> </td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			
+		</tr>
+		<tr>
+			<td>(1, 1)</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1 </td>
+			<td>1 </td>
+			<td>1 </td>
+			<td> 1</td>
+		</tr>
+		<tr>
+			<td> (4, 3)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (5, 4)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td>(7, 5)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+
+{{ /rawhtml }}
+
+
 If our total weight is 2, the best we can do is 1. We only have 1 of each item. We cannot duplicate items. So no matter where we are in row 1, the absolute best we can do is (1, 1).
 
 Let's start using (4, 3) now. If the total weight is 1, but the weight of (4, 3) is 3 we cannot take the item yet until we have a weight of at least 3.
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 1 (5, 4) 0(7, 5) 0
+
+{{ rawhtml }}
+
+
+<table >
+	<tbody>
+		<tr>
+          	<td> </td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			
+		</tr>
+		<tr>
+			<td>(1, 1)</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1 </td>
+			<td>1 </td>
+			<td>1 </td>
+			<td> 1</td>
+		</tr>
+		<tr>
+			<td> (4, 3)</td>
+			<td> 0</td>
+			<td> 1</td>
+			<td> 1</td>
+			<td></td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (5, 4)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td>(7, 5)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+
+{{ /rawhtml }}
+
 Now we have a weight of 3. Let's compare some things. We want to take the max of:
 
 $$MAX(4 + T[0][0], 1)$$
 
 If we're at 2, 3 we can either take the value from the last row or use the item on that row. We go up one row and count back 3 (since the weight of this item is 3).
 
-Actually, the formula is whatever weight is remaining when we minus the weight of the item on that row. The weight of (4, 3) is 3 and we're at weight 3. 3 - 3 = 0. Therefore, we're at T[0][0]. T[previous row's number][current total weight - item weight].
+Actually, the formula is whatever weight is remaining when we minus the weight of the item on that row. The weight of (4, 3) is 3 and we're at weight 3. $3 - 3 = 0$. Therefore, we're at `T[0][0]`. `T[previous row's number][current total weight - item weight]`.
 
 $$MAX(4 + T[0][0], 1)$$
 
 The 1 is because of the previous item. The max here is 4.
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 14 (5, 4) 0(7, 5) 0
+
+{{ rawhtml }}
+
+
+<table >
+	<tbody>
+		<tr>
+          	<td> </td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			
+		</tr>
+		<tr>
+			<td>(1, 1)</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1 </td>
+			<td>1 </td>
+			<td>1 </td>
+			<td> 1</td>
+		</tr>
+		<tr>
+			<td> (4, 3)</td>
+			<td> 0</td>
+			<td> 1</td>
+			<td> 1</td>
+			<td>4</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> (5, 4)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td>(7, 5)</td>
+			<td> 0</td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+
+{{ /rawhtml }}
+
 $$max(4 + t[0][1], 1)$$
 
 Total weight is 4, item weight is 3. 4 - 3 = 1. Previous row is 0. t[0][1].
