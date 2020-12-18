@@ -4,6 +4,9 @@ slug: make-popular-open-source-projects
 date: 2020-12-17T16:43:37.000Z
 draft: false
 socialImage: /media/p2p.jpg
+cover:
+    image: "/media/p2p.jpg"
+description: "The Ultimate Guide to creating a popular open source project in only 3 steps from someone with 10s of thousands of GitHub stars."
 ShowToc: true
 tags:
   - "Open Source Software"
