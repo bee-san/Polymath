@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Science on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/computer-science/</link>
+    <description>Recent content in Computer Science on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Dec 2020 16:43:37 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>3 Tips For Making a Popular Open Source Project in 2021 [Ultimate Guide]</title>
+      <link>https://polymath.cloud/make-popular-open-source-projects/</link>
+      <pubDate>Thu, 17 Dec 2020 16:43:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/make-popular-open-source-projects/</guid>
+      <description>TODO  Alt text on images Break up text Grammarly  Introduction I have around ~10k GitHub stars. I’ve come up with a bullet pointed actionable list of how to make open source projects popular.
+One of the projects I created had 67 lines of code and had only existed for 3 days before it hit 1.7k stars.
+Humans are predictable creatures when it comes to our attention. I’ll show you data backed actionable insights that can help you create popular software.</description>
+    </item>
+    
+    <item>
+      <title>Algorithmic Design Paradigms</title>
+      <link>https://polymath.cloud/algorithms/</link>
+      <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/algorithms/</guid>
+      <description>Greedy Algorithms Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+Why Are Greedy Algorithms Called Greedy? Algorithms are called greedy when they utilise the greedy property. The greedy property is:
+ At that exact moment in time, what is the optimal choice to make?</description>
+    </item>
+    
+    <item>
+      <title>All You Need to Know About Big O Notation [Python Examples]</title>
+      <link>https://polymath.cloud/big-o-notation/</link>
+      <pubDate>Thu, 08 Oct 2020 16:43:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/big-o-notation/</guid>
+      <description>By the end of this article, you&amp;rsquo;ll thoroughly understand Big O notation. You&amp;rsquo;ll also know how to use it in the real world, and even the mathematics behind it!
+In computer science, time complexity is the computational complexity that describes the amount of time it takes to run an algorithm.
+Big O notation is a method for determining how fast an algorithm is. Using Big O notation, we can learn whether our algorithm is fast or slow.</description>
+    </item>
+    
+    <item>
+      <title>Python Zero to Hero</title>
+      <link>https://polymath.cloud/python/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/python/</guid>
+      <description>What is Python? Python is a programming language created by Guido (pronounced gree-do) Van Rossum. Specifically, Python is an intrepreted, high-level, general purpose programming language.
+Let&amp;rsquo;s talk about what these mean.
+General Purpose General Purpose means that Python was created to do everything. Some programming languages like Matlab or R were created for data science. Others like HTML / CSS were created for web development.
+Python aims to do everything, it is generalised.</description>
+    </item>
+    
+    <item>
+      <title>How Does Tor Really Work? The Definitive Visual Guide (2020)</title>
+      <link>https://polymath.cloud/how-does-tor-really-work/</link>
+      <pubDate>Sat, 19 Sep 2020 11:53:11 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/how-does-tor-really-work/</guid>
+      <description>Today, we&amp;rsquo;re going to do a technical deep-dive into how Tor really works.
+No mention of how to access Tor, no mention of what might be on Tor. This is how Tor works.
+Without speculation and without exaggeration of what Tor is. Just a deep-dive into the technical stuff of how Tor works.
+This article is designed to be read by anyone, with **ZERO **knowledge on networking or Tor.
+Let&amp;rsquo;s dive right in.</description>
+    </item>
+    
+    <item>
+      <title>Set Theory for Competitive Programming</title>
+      <link>https://polymath.cloud/set-theory-for-competitive-programming/</link>
+      <pubDate>Sat, 25 Jul 2020 11:56:39 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/set-theory-for-competitive-programming/</guid>
+      <description>If you&amp;rsquo;ve spent time on HackerRank or LeetCode, you might have noticed most of the optimal solutions use Set Theory.
+By reading this article, you will gain a deeper knowledge into set theory and how to use it to create optimal algorithms.
+Set Theory was invented (or found, depending on how you view maths) by George Cantor. 
+It revolves around the idea of sets, as in collections of objects. Set theory is incredibly powerful and can be used to write some beautiful &amp;amp; elegant code.</description>
+    </item>
+    
+    <item>
+      <title>Learn Functional Python in 10 Minutes</title>
+      <link>https://polymath.cloud/learn-functional-python-in-10-minutes/</link>
+      <pubDate>Wed, 20 Nov 2019 22:55:19 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/learn-functional-python-in-10-minutes/</guid>
+      <description>In this short 10 minute article, you’ll learn what the functional paradigm is in Python. You’ll also learn about list comprehensions.
+Table of Contents  Table of Contents  At least this isn&amp;rsquo;t a pop up! 😅   📌 Functional Paradigm 🌍 How Does Python&amp;rsquo;s Map Work? 🔑 Lambda Expressions in Python 🔹 Reduce Function in Python 🍳 Filter ☁ Higher Order Functions in Python 🎶 Partial Application with Functions 🐍 Functional Programming Isn’t Pythonic 🎓 List Comprehensions 🤔 Comprehensions of Any Iterable 👋 Conclusion   At least this isn&amp;rsquo;t a pop up!</description>
+    </item>
+    
+    <item>
+      <title>Divide and Conquer Algorithms with Python Examples</title>
+      <link>https://polymath.cloud/divide-and-conquer-algorithms/</link>
+      <pubDate>Wed, 20 Nov 2019 16:28:45 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/divide-and-conquer-algorithms/</guid>
+      <description>Often I&amp;rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.
+Divide and Conquer is one way to attack a problem from a different angle. Don&amp;rsquo;t worry if you have **zero **experience or knowledge on the topic.</description>
+    </item>
+    
+    <item>
+      <title>How Does BitTorrent Work? a Plain English Guide</title>
+      <link>https://polymath.cloud/bit-torrent/</link>
+      <pubDate>Wed, 20 Nov 2019 13:02:50 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/bit-torrent/</guid>
+      <description>No talk about downloading things on BitTorrent. Or the best clients to do so.
+Just a deep-dive into the technical side of it.
+Anyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.
+BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.</description>
+    </item>
+    
+    <item>
+      <title>Hash functions explained for non cryptographers</title>
+      <link>https://polymath.cloud/hash-functions/</link>
+      <pubDate>Tue, 19 Nov 2019 01:47:38 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/hash-functions/</guid>
+      <description>A hash function takes a message, m, and returns a pseudo-random string of letters/numbers which should be unique to that message. Let&amp;rsquo;s say the hash function returns &amp;ldquo;aBc67D&amp;rdquo; for the message &amp;ldquo;I love dogs&amp;rdquo;. This function should not return the same &amp;ldquo;aBc67D&amp;rdquo; for &amp;ldquo;Donuts are cool&amp;rdquo;.
+Hashing algorithms have 3 requirements:
+ A hashing algorithm needs to be reasonably fast to compute and reasonably fast to verify. If you change one single bit anywhere in the message, the outputted string must look completely different.</description>
+    </item>
+    
+    <item>
+      <title>Public Key Cryptography Simply Explained</title>
+      <link>https://polymath.cloud/how-does-public-key-cryptography-work/</link>
+      <pubDate>Tue, 19 Nov 2019 01:47:08 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/how-does-public-key-cryptography-work/</guid>
+      <description>Public key cryptography seems magical to everyone, even those who understand it. In this post, I&amp;rsquo;m going to explain public key cryptography. Public Key Cryptography is based on asymmetric cryptography, so first let us talk about symmetric cryptography.
+ Symmetric Cryptography Your front door is usually locked by a key. This key unlocks &amp;amp; locks your front door. With symmetric cryptography, you have one key which you use to unlock and lock things.</description>
+    </item>
+    
+    <item>
+      <title>How to Share a Secret (Diffie-Hellman-Merkle)</title>
+      <link>https://polymath.cloud/diffie-hellman-merkle/</link>
+      <pubDate>Tue, 19 Nov 2019 01:46:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/diffie-hellman-merkle/</guid>
+      <description>Diffie-Hellman-Merkle is a way to share a secret key with someone (or something) without actually sending them the key. Before we look into how we share keys let&amp;rsquo;s first look into what keys are and why we would want to invent a method to share keys without giving the other person the key.
+ Your front door is usually locked by a key. This key unlocks &amp;amp; locks your front door.</description>
+    </item>
+    
+    <item>
+      <title>What Is Dynamic Programming With Python Examples</title>
+      <link>https://polymath.cloud/dynamic-programming/</link>
+      <pubDate>Tue, 19 Nov 2019 01:44:21 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/dynamic-programming/</guid>
+      <description>Dynamic programming is breaking down a problem into smaller sub-problems, solving each sub-problem and storing the solutions to each of these sub-problems in an array (or similar data structure) so each sub-problem is only calculated once.
+It is both a mathematical optimisation method and a computer programming method.
+Optimisation problems seek the maximum or minimum solution. The general rule is that if you encounter a problem where the initial algorithm is solved in O(2n) time, it is better solved using Dynamic Programming.</description>
+    </item>
+    
+    <item>
+      <title>Greedy Algorithms In Python</title>
+      <link>https://polymath.cloud/greedy-algorithms/</link>
+      <pubDate>Tue, 19 Nov 2019 00:58:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/greedy-algorithms/</guid>
+      <description>Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+Table of Contents  Table of Contents  At least this isn&amp;rsquo;t a full screen pop up! 😅 Why Are Greedy Algorithms Called Greedy? What Are Greedy Algorithms Used For? How Do I Create a Greedy Algorithm?</description>
+    </item>
+    
+    <item>
+      <title>How linked lists work with an application to Blockchain</title>
+      <link>https://polymath.cloud/you-dont-understand-blockchain-unless-you-understand-this-simple-data-structure/</link>
+      <pubDate>Thu, 10 Oct 2019 16:19:24 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/you-dont-understand-blockchain-unless-you-understand-this-simple-data-structure/</guid>
+      <description>The blockchain is an immutable, ordered, back-linked list of blocks of transactions. If you want to truly understand blockchain you need to understand linked lists.
+Linked Lists are a linear collection of data elements. Linearty in a linked list is not defined by each element’s physical placement. Instead each data node in a linked list points to one or two other nodes in the linked list.
+With an array such as [1, 2, 3] you know that the element 1 is at position [0] and element 2 is at position [1].</description>
+    </item>
+    
+    <item>
+      <title>Graph Theory</title>
+      <link>https://polymath.cloud/graph-theory/</link>
+      <pubDate>Thu, 10 Oct 2019 16:18:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/graph-theory/</guid>
+      <description>If you want to learn a lot about Graph Theory, check out this article
+The seven bridges of Koenigsberg is the foundation and birth of graph theory. There was a puzzle that stated:
+ Can you cross all seven bridges exactly once?
+ There are 2 rules for this problem:
+ Do not cross any bridge twice All bridges must be crossed  In the 18th Century a mathematician called Euler realised this problem was impossible.</description>
+    </item>
+    
+    <item>
+      <title>A Primer on Search Algorithms</title>
+      <link>https://polymath.cloud/a-primer-on-search-algorithms/</link>
+      <pubDate>Thu, 10 Oct 2019 16:17:55 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/a-primer-on-search-algorithms/</guid>
+      <description>“It’s written, ‘seek and ye shall find’. But first, ‘imagine what you seek’. Otherwise, you will end up searching everything everywhere forever.” Toba Beta, My Ancestor Was an Ancient Astronaut
+ This article will be a primer on search algorithms used in Artificial Intelligence. This article was formed from lecture notes from COMP111 at the University of Liverpool taught by Frank Wolter and the famous Russel, Norvig book Artificial Intelligence: A Modern Approach.</description>
+    </item>
+    
+    <item>
+      <title>Timsort — the fastest sorting algorithm you’ve never heard of</title>
+      <link>https://polymath.cloud/timsort/</link>
+      <pubDate>Thu, 10 Oct 2019 16:17:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/timsort/</guid>
+      <description>Timsort: A very fast , O(n log n), stable sorting algorithm built for the real world — not constructed in academia. Image of Tim Peter from here Timsort is a sorting algorithm that is efficient for real-world data and not created in an academic laboratory. Tim Peters created Timsort for the Python programming language in 2001. Timsort first analyses the list it is trying to sort and then chooses an approach based on the analysis of the list.</description>
+    </item>
+    
+    <item>
+      <title>A guide to Altcoins.</title>
+      <link>https://polymath.cloud/a-guide-to-altcoins/</link>
+      <pubDate>Sun, 14 Apr 2019 13:27:03 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/a-guide-to-altcoins/</guid>
+      <description>There are many Alternate (Alt) coins on the market, but what makes them so different? Why would people invest in them instead of Bitcoin? This article seeks to explain Altcoins.
+Note: This article is not a primer on Bitcoin and presumes you have fundamental knowledge of cryptocurrencies. If not, please read this article. Ripple Ripple is one of the largest cryptocurrencies on the market. Ripple’s website explains its philoposphy, as seen below</description>
+    </item>
+    
+    <item>
+      <title>An Algorithm for Finding Anagrams</title>
+      <link>https://polymath.cloud/an-algorithm-for-finding-anagrams/</link>
+      <pubDate>Mon, 08 Apr 2019 00:28:23 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/an-algorithm-for-finding-anagrams/</guid>
+      <description>Finding anagrams of words does not look like a difficult problem but has an interesting solution.
+An anagram is a word or sentence that can be transformed into another word or sentence. Elvis has all the same letters as Lives, so Elvis is an anagram of Lives. The way most people would immediately solve this problem would be to take a word, go through every word in the dictionary and see if the combinations of letters match exactly.</description>
+    </item>
+    
+    <item>
+      <title>Zero Power Computing — How to Perform Calculations Using Zero Power</title>
+      <link>https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/</link>
+      <pubDate>Mon, 08 Apr 2019 00:28:02 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/</guid>
+      <description>Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.
+The smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing.</description>
+    </item>
+    
+    <item>
+      <title>Who needs painkillers when you have virtual reality?</title>
+      <link>https://polymath.cloud/who-needs-painkillers-when-you-have-virtual-reality/</link>
+      <pubDate>Sun, 07 Apr 2019 17:35:16 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/who-needs-painkillers-when-you-have-virtual-reality/</guid>
+      <description>Introduction Image of Blain Baxter from here 10-year-old Blaine Baxter injured his arm in a go-karting accident last year. Painful daily dressing changes at the hospital made him so anxious he had to be sedated. Not only was the sedation costing money, but Blaine was still anxious before the sedation.
+Two weeks into his stay at Lucile Packard Children’s Hospital Stanford, a team of pain management specialists suggested he tried playing games using the Samsung Gear VR.</description>
+    </item>
+    
+    <item>
+      <title>Finding The Most Important Sentences Using NLP &amp; TF-IDF</title>
+      <link>https://polymath.cloud/tfidf/</link>
+      <pubDate>Sun, 07 Apr 2019 17:34:19 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/tfidf/</guid>
+      <description>We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!
+When we’re done, it’ll look like this: News article found here.</description>
+    </item>
+    
+    <item>
+      <title>What is a Decision Tree in Machine Learning?</title>
+      <link>https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/</link>
+      <pubDate>Sun, 07 Apr 2019 17:34:08 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/</guid>
+      <description>Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.
+Trees are weird in computer science.</description>
+    </item>
+    
+    <item>
+      <title>Bitcoins biggest innovation wasn’t the currency</title>
+      <link>https://polymath.cloud/bitcoin-innovation/</link>
+      <pubDate>Sat, 06 Apr 2019 10:50:35 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/bitcoin-innovation/</guid>
+      <description>Decentralising a government controlled object such as currency is so much bigger than you know.
+Bitcoin made its debut in 2011, but the most important thing about it was the concept. The idea of taking something as tangible and government controlled as currency and turning it into a decentralised, anonymous object. This was a strong conceptual idea that manifested itself into what we know and love as Bitcoin. If we can decentralise something so fiat and ingrained as currency, what stops us from decentralising other seemingly government controlled objects?</description>
+    </item>
+    
+    <item>
+      <title>Set Theory for Programmers</title>
+      <link>https://polymath.cloud/sets/</link>
+      <pubDate>Tue, 29 Jan 2019 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/sets/</guid>
+      <description>Set Theory If you&amp;rsquo;ve spent time on HackerRank or LeetCode, you might have noticed most of the optimal solutions use Set Theory. By reading this article, you will gain a deeper knowledge into set theory and how to use it to create optimal algorithms. Set Theory was invented (or found, depending on how you view maths) by George Cantor. It revolves around the idea of sets, as in collections of objects.</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Logic</title>
+      <link>https://polymath.cloud/mathematical-logic/</link>
+      <pubDate>Sun, 27 Jan 2019 16:08:10 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/mathematical-logic/</guid>
+      <description>Logic has been used for thousands of years, from philosophy to mathematics and now to artificial intelligence. Logic is concerned with the truth and falsity of statements. The logic we will be studying will be answering the question: “when does a statement follow from a set of statements?”
+Note to the reader I have previously written about logic here and therefore this article will be relatively short when it comes to explaining everything about logic.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Probability &amp; Statistics</title>
+      <link>https://polymath.cloud/an-introduction-to-probability-statistics/</link>
+      <pubDate>Sat, 26 Jan 2019 15:23:06 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/an-introduction-to-probability-statistics/</guid>
+      <description>“Probability Theory Should Be Thrown Under A Bus” — Artifical Intelligence Expert, Carlos E. Perez.
+ We start off by studying Probability Theory and then delve into statistics.
+Probability and Statistics are used all the time in Computer Science. Machine learning? It’s probability. Data science? It’s statistics.
+High Level Probability Probability provides a way of summarising the uncertainty that comes from our laziness and ignorance. In other words, probability finds out the likeliness that something will happen.</description>
+    </item>
+    
+    <item>
+      <title>Brazil Open Sources Legislative Texts</title>
+      <link>https://polymath.cloud/brazil-open-sources-legislative-texts/</link>
+      <pubDate>Sat, 26 Jan 2019 15:19:23 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/brazil-open-sources-legislative-texts/</guid>
+      <description>Brazil has developed what is being called an “e-democracy” tool which allows anyone in the public to edit legislative texts and add suggestions.
+The tool, called WikiLegis is an initiative by the House of Representatives and the creator is LabHacker which states
+ “to articulate a network among parliamentarians, hackers and civil society that contributes to the culture of transparency and social participation through the management of public data.”
+ Currently it’s use is limited to two laws: the Access to Information Law (which is Brazil’s version of the Freedom of Information Act) and the Rules of Instruments for Public Efficiency.</description>
+    </item>
+    
+    <item>
+      <title>This Simple Trick will Save you Hours of Expanding Binomials</title>
+      <link>https://polymath.cloud/this-simple-trick-will-save-you-hours-of-expanding-binomials/</link>
+      <pubDate>Sat, 26 Jan 2019 15:17:14 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/this-simple-trick-will-save-you-hours-of-expanding-binomials/</guid>
+      <description>Ever wanted to know how to expand (a+b)¹⁸⁷? Well now you can!
+What is a Binomial Coefficient? First, let’s start with a binomial. A binomial is a polynomial with two terms typically in the format (a+b)²
+A binomial coefficient is raising a binomial to the power of n, like so (a+b)^n
+We all remember from school that (a+b)² = a² + 2ab + b², but what is (a+b)⁸? This where the binomial formula comes in handy.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Combinatorics</title>
+      <link>https://polymath.cloud/an-introduction-to-combinatorics/</link>
+      <pubDate>Sat, 26 Jan 2019 15:16:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/an-introduction-to-combinatorics/</guid>
+      <description>Please consider the following problems:
+ How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers? In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces? How many ways are there of rearranging the letters in the word “ABRACADABRA”?</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Relations</title>
+      <link>https://polymath.cloud/mathematical-relations/</link>
+      <pubDate>Sat, 26 Jan 2019 15:15:39 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/mathematical-relations/</guid>
+      <description>“Relationships suck” — Everyone at some point in their life
+ What is a relation? There is a relation between two things if there is some connection between them. Relations exist on Facebook, for example. In this blog post we’ll be studying relations between sets.
+Believe it or not, but relations between sets occur naturally in every day life such as the relation between a company and its telephone numbers</description>
+    </item>
+    
+    <item>
+      <title>Functions cheat sheet</title>
+      <link>https://polymath.cloud/functions-cheat-sheet/</link>
+      <pubDate>Sat, 26 Jan 2019 15:13:40 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/functions-cheat-sheet/</guid>
+      <description>Flashcards I suggest making your own flashcards to study, but if you don’t want to you can use my flashcard deck here.
+Functions Flashcards | Quizlet *Start studying Functions. Learn vocabulary, terms, and more with flashcards, games, and other study tools.*quizlet.com
+A function is just like a function in programming. It takes an input, performs some maths on it, then outputs the result.
+The syntax of a function is f(x) = 2 * x.</description>
+    </item>
+    
+  </channel>
+</rss>

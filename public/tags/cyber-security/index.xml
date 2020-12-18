@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Security on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/cyber-security/</link>
+    <description>Recent content in Cyber Security on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Nov 2020 23:46:37 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/cyber-security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How I Hacked Your Pi-Hole</title>
+      <link>https://polymath.cloud/hacked-pihole/</link>
+      <pubDate>Sun, 29 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/hacked-pihole/</guid>
+      <description>There are 5308 publically available Pi-Holes according to Shodan.io. This article will demonstrate how bad of an idea this is.
+If you&amp;rsquo;ve spent any time over at r/pihole, you&amp;rsquo;ll know they always talk about not having publically available Pi-Holes. But, why? What&amp;rsquo;s the harm?
+Out of the 5308 Pi-Holes publically available, I found 100 of them are vulnerable. Vulnerable means:
+ You can access /admin/index.php?login. This is because not all Pi-Holes listed by Shodan work in the way we expect them to.</description>
+    </item>
+    
+    <item>
+      <title>What rooms should you do? A free guide for beginners</title>
+      <link>https://polymath.cloud/free-rooms/</link>
+      <pubDate>Tue, 01 Sep 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/free-rooms/</guid>
+      <description>You want to do TryHackMe, but perhaps you do not want to pay for a subscription. This means you will not get access to paths, which are a guided series of rooms to take you from not knowing something to knowing something.
+This blog post will detail a free path I have created for you, taking you from a beginner to a medium level. This blog post will stay continuously updated with new rooms as they come out and will improve with suggestions from the community.</description>
+    </item>
+    
+  </channel>
+</rss>

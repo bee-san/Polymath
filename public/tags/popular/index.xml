@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Popular on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/popular/</link>
+    <description>Recent content in Popular on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Sep 2020 11:53:11 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/popular/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How Does Tor Really Work? The Definitive Visual Guide (2020)</title>
+      <link>https://polymath.cloud/how-does-tor-really-work/</link>
+      <pubDate>Sat, 19 Sep 2020 11:53:11 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/how-does-tor-really-work/</guid>
+      <description>Today, we&amp;rsquo;re going to do a technical deep-dive into how Tor really works.
+No mention of how to access Tor, no mention of what might be on Tor. This is how Tor works.
+Without speculation and without exaggeration of what Tor is. Just a deep-dive into the technical stuff of how Tor works.
+This article is designed to be read by anyone, with **ZERO **knowledge on networking or Tor.
+Let&amp;rsquo;s dive right in.</description>
+    </item>
+    
+    <item>
+      <title>Learn Functional Python in 10 Minutes</title>
+      <link>https://polymath.cloud/learn-functional-python-in-10-minutes/</link>
+      <pubDate>Wed, 20 Nov 2019 22:55:19 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/learn-functional-python-in-10-minutes/</guid>
+      <description>In this short 10 minute article, you’ll learn what the functional paradigm is in Python. You’ll also learn about list comprehensions.
+Table of Contents  Table of Contents  At least this isn&amp;rsquo;t a pop up! 😅   📌 Functional Paradigm 🌍 How Does Python&amp;rsquo;s Map Work? 🔑 Lambda Expressions in Python 🔹 Reduce Function in Python 🍳 Filter ☁ Higher Order Functions in Python 🎶 Partial Application with Functions 🐍 Functional Programming Isn’t Pythonic 🎓 List Comprehensions 🤔 Comprehensions of Any Iterable 👋 Conclusion   At least this isn&amp;rsquo;t a pop up!</description>
+    </item>
+    
+    <item>
+      <title>What Is Dynamic Programming With Python Examples</title>
+      <link>https://polymath.cloud/dynamic-programming/</link>
+      <pubDate>Tue, 19 Nov 2019 01:44:21 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/dynamic-programming/</guid>
+      <description>Dynamic programming is breaking down a problem into smaller sub-problems, solving each sub-problem and storing the solutions to each of these sub-problems in an array (or similar data structure) so each sub-problem is only calculated once.
+It is both a mathematical optimisation method and a computer programming method.
+Optimisation problems seek the maximum or minimum solution. The general rule is that if you encounter a problem where the initial algorithm is solved in O(2n) time, it is better solved using Dynamic Programming.</description>
+    </item>
+    
+    <item>
+      <title>Timsort — the fastest sorting algorithm you’ve never heard of</title>
+      <link>https://polymath.cloud/timsort/</link>
+      <pubDate>Thu, 10 Oct 2019 16:17:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/timsort/</guid>
+      <description>Timsort: A very fast , O(n log n), stable sorting algorithm built for the real world — not constructed in academia. Image of Tim Peter from here Timsort is a sorting algorithm that is efficient for real-world data and not created in an academic laboratory. Tim Peters created Timsort for the Python programming language in 2001. Timsort first analyses the list it is trying to sort and then chooses an approach based on the analysis of the list.</description>
+    </item>
+    
+  </channel>
+</rss>

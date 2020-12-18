@@ -1,23 +1,970 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://example.org/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Polymath.cloud</title>
+    <link>https://polymath.cloud/</link>
+    <description>Recent content on Polymath.cloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Dec 2020 16:43:37 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://polymath.cloud/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>http://example.org/posts/markdown/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>3 Tips For Making a Popular Open Source Project in 2021 [Ultimate Guide]</title>
+      <link>https://polymath.cloud/make-popular-open-source-projects/</link>
+      <pubDate>Thu, 17 Dec 2020 16:43:37 +0000</pubDate>
       
-      <guid>http://example.org/posts/markdown/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      <guid>https://polymath.cloud/make-popular-open-source-projects/</guid>
+      <description>TODO  Alt text on images Break up text Grammarly  Introduction I have around ~10k GitHub stars. I’ve come up with a bullet pointed actionable list of how to make open source projects popular.
+One of the projects I created had 67 lines of code and had only existed for 3 days before it hit 1.7k stars.
+Humans are predictable creatures when it comes to our attention. I’ll show you data backed actionable insights that can help you create popular software.</description>
+    </item>
+    
+    <item>
+      <title>Management Fundamentals for AWS</title>
+      <link>https://polymath.cloud/aws-management/</link>
+      <pubDate>Thu, 03 Dec 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-management/</guid>
+      <description>AWS Config One of the largest headaches we have is understanding:
+ What resources do we have? Do we have resources that are no longer needed? Their status, security vulns. How are they linked? What changes have occurred on a resource? Is the infrastructure compliant with governance controls? Accurate auditing information?  AWS Config records and captures source changes allowing us to perform actions against the data. It can:
+ Capture resource changes Act as a resource inventory.</description>
+    </item>
+    
+    <item>
+      <title>AWS Cost Management and Customer Support</title>
+      <link>https://polymath.cloud/aws-cost/</link>
+      <pubDate>Wed, 02 Dec 2020 23:42:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-cost/</guid>
+      <description>There are 4 main support plans::
+ Access online resources (basic) General guidance from AWS (Developer) 24-hour technical support (Business) Dedicated Account Managers and Personaliiseid Consultation  Total Cost of Ownership The Total Cost of Ownership (ToC) calculator is a free calculator to compare AWS cloud and on-premise costs. It&amp;rsquo;s designed for anyone who is considering migrating to AWS.
+It creates a report after we complete a short questionaire.
+The report will include estimated on-premise costs such as:</description>
+    </item>
+    
+    <item>
+      <title>Overview of AWS Authentication, Authorisation, and Access Control</title>
+      <link>https://polymath.cloud/aws-authentication-authorisation-access/</link>
+      <pubDate>Wed, 02 Dec 2020 23:42:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-authentication-authorisation-access/</guid>
+      <description>Authentication Comprised of 2 parts of information.
+ Who you are?  Presenting your identity (login username). Unique value within the system we are trying to authenticate to.
+Verify you are who you say you are. Passwords, MFA, etc. This does not have to be unique.  We may use credit card pin numbers for authentication. Identity = credit card, verify = pin number.
+Authorisation Happens before authentication.
+System in which we have authenticated to establishes what level of privileges we can access.</description>
+    </item>
+    
+    <item>
+      <title>Overview of Azure Services</title>
+      <link>https://polymath.cloud/azure-overview-services/</link>
+      <pubDate>Wed, 02 Dec 2020 23:42:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/azure-overview-services/</guid>
+      <description>Compute  Azure Virtual Machines Azure App Service Azure Container Instance Azure Functions   Storage  Blob Storage Azure File Storage Azure Data Lake Storage Gen2 Relational Databases Azure Synapse Analytics NoSQL   Netowkring  Virtual Network (VNet) Subnets VVNet peering Azure VPN ExpressRoute   Miigration  Azure Migrates Azure Active Directory   DevOps  Azure DevOps Azure Pipelines Azure DevTest Labs Azure CDN   IoT  Azure IoT Central Azure IoT Hub Azure Sphere   Analytics  Azure HDInsight Azure Databricks Azure Synapse Analytics   AI  Cognitive Services Azure Bot Service Azure Machine Learning Studio Machine Learning Services   Integration  Logic Apps Event Grid    Compute Azure Virtual Machines Runs VMs for Windows &amp;amp; Linux.</description>
+    </item>
+    
+    <item>
+      <title>Overview of Azure Storage</title>
+      <link>https://polymath.cloud/azure-overview-storage/</link>
+      <pubDate>Wed, 02 Dec 2020 23:42:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/azure-overview-storage/</guid>
+      <description>Blob storage Binary Large Object (Blob) storage is a way of storing large files.
+There are 3 types of Blobs in Azure:
+Blob Blocks Divided into blocks of up to 100MB in size. Blobs of up to 4.75TB can be stored as blob blocks in Azure.
+Using multiple blocks to represent the blob allows for more efficient handling of large blobs. Usually, the complexity of managing individual blocks is handled for you so you can simply deal with the entire blob rather than individual blocks.</description>
+    </item>
+    
+    <item>
+      <title>Peer 2 Peer Networks</title>
+      <link>https://polymath.cloud/p2p-book/</link>
+      <pubDate>Wed, 02 Dec 2020 01:37:42 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/p2p-book/</guid>
+      <description>https://tryhackme.com/room/bruteit
+Preface If you&amp;rsquo;re reading this, like me, you must strangely like the idea of effectively designing peer to peer networks.
+Almost no real world usage (unless you work in this industry), but nevertheless the design is so interesting!
+Peer to peer networks effectively are close approximations of how humans interact. Much like how object orientated tried to represent how humans think, I believe peer to peer networks are how humans communicate.</description>
+    </item>
+    
+    <item>
+      <title>Can Artificial Intelligence ever replace penetration testers?</title>
+      <link>https://polymath.cloud/ai-pentesting/</link>
+      <pubDate>Tue, 01 Dec 2020 01:50:34 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/ai-pentesting/</guid>
+      <description>Machine Learning  Supervised Learning Unsupervised Learning Reinforcement Learning  AlphaGo  Learning from the greats Teaching itself   Creativity     Applications in InfoSec  1. Learning from others 2. Learning from itself Blue Team   Humans vs AI Conclusion  In this blog post we&amp;rsquo;ll explore if machines can fully replace pe
+Something to note is that predicting the future is hard and this is all entirely my opinion.</description>
+    </item>
+    
+    <item>
+      <title>Learn Functional Python in 10 Minutes</title>
+      <link>https://polymath.cloud/functional/</link>
+      <pubDate>Mon, 30 Nov 2020 21:21:14 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/functional/</guid>
+      <description>In this short 10 minute article, you’ll learn what the functional paradigm is in Python. You’ll also learn about list comprehensions.
+📌 Functional Paradigm In an imperative paradigm, we do things by giving the computer a sequence of tasks and then it executes them. While executing them, it can change states. For example, let’s say we set A = 5, then we change the value of A. We have variables in the sense that the value inside the variable varies.</description>
+    </item>
+    
+    <item>
+      <title>Creating your own VPN with PiHole &amp; UnBound on AWS</title>
+      <link>https://polymath.cloud/pihole-vpn/</link>
+      <pubDate>Sun, 29 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/pihole-vpn/</guid>
+      <description>Introduction In this blog post we will:
+ Create our own VPN on AWS Add PiHole to iit Use Unbound as our DNS resolver Access the VPN using Wireguard Not go bankrupt doing it!  Step 1 Create an AWS lightsail instance on Amazon.
+We use Lightsail instead of EC2 because EC costs £0.12 / GB on outbound transfers. That means for 1 TB / month it&amp;rsquo;ll cost £120.
+Lightsail costs £3.</description>
+    </item>
+    
+    <item>
+      <title>How I Hacked Your Pi-Hole</title>
+      <link>https://polymath.cloud/hacked-pihole/</link>
+      <pubDate>Sun, 29 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/hacked-pihole/</guid>
+      <description>There are 5308 publically available Pi-Holes according to Shodan.io. This article will demonstrate how bad of an idea this is.
+If you&amp;rsquo;ve spent any time over at r/pihole, you&amp;rsquo;ll know they always talk about not having publically available Pi-Holes. But, why? What&amp;rsquo;s the harm?
+Out of the 5308 Pi-Holes publically available, I found 100 of them are vulnerable. Vulnerable means:
+ You can access /admin/index.php?login. This is because not all Pi-Holes listed by Shodan work in the way we expect them to.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to IAM with AWS</title>
+      <link>https://polymath.cloud/aws-iam/</link>
+      <pubDate>Sun, 29 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-iam/</guid>
+      <description>Identity &amp;amp; Access Management Identities are required to authenticate to AWS accounts.
+Username = identity Password = verification
+Access management relates to what an identity can access once its been authenticated.
+The AWS IAM service is used to centrally manage and control security permissions.
+ Users: These are objects within IAM identifying different users. Groups: These are objects that contain multiple users. Roles: These are objects that different identities can adopt to assume a new set of permissions.</description>
+    </item>
+    
+    <item>
+      <title>Algorithmic Design Paradigms</title>
+      <link>https://polymath.cloud/algorithms/</link>
+      <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/algorithms/</guid>
+      <description>Greedy Algorithms Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+Why Are Greedy Algorithms Called Greedy? Algorithms are called greedy when they utilise the greedy property. The greedy property is:
+ At that exact moment in time, what is the optimal choice to make?</description>
+    </item>
+    
+    <item>
+      <title>Favourite Books</title>
+      <link>https://polymath.cloud/books/</link>
+      <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/books/</guid>
+      <description>How to Win Friends and Influence People  If you talk to other humans, if you interact with humans, you must read this book. No exceptions. All my life, people told me that making friends and influencing people is an artform - something you can&amp;rsquo;t learn. This book showed me the hidden rules required to win friends.
+Since reading this book, every aspect of my friendships / relationships have gone up tenfold.</description>
+    </item>
+    
+    <item>
+      <title>All You Need to Know About Big O Notation [Python Examples]</title>
+      <link>https://polymath.cloud/big-o-notation/</link>
+      <pubDate>Thu, 08 Oct 2020 16:43:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/big-o-notation/</guid>
+      <description>By the end of this article, you&amp;rsquo;ll thoroughly understand Big O notation. You&amp;rsquo;ll also know how to use it in the real world, and even the mathematics behind it!
+In computer science, time complexity is the computational complexity that describes the amount of time it takes to run an algorithm.
+Big O notation is a method for determining how fast an algorithm is. Using Big O notation, we can learn whether our algorithm is fast or slow.</description>
+    </item>
+    
+    <item>
+      <title>Disaster Recovery with AWS for CCP</title>
+      <link>https://polymath.cloud/aws-disaster-recovery/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-disaster-recovery/</guid>
+      <description>We&amp;rsquo;ll need to invoke our disaster recovery plans to restore our data if our storage or server fails.
+With traditional backup methods, the data we need might not be available because:
+ Backup data is stored in the same location as the production data, and the disaster impacted the backups. If using a tape backup method, the tapes could fail making the data unreadable. The tapes could get lost when in transit.</description>
+    </item>
+    
+    <item>
+      <title>Making Hacking Accessible</title>
+      <link>https://polymath.cloud/a11y/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/a11y/</guid>
+      <description>I hate the current state of hacking education, or of hacking tools. None of it is accessible to any minority.
+In this post, I aim to distil some guidelines for making hacking accessible.
+I am by no means an expert. I don’t even work in A11Y. However, I do have some wonderful friends that do — and I am passionate about this subject.
+Why We Need to Focus on Accessibility  Basic human rights An expansion in the infosec community of new tools, new learning platforms, and new hackers SEO It is legally required.</description>
+    </item>
+    
+    <item>
+      <title>Python Zero to Hero</title>
+      <link>https://polymath.cloud/python/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/python/</guid>
+      <description>What is Python? Python is a programming language created by Guido (pronounced gree-do) Van Rossum. Specifically, Python is an intrepreted, high-level, general purpose programming language.
+Let&amp;rsquo;s talk about what these mean.
+General Purpose General Purpose means that Python was created to do everything. Some programming languages like Matlab or R were created for data science. Others like HTML / CSS were created for web development.
+Python aims to do everything, it is generalised.</description>
+    </item>
+    
+    <item>
+      <title>How Does Tor Really Work? The Definitive Visual Guide (2020)</title>
+      <link>https://polymath.cloud/how-does-tor-really-work/</link>
+      <pubDate>Sat, 19 Sep 2020 11:53:11 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/how-does-tor-really-work/</guid>
+      <description>Today, we&amp;rsquo;re going to do a technical deep-dive into how Tor really works.
+No mention of how to access Tor, no mention of what might be on Tor. This is how Tor works.
+Without speculation and without exaggeration of what Tor is. Just a deep-dive into the technical stuff of how Tor works.
+This article is designed to be read by anyone, with **ZERO **knowledge on networking or Tor.
+Let&amp;rsquo;s dive right in.</description>
+    </item>
+    
+    <item>
+      <title>Designing Effective Peer to Peer Networks</title>
+      <link>https://polymath.cloud/p2pnetworks/</link>
+      <pubDate>Tue, 01 Sep 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/p2pnetworks/</guid>
+      <description>This is an informed opinion piece on designing effective peer to peer (P2P) networks. I&amp;rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency.
+By the end of the article, we should have a good understanding of the important questions to answer when designing effective P2P networks.
+When Should I Use a Peer to Peer Network? P2P networks can be used for all networking.</description>
+    </item>
+    
+    <item>
+      <title>What rooms should you do? A free guide for beginners</title>
+      <link>https://polymath.cloud/free-rooms/</link>
+      <pubDate>Tue, 01 Sep 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/free-rooms/</guid>
+      <description>You want to do TryHackMe, but perhaps you do not want to pay for a subscription. This means you will not get access to paths, which are a guided series of rooms to take you from not knowing something to knowing something.
+This blog post will detail a free path I have created for you, taking you from a beginner to a medium level. This blog post will stay continuously updated with new rooms as they come out and will improve with suggestions from the community.</description>
+    </item>
+    
+    <item>
+      <title>Packaging Your Rust Code</title>
+      <link>https://polymath.cloud/packaging-your-rust-package/</link>
+      <pubDate>Fri, 07 Aug 2020 17:35:33 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/packaging-your-rust-package/</guid>
+      <description>I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
+Follow me as we publish my package, RustScan, to multiple distributions.
+Semantic Versioning Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:
+Major.Minor.Bugs  If you have fixed some bugs, increment the bugs counter.</description>
+    </item>
+    
+    <item>
+      <title>Packaging Your Rust Code</title>
+      <link>https://polymath.cloud/packaging-your-rust-package/</link>
+      <pubDate>Fri, 07 Aug 2020 17:35:33 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/packaging-your-rust-package/</guid>
+      <description>I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
+Follow me as we publish my package, RustScan, to multiple distributions.
+Semantic Versioning Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:
+Major.Minor.Bugs  If you have fixed some bugs, increment the bugs counter.</description>
+    </item>
+    
+    <item>
+      <title>Weekly Thoughts</title>
+      <link>https://polymath.cloud/weekly_thoughts_1/</link>
+      <pubDate>Tue, 04 Aug 2020 22:05:26 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/weekly_thoughts_1/</guid>
+      <description>Hey! This is a new newsletter I am trialing. Basically, with previous newsletters I had to stick to a certain topic. Which sucks. I obsess over new things all the time. Soooo…. This newsletter is just a mish-mash of things I think about, and things I learn. Enjoy! :)
+An Algorithm for clouds I was looking up at the clouds one sunny day, and thought to myself “that’s an awfully lonely cloud.</description>
+    </item>
+    
+    <item>
+      <title>Set Theory for Competitive Programming</title>
+      <link>https://polymath.cloud/set-theory-for-competitive-programming/</link>
+      <pubDate>Sat, 25 Jul 2020 11:56:39 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/set-theory-for-competitive-programming/</guid>
+      <description>If you&amp;rsquo;ve spent time on HackerRank or LeetCode, you might have noticed most of the optimal solutions use Set Theory.
+By reading this article, you will gain a deeper knowledge into set theory and how to use it to create optimal algorithms.
+Set Theory was invented (or found, depending on how you view maths) by George Cantor. 
+It revolves around the idea of sets, as in collections of objects. Set theory is incredibly powerful and can be used to write some beautiful &amp;amp; elegant code.</description>
+    </item>
+    
+    <item>
+      <title>Packaging your Python Project</title>
+      <link>https://polymath.cloud/packaging-your-python-project/</link>
+      <pubDate>Sat, 18 Jul 2020 13:17:32 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/packaging-your-python-project/</guid>
+      <description>I was looking to package my project, Ciphey, for operating systems and for managers that isn&amp;rsquo;t PyPi. Unforuantely, there seemed to be very little information on the web about this.
+This is a guide on packaging your Python project for:
+ PyPi HomeBrew Windows Package Manager Arch User Respository  Ideas Publish each one seperately, and include a pdf containing the full book
+Include github actions for these
+Explain semenatic versioning</description>
+    </item>
+    
+    <item>
+      <title>NeoDeath - What happens when you die in the age of information?</title>
+      <link>https://polymath.cloud/neodeath-digital-death/</link>
+      <pubDate>Wed, 01 Jul 2020 12:00:40 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/neodeath-digital-death/</guid>
+      <description>This article was written in collaboration with Emily. Emily is an artist specialising in Digital Culture and is currently writing for Daily Art Magazine, she also didn&amp;rsquo;t ask me to write this about her.
+She is looking for a job. If you are interested in an amazing artist who understands digital culture and isn&amp;rsquo;t shy to ask the big questions, please check her out.
+The art in this article is from Emily.</description>
+    </item>
+    
+    <item>
+      <title>Designing Effective Peer to Peer Networks</title>
+      <link>https://polymath.cloud/designing-effective-peer-to-peer-networks/</link>
+      <pubDate>Sun, 26 Apr 2020 00:03:06 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/designing-effective-peer-to-peer-networks/</guid>
+      <description>This is an informed opinion piece on designing effective peer to peer (P2P) networks. I&amp;rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency.
+By the end of the article, we should have a good understanding of the important questions to answer when designing effective P2P networks.
+#myemail { background-color: #f0f0f0; color: black; padding: 15px; border-radius: 25px; width: 80%; margin: 0 auto; } #little { color: grey; font-size: 10px; } #email { width: 100%; padding: 10px; } #submit { width: 100%; background: rgb(36,255,204); } #gdpr { width: 15px; height: 15px; }  Want the ebook?</description>
+    </item>
+    
+    <item>
+      <title>Quotes</title>
+      <link>https://polymath.cloud/quotes/</link>
+      <pubDate>Tue, 03 Mar 2020 00:42:01 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/quotes/</guid>
+      <description>Quotes
+&amp;ldquo;An arists job is to make master pieces. Period&amp;rdquo; https://medium.com/s/story/your-work-is-the-only-thing-that-matters-26a47ccf778c
+“people who are thinking about things other than making the best product, never make the best product.”
+&amp;ldquo;The two greatest days of your life are the day you were born and the day you found out why&amp;rdquo;
+&amp;ldquo;Someone once told me the definition of hell; on your last day on earth, the person you could have become will meet the person you became.</description>
+    </item>
+    
+    <item>
+      <title>Brazil Open Sources Legislative Texts</title>
+      <link>https://polymath.cloud/brazil-oss/</link>
+      <pubDate>Wed, 29 Jan 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/brazil-oss/</guid>
+      <description>Brazil has developed what is being called an “e-democracy” tool which allows anyone in the public to edit legislative texts and add suggestions.
+The tool, called WikiLegis is an initiative by the House of Representatives and the creator is LabHacker which states
+“to articulate a network among parliamentarians, hackers and civil society that contributes to the culture of transparency and social participation through the management of public data.” Currently it’s use is limited to two laws: the Access to Information Law (which is Brazil’s version of the Freedom of Information Act) and the Rules of Instruments for Public Efficiency.</description>
+    </item>
+    
+    <item>
+      <title>Edition 1</title>
+      <link>https://polymath.cloud/edition-1/</link>
+      <pubDate>Wed, 29 Jan 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-1/</guid>
+      <description>Hello 👋 Brandon here.
+Welcome to edition 1 of my weekly newsletter 🔮 Technologically Clairvoyant. Every week, we&amp;rsquo;ll explore what the future can hold for us. This is a beta-test before I send it out to my whole list. Let me know (via email, or however else you can contact me) about:
+ What do you think of the name? Is this too technical? Fewer links, more talking?  PS: I wrote some code to automate part of this newsletter.</description>
+    </item>
+    
+    <item>
+      <title>Designing effective p2p networks</title>
+      <link>https://polymath.cloud/designing-p2p-networks/</link>
+      <pubDate>Mon, 06 Jan 2020 20:52:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/designing-p2p-networks/</guid>
+      <description>This is an opinion piece on designing effective peer to peer (p2p) networks. I&amp;rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I&amp;rsquo;ll drea\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d
+ When should I use a peer to peer network? This is a hard question to answer, because P2P networks can be used for all networking.</description>
+    </item>
+    
+    <item>
+      <title>How To Get Any Job You Want - The Definitive Guide To Employability Skills (2019)</title>
+      <link>https://polymath.cloud/employability-skills/</link>
+      <pubDate>Tue, 03 Dec 2019 17:38:15 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/employability-skills/</guid>
+      <description>This is a book I wrote on job applications. It’s now available for free right here, with no catches. Seriously. You do not have to buy anything or sign up for anything. This is the entire book, for free, with 0 content taken away and 0 added. It&amp;rsquo;s really long. If you want the convenience of flipping through pages or having a nice table of contents, buy the book below 😁</description>
+    </item>
+    
+    <item>
+      <title>Creating a Framework to Teach Key Stage 3 Students Reinforcement Learning with Autonomous (Simulated) Robots</title>
+      <link>https://polymath.cloud/dissertation/</link>
+      <pubDate>Fri, 29 Nov 2019 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/dissertation/</guid>
+      <description>Abstract Reinforcement learning has traditionally been a dull topic to learn, especially for students who may not understand programming. With this dissertation, it is shown that reinforcement learning can be joyous to learn, and easier than some might have suspected.
+This dissertation shows a framework for teaching reinforcement learning to key stage 3 school students. Using Python to implement reinforcement learning, and using lessons based around the code.
+The aim was that by teaching them a &amp;quot;hard&amp;quot; and &amp;quot;cool&amp;quot; computer science topics, the students would become engaged in the world of computer science.</description>
+    </item>
+    
+    <item>
+      <title>Learn Functional Python in 10 Minutes</title>
+      <link>https://polymath.cloud/learn-functional-python-in-10-minutes/</link>
+      <pubDate>Wed, 20 Nov 2019 22:55:19 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/learn-functional-python-in-10-minutes/</guid>
+      <description>In this short 10 minute article, you’ll learn what the functional paradigm is in Python. You’ll also learn about list comprehensions.
+Table of Contents  Table of Contents  At least this isn&amp;rsquo;t a pop up! 😅   📌 Functional Paradigm 🌍 How Does Python&amp;rsquo;s Map Work? 🔑 Lambda Expressions in Python 🔹 Reduce Function in Python 🍳 Filter ☁ Higher Order Functions in Python 🎶 Partial Application with Functions 🐍 Functional Programming Isn’t Pythonic 🎓 List Comprehensions 🤔 Comprehensions of Any Iterable 👋 Conclusion   At least this isn&amp;rsquo;t a pop up!</description>
+    </item>
+    
+    <item>
+      <title>Divide and Conquer Algorithms with Python Examples</title>
+      <link>https://polymath.cloud/divide-and-conquer-algorithms/</link>
+      <pubDate>Wed, 20 Nov 2019 16:28:45 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/divide-and-conquer-algorithms/</guid>
+      <description>Often I&amp;rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.
+Divide and Conquer is one way to attack a problem from a different angle. Don&amp;rsquo;t worry if you have **zero **experience or knowledge on the topic.</description>
+    </item>
+    
+    <item>
+      <title>How Does BitTorrent Work? a Plain English Guide</title>
+      <link>https://polymath.cloud/bit-torrent/</link>
+      <pubDate>Wed, 20 Nov 2019 13:02:50 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/bit-torrent/</guid>
+      <description>No talk about downloading things on BitTorrent. Or the best clients to do so.
+Just a deep-dive into the technical side of it.
+Anyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.
+BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.</description>
+    </item>
+    
+    <item>
+      <title>Hash functions explained for non cryptographers</title>
+      <link>https://polymath.cloud/hash-functions/</link>
+      <pubDate>Tue, 19 Nov 2019 01:47:38 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/hash-functions/</guid>
+      <description>A hash function takes a message, m, and returns a pseudo-random string of letters/numbers which should be unique to that message. Let&amp;rsquo;s say the hash function returns &amp;ldquo;aBc67D&amp;rdquo; for the message &amp;ldquo;I love dogs&amp;rdquo;. This function should not return the same &amp;ldquo;aBc67D&amp;rdquo; for &amp;ldquo;Donuts are cool&amp;rdquo;.
+Hashing algorithms have 3 requirements:
+ A hashing algorithm needs to be reasonably fast to compute and reasonably fast to verify. If you change one single bit anywhere in the message, the outputted string must look completely different.</description>
+    </item>
+    
+    <item>
+      <title>Public Key Cryptography Simply Explained</title>
+      <link>https://polymath.cloud/how-does-public-key-cryptography-work/</link>
+      <pubDate>Tue, 19 Nov 2019 01:47:08 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/how-does-public-key-cryptography-work/</guid>
+      <description>Public key cryptography seems magical to everyone, even those who understand it. In this post, I&amp;rsquo;m going to explain public key cryptography. Public Key Cryptography is based on asymmetric cryptography, so first let us talk about symmetric cryptography.
+ Symmetric Cryptography Your front door is usually locked by a key. This key unlocks &amp;amp; locks your front door. With symmetric cryptography, you have one key which you use to unlock and lock things.</description>
+    </item>
+    
+    <item>
+      <title>How to Share a Secret (Diffie-Hellman-Merkle)</title>
+      <link>https://polymath.cloud/diffie-hellman-merkle/</link>
+      <pubDate>Tue, 19 Nov 2019 01:46:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/diffie-hellman-merkle/</guid>
+      <description>Diffie-Hellman-Merkle is a way to share a secret key with someone (or something) without actually sending them the key. Before we look into how we share keys let&amp;rsquo;s first look into what keys are and why we would want to invent a method to share keys without giving the other person the key.
+ Your front door is usually locked by a key. This key unlocks &amp;amp; locks your front door.</description>
+    </item>
+    
+    <item>
+      <title>What Is Dynamic Programming With Python Examples</title>
+      <link>https://polymath.cloud/dynamic-programming/</link>
+      <pubDate>Tue, 19 Nov 2019 01:44:21 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/dynamic-programming/</guid>
+      <description>Dynamic programming is breaking down a problem into smaller sub-problems, solving each sub-problem and storing the solutions to each of these sub-problems in an array (or similar data structure) so each sub-problem is only calculated once.
+It is both a mathematical optimisation method and a computer programming method.
+Optimisation problems seek the maximum or minimum solution. The general rule is that if you encounter a problem where the initial algorithm is solved in O(2n) time, it is better solved using Dynamic Programming.</description>
+    </item>
+    
+    <item>
+      <title>Greedy Algorithms In Python</title>
+      <link>https://polymath.cloud/greedy-algorithms/</link>
+      <pubDate>Tue, 19 Nov 2019 00:58:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/greedy-algorithms/</guid>
+      <description>Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+Table of Contents  Table of Contents  At least this isn&amp;rsquo;t a full screen pop up! 😅 Why Are Greedy Algorithms Called Greedy? What Are Greedy Algorithms Used For? How Do I Create a Greedy Algorithm?</description>
+    </item>
+    
+    <item>
+      <title>Book Review: Atomic habits</title>
+      <link>https://polymath.cloud/book-review-atomic-habits/</link>
+      <pubDate>Fri, 08 Nov 2019 23:03:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/book-review-atomic-habits/</guid>
+      <description>5/5 ⭐
+Buy the book here (this is an affiliate link. I&amp;rsquo;ll get some of the money you pay for the book at no extra cost to you.)
+Atomic habits builds on the sensational work of Charles Duhigg&amp;rsquo;s The Power of Habit by applying more new &amp;amp; groundbreaking research as well as the work of many others into this short textbook on habits. Note: all words past this paragraph are taken directly from the book.</description>
+    </item>
+    
+    <item>
+      <title>How linked lists work with an application to Blockchain</title>
+      <link>https://polymath.cloud/you-dont-understand-blockchain-unless-you-understand-this-simple-data-structure/</link>
+      <pubDate>Thu, 10 Oct 2019 16:19:24 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/you-dont-understand-blockchain-unless-you-understand-this-simple-data-structure/</guid>
+      <description>The blockchain is an immutable, ordered, back-linked list of blocks of transactions. If you want to truly understand blockchain you need to understand linked lists.
+Linked Lists are a linear collection of data elements. Linearty in a linked list is not defined by each element’s physical placement. Instead each data node in a linked list points to one or two other nodes in the linked list.
+With an array such as [1, 2, 3] you know that the element 1 is at position [0] and element 2 is at position [1].</description>
+    </item>
+    
+    <item>
+      <title>Graph Theory</title>
+      <link>https://polymath.cloud/graph-theory/</link>
+      <pubDate>Thu, 10 Oct 2019 16:18:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/graph-theory/</guid>
+      <description>If you want to learn a lot about Graph Theory, check out this article
+The seven bridges of Koenigsberg is the foundation and birth of graph theory. There was a puzzle that stated:
+ Can you cross all seven bridges exactly once?
+ There are 2 rules for this problem:
+ Do not cross any bridge twice All bridges must be crossed  In the 18th Century a mathematician called Euler realised this problem was impossible.</description>
+    </item>
+    
+    <item>
+      <title>A Primer on Search Algorithms</title>
+      <link>https://polymath.cloud/a-primer-on-search-algorithms/</link>
+      <pubDate>Thu, 10 Oct 2019 16:17:55 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/a-primer-on-search-algorithms/</guid>
+      <description>“It’s written, ‘seek and ye shall find’. But first, ‘imagine what you seek’. Otherwise, you will end up searching everything everywhere forever.” Toba Beta, My Ancestor Was an Ancient Astronaut
+ This article will be a primer on search algorithms used in Artificial Intelligence. This article was formed from lecture notes from COMP111 at the University of Liverpool taught by Frank Wolter and the famous Russel, Norvig book Artificial Intelligence: A Modern Approach.</description>
+    </item>
+    
+    <item>
+      <title>Timsort — the fastest sorting algorithm you’ve never heard of</title>
+      <link>https://polymath.cloud/timsort/</link>
+      <pubDate>Thu, 10 Oct 2019 16:17:20 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/timsort/</guid>
+      <description>Timsort: A very fast , O(n log n), stable sorting algorithm built for the real world — not constructed in academia. Image of Tim Peter from here Timsort is a sorting algorithm that is efficient for real-world data and not created in an academic laboratory. Tim Peters created Timsort for the Python programming language in 2001. Timsort first analyses the list it is trying to sort and then chooses an approach based on the analysis of the list.</description>
+    </item>
+    
+    <item>
+      <title>Big omega</title>
+      <link>https://polymath.cloud/big-omega/</link>
+      <pubDate>Tue, 08 Oct 2019 16:44:24 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/big-omega/</guid>
+      <description>Big Omega Whereas Big O measures the upper bound (the maximum amount of time something can take) Big Omega (using the symbol Ω) measures the best running time.
+We say that $f(n)$ is $Ω(g(n))$ if there are real constants c and $n_0$ such that:
+$$f(n) \geq cg(n) for all n \geq n_0$$
+We say that f(n) is $\theta (g(n))$ (Theta) if f(n) is $\omega (g(n))$ and f(n) is also $O(g(n))$. Equivalently g(n) is O(f(n)) and f(n) is O(g(n)).</description>
+    </item>
+    
+    <item>
+      <title>🔐Ciphey - Automated Decryption Tool</title>
+      <link>https://polymath.cloud/ciphey/</link>
+      <pubDate>Fri, 16 Aug 2019 21:54:22 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/ciphey/</guid>
+      <description>Hi! Bit of an unusual post. I&amp;rsquo;m writing about my first open source tool, Ciphey!
+Check Ciphey out here.
+Ciphey answers the question:
+ &amp;ldquo;What does this encrypted text say?&amp;rdquo;
+ First, an important distinction.
+I define encryption as:
+ Anything that you cannot read fluently
+ When normally encryption is defined as:
+ Text that has an algorithm applied so no one apart from the intended recipients can read it</description>
+    </item>
+    
+    <item>
+      <title>Edition 8</title>
+      <link>https://polymath.cloud/edition-8/</link>
+      <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-8/</guid>
+      <description>Hello 👋 Brandon here.
+Hope you&amp;rsquo;ve all had an amazing week last week 😁
+Without further ado, let&amp;rsquo;s get right into it 🎪
+Near Future 🌑 Designing Lunar Habitats
+The same company that designed and engineering the Burj Khalifa, the worlds tallest building, is designing a moon base. In collaboration with the European Space Agency and MIT.
+The organisation says the 3 most important factors in identifying a site for lunar settlement are:</description>
+    </item>
+    
+    <item>
+      <title>Edition 7</title>
+      <link>https://polymath.cloud/edition-7/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-7/</guid>
+      <description>Hello 👋 Brandon here.
+🌊 Welcome to the seventh edition of 🔮Technologically Clairvoyant🔮
+We&amp;rsquo;re now verified on Brave Browser [or will be in 24 hours]. If you don&amp;rsquo;t know what Brave Browser is, click here. (affiliate link. I get $5 and it costs you absolutely nothing if you use this).
+If you use the Brave browser, consider supporting my site 😎
+Without further ado, let’s get into it 🎪
+Near Future 👟 Gucci uses AR to let users try on shoes</description>
+    </item>
+    
+    <item>
+      <title>Edition 6 - &#34;🔮 Technologically Clairvoyant ed. 6 - Alzheimer&#39;s, addictive social networks, 3d printing&#34;</title>
+      <link>https://polymath.cloud/edition-6-technologically-clairvoyant-ed.-6-alzheimers-addictive-social-networks-3d-printing/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-6-technologically-clairvoyant-ed.-6-alzheimers-addictive-social-networks-3d-printing/</guid>
+      <description>Hello 👋 Brandon here.
+🌊 Welcome to the sixth edition of 🔮Technologically Clairvoyant🔮
+Without further ado, let’s get into it 🎪
+Near future 🖲 Nimses - Most Addictive Social Network
+This social network pays you to use it. Every new post you create is more money for you.
+The more engagement your post gets, the more money you make. We&amp;rsquo;ve seen this with Steemit before.
+What differentiates it from Steemit is the idea that you can buy a property.</description>
+    </item>
+    
+    <item>
+      <title>Libra</title>
+      <link>https://polymath.cloud/libra/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/libra/</guid>
+      <description>Technical side of Libra Some things about this crypto:
+ It is pseudo-anonymous (there is no identity on the blockchain) It&amp;rsquo;s permissioned (like hyper ledger)  Organisations will run nodes.
+These nodes validate transactions.
+Each time a consensus is voted on, a new leader will be designated at random to count up the votes.
+Facebook says:
+&amp;ldquo;Founding Members are organizations with established reputations, making it unlikely that they would act maliciously,&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>🔮 Technologically Clairvoyant edition 5 - Libra, Sports Direct</title>
+      <link>https://polymath.cloud/technologically-clairvoyant-edition-5-libra-sports-direct/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/technologically-clairvoyant-edition-5-libra-sports-direct/</guid>
+      <description>Hello 👋 Brandon here.
+🌊 Welcome to the fifth edition of 🔮Technologically Clairvoyant🔮
+This edition is a little long. Lots of things have happened (Libra, + the 2-week break from posting about news)! I&amp;rsquo;ve reduced it to as short as it can be, I hope you don&amp;rsquo;t mind!!! 😁
+Without further ado, let’s get into it 🎪
+Near Future ♎ Facebook announces new cryptocurrency Libra, working with 100 organisations
+First, let&amp;rsquo;s get a little background on cryptocurrencies.</description>
+    </item>
+    
+    <item>
+      <title>sted</title>
+      <link>https://polymath.cloud/sted/</link>
+      <pubDate>Mon, 17 Jun 2019 21:20:47 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/sted/</guid>
+      <description>Hey!!! So the short answer is, I don&amp;rsquo;t really take notes (although sometimes I do) With the internet, I don&amp;rsquo;t believe that taking notes from a book is very useful in most cases.
+What you want to develop is assioicative knowledge. For example, you know that in the book Four Hour Body Tim Ferris talks about how to lose weight for martial arts competitions, but you don&amp;rsquo;t remember exactly what he said.</description>
+    </item>
+    
+    <item>
+      <title>jp.touma</title>
+      <link>https://polymath.cloud/jp-touma/</link>
+      <pubDate>Mon, 17 Jun 2019 20:56:02 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/jp-touma/</guid>
+      <description>Hey this is a really good question thanks!!! So i actually have a lot of opinions about this. First, I&amp;rsquo;m going to share generally how to stay motivated. Then I&amp;rsquo;m going to share specifically how to stay motivated in projects. I feel like the second one builds on from the first one.
+This is divided into two camps, sprints and jogging. When you run a marathon, you don’t sprint all the way to the end.</description>
+    </item>
+    
+    <item>
+      <title>Edition 4</title>
+      <link>https://polymath.cloud/edition-4/</link>
+      <pubDate>Sun, 09 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-4/</guid>
+      <description>Hello 👋 Brandon here.
+Welcome to Edition 4 🔮
+Near Future 🗽 New York Tenants Fight As Landlords Embrace Facial Recognition Cameras
+In a bid to stop facial recongition replacing traditional keys, 130 tenants have signed a petition. The public sector heavily regulates facial recognition, but there are currently no laws in the private sector.
+On the one hand, keys are often lost. Tenants come and go. This all saves money for the landlords.</description>
+    </item>
+    
+    <item>
+      <title>Edition 3</title>
+      <link>https://polymath.cloud/edition-3/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-3/</guid>
+      <description>Hello 👋 Brandon here.
+🌊 Welcome to the third edition of 🔮Technologically Clairvoyant🔮
+No announcements this week, so let’s get right into it 🎪
+Near Future 🚅 Netherlands’s Rail System Uses WiFi Tracking
+Following on from last week, the Netherlands publicly admits to using WiFi tracking. However, unlike TFL, they detail more on why and how. Firstly, lets cover the security concerns. MAC addresses are uniquely identifiable addresses which can identify a network card.</description>
+    </item>
+    
+    <item>
+      <title>Edition 2</title>
+      <link>https://polymath.cloud/edition-2/</link>
+      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/edition-2/</guid>
+      <description>Hello 👋 Brandon here.
+🌊 Welcome to the second edition of 🔮Technologically Clairvoyant🔮
+We now have a website! You can view past editions of this newsletter here: https://Technologicallyclairvoyant.com (Github)
+Without further ado, let’s get into it 🎪
+Near Future 🚀 NASA Has Autonomous Robots On The ISS
+NASA’s first robot, Bumble, can de-dock itself and float to an astronaut to provide a research terminal. In the future, it’d be interesting to see most of the International Space Station automated by robots.</description>
+    </item>
+    
+    <item>
+      <title>These books will change your life</title>
+      <link>https://polymath.cloud/my-favourite-books/</link>
+      <pubDate>Sun, 14 Apr 2019 13:40:32 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/my-favourite-books/</guid>
+      <description>Note: these links are affiliate links. If you buy through these links I will get a small portion of the profit at no extra cost to you.
+ How to Win Friends and Influence People  If you talk to other humans, if you interact with humans, you must read this book. No exceptions. All my life, people told me that making friends and influencing people is an artform - something you can&amp;rsquo;t learn.</description>
+    </item>
+    
+    <item>
+      <title>A guide to Altcoins.</title>
+      <link>https://polymath.cloud/a-guide-to-altcoins/</link>
+      <pubDate>Sun, 14 Apr 2019 13:27:03 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/a-guide-to-altcoins/</guid>
+      <description>There are many Alternate (Alt) coins on the market, but what makes them so different? Why would people invest in them instead of Bitcoin? This article seeks to explain Altcoins.
+Note: This article is not a primer on Bitcoin and presumes you have fundamental knowledge of cryptocurrencies. If not, please read this article. Ripple Ripple is one of the largest cryptocurrencies on the market. Ripple’s website explains its philoposphy, as seen below</description>
+    </item>
+    
+    <item>
+      <title>Humanity is dying, we need to save the bees.</title>
+      <link>https://polymath.cloud/humanity-is-dying-we-need-to-save-the-bees/</link>
+      <pubDate>Sat, 13 Apr 2019 10:21:14 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/humanity-is-dying-we-need-to-save-the-bees/</guid>
+      <description>“The bee is more honored than other animals, not because she labors, but because she labors for others.”
+  — St. John Chrysostom.
+ A third of our crops rely on pollination from bees, 75% of fruit and vegetables need bees to pollinate them. If suddenly a third of our crops and 75% of fruit and vegetables disappear from the planet, we will struggle to maintain our global population and to provide food to our nation.</description>
+    </item>
+    
+    <item>
+      <title>An Algorithm for Finding Anagrams</title>
+      <link>https://polymath.cloud/an-algorithm-for-finding-anagrams/</link>
+      <pubDate>Mon, 08 Apr 2019 00:28:23 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/an-algorithm-for-finding-anagrams/</guid>
+      <description>Finding anagrams of words does not look like a difficult problem but has an interesting solution.
+An anagram is a word or sentence that can be transformed into another word or sentence. Elvis has all the same letters as Lives, so Elvis is an anagram of Lives. The way most people would immediately solve this problem would be to take a word, go through every word in the dictionary and see if the combinations of letters match exactly.</description>
+    </item>
+    
+    <item>
+      <title>Zero Power Computing — How to Perform Calculations Using Zero Power</title>
+      <link>https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/</link>
+      <pubDate>Mon, 08 Apr 2019 00:28:02 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/</guid>
+      <description>Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.
+The smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing.</description>
+    </item>
+    
+    <item>
+      <title>Who needs painkillers when you have virtual reality?</title>
+      <link>https://polymath.cloud/who-needs-painkillers-when-you-have-virtual-reality/</link>
+      <pubDate>Sun, 07 Apr 2019 17:35:16 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/who-needs-painkillers-when-you-have-virtual-reality/</guid>
+      <description>Introduction Image of Blain Baxter from here 10-year-old Blaine Baxter injured his arm in a go-karting accident last year. Painful daily dressing changes at the hospital made him so anxious he had to be sedated. Not only was the sedation costing money, but Blaine was still anxious before the sedation.
+Two weeks into his stay at Lucile Packard Children’s Hospital Stanford, a team of pain management specialists suggested he tried playing games using the Samsung Gear VR.</description>
+    </item>
+    
+    <item>
+      <title>Finding The Most Important Sentences Using NLP &amp; TF-IDF</title>
+      <link>https://polymath.cloud/tfidf/</link>
+      <pubDate>Sun, 07 Apr 2019 17:34:19 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/tfidf/</guid>
+      <description>We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!
+When we’re done, it’ll look like this: News article found here.</description>
+    </item>
+    
+    <item>
+      <title>What is a Decision Tree in Machine Learning?</title>
+      <link>https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/</link>
+      <pubDate>Sun, 07 Apr 2019 17:34:08 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/</guid>
+      <description>Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.
+Trees are weird in computer science.</description>
+    </item>
+    
+    <item>
+      <title>AVL Trees - Trees that can keep balanced by rotating</title>
+      <link>https://polymath.cloud/avl/</link>
+      <pubDate>Sun, 07 Apr 2019 11:30:38 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/avl/</guid>
+      <description>An AVL tree (named after inventors Adelson-Velsky and Landis) is a self-balancing binary search tree.
+Before we delve into AVL trees, we need to learn a few things.
+ Height of a tree The height of a tree is the length of the longest path from the root node (the top node) to some node. In the image above, the tree has a height of 3.
+This tree is called balanced.</description>
+    </item>
+    
+    <item>
+      <title>Bitcoins biggest innovation wasn’t the currency</title>
+      <link>https://polymath.cloud/bitcoin-innovation/</link>
+      <pubDate>Sat, 06 Apr 2019 10:50:35 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/bitcoin-innovation/</guid>
+      <description>Decentralising a government controlled object such as currency is so much bigger than you know.
+Bitcoin made its debut in 2011, but the most important thing about it was the concept. The idea of taking something as tangible and government controlled as currency and turning it into a decentralised, anonymous object. This was a strong conceptual idea that manifested itself into what we know and love as Bitcoin. If we can decentralise something so fiat and ingrained as currency, what stops us from decentralising other seemingly government controlled objects?</description>
+    </item>
+    
+    <item>
+      <title>Absolute Fundamentals of Machine Learning</title>
+      <link>https://polymath.cloud/ml-fundamentals/</link>
+      <pubDate>Mon, 11 Mar 2019 14:48:10 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/ml-fundamentals/</guid>
+      <description>Absolute Fundamentals of Machine Learning https://unsplash.com/photos/0E_vhMVqL9g Machine learning, what a buzzword. I’m sure you all want to understand machine learning, and that’s what I’m going to teach in this article.
+I found that learning the theroetical side alongside the programming side makes it easier to learn both, so this article features both easy to understand mathematics and the algorithms implemented in Python. Also, technology becomes outdated — fast. The code used in this tutorial will likely be meaningless in 5 years time.</description>
+    </item>
+    
+    <item>
+      <title>Licensing</title>
+      <link>https://polymath.cloud/licensing/</link>
+      <pubDate>Sun, 10 Feb 2019 23:31:58 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/licensing/</guid>
+      <description>You are allowed to reprint anything from my website so long as it follows these rules:
+ You reprint **parts **of it. You reprint the entire thing, with my full name and website link for non commercial use.  The knowledge on this website is all public domain, but the formulation of words and images is my own content. If you republish parts, please cite me (you don&amp;rsquo;t have to). I&amp;rsquo;m a university student, I don&amp;rsquo;t have authority in this domain yet so it would mean a lot to me if you did cite me ✨✨😁😁✨✨</description>
+    </item>
+    
+    <item>
+      <title>Barclays proposal</title>
+      <link>https://polymath.cloud/barclays-proposal/</link>
+      <pubDate>Sun, 10 Feb 2019 20:58:49 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/barclays-proposal/</guid>
+      <description>As a diverse team of students, at the University of Liverpool, from China, United Kingdom and Ukraine, we are engaging with the local community and enhancing safety for residents. Our idea is to develop an app to determine the &amp;lsquo;safest&amp;rsquo; route from your location to where you want to be. In Liverpool there is a lot of crimes committed to people walking from once place to another. Examples of crimes which occur commonly are mugging or anti-social behavior induced violence.</description>
+    </item>
+    
+    <item>
+      <title>How to write a blog post</title>
+      <link>https://polymath.cloud/blogging/</link>
+      <pubDate>Tue, 29 Jan 2019 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/blogging/</guid>
+      <description>How to write a blog post Hi. This is the checklists I use whenever I post a blogpost. Enjoy :) Also, this is my checklist. It contains hints / things I&amp;rsquo;ll want to do. It&amp;rsquo;s customised to me. You might see a lot of SEO / Convertkit stuff here. Convertkit is my email program of choice. Here are some affiliate links if you want to use these tools. I&amp;rsquo;ll get some money if you use them at no extra cost to you.</description>
+    </item>
+    
+    <item>
+      <title>Set Theory for Programmers</title>
+      <link>https://polymath.cloud/sets/</link>
+      <pubDate>Tue, 29 Jan 2019 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/sets/</guid>
+      <description>Set Theory If you&amp;rsquo;ve spent time on HackerRank or LeetCode, you might have noticed most of the optimal solutions use Set Theory. By reading this article, you will gain a deeper knowledge into set theory and how to use it to create optimal algorithms. Set Theory was invented (or found, depending on how you view maths) by George Cantor. It revolves around the idea of sets, as in collections of objects.</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Logic</title>
+      <link>https://polymath.cloud/mathematical-logic/</link>
+      <pubDate>Sun, 27 Jan 2019 16:08:10 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/mathematical-logic/</guid>
+      <description>Logic has been used for thousands of years, from philosophy to mathematics and now to artificial intelligence. Logic is concerned with the truth and falsity of statements. The logic we will be studying will be answering the question: “when does a statement follow from a set of statements?”
+Note to the reader I have previously written about logic here and therefore this article will be relatively short when it comes to explaining everything about logic.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Probability &amp; Statistics</title>
+      <link>https://polymath.cloud/an-introduction-to-probability-statistics/</link>
+      <pubDate>Sat, 26 Jan 2019 15:23:06 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/an-introduction-to-probability-statistics/</guid>
+      <description>“Probability Theory Should Be Thrown Under A Bus” — Artifical Intelligence Expert, Carlos E. Perez.
+ We start off by studying Probability Theory and then delve into statistics.
+Probability and Statistics are used all the time in Computer Science. Machine learning? It’s probability. Data science? It’s statistics.
+High Level Probability Probability provides a way of summarising the uncertainty that comes from our laziness and ignorance. In other words, probability finds out the likeliness that something will happen.</description>
+    </item>
+    
+    <item>
+      <title>Brazil Open Sources Legislative Texts</title>
+      <link>https://polymath.cloud/brazil-open-sources-legislative-texts/</link>
+      <pubDate>Sat, 26 Jan 2019 15:19:23 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/brazil-open-sources-legislative-texts/</guid>
+      <description>Brazil has developed what is being called an “e-democracy” tool which allows anyone in the public to edit legislative texts and add suggestions.
+The tool, called WikiLegis is an initiative by the House of Representatives and the creator is LabHacker which states
+ “to articulate a network among parliamentarians, hackers and civil society that contributes to the culture of transparency and social participation through the management of public data.”
+ Currently it’s use is limited to two laws: the Access to Information Law (which is Brazil’s version of the Freedom of Information Act) and the Rules of Instruments for Public Efficiency.</description>
+    </item>
+    
+    <item>
+      <title>This Simple Trick will Save you Hours of Expanding Binomials</title>
+      <link>https://polymath.cloud/this-simple-trick-will-save-you-hours-of-expanding-binomials/</link>
+      <pubDate>Sat, 26 Jan 2019 15:17:14 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/this-simple-trick-will-save-you-hours-of-expanding-binomials/</guid>
+      <description>Ever wanted to know how to expand (a+b)¹⁸⁷? Well now you can!
+What is a Binomial Coefficient? First, let’s start with a binomial. A binomial is a polynomial with two terms typically in the format (a+b)²
+A binomial coefficient is raising a binomial to the power of n, like so (a+b)^n
+We all remember from school that (a+b)² = a² + 2ab + b², but what is (a+b)⁸? This where the binomial formula comes in handy.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Combinatorics</title>
+      <link>https://polymath.cloud/an-introduction-to-combinatorics/</link>
+      <pubDate>Sat, 26 Jan 2019 15:16:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/an-introduction-to-combinatorics/</guid>
+      <description>Please consider the following problems:
+ How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers? In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces? How many ways are there of rearranging the letters in the word “ABRACADABRA”?</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Relations</title>
+      <link>https://polymath.cloud/mathematical-relations/</link>
+      <pubDate>Sat, 26 Jan 2019 15:15:39 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/mathematical-relations/</guid>
+      <description>“Relationships suck” — Everyone at some point in their life
+ What is a relation? There is a relation between two things if there is some connection between them. Relations exist on Facebook, for example. In this blog post we’ll be studying relations between sets.
+Believe it or not, but relations between sets occur naturally in every day life such as the relation between a company and its telephone numbers</description>
+    </item>
+    
+    <item>
+      <title>Functions cheat sheet</title>
+      <link>https://polymath.cloud/functions-cheat-sheet/</link>
+      <pubDate>Sat, 26 Jan 2019 15:13:40 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/functions-cheat-sheet/</guid>
+      <description>Flashcards I suggest making your own flashcards to study, but if you don’t want to you can use my flashcard deck here.
+Functions Flashcards | Quizlet *Start studying Functions. Learn vocabulary, terms, and more with flashcards, games, and other study tools.*quizlet.com
+A function is just like a function in programming. It takes an input, performs some maths on it, then outputs the result.
+The syntax of a function is f(x) = 2 * x.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://polymath.cloud/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/about/</guid>
+      <description>about me</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://polymath.cloud/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/about/</guid>
+      <description>about me</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://polymath.cloud/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/archive/</guid>
+      <description>archive</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://polymath.cloud/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/archives/</guid>
+      <description>archive</description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://polymath.cloud/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/search/</guid>
+      <description>search</description>
     </item>
     
   </channel>

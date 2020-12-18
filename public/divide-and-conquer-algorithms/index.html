@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Divide and Conquer Algorithms with Python Examples | Polymath.cloud</title>
+
+<meta name="keywords" content="University, Computer Science, Datastructures and Algorithms" />
+<meta name="description" content="Often I&rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.
+Divide and Conquer is one way to attack a problem from a different angle. Don&rsquo;t worry if you have **zero **experience or knowledge on the topic.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/divide-and-conquer-algorithms/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="Divide and Conquer Algorithms with Python Examples" />
+<meta property="og:description" content="Often I&rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.
+Divide and Conquer is one way to attack a problem from a different angle. Don&rsquo;t worry if you have **zero **experience or knowledge on the topic." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/divide-and-conquer-algorithms/" />
+<meta property="article:published_time" content="2019-11-20T16:28:45+00:00" />
+<meta property="article:modified_time" content="2019-11-20T16:28:45+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Divide and Conquer Algorithms with Python Examples"/>
+<meta name="twitter:description" content="Often I&rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.
+Divide and Conquer is one way to attack a problem from a different angle. Don&rsquo;t worry if you have **zero **experience or knowledge on the topic."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Divide and Conquer Algorithms with Python Examples",
+  "name": "Divide and Conquer Algorithms with Python Examples",
+  "description": "Often I\u0026amp;rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability …",
+  "keywords": [
+    "University", "Computer Science", "Datastructures and Algorithms"
+  ],
+  "articleBody": "Often I’ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.\nDivide and Conquer is one way to attack a problem from a different angle. Don’t worry if you have **zero **experience or knowledge on the topic. This article is designed to be read by someone with very little programming knowledge.\nI will explain this using 3 examples. The first will be a simple explanation. The second will be some code. The final will get into the mathematical core of divide and conquer techniques. (Don’t worry, I hate maths too).\n#myemail { background-color: #f0f0f0; color: black; padding: 15px; border-radius: 25px; width: 80%; margin: 0 auto; } #little { color: grey; font-size: 10px; } #email { width: 100%; padding: 10px; } #submit { width: 100%; background: rgb(36,255,204); } #gdpr { width: 15px; height: 15px; }  At least this isn’t a pop up! 😅  Sign up now and get:   A free 202 page book on algorithmic design paradigms A free 107 page book on employability skills And much more to help you become an awesome developer!  Email\nGDPR: I consent to receive promotional emails about your products and services. HP\nOne click unsubscribe anytime.\n What Is Divide and Conquer? 🌎 Divide and conquer is where you divide a large problem up into many smaller, much easier to solve problems. The rather small example below illustrates this. We take the equation “3 + 6 + 2 + 4” and cut it down into the smallest set of equations, which is [3 + 6, 2 + 4]. It could also be [2 + 3, 4 + 6]. The order doesn’t matter, as long as we turn this one long equation into many smaller equations.\nLet’s say we have 8 numbers:\n$$4 + 6 + 3 + 2 + 8 + 7 + 5 + 1$$\nWe want to add them all together. We first divide the problem into 8 equal sub-problems. We do this by breaking the addition up into individual numbers.\n$$4 6 3 2 8 7 5 1$$\nWe then add 2 numbers at a time. Then 4 numbers into 8 numbers which is our resultant. Why do we break it down to individual numbers at stage 1? Why don’t we just start from stage 2? Because while this list of numbers is even if the list was odd you would need to break it down to individual numbers to better handle it.\nA divide and conquer algorithm tries to break a problem down into as many little chunks as possible since it is easier to solve with little chunks. It does this with recursion. Sorting problem solved using divide \u0026 conquer Recursion Before we get into the rest of the article, let’s learn about recursion first.\nRecursion is when a function calls itself. It’s a hard concept to understand if you’ve never heard of it before. This page provides a good explanation.\nMatryoshka dolls are these cute little things: We open up the bigger one, and inside is a slightly smaller one. Inside that one is another slightly small doll. Let’s say, inside the last doll is a key. But we do not know how many dolls there are. How do we write a function that opens up the dolls until we find a key?\nWe could use a while loop, but recursion is preferred here. To program this, we can write:\ndef getKey(doll): item = doll.open() if item == key: return key else: return getKey(item) getKey(doll)  The function repeatedly calls itself until it finds a key, at which point it stops. The finding key point is called a break case or exit condition.\nWe always add a break case to a recursive function. If we didn’t, it’d just be an infinite loop! Never ending.\nComputer scientists love recursion. Because it’s so hard for normal people to understand, we have a schadenfreude sensation watching people struggle. Haha just kidding!\nWe love recursion because it’s used in maths all the time. Computer scientists are mathematicians first, coders second. Anything that brings code closer to real-life mathematics is good.\nNot just because some people love maths, but because it makes it easier to implement. Need to calculate the Fibonacci numbers? The maths equation for this is:\n$$ F(n) = \\begin{cases} n, \\text{If n = 0 or 1} \\ F(n - 1) + F(n - 2), ; \\text{if n  1} \\end{cases}$$\nA natural recurrence in our formula! Instead of translating it into loops, we can just calculate it:\ndef F(n): if n == 0 or n == 1: return n else: return F(n-1)+F(n-2)  This is one of the reasons why functional programming is so cool.\nAlso, as you’ll see throughout this article, recursion reads so much nicer than loops. And hey, maybe you can feel a little happier when your coworker doesn’t understand recursion but you do ;)\n Back to Divide \u0026 Conquer The technique is, as defined in the famous Introduction to Algorithms by Cormen, Leiserson, Rivest, and Stein, is:\n Divide  If the problem is small, then solve it directly. Otherwise, divide the problem into smaller subsets of the same problem.\nConquer  Conquer the smaller problems by solving them recursively. If the sub-problems are small enough, recursion is not needed and you can solve them directly.\nCombine  Take the solutions to the sub-problems and merge them into a solution to the original problem.\nLet’s look at another example, calculating the factorial of a number.\nn = 6 def recur_factorial(n): if n == 1: return n else: return n * recur_factorial(n-1) print(recur_factorial(n))  With the code from above, some important things to note. The Divide part is also the recursion part. We divide the problem up at return n * recur_factorial(n-1).\nThe recur_factorial(n-1) part is where we divide the problem up.\nThe conquer part is the recursion part too, but also the if statement. If the problem is small enough, we solve it directly (by returning n). Else, we perform return n * recur_factorial(n-1).\nCombine. We do this with the multiplication symbol. Eventually, we return the factorial of the number. If we didn’t have the symbol there, and it was return recur_factorial(n-1) it wouldn’t combine and it wouldn’t output anything similar to the factorial. (It’ll output 1, for those interested).\nWe’ll explore how divide and conquer works in some famous algorithms, Merge Sort and the solution to the Towers of Hanoi.\nOne last time  Divide / Break. Break the problem into smaller sub-problems. Conquer / Solve. Solves all the sub-problems. Merge / Combine. Merges all the sub-solutions into one solution.   Merge Sort 🤖 Merge Sort is a sorting algorithm. The algorithm works as follows:\n Divide the sequence of n numbers into 2 halves Recursively sort the two halves Merge the two sorted halves into a single sorted sequence  In this image, we break down the 8 numbers into separate digits. Just like we did earlier. Once we’ve done this, we can begin the sorting process.\nIt compares 51 and 13. Since 13 is smaller, it puts it in the left-hand side. It does this for (10, 64), (34, 5), (32, 21). It then merges (13, 51) with (10, 64). It knows that 13 is the smallest in the first list, and 10 is the smallest in the right list. 10 is smaller than 13, therefore we don’t need to compare 13 to 64. We’re comparing \u0026 merging two **sorted **lists. In recursion we use the term base case to refer to the absolute smallest value we can deal with. With Merge Sort, the base case is 1. That means we split the list up until we get sub-lists of length 1. That’s also why we go down all the way to 1 and not 2. If the base case was 2, we would stop at the 2 numbers.\nIf the length of the list (n) is larger than 1, then we divide the list and each sub-list by 2 until we get sub-lists of size 1. If n = 1, the list is already sorted so we do nothing.\nMerge Sort is an example of a divide and conquer algorithm. Let’s look at one more algorithm to understand how divide and conquer works.\n Towers of Hanoi 🗼 The Towers of Hanoi is a mathematical problem which compromises 3 pegs and 3 discs. This problem is mostly used to teach recursion, but it has some real-world uses. The number of pegs \u0026 discs can change. Each disc is a different size. We want to move all discs to peg C so that the largest is on the bottom, second largest on top of the largest, third largest (smallest) on top of all of them. There are some rules to this game:\n We can only move 1 disc at a time. A disc cannot be placed on top of other discs that are smaller than it.  We want to use the smallest number of moves possible. If we have 1 disc, we only need to move it once. 2 discs, we need to move it 3 times.\nThe number of moves is a power of 2 minus 1. Say we have 4 discs, we calculate the minimum number of moves as $2^4 = 16 - 1 = 15$.\nTo solve the above example we want to store the smallest disc in a buffer peg (1 move). See below for a gif on solving Tower of Hanoi with 3 pegs and 3 discs. Notice how we need to have a buffer to store the discs.\nWe can generalise this problem. If we have n discs: move n-1 from A to B recursively, move largest from A to C, move n-1 from B to C recursively.\nIf there is an even number of pieces the first move is always into the middle. If it is odd the first move is always to the other end.\nLet’s code the algorithm for ToH, in pseudocode.\nfunction MoveTower(disk, source, dest, spare): if disk == 0, then: move disk from source to dest  We start with a base case, disk == 0. source is the peg you’re starting at. dest is the final destination peg. spare is the spare peg.\nFUNCTION MoveTower(disk, source, dest, spare): IF disk == 0, THEN: move disk from source to dest ELSE: MoveTower(disk - 1, source, spare, dest) // Step 1 move disk from source to dest // Step 2 MoveTower(disk - 1, spare, dest, source) // Step 3 END IF  Notice that with step 1 we switch dest and source. We do not do this for step 3.\nWith recursion, we know 2 things:\n It always has a base case (if it doesn’t, how does the algorithm know to end?) The function calls itself.  The algorithm gets a little confusing with steps 1 and 3. They both call the same function. This is where multi-threading comes in. You can run steps 1 and 3 on different threads - at the same time.\nSince 2 is more than 1, we move it down one more level again. So far you’ve seen what the divide and conquer technique is. You should understand how it works and what code looks like. Next, let’s learn how to define an algorithm to a problem using divide and conquer. This part is the most important. Once you know this, it’ll be easier to create divide and conquer algorithms.\n How to identify Divide and Conquer problems When we have a problem that looks similar to a famous divide \u0026 conquer algorithm (such as merge sort), it will be useful.\nMost of the time, the algorithms we design will be most similar to merge sort. If we have an algorithm that takes a list and does something with each element of the list, it might be able to use divide \u0026 conquer.\nFor example, working out the largest item of a list. Given a list of words, how many times does the letter “e” appear?\nIf we have an algorithm that is slow and we would like to speed it up, one of our first options is divide and conquer.\nThere isn’t any obvious tell-tale signs other than “similar to a famous example”. But as we’ll see in the next section, we can check if it is solvable using divide \u0026 conquer.\n How to solve problems using divide and conquer Now we know how divide and conquer algorithms work, we can build up our own solution. In this example, we’ll walk through how to build a solution to the Fibonacci numbers.\nFibonacci Numbers 🐰 We can find Fibonacci numbers in nature. The way rabbits produce is in the style of the Fibonacci numbers. You have 2 rabbits that make 3, 3 rabbits make 5, 5 rabbits make 9 and so on.\nThe numbers start at 0 and the next number is the current number + the previous number. But by mathematicla definition, the first 2 numbers are 0 and 1.\nLet’s say we want to find the 5 Fibonacci number. We can do this:\n# [0, 1] 0 + 1 = 1 # 3rd fib number # [0, 1, 1] 1 + 1 = 2 # 4th fib number # [0, 1, 1, 2] 2 + 1 = 3 # 5th fib number # [0, 1, 1, 2, 3]  Now the first thing when designing a divide and conquer algorithm is to design the recurrence. The recurrence always starts with a base case.\nWe can describe this relation using a recursion. A recurrence is an equation which defines a function in terms of its smaller inputs. Recurrence and recursion sound similar and are similar.\nAs we saw, our base case is the 2 numbers at the start.\ndef f(n): if n == 0 or n == 1: return n  To calculate the 4th Fibonacci number, we do (4 - 1) + (4 - 2). This means (last number in the sequence) + (the number before the last). Or in other words:\n The next number is the current number + the previous number.\n If our number is not 0 or 1, we want to add the last 2 Fibonacci numbers together.\nLet’s take a look at our table quickly:\n# [0, 1] 0 + 1 = 1 # [0, 1, 1] 1 + 1 = 2 # [0, 1, 1, 2] 2 + 1 = 3 # [0, 1, 1, 2, 3] 2 + 3 = 5 # [0, 1, 1, 2, 3, 5]  But what if we don’t have this list stored? How do we calculate the 6th number without creating a list at all? Well we know that the 6th number is the 5th number + the 4th number. Okay, what are those? The 5th number is the 4th number + the 3rd number. The 4th number is the 3rd number + the second number.\nWe know that the second number is always 1, as we’ve reached a base case. Eventually we break it down to the basecases. Okay, so we know our code calls itself to calculate the Fibonacci numbers of the previous ones:\ndef f(n): if n == 0 or n == 1: return n else: f(n-1) f(n-2)  Okay, how do we merge the Fibonacci numbers at the end? As we saw, it is the last number **added **to the current number.\ndef f(n): if n == 0 or n == 1: return n else: f(n-1) + f(n-2)  Now we’ve seen this, let’s turn it into recursion using a recurrence. Luckily for us, it’s incredibly easy to go from a recurrence to code or from code to a recurrence, as they are both recurrences!\n$$ F(n) = \\begin{cases} n, \\text{If n = 0 or 1} \\ F(n - 1) + F(n - 2), ; \\text{if n  1} \\end{cases}$$\nWe often calculate the result of a recurrence using an execution tree. We saw this earlier when exploring how to build it in code. For F(6) this looks like: n is 4, and n is larger than 0 or 1. So we do f(n-1) + f(n-2). We ignore the addition for now. This results in 2 new nodes, 3 and 2. 3 is larger than 0 or 1 so we do the same. Same for 2. We do this until we get a bunch of nodes which are either 0 or 1.\nWe then add all the nodes together. 0 + 1 + 1 + 0 + 1 + 0 + 1 + 0 + 1 + 0 + 0 + 1 = 8.\n When Should I Use Divide \u0026 Conquer? 🎇 When we have a problem that looks similar to a famous divide \u0026 conquer algorithm (such as merge sort), it will be useful.\nMost of the time, the algorithms we design will be most similar to merge sort. If we have an algorithm that takes a list and does something with each element of the list, it might be able to use divide \u0026 conquer.\nFor example, working out the largest item of a list. Given a list of words, how many times does the letter “e” appear?\n Big O Notation of Divide \u0026 Conquer Algorithms Normally if our algorithm follows a famous divide \u0026 conquer (algorithm) we can infer our big o from that.\nThis is no different from calculating the big o notation of our own algorithms. [\nAll You Need to Know About Big O Notation [Python Examples]\nBy the end of this article, you’ll thoroughly understand Big O notation. You’ll also know how to use it in the real world, and even the mathematics behind it! In computer science, time complexity is the computational complexity that describes the amount of time it takes to run an algorithm. Big O …\nBrandon SkerrittBrandon’s Blog\n](/big-o/) Divide \u0026 Conquer vs Dynamic Programming vs Greedy Greedy vs Divide \u0026 Conquer vs Dynamic ProgrammingGreedyDivide \u0026 ConquerDynamic ProgrammingOptimises by making the best choice at the momentOptimises by breaking down a subproblem into simpler versions of itself and using multi-threading \u0026 recursion to solveSame as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.Doesn’t always find the optimal solution, but is very fastAlways finds the optimal solution, but is slower than GreedyAlways finds the optimal solution, but could be pointless on small datasets.Requires almost no memoryRequires some memory to remember recursive callsRequires a lot of memory for memoisation / tabulation Conclusion 📕 Once you’ve identified how to break a problem down into many smaller pieces, you can use concurrent programming to execute these pieces at the same time (on different threads) speeding up the whole algorithm.\nDivide and conquer algorithms are one of the fastest and perhaps easiest ways to increase the speed of an algorithm and are useful in everyday programming. Here are the most important topics we covered in this article:\n What is divide and conquer? Recursion Merge sort Towers of Hanoi Coding a divide and conquer algorithm Recurrences Fibonacci numbers  The next step is to explore multi-threading. Choose your programming language of choice and Google, as an example, “Python multi-threading”. Figure out how it works and see if you can attack any problems in your own code from this new angle.\nYou can also learn about how to solve recurrences (finding out the asymptotic running time of a recurrence), which is the next article I’m going to write. If you don’t want to miss it, or you liked this article do consider subscribing to my email list 😁✨\n#myemail { background-color: #f0f0f0; color: black; padding: 15px; border-radius: 25px; width: 80%; margin: 0 auto; } #little { color: grey; font-size: 10px; } #email { width: 100%; padding: 10px; } #submit { width: 100%; background: rgb(36,255,204); } #gdpr { width: 15px; height: 15px; }  At least this isn’t a full screen pop up! 😅  Sign up now and get:   A free 202 page book on algorithmic design paradigms A free 107 page book on employability skills And much more to help you become an awesome developer!  Email\nGDPR: I consent to receive promotional emails about your products and services. HP\nOne click unsubscribe anytime.\n",
+  "wordCount" : "3386",
+  "inLanguage": "en",
+  "datePublished": "2019-11-20T16:28:45Z",
+  "dateModified": "2019-11-20T16:28:45Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/divide-and-conquer-algorithms/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      Divide and Conquer Algorithms with Python Examples
+    </h1>
+    <div class="post-meta">
+
+November 20, 2019&nbsp;·&nbsp;16 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>Often I&rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.</p>
+<p>Divide and Conquer is one way to attack a problem from a different angle. Don&rsquo;t worry if you have **zero **experience or knowledge on the topic. This article is designed to be read by someone with very little programming knowledge.</p>
+<p>I will explain this using 3 examples. The first will be a simple explanation. The second will be some code. The final will get into the mathematical core of divide and conquer techniques. (Don&rsquo;t worry, I hate maths too).</p>
+<pre><code>#myemail {
+background-color: #f0f0f0;
+color: black;
+padding: 15px;
+border-radius: 25px;
+        width: 80%;
+    margin: 0 auto;
+}
+#little {
+color: grey;
+    font-size: 10px;
+    }
+#email {
+    width: 100%;
+    padding: 10px;
+    
+    }
+#submit {
+    width: 100%;
+    background: rgb(36,255,204);
+    }
+    #gdpr { width: 15px; height: 15px; }
+</code></pre>
+<h2 id="at-least-this-isnt-a-pop-up-">At least this isn&rsquo;t a pop up! 😅<a hidden class="anchor" aria-hidden="true" href="#at-least-this-isnt-a-pop-up-">#</a></h2>
+<pre><code>    Sign up now and get:
+</code></pre>
+<ul>
+<li>A free 202 page book on algorithmic design paradigms</li>
+<li>A free 107 page book on employability skills</li>
+<li>And much more to help you become an awesome developer!</li>
+</ul>
+<p>Email</p>
+<p>GDPR: I consent to receive promotional emails about your products and services.
+HP</p>
+<p>One click unsubscribe anytime.</p>
+<hr>
+<h2 id="what-is-divide-and-conquer-">What Is Divide and Conquer? 🌎<a hidden class="anchor" aria-hidden="true" href="#what-is-divide-and-conquer-">#</a></h2>
+<p>Divide and conquer is where you divide a large problem up into many smaller, much easier to solve problems. The rather small example below illustrates this.
+<img src="/content/images/2019/03/Blank-Diagram-14-.png" alt="3+6+2+4 is divided into 3+6 and 2+4">
+We take the equation &ldquo;3 + 6 + 2 + 4&rdquo; and cut it down into the smallest set of equations, which is [3 + 6, 2 + 4]. It could also be [2 + 3, 4 + 6]. The order doesn&rsquo;t matter, as long as we turn this one long equation into many smaller equations.</p>
+<p>Let’s say we have 8 numbers:</p>
+<p>$$4 + 6 + 3 + 2 + 8 + 7 + 5 + 1$$</p>
+<p>We want to add them all together. We first divide the problem into 8 equal sub-problems. We do this by breaking the addition up into individual numbers.</p>
+<p>$$4 6 3 2 8 7 5 1$$</p>
+<p>We then add 2 numbers at a time.
+<img src="/content/images/2019/03/image-34.png" alt="">
+Then 4 numbers into 8 numbers which is our resultant.
+<img src="/content/images/2019/03/image-35.png" alt="">
+Why do we break it down to individual numbers at stage 1? Why don&rsquo;t we just start from stage 2? Because while this list of numbers is even if the list was odd you would need to break it down to individual numbers to better handle it.</p>
+<h2 id="divide-and-conquer-technique-visually-explainedcontentimages201910divide_and_conquer_visually_explainedsvgsorting-problem-solved-using-divide--conquer">A divide and conquer algorithm tries to break a problem down into as many little chunks as possible since it is easier to solve with little chunks. It does this with recursion.
+<img src="/content/images/2019/10/divide_and_conquer_visually_explained.svg" alt="Divide And Conquer technique visually explained">Sorting problem solved using divide &amp; conquer</h2>
+<h1 id="recursion">Recursion<a hidden class="anchor" aria-hidden="true" href="#recursion">#</a></h1>
+<p>Before we get into the rest of the article, let&rsquo;s learn about recursion first.</p>
+<p><strong>Recursion is when a function calls itself.</strong> It&rsquo;s a hard concept to understand if you&rsquo;ve never heard of it before. <a href="https://www.google.com/search?hl=en&amp;q=recursion">This page provides a good explanation</a>.</p>
+<p>Matryoshka dolls are these cute little things:
+<img src="/content/images/2019/10/image-7.png" alt="">
+We open up the bigger one, and inside is a slightly smaller one. Inside that one is another slightly small doll. Let&rsquo;s say, inside the last doll is a key. But we do not know how many dolls there are. How do we write a function that opens up the dolls until we find a key?</p>
+<p>We could use a while loop, but recursion is preferred here.
+<img src="/content/images/2019/10/matryoshkaDolls-1.svg" alt="">
+To program this, we can write:</p>
+<pre><code>def getKey(doll):
+    item = doll.open()
+    if item == key:
+        return key
+    else:
+        return getKey(item)
+getKey(doll)
+</code></pre>
+<p>The function repeatedly calls itself until it finds a key, at which point it stops. The finding key point is called a <em>break case</em> or <em>exit condition</em>.</p>
+<p>We always add a break case to a recursive function. If we didn&rsquo;t, it&rsquo;d just be an infinite loop! Never ending.</p>
+<p>Computer scientists <strong>love</strong> recursion. Because it&rsquo;s so hard for normal people to understand, we have a schadenfreude sensation watching people struggle. Haha just kidding!</p>
+<p>We love recursion because it&rsquo;s used in maths <strong>all the time</strong>. Computer scientists are mathematicians first, coders second. Anything that brings code closer to real-life mathematics is good.</p>
+<p>Not just because some people love maths, but because it makes it easier to implement. Need to calculate the Fibonacci numbers? The maths equation for this is:</p>
+<p>$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \ F(n - 1) + F(n - 2), ; \text{if n &gt; 1} \end{cases}$$</p>
+<p>A natural recurrence in our formula! Instead of translating it into loops, we can just calculate it:</p>
+<pre><code>def F(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        return F(n-1)+F(n-2)
+</code></pre>
+<p>This is one of the reasons why <a href="/learn-functional-python-in-10-minutes/">functional programming is so cool.</a></p>
+<p>Also, as you&rsquo;ll see throughout this article, recursion reads so much nicer than loops. And hey, maybe you can feel a little happier when your coworker doesn&rsquo;t understand recursion but you do ;)</p>
+<hr>
+<h1 id="back-to-divide--conquer">Back to Divide &amp; Conquer<a hidden class="anchor" aria-hidden="true" href="#back-to-divide--conquer">#</a></h1>
+<p>The technique is, as defined in the famous <a href="https://www.amazon.co.uk/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/ref=as_li_ss_tl?keywords=Introduction+to+Algorithms&amp;qid=1551954553&amp;s=gateway&amp;sr=8-1&amp;linkCode=ll1&amp;tag=brandon0fe-21&amp;linkId=72a63dce0d8099988383cc3767340d40&amp;language=en_GB">Introduction to Algorithms</a> by Cormen, Leiserson, Rivest, and Stein, is:</p>
+<ol>
+<li>Divide</li>
+</ol>
+<p>If the problem is small, then solve it directly. Otherwise, divide the problem into smaller subsets of the same problem.</p>
+<ol start="2">
+<li>Conquer</li>
+</ol>
+<p>Conquer the smaller problems by solving them recursively. If the sub-problems are small enough, recursion is not needed and you can solve them directly.</p>
+<ol start="3">
+<li>Combine</li>
+</ol>
+<p>Take the solutions to the sub-problems and merge them into a solution to the original problem.</p>
+<p>Let&rsquo;s look at another example, calculating the factorial of a number.</p>
+<pre><code>n = 6
+
+def recur_factorial(n):
+   if n == 1:
+       return n
+   else:
+       return n * recur_factorial(n-1)
+
+print(recur_factorial(n))
+</code></pre>
+<p>With the code from above, some important things to note. The Divide part is also the recursion part. We divide the problem up at <code>return n * recur_factorial(n-1)</code>.</p>
+<p>The <code>recur_factorial(n-1)</code> part is where we divide the problem up.</p>
+<p>The conquer part is the recursion part too, but also the if statement. If the problem is small enough, we solve it directly (by returning n). Else, we perform <code>return n * recur_factorial(n-1)</code>.</p>
+<p>Combine. We do this with the multiplication symbol. Eventually, we return the factorial of the number. If we didn&rsquo;t have the symbol there, and it was <code>return recur_factorial(n-1)</code> it wouldn&rsquo;t combine and it wouldn&rsquo;t output anything similar to the factorial. (It&rsquo;ll output 1, for those interested).</p>
+<p>We&rsquo;ll explore how divide and conquer works in some famous algorithms, Merge Sort and the solution to the Towers of Hanoi.</p>
+<h3 id="one-last-time">One last time<a hidden class="anchor" aria-hidden="true" href="#one-last-time">#</a></h3>
+<ol>
+<li><strong>Divide / Break</strong>. Break the problem into smaller sub-problems.</li>
+<li><strong>Conquer / Solve</strong>. Solves all the sub-problems.</li>
+<li><strong>Merge / Combine</strong>. Merges all the sub-solutions into one solution.</li>
+</ol>
+<hr>
+<h3 id="merge-sort-">Merge Sort 🤖<a hidden class="anchor" aria-hidden="true" href="#merge-sort-">#</a></h3>
+<p>Merge Sort is a sorting algorithm. The algorithm works as follows:</p>
+<ul>
+<li>Divide the sequence of n numbers into 2 halves</li>
+<li>Recursively sort the two halves</li>
+<li>Merge the two sorted halves into a single sorted sequence</li>
+</ul>
+<p><img src="/content/images/2019/03/Blank-Diagram-48-.png" alt="">
+In this image, we break down the 8 numbers into separate digits. Just like we did earlier. Once we&rsquo;ve done this, we can begin the sorting process.</p>
+<p>It compares 51 and 13. Since 13 is smaller, it puts it in the left-hand side. It does this for (10, 64), (34, 5), (32, 21).
+<img src="/content/images/2019/03/Blank-Diagram-49-.png" alt="">
+It then merges (13, 51) with (10, 64). It knows that 13 is the smallest in the first list, and 10 is the smallest in the right list. 10 is smaller than 13, therefore we don&rsquo;t need to compare 13 to 64. We&rsquo;re comparing &amp; merging two **sorted **lists.
+<img src="/content/images/2019/03/Blank-Diagram-50-.png" alt="">
+In recursion we use the term <em>base case</em> to refer to the absolute smallest value we can deal with. With Merge Sort, the base case is 1. That means we split the list up until we get sub-lists of length 1. That&rsquo;s also why we go down all the way to 1 and not 2. If the base case was 2, we would stop at the 2 numbers.</p>
+<p>If the length of the list (n) is larger than 1, then we divide the list and each sub-list by 2 until we get sub-lists of size 1. If n = 1, the list is already sorted so we do nothing.</p>
+<p>Merge Sort is an example of a divide and conquer algorithm. Let&rsquo;s look at one more algorithm to understand how divide and conquer works.</p>
+<hr>
+<h3 id="towers-of-hanoi-">Towers of Hanoi 🗼<a hidden class="anchor" aria-hidden="true" href="#towers-of-hanoi-">#</a></h3>
+<p>The Towers of Hanoi is a mathematical problem which compromises 3 pegs and 3 discs. This problem is mostly used to teach recursion, but it has some <a href="https://www.ibm.com/developerworks/community/blogs/jfp/entry/towers_of_hanoi_at_large1?lang=en">real-world uses.</a> The number of pegs &amp; discs can change.
+<img src="/content/images/2019/03/Blank-Diagram-57-.png" alt="">
+Each disc is a different size. We want to move all discs to peg C so that the largest is on the bottom, second largest on top of the largest, third largest (smallest) on top of all of them. There are some rules to this game:</p>
+<ol>
+<li>We can only move 1 disc at a time.</li>
+<li>A disc cannot be placed on top of other discs that are smaller than it.</li>
+</ol>
+<p>We want to use the smallest number of moves possible. If we have 1 disc, we only need to move it once. 2 discs, we need to move it 3 times.</p>
+<p>The number of moves is a power of 2 minus 1. Say we have 4 discs, we calculate the minimum number of moves as $2^4 = 16 - 1 = 15$.</p>
+<p>To solve the above example we want to store the smallest disc in a buffer peg (1 move). See below for a gif on solving Tower of Hanoi with 3 pegs and 3 discs.
+<img src="/content/images/2019/03/gify-1.gif" alt="">
+Notice how we need to have a buffer to store the discs.</p>
+<p>We can generalise this problem. If we have n discs: move n-1 from A to B recursively, move largest from A to C, move n-1 from B to C recursively.</p>
+<p>If there is an even number of pieces the first move is always into the middle. If it is odd the first move is always to the other end.</p>
+<p>Let&rsquo;s  code the algorithm for ToH, in pseudocode.</p>
+<pre><code>function MoveTower(disk, source, dest, spare):
+    if disk == 0, then:
+        move disk from source to dest
+</code></pre>
+<p>We start with a base case, <code>disk == 0</code>. <code>source</code> is the peg you&rsquo;re starting at. <code>dest</code> is the final destination peg. <code>spare</code> is the spare peg.</p>
+<pre><code>FUNCTION MoveTower(disk, source, dest, spare):
+IF disk == 0, THEN:
+    move disk from source to dest
+ELSE:
+    MoveTower(disk - 1, source, spare, dest)   // Step 1
+    move disk from source to dest              // Step 2
+    MoveTower(disk - 1, spare, dest, source)   // Step 3
+END IF
+</code></pre>
+<p>Notice that with step 1 we switch <code>dest</code> and <code>source</code>. We do not do this for step 3.</p>
+<p>With recursion, we know 2 things:</p>
+<ol>
+<li>It always has a base case (if it doesn&rsquo;t, how does the algorithm know to end?)</li>
+<li>The function calls itself.</li>
+</ol>
+<p>The algorithm gets a little confusing with steps 1 and 3. They both call the same function. This is where multi-threading comes in. You can run steps 1 and 3 on different threads - at the same time.</p>
+<p>Since 2 is more than 1, we move it down one more level again. So far you&rsquo;ve seen what the divide and conquer technique is. You should understand how it works and what code looks like. Next, let&rsquo;s learn how to define an algorithm to a problem using divide and conquer. This part is the most important. Once you know this, it&rsquo;ll be easier to create divide and conquer algorithms.</p>
+<hr>
+<h1 id="how-to-identify-divide-and-conquer-problems">How to identify Divide and Conquer problems<a hidden class="anchor" aria-hidden="true" href="#how-to-identify-divide-and-conquer-problems">#</a></h1>
+<p>When we have a problem that looks similar to a famous divide &amp; conquer algorithm (such as merge sort), it will be useful.</p>
+<p>Most of the time, the algorithms we design will be most similar to merge sort. If we have an algorithm that takes a list and does something with each element of the list, it might be able to use divide &amp; conquer.</p>
+<p>For example, working out the largest item of a list. Given a list of words, how many times does the letter &ldquo;e&rdquo; appear?</p>
+<p>If we have an <a href="/big-o/">algorithm that is slow</a> and we would like to speed it up, one of our first options is divide and conquer.</p>
+<p>There isn&rsquo;t any obvious tell-tale signs other than &ldquo;similar to a famous example&rdquo;. But as we&rsquo;ll see in the next section, we can check if it is solvable using divide &amp; conquer.</p>
+<hr>
+<h1 id="how-to-solve-problems-using-divide-and-conquer">How to solve problems using divide and conquer<a hidden class="anchor" aria-hidden="true" href="#how-to-solve-problems-using-divide-and-conquer">#</a></h1>
+<p>Now we know how divide and conquer algorithms work, we can build up our own solution. In this example, we&rsquo;ll walk through how to build a solution to the Fibonacci numbers.</p>
+<h3 id="fibonacci-numbers-">Fibonacci Numbers 🐰<a hidden class="anchor" aria-hidden="true" href="#fibonacci-numbers-">#</a></h3>
+<p>We can find Fibonacci numbers in nature. The way <a href="http://www.oxfordmathcenter.com/drupal7/node/487">rabbits produce </a>is in the style of the Fibonacci numbers. You have 2 rabbits that make 3, 3 rabbits make 5, 5 rabbits make 9 and so on.</p>
+<p>The numbers start at 0 and the next number is the current number + the previous number. But by mathematicla definition, the first 2 numbers are 0 and 1.</p>
+<p>Let&rsquo;s say we want to find the 5 Fibonacci number. We can do this:</p>
+<pre><code># [0, 1]
+0 + 1 = 1 # 3rd fib number
+# [0, 1, 1]
+1 + 1 = 2 # 4th fib number
+# [0, 1, 1, 2]
+2 + 1 = 3 # 5th fib number
+# [0, 1, 1, 2, 3]
+</code></pre>
+<p>Now the first thing when designing a divide and conquer algorithm is to design the recurrence. The recurrence always starts with a base case.</p>
+<p>We can describe this relation using a recursion. A recurrence is an equation which defines a function in terms of its smaller inputs. Recurrence and recursion sound similar and are similar.</p>
+<p>As we saw, our base case is the 2 numbers at the start.</p>
+<pre><code>def f(n):
+    if n == 0 or n == 1:
+        return n
+</code></pre>
+<p>To calculate the 4th Fibonacci number, we do (4 - 1) + (4 - 2). This means (last number in the sequence) + (the number before the last).  Or in other words:</p>
+<blockquote>
+<p>The next number is the current number + the previous number.</p>
+</blockquote>
+<p>If our number is not 0 or 1, we want to add the last 2 Fibonacci numbers together.</p>
+<p>Let&rsquo;s take a look at our table quickly:</p>
+<pre><code># [0, 1]
+0 + 1 = 1
+# [0, 1, 1]
+1 + 1 = 2 
+# [0, 1, 1, 2]
+2 + 1 = 3 
+# [0, 1, 1, 2, 3]
+2 + 3 = 5
+# [0, 1, 1, 2, 3, 5]
+</code></pre>
+<p>But what if we don&rsquo;t have this list stored? How do we calculate the 6th number without creating a list at all? Well we know that the 6th number is the 5th number + the 4th number. Okay, what are those? The 5th number is the 4th number + the 3rd number. The 4th number is the 3rd number + the second number.</p>
+<p>We know that the second number is always 1, as we&rsquo;ve reached a base case.
+<img src="/content/images/2019/10/fib_diagram-1.svg" alt="">
+Eventually we break it down to the basecases. Okay, so we know our code calls itself to calculate the Fibonacci numbers of the previous ones:</p>
+<pre><code>def f(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        f(n-1) f(n-2)
+</code></pre>
+<p>Okay, how do we merge the Fibonacci numbers at the end? As we saw, it is the last number **added **to the current number.</p>
+<pre><code>def f(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        f(n-1) + f(n-2)
+</code></pre>
+<p>Now we&rsquo;ve seen this, let&rsquo;s turn it into recursion using a recurrence. Luckily for us, it&rsquo;s incredibly easy to go from a recurrence to code or from code to a recurrence, as they are both recurrences!</p>
+<p>$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \ F(n - 1) + F(n - 2), ; \text{if n &gt; 1} \end{cases}$$</p>
+<p>We often calculate the result of a recurrence using an <strong>execution tree.</strong> We saw this earlier when exploring how to build it in code. For F(6) this looks like:
+<img src="/content/images/2019/10/fib_diagram-1.svg" alt="">
+n is 4, and n is larger than 0 or 1. So we do f(n-1) + f(n-2). We ignore the addition for now. This results in 2 new nodes, 3 and 2. 3 is larger than 0 or 1 so we do the same. Same for 2. We do this until we get a bunch of nodes which are either 0 or 1.</p>
+<p>We then add all the nodes together. 0 + 1 + 1 + 0 + 1 + 0 + 1 + 0 + 1 + 0 + 0 + 1 = 8.</p>
+<hr>
+<h2 id="when-should-i-use-divide--conquer-">When Should I Use Divide &amp; Conquer? 🎇<a hidden class="anchor" aria-hidden="true" href="#when-should-i-use-divide--conquer-">#</a></h2>
+<p>When we have a problem that looks similar to a famous divide &amp; conquer algorithm (such as merge sort), it will be useful.</p>
+<p>Most of the time, the algorithms we design will be most similar to merge sort. If we have an algorithm that takes a list and does something with each element of the list, it might be able to use divide &amp; conquer.</p>
+<p>For example, working out the largest item of a list. Given a list of words, how many times does the letter &ldquo;e&rdquo; appear?</p>
+<hr>
+<h2 id="big-o-notation-of-divide--conquer-algorithms">Big O Notation of Divide &amp; Conquer Algorithms<a hidden class="anchor" aria-hidden="true" href="#big-o-notation-of-divide--conquer-algorithms">#</a></h2>
+<p>Normally if our algorithm follows a famous divide &amp; conquer (algorithm) we can infer our big o from that.</p>
+<p><a href="/big-o/#-how-to-calculate-big-o-notation-for-our-own-algorithms-with-examples">This is no different from calculating the big o notation of our own algorithms.</a>
+[</p>
+<p>All You Need to Know About Big O Notation [Python Examples]</p>
+<p>By the end of this article, you’ll thoroughly understand Big O notation. You’ll
+also know how to use it in the real world, and even the mathematics behind it! In computer science, time complexity is the computational complexity that
+describes the amount of time it takes to run an algorithm. Big O …</p>
+<p><img src="https://skerritt.blog/favicon.png" alt="">Brandon SkerrittBrandon&rsquo;s Blog</p>
+<h2 id="big-o"><img src="https://skerritt.blog/content/images/2019/10/Copy-of-Copy-of-Copy-of-Copy-of-Dynamic-Programming-with-Python-The-Ultimate-Guide-1.png" alt="">
+](/big-o/)</h2>
+<h2 id="divide--conquer-vs-dynamic-programming-vs-greedy">Divide &amp; Conquer vs Dynamic Programming vs Greedy<a hidden class="anchor" aria-hidden="true" href="#divide--conquer-vs-dynamic-programming-vs-greedy">#</a></h2>
+<h2 id="greedy-vs-divide--conquer-vs-dynamic-programminggreedydivide--conquerdynamic-programmingoptimises-by-making-the-best-choice-at-the-momentoptimises-by-breaking-down-a-subproblem-into-simpler-versions-of-itself-and-using-multi-threading--recursion-to-solvesame-as-divide-and-conquer-but-optimises-by-caching-the-answers-to-each-subproblem-as-not-to-repeat-the-calculation-twicedoesnt-always-find-the-optimal-solution-but-is-very-fastalways-finds-the-optimal-solution-but-is-slower-than-greedyalways-finds-the-optimal-solution-but-could-be-pointless-on-small-datasetsrequires-almost-no-memoryrequires-some-memory-to-remember-recursive-callsrequires-a-lot-of-memory-for-memoisation--tabulationcontentimages201906image-10png">Greedy vs Divide &amp; Conquer vs Dynamic Programming<strong>Greedy<strong><strong>Divide &amp; Conquer</strong></strong>Dynamic Programming</strong>Optimises by making the best choice at the momentOptimises by breaking down a subproblem into simpler versions of itself and using multi-threading &amp; recursion to solveSame as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.Doesn&rsquo;t always find the optimal solution, but is very fastAlways finds the optimal solution, but is slower than GreedyAlways finds the optimal solution, but could be pointless on small datasets.Requires almost no memoryRequires some memory to remember recursive callsRequires a lot of memory for memoisation / tabulation<img src="/content/images/2019/06/image-10.png" alt=""><a hidden class="anchor" aria-hidden="true" href="#greedy-vs-divide--conquer-vs-dynamic-programminggreedydivide--conquerdynamic-programmingoptimises-by-making-the-best-choice-at-the-momentoptimises-by-breaking-down-a-subproblem-into-simpler-versions-of-itself-and-using-multi-threading--recursion-to-solvesame-as-divide-and-conquer-but-optimises-by-caching-the-answers-to-each-subproblem-as-not-to-repeat-the-calculation-twicedoesnt-always-find-the-optimal-solution-but-is-very-fastalways-finds-the-optimal-solution-but-is-slower-than-greedyalways-finds-the-optimal-solution-but-could-be-pointless-on-small-datasetsrequires-almost-no-memoryrequires-some-memory-to-remember-recursive-callsrequires-a-lot-of-memory-for-memoisation--tabulationcontentimages201906image-10png">#</a></h2>
+<h2 id="conclusion-">Conclusion 📕<a hidden class="anchor" aria-hidden="true" href="#conclusion-">#</a></h2>
+<p>Once you&rsquo;ve identified how to break a problem down into many smaller pieces, you can use concurrent programming to execute these pieces at the same time (on different <a href="https://www.wikiwand.com/en/Thread_(computing)">threads</a>) speeding up the whole algorithm.</p>
+<p>Divide and conquer algorithms are one of the fastest and perhaps easiest ways to increase the speed of an algorithm and are useful in everyday programming. Here are the most important topics we covered in this article:</p>
+<ul>
+<li>What is divide and conquer?</li>
+<li>Recursion</li>
+<li>Merge sort</li>
+<li>Towers of Hanoi</li>
+<li>Coding a divide and conquer algorithm</li>
+<li>Recurrences</li>
+<li>Fibonacci numbers</li>
+</ul>
+<p>The next step is to explore multi-threading. Choose your programming language of choice and Google, as an example, &ldquo;Python multi-threading&rdquo;. Figure out how it works and see if you can attack any problems in your own code from this new angle.</p>
+<p>You can also learn about how to solve recurrences (finding out the asymptotic running time of a recurrence), which is the next article I&rsquo;m going to write. If you don&rsquo;t want to miss it, or you liked this article do consider subscribing to my email list 😁✨</p>
+<pre><code>#myemail {
+background-color: #f0f0f0;
+color: black;
+padding: 15px;
+border-radius: 25px;
+        width: 80%;
+    margin: 0 auto;
+}
+#little {
+color: grey;
+    font-size: 10px;
+    }
+#email {
+    width: 100%;
+    padding: 10px;
+    
+    }
+#submit {
+    width: 100%;
+    background: rgb(36,255,204);
+    }
+    #gdpr { width: 15px; height: 15px; }
+</code></pre>
+<h2 id="at-least-this-isnt-a-full-screen-pop-up-">At least this isn&rsquo;t a full screen pop up! 😅<a hidden class="anchor" aria-hidden="true" href="#at-least-this-isnt-a-full-screen-pop-up-">#</a></h2>
+<pre><code>    Sign up now and get:
+</code></pre>
+<ul>
+<li>A free 202 page book on algorithmic design paradigms</li>
+<li>A free 107 page book on employability skills</li>
+<li>And much more to help you become an awesome developer!</li>
+</ul>
+<p>Email</p>
+<p>GDPR: I consent to receive promotional emails about your products and services.
+HP</p>
+<p>One click unsubscribe anytime.</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://polymath.cloud/tags/datastructures-and-algorithms/">Datastructures and Algorithms</a></li>
+      <li><a href="https://polymath.cloud/tags/university/">University</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Divide and Conquer Algorithms with Python Examples on twitter"
+        href="https://twitter.com/intent/tweet/?text=Divide%20and%20Conquer%20Algorithms%20with%20Python%20Examples&amp;url=https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f&amp;hashtags=University%2cComputerScience%2cDatastructuresandAlgorithms">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Divide and Conquer Algorithms with Python Examples on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f&amp;title=Divide%20and%20Conquer%20Algorithms%20with%20Python%20Examples&amp;summary=Divide%20and%20Conquer%20Algorithms%20with%20Python%20Examples&amp;source=https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Divide and Conquer Algorithms with Python Examples on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f&title=Divide%20and%20Conquer%20Algorithms%20with%20Python%20Examples">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Divide and Conquer Algorithms with Python Examples on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Divide and Conquer Algorithms with Python Examples on whatsapp"
+        href="https://api.whatsapp.com/send?text=Divide%20and%20Conquer%20Algorithms%20with%20Python%20Examples%20-%20https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Divide and Conquer Algorithms with Python Examples on telegram"
+        href="https://telegram.me/share/url?text=Divide%20and%20Conquer%20Algorithms%20with%20Python%20Examples&amp;url=https%3a%2f%2fpolymath.cloud%2fdivide-and-conquer-algorithms%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

@@ -532,66 +532,67 @@ We have 2 variables, so our array is 2-dimensional. The first dimension is from 
 And we want a weight of 7 with maximum benefit.
 
 {{ rawhtml }}
-<table >
-	<tbody>
-		<tr>
-          	<td> </td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
+<table>
+<tbody>
+	<tr>
+		<td> </td>
+		<td>0</td>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+		<td>7</td>
 			
-		</tr>
-		<tr>
-			<td>(1, 1)</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (4, 3)</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (5, 4)</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>(7, 5)</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</tbody>
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
 </table>
+
 {{ /rawhtml }}
 
 The weight is 7. We start counting at 0. We put each tuple on the left-hand side. Ok. Now to fill out the table!

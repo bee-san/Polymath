@@ -27,9 +27,6 @@ permalinks:
 custom_css:
   - "css/custom.css"
 
-markup.goldmark.rendere:
-  - unsafe: true
-
 outputs:
     home:
         - HTML
@@ -83,3 +80,8 @@ taxonomies:
     category: categories
     tag: tags
     series: series
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

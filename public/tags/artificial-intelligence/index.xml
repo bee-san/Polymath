@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Artificial Intelligence on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/artificial-intelligence/</link>
+    <description>Recent content in Artificial Intelligence on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Nov 2019 23:46:37 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating a Framework to Teach Key Stage 3 Students Reinforcement Learning with Autonomous (Simulated) Robots</title>
+      <link>https://polymath.cloud/dissertation/</link>
+      <pubDate>Fri, 29 Nov 2019 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/dissertation/</guid>
+      <description>Abstract Reinforcement learning has traditionally been a dull topic to learn, especially for students who may not understand programming. With this dissertation, it is shown that reinforcement learning can be joyous to learn, and easier than some might have suspected.
+This dissertation shows a framework for teaching reinforcement learning to key stage 3 school students. Using Python to implement reinforcement learning, and using lessons based around the code.
+The aim was that by teaching them a &amp;quot;hard&amp;quot; and &amp;quot;cool&amp;quot; computer science topics, the students would become engaged in the world of computer science.</description>
+    </item>
+    
+    <item>
+      <title>Absolute Fundamentals of Machine Learning</title>
+      <link>https://polymath.cloud/ml-fundamentals/</link>
+      <pubDate>Mon, 11 Mar 2019 14:48:10 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/ml-fundamentals/</guid>
+      <description>Absolute Fundamentals of Machine Learning https://unsplash.com/photos/0E_vhMVqL9g Machine learning, what a buzzword. I’m sure you all want to understand machine learning, and that’s what I’m going to teach in this article.
+I found that learning the theroetical side alongside the programming side makes it easier to learn both, so this article features both easy to understand mathematics and the algorithms implemented in Python. Also, technology becomes outdated — fast. The code used in this tutorial will likely be meaningless in 5 years time.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -10,19 +10,13 @@ tags:
   - "Datastructures and Algorithms"
 ---
 
-# TODO
-- Alt text on images
-- Break up text
-- Grammarly
-
-
 # Introduction
 
-I have around ~10k GitHub stars.  I’ve come up with a bullet pointed actionable list of how to make open source projects popular.
+I have around ~10k GitHub stars.  I’ve come up with a bullet-pointed actionable list of how to make open-source projects popular.
 
 One of the projects I created had 67 lines of code and had only existed for 3 days before it hit 1.7k stars. 
 
-Humans are predictable creatures when it comes to our attention. I’ll show you data backed actionable insights that can help you create popular software.
+Humans are predictable creatures when it comes to our attention. I’ll show you data-backed actionable insights that can help you create popular software.
 
 
 # Why Bother? Popular Projects = More Contributors = Better Project
@@ -31,9 +25,9 @@ What’s the point in getting more GitHub stars? They mean nothing. You can’t 
 
 The problem with open source is the [network effect.](https://en.wikipedia.org/wiki/Network_effect) The more people that find your project, the more people that use it, the more that contribute to it and thus the better it becomes.
  
-The better the project, the more popular it becomes. It’s a self-fufilling cycle.
+The better the project, the more popular it becomes. It’s a self-fulfilling cycle.
 
-![](/media/populaross/loop4.svg)
+![The infographic shows this information: Logo, Slogan, Badges, Quick Install, Gifs (what is your program, how does it work?), X vs Y (comparing to competitors), Documentation, Contributing](/media/populaross/loop4.svg)
 
  
 As this cycle continues, it becomes harder for it to continue. That’s a blog post for another day. But first, let’s talk about where we start. 
@@ -42,11 +36,11 @@ To start us on this cycle we need popularity.
  
 To get contributors to your project it has to be popular enough so people see it and contribute.
 
-Creating a popular open source project isn’t just a want but a need. 
+Creating a popular open-source project isn’t just a want but a need. 
 
-If a project has contributors but no popularity, it’s likely created by a company for internal use and was open sourced.
+If a project has contributors but no popularity, it’s likely created by a company for internal use and was open-sourced.
 
-Otherwise, only popular open source projects have contributors.
+Otherwise, only popular open-source projects have contributors.
 
 # Well Designed README
 
@@ -54,9 +48,9 @@ Otherwise, only popular open source projects have contributors.
 
 It’s harder to gain traction based purely on the merit of the tool rather than on the presentation of the tool.
 
-For frontend applications you should focus more on the design of the frontend rather than the `README`. This is for CLI applicatiions.
+For frontend applications, you should focus more on the design of the frontend rather than the `README`. This is for CLI applications.
 
-A well designed README answers these questions succintly:
+A well-designed README answers these questions succinctly:
 
 - What does this do?
 - Does it solve my problem?
@@ -83,21 +77,17 @@ The header is the combination of:
 - Quick Install.
 - Quick Links (not always needed).
 
-**Beautiful Logo as simple as Canva.com**
-The logo is the first thing a user sees, and is the image used for social media sharing. 
+### Beautiful Logo as simple as Canva.com
+The logo is the first thing users see and is the image used for social media sharing. 
 When I first create a project, I’ll use something from [Canva](https://canva.com). 
 
 Canva allows you to **quickly** create a logo from a template for free. 
 
 Go to Canva and search for “Logo”
 
-{{ rawhtml }}
-<img src="/media/populaross/canvalogo.png">
-{{ /rawhtml }}
-
 <figure>
-	<img src="/media/populaross/canvalogo.png">
-	<figcaption><figcaption>
+    <img src="/media/populaross/canvalogo.png">
+    <figcaption><figcaption>
 </figure>
 
 
@@ -111,32 +101,32 @@ Typically, there are 2 things I look for in a logo:
 I should look at the logo and think *”wow, that’s cool”*.
 
 <figure>
-	<img src="/media/populaross/hashsearch.gif">
-	<figcaption><figcaption>
+    <img src="/media/populaross/hashsearch.gif" alt="Gif of 3 circles, one circle is spinning around another lightly. Unravels in the middle 'HashSearch: Search & Crack Hashes' while the circle continues to spin.">
+    <figcaption><figcaption>
 </figure>
 
 It’s a gif! Isn’t that cool? I made it on Canva in about ~45 seconds. ~30 seconds were spent searching for it!
 
 Secondly, the slogan. The first thing people see will be the logo which contains the name and slogan, instantly they will know what the project is about.
 
-For some of my larger projects I hire a designer, specifically [Varg](https://twitter.com/Vargnaar). Designers are great! Especially ones that can understand the project at hand, which aids creating a well-conceived logo.
+For some of my larger projects, I hire a designer, specifically [Varg](https://twitter.com/Vargnaar). Designers are great! Especially ones that can understand the project at hand, which aids creating a well-conceived logo.
 
 In short: don’t spend too long picking a logo. If you’re not hiring a designer, perhaps ~5 minutes playing around on Canva. 
 
-**Slogan (description) of your project in 1 simple line**
+### Slogan (description) of your project in 1 simple line
 
 When thinking about the design of your project, think about *how* people found it. There are 2 major ways people can find your project:
 
-1. Someone reccomends it to them.
+1. Someone recommends it to them.
 2. It’s posted on Twitter / HackerNews / LinkedIn / other social media or news aggregators.
 
-When someone reccomends something it’s because that something solves their problem. This means that they already have an idea of *how* this project solves their problem, of what the project does.
+When someone recommends something it’s because that something solves their problem. This means that they already have an idea of *how* this project solves their problem, of what the project does.
 
-When posted, Twitter will make a social card for it. This card is the title, description, and an image:
+When posted, Twitter will make a social card for it. This card is the title, description, and an image.
 
 <figure>
-	<img src="/media/populaross/card.png">
-	<figcaption><figcaption>
+    <img src="/media/populaross/card.png">
+    <figcaption><figcaption>
 </figure>
 
 
@@ -145,8 +135,8 @@ Both of the main methods of sharing your project include a description already. 
 1. We don’t need to spend time describing *what* our project is in the `README`.
 2. GitHub’s Description will be used everywhere and is the first thing people see.
 <figure>
-	<img src="/media/populaross/githubdes.png">
-	<figcaption><figcaption>
+    <img src="/media/populaross/githubdes.png">
+    <figcaption><figcaption>
 </figure>
 
 
@@ -180,11 +170,11 @@ My favourite resource is [Brian Dean’s Copywriting Guide](https://backlinko.co
 
 This explains what the project is well. It is:
 
-- Succint.
+- Succinct.
 - Answers the question “Why are you better than the rest?” with *”world’s fastest”*.
 - Answers what it does, *”framework for building websites.”*
 - Easy enough to understand for non-experts, *”building websites”*.
-- Uses eye-catching words such as *”worlds largest”* and its succintness implies “we can read this, it’ll only take a second of our time to process this.”
+- Uses eye-catching words such as *”worlds largest”* and the succinctness imply “we can read this, it’ll only take a second of our time to process this.”
 
 You should spend a few weeks experimenting with the description on-and-off.
 
@@ -194,20 +184,20 @@ The description is the hardest, but most important part of the whole design. **I
 
 Ask your users what they think of it. Iterate until you can no longer iterate.
 
-**Badges**
-Badges are links / images that sum up the project.
+### Badges
+Badges are links/images that sum up the project.
 
 <figure>
-	<img src="/media/populaross/badges1.png">
-	<figcaption><figcaption>
+    <img src="/media/populaross/badges1.png">
+    <figcaption><figcaption>
 </figure>
 
 
 They explain where to find documentation, is the current branch stable? How clean is the code?
 
 <figure>
-	<img src="/media/populaross/badges2.png">
-	<figcaption><figcaption>
+    <img src="/media/populaross/badges2.png">
+    <figcaption><figcaption>
 </figure>
 
 
@@ -215,7 +205,7 @@ How active is the project? How many downloads? The license? Any chatrooms?
 Mostly, badges are just cool stickers you can include. I like reading them, some people may not.
 You can find a list of badges on [shields.io](http://shields.io/).
 
-**Quick Installation guide**
+### Quick Installation guide
 The user understands what the application does from seeing it in the social cards or being told by a friend.
 
 Sometimes, they want to install it as fast as possible to play around. 
@@ -224,39 +214,40 @@ Sometimes, they want to install it as fast as possible to play around.
 > “Talk is cheap, show me the code.” - Linus Torvalds
 
 
-The quick install guide allows users to install the software immeditadly. 
+The quick install guide allows users to install the software immediately. 
 
 
 | <p align="center"><a href="https://pypi.org/project/ciphey">🐍 Python | <p align="center"><a href="https://pypi.org/project/ciphey">🐋 Docker (Universal) |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| <p align="center"><img src="/media/populaross/python.png" /></p>    | <p align="center"><img src="/media/populaross/docker.png" /></p>                |
+| <p align="center"><img src="https://github.com/Ciphey/Ciphey/raw/master/Pictures_for_README/python.png" /></p>    | <p align="center"><img src="https://github.com/Ciphey/Ciphey/raw/master/Pictures_for_README/docker.png" /></p>                |
 | `python3 -m pip install ciphey --upgrade`                             | `docker run -it --rm remnux/ciphey`                                               |
 
-| Linux                                                                                                                   | Mac OS                                                                                                                     | Windows                                                                                                                   |
+
 
 Users do not need to scour the `README` for information on installation if they are already knowledgeable and want to use the project. 
 
-The style above is clean. The package manager’s name, the logo of the operating system and a short installation to copy / paste. 
-
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385490951_image.png)
+The style above is clean. The package manager’s name, the logo of the operating system and a short installation to copy/paste. 
 
 
-**Quick Links**
+### Quick Links
+
 This isn’t required in all READMEs. 
 
 Linking to all the resources the user needs in one neat place allows the user to quickly understand *anything* they want.
 
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385549430_image.png)
+<figure>
+    <img src="/media/populaross/links.png">
+    <figcaption><figcaption>
+</figure>
 
 
-The order of these matter. As the user reads left-to-right (assuming English `README`), the further away items are the less likely they will see it. You want them to see your Twitter first? Include that at the first item.
+The order of these matters. As the user reads left-to-right (assuming English `README`), the further away items are the less likely they will see it. You want them to see your Twitter first? Include that at the first item.
 
-While this is a flat list seperated by pipes, it is an ordered list in the sense that users will only read so far.
+While this is a flat list separated by pipes, it is an ordered list in the sense that users will only read so far.
 
-I include my quicklinks at the top of the page, above the fold (the logo).
+I include my quick links at the top of the page, above the fold (the logo).
 
-![My operating system does not support flag emojis, sorry it looks horrible.](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385675134_image.png)
-
+{{< figure src="/media/populaross/linkstop.png" caption="My OS does not support flag emoji, sorry!" >}}
 
 The user will already have a rough idea of what the project is. They may only want 3 things from the README:
 
@@ -266,30 +257,53 @@ The user will already have a rough idea of what the project is. They may only wa
 
 By being at the top, we reduce the friction of finding them.
 
-**Example Images to show off your project**
+### Example Images to show off your project
 The header is also a great place to show *how* your project works. You can use gifs (discussed later in more depth) or images.
 
-![microsoft/Bringing-Old-Photos-Back-to-Life: Bringing Old Photo Back to Life (CVPR 2020 oral) (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385985741_image.png)
+<figure>
+    <img src="/media/populaross/old.png"  alt="Images of old photos that are worn down, torn, and broken restored">
+    <figcaption><a href="https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life">Bringing-Old-Photos-Back-to-Life</a><figcaption>
+</figure>
 
-![beurtschipper/Depix: Recovers passwords from pixelized screenshots (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607386041774_image.png)
+<figure>
+    <img src="/media/populaross/depixi.png" alt="Pixelated text which is recovered to non-pixelated next to the original text">
+    <figcaption><a href="https://github.com/beurtschipper/Depix">Depix: Recovers passwords from pixelized screenshots</a><figcaption>
+</figure>
 
 
 This depends on your project, but having images in your header may make sense.
 
 **Inspiration for designing your header**
 Let’s look at some inspiration 
+<figure>
+    <img src="/media/populaross/ciphey.png" alt="If you're using a screenreader, click on the captions to view the original READMEs">
+    <figcaption><a href="https://github.com/Ciphey/Ciphey">Ciphey/Ciphey: ⚡ Automatically decrypt encryptions without knowing the key⚡</a><figcaption>
+</figure>
 
-![Ciphey/Ciphey: ⚡ Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes ⚡ (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385800530_image.png)
+<figure>
+    <img src="/media/populaross/rustscan.png">
+    <figcaption><a href="https://github.com/rustscan/rustscan">RustScan/RustScan: 🤖 The Modern Port Scanner 🤖</a><figcaption>
+</figure>
 
-![RustScan/RustScan: 🤖 The Modern Port Scanner 🤖 (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385833834_image.png)
+<figure>
+    <img src="/media/populaross/pwncat.png">
+    <figcaption><a href="https://github.com/cytopia/pwncat">cytopia/pwncat: pwncat - netcat on steroids</a><figcaption>
+</figure>
 
-![cytopia/pwncat: pwncat - netcat on steroids with Firewall, IDS/IPS evasion, bind and reverse shell, self-injecting shell and port forwarding magic - and its fully scriptable with Python (PSE) (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385868808_image.png)
+<figure>
+    <img src="/media/populaross/hugo.png">
+    <figcaption><a href="https://github.com/gohugo/hugo">gohugoio/hugo: The world’s fastest framework for building websites.</a><figcaption>
+</figure>
 
-![gohugoio/hugo: The world’s fastest framework for building websites. (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607385888436_image.png)
+<figure>
+    <img src="/media/populaross/ala.png">
+    <figcaption><a href="https://github.com/alacritty/alacritty">alacritty/alacritty: A terminal emulator</a><figcaption>
+</figure>
 
-![alacritty/alacritty: A cross-platform, GPU-accelerated terminal emulator (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607386102815_image.png)
-
-![starship/starship: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell! (github.com)](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607386176333_image.png)
+<figure>
+    <img src="/media/populaross/starship.png">
+    <figcaption><a href="https://github.com/starship/starship">starship/starship: ☄🌌️ Customizable prompt for any shell!</a><figcaption>
+</figure>
 
 ## What Is This? Describing Your Project Succinctly.
 
@@ -299,9 +313,10 @@ Short explanations. A gif that demonstrates your project. Essential features you
 
 Look at the Starship prompt.
 
-
-![User-uploaded image: image.png](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607386176333_image.png)
-
+<figure>
+    <img src="/media/populaross/starship.png">
+	<figcaption><a href="https://github.com/starship/starship">Starship Prompt</a></figcaption>
+</figure>
 
 They have a table with 2 columns but without borders. In the left column is the list of essential features. Each feature is bolded with a short explanation.
 
@@ -320,27 +335,28 @@ If your project is competing with a lot of other projects, you’re going to nee
 
 Convincing someone to leave their current tool for yours is hard. Make it as easy as possible for them to see the advantages over their current tooling.
 
-In [The Lean Startup](https://www.goodreads.com/book/show/10127019-the-lean-startup?from_search=true&from_srp=true&qid=zKpCYP3FEY&rank=1) the author talks about why in the beggining of a startup we should focus on the early adoptors over the average customers.
+In [The Lean Startup](https://www.goodreads.com/book/show/10127019-the-lean-startup?from_search=true&from_srp=true&qid=zKpCYP3FEY&rank=1) the author talks about why at the beginning of a startup we should focus on the early adopters over the average customers.
 
 
 > "The point is not to find the average customer but to find **early adopters**: the customers who feel the need for the product most acutely. Those customers tend to be more forgiving of mistakes and are especially eager to give feedback." 
 
-The early adoptors are those that wouldn’t mind switching out their current tooling for a less tested, less mainstream option if it means it has better functionality.
+The early adopters are those that wouldn’t mind switching out their current tooling for a less tested, less mainstream option if it means it has better functionality.
 
 The only way to get the average customer to use your product is:
 
 - No competitors must exist.
-- Their current solution to the problem is extremely convuluted compared to yours.
+- Their current solution to the problem is extremely convoluted compared to yours.
 
-Otherwise, your best bet is to appeal to the early adoptors and overtime slowly appeal to the average customer as your project becomes more mainstream.
+Otherwise, your best bet is to appeal to the early adopters and overtime slowly appeal to the average customer as your project becomes more mainstream.
 
 The easiest way to compare your projects to others is to include a table of popular features. Use statistics here. It’s harder to believe words than it is numbers, even if the words are just as truthful as the numbers.
 
 For Ciphey we compared our program to our largest possible competitor, CyberChef’s Magic function.
 
-
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607471669527_image.png)
-
+<figure>
+    <img src="/media/populaross/cvsc.png">
+	<figcaption><a href="https://github.com/ciphey/ciphey#-ciphey-vs-cyberchef">CyberChef vs Ciphey</a></figcaption>
+</figure>
 
 You can see we used gifs to demonstrate this. We explain how long each one takes and the setup of both, which can all be seen in the gifs. 
 
@@ -349,7 +365,10 @@ We also leave footnotes on some things. Such as gifs loading at different times,
 Later on, we compare again with a table this time of features.
 
 
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607471747425_image.png)
+<figure>
+    <img src="/media/populaross/cvsc2.png">
+	<figcaption><a href="https://github.com/ciphey/ciphey#-ciphey-vs-katana-vs-cyberchef-magic">Full Comparison.</a></figcaption>
+</figure>
 
 ## Create Great Documentation
 
@@ -368,7 +387,9 @@ Don’t make the documentation section long. Since we have already explained how
 - How to find support.
 
 
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607473358348_image.png)
+<figure>
+    <img src="/media/populaross/gs.png">
+</figure>
 
 
 I included a gif here showing all the different ways there are to run Ciphey. Gifs are magical and easy to make.
@@ -381,35 +402,38 @@ The final section is about contributing.
 1. How to contribute.
 2. Thanking past contributors.
 
-We need contributors to our project to fufil the cycle. 
+We need contributors to our project to fulfil the cycle. 
 
-![User-uploaded image: Untitled+Diagram.png](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607364723891_Untitled+Diagram.png)
+![](/media/populaross/loop4.svg)
 
 
-Therefore, our README needs to clearly display how to contribute. 
+Therefore, our README needs to display how to contribute. 
 
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607516180695_image.png)
-
+<figure>
+    <img src="/media/populaross/contrib.png">
+</figure>
 
 A short paragraph describing how to contribute, where to ask for help if they are stuck, the `contributing.md` file and any potential rewards for contributing (name added to the `README` and the chance to work on a growing project).
 
 And then you want to thank your contributors. We use [all-contributors](https://github.com/all-contributors/all-contributors) which makes it easy to thank them. It shows their profile picture, a link to their websites along with emoji defining *what* they did. 
 
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607516248961_image.png)
+<figure>
+    <img src="/media/populaross/contrib2.png">
+</figure>
 
 ## Conclusion
 
-Design is subjective and you may like somethings, you may not. It’s down to you to decide on what looks good. 
+Design is subjective and you may like something, you may not. It’s down to you to decide on what looks good. 
 
 I hope the design principles I shared, along with the `README`s included here will inspire you to create something beautiful.
 
-One thing I didn’t talk about here is creating documentation. It is your job as a programmer to create documentation. Your project is not done until it has documentation. You can use [GitHub Wiki](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/about-wikis) and [DocStrings](https://www.python.org/dev/peps/pep-0257/) to automatically generate *some* documentation (you’ll still need to write documentatiion for installation, usage, etc).
+One thing I didn’t talk about here is creating documentation. It is your job as a programmer to create documentation. Your project is not done until it has documentation. You can use [GitHub Wiki](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/about-wikis) and [DocStrings](https://www.python.org/dev/peps/pep-0257/) to automatically generate *some* documentation (you’ll still need to write documentation for installation, usage, etc).
 
-Remember — the `README` is one of the most important parts of an open source project (along with the documentation).
+Remember — the `README` is one of the most important parts of an open-source project (along with the documentation).
 
 
 # Creating Something People Want
-![](https://paper-attachments.dropbox.com/s_9B9F4F79CD68B8F2BBFA967225D5A020CED0FE44C8FF677E9B45A1A25553A401_1607517029107_undraw_Gift_box_re_vau4.svg)
+![](/media/populaross/undraw10.svg)
 
 
 A good `README` will get people interested, a working project that solves their problems will get people talking.
@@ -433,7 +457,7 @@ The first one doesn’t solve any problems. There are millions of recipe apps in
 
 The second one is a unique & novel idea that aims to solve the problem of:
 
-> “I’m an artisit wanting to get paid for my work and improve.”
+> “I’m an artist wanting to get paid for my work and improve.”
 
 We have a problem, artists not getting paid, and we solve the problem. 
 
@@ -445,9 +469,9 @@ Some people come up with the project first, but doing this means:
 
 As Walter Isaacson said in [The Innovators:](https://www.goodreads.com/book/show/21856367-the-innovators)
 
-> “But the main lesson to draw from the birth of computers is that innovation is usually a group effort, involving collaboration between visionaries and engineers, and that creativity comes from drawing on many sources. Only in storybooks do inventions come like a thunderbolt, or a lightbulb popping out of the head of a lone individual in a basement or garret or garage.”
+> “But the main lesson to draw from the birth of computers is that innovation is usually a group effort, involving collaboration between visionaries and engineers and that creativity comes from drawing on many sources. Only in storybooks do inventions come like a thunderbolt, or a lightbulb popping out of the head of a lone individual in a basement or garret or garage.”
 
-It’s unlikely for our project to be innoativie if we don’t solve a small problem first. In the same book, Isaacon says:
+It’s unlikely for our project to be innovative if we don’t solve a small problem first. In the same book, Isaacson says:
 
 > “Progress comes not only in great leaps but also from hundreds of small steps.”
 
@@ -462,7 +486,7 @@ You cannot solve a problem you do not have. In [The Lean Startup](https://www.go
 
 Unless you have the problem, you cannot effectively solve the problem. 
 
-It also helps with idea generation. Pay attention to the minor inconviences in your life, in the lives of people around you and build products that solve those problems.
+It also helps with idea generation. Pay attention to the minor inconveniences in your life, in the lives of people around you and build products that solve those problems.
 
 It’s a lot easier to observe the problems present in your own life than it is to generate random ideas that might work.
 
@@ -475,18 +499,19 @@ The first point is important. **Many people create solutions for problems that d
 
 {{< youtube LqTdoN4y36U >}}
 
-This product essentially injects the potato with oil and other foods. This problem does not exist. No one has ever had this problem. If you watch the video, you can see that the Potato Doctor actually cuts the potato open. What is the point? There isn’t one.
+This product essentially injects the potato with oil and other foods. This problem does not exist. No one has ever had this problem. If you watch the video, you can see that the Potato Doctor cuts the potato open. What is the point? There isn’t one.
 
-The second point is less obvious, but a good indicator. Humans are not entiely unique. We mostly share the same problems.  If the problem directly affects my life, I know that it must affect other people too.
+The second point is less obvious, but a good indicator. Humans are not unique. We mostly share the same problems.  If the problem directly affects my life, I know that it must affect other people too.
 
 ## Finding Problems in Communities
 
-You don’t have to be the one to find the problem, others can too. If you pay attention to a community, these people will reveal problems they are facing.
+You don’t have to be the one to find the problem, others can too. If you pay attention to a community, these people will reveal the problems they are facing.
 
 Listening to a community exponentially grows your rate of ideas vs being on your own.
 
-![](https://cdn.blog.ucsusa.org/wp-content/uploads/Exponential-vs.-linear-growth-1024x576.jpg)
-
+<figure>
+    <img src="/media/populaross/growth.jpeg">
+</figure>
 
 The more people there are, the more you listen, the more ideas you can generate over time compared to thinking on your own.
 
@@ -494,13 +519,15 @@ Build a minimal viable product that solves the problem the community is facing.
  
 
 > A **minimum viable product**, or **MVP**, is a **product** with enough features to attract early-adopter customers and validate a **product** idea early in the **product** development cycle.
-![Minimum Viable Products — Defined by The Experts - Startup Commons](https://www.startupcommons.org/uploads/2/1/0/9/21090978/1459367_orig.jpg)
+
+<figure>
+    <img src="/media/populaross/bml.jpeg">
+</figure>
 
 
+Share with the community. Measure its effectiveness, learn how to do better and re-build it (or add more) to improve upon it.
 
-Share with the community. Measure its effectitness, learn how to do better and re-build it (or add more) to improve upon it.
-
-Overtime, it will eventually leak out of the community into other similar communities.
+Over time, it will eventually leak out of the community into other similar communities.
 
 You have around 2 weeks before you lose motivation to work on something. Create the smallest possible minimum viable product that the community can use. Their thanks, if provided, will give you the motivation to continue working on it.
 
@@ -509,12 +536,12 @@ You have around 2 weeks before you lose motivation to work on something. Create 
 
 Here’s the thing.
 
-- You have a problem you can solved.
+- You have a problem you can solve.
 - You have a community that’ll help you solve this problem and provides feedback.
 
 But that doesn’t mean your problem is solved *well*. Take a look at [Juicero](https://en.wikipedia.org/wiki/Juicero). Juicero solved a problem that many people have.
 
-We want to create our own juice drinks, but to do that we have to:
+We want to create our juice drinks, but to do that we have to:
 
 - Buy Fruit & Vegetables.
 - Wash them.
@@ -524,19 +551,19 @@ We want to create our own juice drinks, but to do that we have to:
 
 Juicero’s solution was to (ignoring hardware):
 
-- Insert packet into Juicero to get juice.
+- Insert packet into Juicero to get the juice.
 
 This is a good idea, but it was poorly executed. 
 
 {{< youtube mlfAHrpm3C8 >}}
 
-There are many talks about why Juicero failed — all out of scope of this article.
+There are many talks about why Juicero failed — all out of the scope of this article.
 
 The point is that you could have a great idea, but if it’s poorly executed it may have too many downsides to be used as the solution.
 
 The way to solve this is via the minimum viable product loop. Instead of spending 3 years creating a project, we release as soon as possible, gather feedback, improve and loop.
 
-We are continuously heading towards what people want, and each iteration will solve the problem better than the last. If it doesn’t, next iteration we solve the problem differently and so on.
+We are continuously heading towards what people want, and each iteration will solve the problem better than the last. If it doesn’t, the next iteration we solve the problem differently and so on.
 
 # Getting the Word Out
 
@@ -551,7 +578,7 @@ Once we get a few stars we will get more stars. Stars beget stars ⭐.
 
 ## Sharing With a Community
 
-If we have been following the Build, Measure, Learn loop and reguluarly publishing minimal viable products than we will already have the word out in our community.
+If we have been following the Build, Measure, Learn loop and regularly publishing minimal viable products than we will already have the word out in our community.
 
 When it comes time to publish, make sure your community knows that it’s the first **real** release. They’d be more likely to share with their friends this way.
 
@@ -568,10 +595,11 @@ Do not read the comments. Those places are incredibly toxic and can’t see a go
 
 
 ## Awesome Lists
-![Curated list of awesome lists | Project-Awesome.org](https://project-awesome.org/images/logo.png)
+<figure>
+    <img src="/media/populaross/awesome.png">
+</figure>
 
-
-An [Awesome list](https://github.com/sindresorhus/awesome) is a list of awesome things about some topic. There’s lists such as:
+An [Awesome list](https://github.com/sindresorhus/awesome) is a list of awesome things about some topic. There are lists such as:
 
 - Rust
 - Python
@@ -580,37 +608,42 @@ An [Awesome list](https://github.com/sindresorhus/awesome) is a list of awesome 
 
 And more.
 
-Find some lists that apply to you and submit PRs. In the worst case, they don’t accecpt it.
+Find some lists that apply to you and submit PRs. In the worst case, they don’t accept it.
 
 ## GitHub Trending
 
 If all goes well, you should hit GitHub trending at some point. This will provide monumental traffic.
 
-Once you hit trending, pay attention to social media and thank anyone that shares your project. If they follow you they may re-tweet your project again in the futurue.
+Once you hit trending, pay attention to social media and thank anyone that shares your project. If they follow you they may re-tweet your project again in the future.
 
 This is the snowball effect. You need about ~50 stars to hit trending page for your language, ~100 stars to hit the overall trending. Once you do this, trending will give you more stars and it will continually snowball.
 
 
 ## Leverage an Existing Following or Past Popularity
 
-The easiest way to gain stars is by leveraging your own existing following. Post on social media, other GitHub repos and the likes.
+The easiest way to gain stars is by leveraging your existing following. Post on social media, other GitHub repos and the likes.
 
 
 # Conclusion - Throw the Rule Book Away
 
-Like all things, this is not an exact science, more like art. And you can’t become good at art by following other peoples guidance. You’ve got to discover your own unique style. 
+Like all things, this is not an exact science, more like art. And you can’t become good at art by following other peoples guidance. You’ve got to discover your unique style. 
 
-The Mona Lisa was painted once, but the thousands of people that painted the Mona Lisa afterwards were never recgonised. 
+The Mona Lisa was painted once, but the thousands of people that painted the Mona Lisa afterwards were never recognised. 
 
-I suggest you throw some of the rules away, experiemnt yourself. Create new rules and understand what works for you.
+I suggest you throw some of the rules away, experiment yourself. Create new rules and understand what works for you.
 
-What works for me, won’t neccesarily work for you. So go ahead, throw the rule book away!
+What works for me, won’t necessarily work for you. So go ahead, throw the rule book away!
 
 Let’s go over some things we learnt.
 
 - Well designed READMEs are essential.
 - Creating something people want.
 - Get the word out there.
-- Discover your own unique style and what works for you.
+- Discover your unique style and what works for you.
 
 
+<iframe
+scrolling="no"
+style="width:100%!important;height:220px;border:1px #ccc solid !important"
+src="https://buttondown.email/hacker?as_embed=true"
+></iframe><br /><br />

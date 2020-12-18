@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Peer 2 Peer Networks on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/peer-2-peer-networks/</link>
+    <description>Recent content in Peer 2 Peer Networks on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Sep 2020 23:46:37 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/peer-2-peer-networks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Designing Effective Peer to Peer Networks</title>
+      <link>https://polymath.cloud/p2pnetworks/</link>
+      <pubDate>Tue, 01 Sep 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/p2pnetworks/</guid>
+      <description>This is an informed opinion piece on designing effective peer to peer (P2P) networks. I&amp;rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency.
+By the end of the article, we should have a good understanding of the important questions to answer when designing effective P2P networks.
+When Should I Use a Peer to Peer Network? P2P networks can be used for all networking.</description>
+    </item>
+    
+  </channel>
+</rss>

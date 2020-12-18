@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CCP on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/ccp/</link>
+    <description>Recent content in CCP on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Dec 2020 23:42:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/ccp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWS Cost Management and Customer Support</title>
+      <link>https://polymath.cloud/aws-cost/</link>
+      <pubDate>Wed, 02 Dec 2020 23:42:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-cost/</guid>
+      <description>There are 4 main support plans::
+ Access online resources (basic) General guidance from AWS (Developer) 24-hour technical support (Business) Dedicated Account Managers and Personaliiseid Consultation  Total Cost of Ownership The Total Cost of Ownership (ToC) calculator is a free calculator to compare AWS cloud and on-premise costs. It&amp;rsquo;s designed for anyone who is considering migrating to AWS.
+It creates a report after we complete a short questionaire.
+The report will include estimated on-premise costs such as:</description>
+    </item>
+    
+    <item>
+      <title>Overview of AWS Authentication, Authorisation, and Access Control</title>
+      <link>https://polymath.cloud/aws-authentication-authorisation-access/</link>
+      <pubDate>Wed, 02 Dec 2020 23:42:12 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-authentication-authorisation-access/</guid>
+      <description>Authentication Comprised of 2 parts of information.
+ Who you are?  Presenting your identity (login username). Unique value within the system we are trying to authenticate to.
+Verify you are who you say you are. Passwords, MFA, etc. This does not have to be unique.  We may use credit card pin numbers for authentication. Identity = credit card, verify = pin number.
+Authorisation Happens before authentication.
+System in which we have authenticated to establishes what level of privileges we can access.</description>
+    </item>
+    
+    <item>
+      <title>Disaster Recovery with AWS for CCP</title>
+      <link>https://polymath.cloud/aws-disaster-recovery/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-disaster-recovery/</guid>
+      <description>We&amp;rsquo;ll need to invoke our disaster recovery plans to restore our data if our storage or server fails.
+With traditional backup methods, the data we need might not be available because:
+ Backup data is stored in the same location as the production data, and the disaster impacted the backups. If using a tape backup method, the tapes could fail making the data unreadable. The tapes could get lost when in transit.</description>
+    </item>
+    
+  </channel>
+</rss>

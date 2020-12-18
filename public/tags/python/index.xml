@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/python/</link>
+    <description>Recent content in Python on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Nov 2020 21:21:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learn Functional Python in 10 Minutes</title>
+      <link>https://polymath.cloud/functional/</link>
+      <pubDate>Mon, 30 Nov 2020 21:21:14 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/functional/</guid>
+      <description>In this short 10 minute article, you’ll learn what the functional paradigm is in Python. You’ll also learn about list comprehensions.
+📌 Functional Paradigm In an imperative paradigm, we do things by giving the computer a sequence of tasks and then it executes them. While executing them, it can change states. For example, let’s say we set A = 5, then we change the value of A. We have variables in the sense that the value inside the variable varies.</description>
+    </item>
+    
+    <item>
+      <title>Algorithmic Design Paradigms</title>
+      <link>https://polymath.cloud/algorithms/</link>
+      <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/algorithms/</guid>
+      <description>Greedy Algorithms Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+Why Are Greedy Algorithms Called Greedy? Algorithms are called greedy when they utilise the greedy property. The greedy property is:
+ At that exact moment in time, what is the optimal choice to make?</description>
+    </item>
+    
+    <item>
+      <title>Python Zero to Hero</title>
+      <link>https://polymath.cloud/python/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/python/</guid>
+      <description>What is Python? Python is a programming language created by Guido (pronounced gree-do) Van Rossum. Specifically, Python is an intrepreted, high-level, general purpose programming language.
+Let&amp;rsquo;s talk about what these mean.
+General Purpose General Purpose means that Python was created to do everything. Some programming languages like Matlab or R were created for data science. Others like HTML / CSS were created for web development.
+Python aims to do everything, it is generalised.</description>
+    </item>
+    
+    <item>
+      <title>Set Theory for Programmers</title>
+      <link>https://polymath.cloud/sets/</link>
+      <pubDate>Tue, 29 Jan 2019 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/sets/</guid>
+      <description>Set Theory If you&amp;rsquo;ve spent time on HackerRank or LeetCode, you might have noticed most of the optimal solutions use Set Theory. By reading this article, you will gain a deeper knowledge into set theory and how to use it to create optimal algorithms. Set Theory was invented (or found, depending on how you view maths) by George Cantor. It revolves around the idea of sets, as in collections of objects.</description>
+    </item>
+    
+  </channel>
+</rss>

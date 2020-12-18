@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>What is a Decision Tree in Machine Learning? | Polymath.cloud</title>
+
+<meta name="keywords" content="University, Computer Science" />
+<meta name="description" content="Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.
+Trees are weird in computer science.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="What is a Decision Tree in Machine Learning?" />
+<meta property="og:description" content="Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.
+Trees are weird in computer science." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/" />
+<meta property="article:published_time" content="2019-04-07T17:34:08+00:00" />
+<meta property="article:modified_time" content="2019-04-07T17:34:08+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="What is a Decision Tree in Machine Learning?"/>
+<meta name="twitter:description" content="Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.
+Trees are weird in computer science."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What is a Decision Tree in Machine Learning?",
+  "name": "What is a Decision Tree in Machine Learning?",
+  "description": "Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a …",
+  "keywords": [
+    "University", "Computer Science"
+  ],
+  "articleBody": "Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are trees of decisions. Taken from here You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.\nTrees are weird in computer science. Instead of growing from a root upwards, they grow downwards. Think of it as an upside down tree.\nThe top-most item, in this example, “Am I hungry?” is called the root. It’s where everything starts from. ***Branches ***are what we call each line. A ***leaf ***is everything that isn’t the root or a branch.\nTrees are important in machine learning as not only do they let us visualise an algorithm, but they are a type of machine learning. Take this algorithm as an example. Taken from here This algorithm predicts the probability that a passenger will survive on the Titanic.\n“sibsp” is the number of spouses or siblings aboard the ship. The figures under each leaf show the probability of survival.\nWith machine learning trees, the bold text is a condition. It’s not data, it’s a question. The branches are still called branches. The leaves are “decisions”. The tree has decided whether someone would have survived or died.\nThis type of tree is a **classification **tree. I talk more about classification here. In short; we want to classify each person on the ship as more likely to die or to have survived.\nIn real life, decision trees aren’t always as easy. Take a look at this photo, and brace yourself. I’ll try to describe as much of it as I can. 😴 — Me when I have to look at this image This is a decision tree. It wants to answer the question “can I eat this mushroom?” Taken from here Given an image of a mushroom (like on the left) we want to find out if it’s edible.\nYou see those things at the top which look like variable assignments? Those are if statements. Let’s take a look at one of those.\n“odor = a: e (400.0)”\nIf the smell (odor) of the mushroom is “a” for almond, then it is edible (e) and we are 400.0 points confident that it is edible. Each of these statements is a feature.\nFeatures are just attributes of an object. The features of a bike are: it has wheels, it has handlebars etc.\nWe do this on and on until we reach a point where the odor is neutral (n) at which point we start to check more **features **of the mushroom.\n Making decision trees using a formal language Okay, We can draw them but how do we write decision trees? There’s a nice notation for that.\nLet’s jump right into an example. Sorry for the blurry formula. It’s a problem with screen shotting LaTeX 😢 The fancy little “^” means “and”. It’s some fancy mathematical notation. For more notation like this, check out this other article I wrote. In this notation, when we don’t see anything connecting 2 items (like x2 and x5) we assume it is “and”. We want a decision tree that returns **True **when both *x2 *and x5 are true. Okay, let’s see another one. This one features a lot more logic symbols. You might want to check out this other article I wrote. Okay, the “∨” symbol means “or” and the “¬” means “not”. Notice how the X1 decision becomes True if X1 is **not **true. This is because of the “not” symbol before it in the formal notation. Splitting candidates in the tree Decision trees are made by taking data from the root node and splitting the data into parts. Taken from here Taking the Titanic example from earlier, we split the data so that it makes the most sense and is in alignment with the data we have.\nOne of the problems with decision trees is the question “what is the best way to split the data?” Sometimes you’ll instinctively know, other times you’ll need an algorithm\nWe want to design a function which when given a dataset will split the data accordingly.\nIf we have numerical features we can split it based on the data we see. There are many different ways of splitting. We can sort all the values in the dataset and decide the split thresholds between instances of different classes. We can also cut them straight down the middle. There are too many splitting algorithms to discuss here. So instead we’ll go through a simple algorithm.(1, a), (2, b), (1, c), (0, b), (3, b)\nSo we have 3 classes (a, b, c). The first thing we do is put them into different categories.\n{(0, b)}, {(1, a), (1, c)}, {(2, b)}, {(3, b)}  Now we have 4 different sets. For more on set theory, click here.\nLet’s just pick some arbitrary numbers here. We’ll split them like so:\nSplit 1 0.5 Split 3  1.5  We now have a decision tree split up. If we didn’t split the data up, the tree wouldn’t look much like a tree. Imagine what the tree might look like if our split was “all data less than 3”. Everything would be there! It wouldn’t be very tree-like.\n Occam’s razor Image of William of Ockham, from here. Occam’s razor is a philosophy attributed to William of Ockham in the 14th century. In short, the quote is:\n “When you have two competing theories that make exactly the same predictions, the simpler one is the better one.”\n We can use this principle in machine learning, especially when deciding when to split up decision trees.\n “The simplest tree that classifies the training instances accurcately will work well on previously unseen instances.”\n The simplest tree will often be the best tree, so long as all other possible trees make the same results.\n Finding the best splitsGif from Giphy. Sometimes, the subject you’re teaching is just plain old boring. Gif provided to try to alleviate the boredom. Trying to find and return the smallest possible decision tree that accurately classifies the training set is very very hard. In fact, it’s an NP-hard problem.\nInstead, we’ll try to approximate the best result instead of getting the best result. We’re going to talk a lot about probability and statistics, if you want to know more about probability and statistics click here.\nWhat we want is information that explicitly splits the data into two. We don’t want something that can include both male and females, we want purity. One singular class for each split.\nThis measure of purity is called information. It represents the expected amount of information that would be needed to specify whether a new instance should be classified as the left or right split.\nTo find the best splits, we must first learn a few interesting things.\n Expected Value This part talks about random variables. For more on random variables, check out this article on statistics \u0026 probability I wrote.\nThe expected value is exactly what it sounds like, what do you expect the value to be? You can use this to work out the average score of a dice roll over 6 rolls, or anything relating to probability where it has a value property.\nSuppose we’re counting types of bikes, and we have 4 bikes. We assign a code to each bike like so: For every bike, we give it a number. For every coding, we can see we use 2 bits. Either 0 or 1. For the expected value, not only do we need the value for the variable but the probability. Each bike has equal probability. So each bike has a 25% chance of appearing.\nCalculating the expected value we multiply the probability by 2 bits, which gets us: What if the probability wasn’t equal? What we need to do is to multiply the number of bits by the probability  Entropy This measure of purity is called the information. It represents the expected amount of information that would be needed to specify whether a new instance (first-name) should be classified as male or female, given the example that reached the node. We calculate it based on the number of male and female classes at the node.\nRemember earlier when we talked about purity? Entropy is a measure of impurity. It’s how uncertain something is. The formula for entropy is: Entropy is trying to give a number to how uncertain something is.\nYou can also have conditional entropy, which looks like this: Information Gain Example Let’s show this using an example. What’s the information gain of splitting on Humidity? An example of splitting on humidity We have 9+ and 5-. What does that mean? That means in the table we have 9 features where data is positive and 5 where it’s no. So go down the PlayTennis table and count 9 times for positive (Yes) and 5 times for negative (No).\nNow we want to find out the information gain of humidity. If humidity is high, we look at the data and count how many yes’s for humidity high. So when humidity is high, we have 3+ and 4-. 3 positives and 4 negatives. D indicates the specific sample, D.The information gain is the gap between uncertainty. We have 14 sets of data in total, The denominator is always 14. Now we just calculate them using the formula. The information gain of playing tennis (yes) when the humidity is high is: 3 yes’s and 4 no’s And the information gain of playing tennis when the humidity is normal is: 6 yes’s and 1 no. This isn’t how likely something is to happen, it’s just how much information we gain from this. We use information gain when we want to split something. In the below example we want to find out whether it is better to split on humidity or wind. Now we know what the information gain on each split is using entropy, we apply the information gain formula. The information gain on splitting by humidity amongst our sample, D, is 0.151.\nIf we use the same formula for entropy in the wind part, we get these results: And if we put them into the information gain formula we get: It is better to split on humidity rather than wind as humidity has a higher information gain.\n Definition of accuracy What we want to do is to check how accurate a machine learning model is. M(x) means given a sample, X, we give the predicted classification. The label. lx is actually the true label. So this sample has already been labeled so we know the true label. This set of samples shows that these are correctly labeled.\nWhat we do is feed the algorithm a sample set where we already know the classification of every single item in that sample set. We then measure how many times the machine learning algorithm was right.\n Overfitting with noisy data Look at the below example. We have this formula and noisy data. Noisy data means that the data isn’t correct. Our formula is X1 and X2 = True. Our noisy data is True and False = True, which is wrong.\nThe x3, x4, x5 are all additional features. We don’t care about them, but this is just an example to show that sometimes we have many additional features in a machine learning model which we don’t care about.\nWe build a decision tree that can match the training data perfectly. The accuracy is The problem is that it matches the training data perfectly, 100% but because of the noisy data it doesn’t perform very well on the true data. That one small error makes a larger decision tree and causes it to not perform as well in the real world.\nIf we build a decision tree that works well with the true data, we’ll get this: Even though it performs worse in the training set, due to not worrying about noisy data it performs perfectly with real-world data.\nLet’s see another example of overfitting.\n Overfitting with noise-free data Here are the probabilities for each one: There’s a 50% chance that the resultant,* x3*, is True. There’s a 0.66% chance that the resultant, *Y*, is True.\nFor our first model let’s have a quick look. The accuracy is: It’s good on training data, but on real world data (D_true) it doesn’t perform as well. From this, we can tell that overfitting has occurred.\n Preventing overfitting The reason for overfitting is because the training model is trying to fit as well as possible over the training data, even if there is noise within the data. The first suggestion is to try and reduce noise in your data.\nAnother possibility is that there is no noise, but the training data is small resulting in a difference from the true sample. More data would work.\nIt’s hard to give an exact idea of how to prevent overfitting as it differs from model to model.\n Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won’t spam you. I will only send you posts similar to this one 😊✨\n#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; } /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block. We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ #mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;} #mergeRow-gdpr {margin-top: 20px;} #mergeRow-gdpr fieldset label {font-weight: normal;} #mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}  Like this article? Subscribe to my mailing list to get more like this✨\nPlease tick this box to let me know you want to be contacted via email. Email\nIf you’re feeling extra generous, I have a PayPal  and even a Patreon. I’m a university student who writes these blogs in their spare time. This blog is my full time job, so any and all donations are appreciated!\n",
+  "wordCount" : "2354",
+  "inLanguage": "en",
+  "datePublished": "2019-04-07T17:34:08Z",
+  "dateModified": "2019-04-07T17:34:08Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/what-is-a-decision-tree-in-machine-learning/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      What is a Decision Tree in Machine Learning?
+    </h1>
+    <div class="post-meta">
+
+April 7, 2019&nbsp;·&nbsp;12 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>Decision trees, one of the simplest and yet most useful Machine Learning structures. Decision trees, as the name implies, are <a href="https://medium.com/brandons-computer-science-notes/trees-the-data-structure-e3cb5aabfee9">trees </a>of decisions.
+<img src="https://cdn-images-1.medium.com/max/600/0*Yclq0kqMAwCQcIV_.jpg" alt="Image result for decision tree">Taken from <a href="https://becominghuman.ai/understanding-decision-trees-43032111380f">here</a>
+You have a question, usually a yes or no (binary; 2 options) question with two branches (yes and no) leading out of the tree. You can get more options than 2, but for this article, we’re only using 2 options.</p>
+<p>Trees are weird in computer science. Instead of growing from a root upwards, they grow downwards. Think of it as an upside down tree.</p>
+<p>The top-most item, in this example, “Am I hungry?” is called the <em><strong>root</strong></em>. It’s where everything starts from. ***Branches ***are what we call each line. A ***leaf ***is everything that isn’t the root or a branch.</p>
+<p>Trees are important in machine learning as not only do they let us visualise an algorithm, but they are a type of machine learning. Take this algorithm as an example.
+<img src="https://cdn-images-1.medium.com/max/600/0*LFepwBvXOWkxezDX" alt="">Taken from <a href="https://www.wikiwand.com/en/Decision_tree_learning">here</a>
+This algorithm predicts the probability that a passenger will survive on the Titanic.</p>
+<p>“<em>sibsp</em>” is the number of spouses or siblings aboard the ship. The figures under each leaf show the probability of survival.</p>
+<p>With machine learning trees, the bold text is a condition. It’s not data, it’s a question. The branches are still called branches. The leaves are “<em><strong>decisions</strong></em>”. The tree has decided whether someone would have survived or died.</p>
+<p>This type of tree is a **classification **tree. I talk more about classification <a href="https://hackernoon.com/absolute-fundamentals-of-machine-learning-dca5deee78df">here</a>. In short; we want to classify each person on the ship as more likely to die or to have survived.</p>
+<p>In real life, decision trees aren’t always as easy. Take a look at this photo, and brace yourself. I’ll try to describe as much of it as I can.
+<img src="https://cdn-images-1.medium.com/max/800/1*e_2uJcDN5hKQM9V2InylVA.png" alt="">😴 — Me when I have to look at this image
+This is a decision tree. It wants to answer the question “can I eat this mushroom?”
+<img src="https://cdn-images-1.medium.com/max/600/0*eYlru012PubUH5qD.JPG" alt="">Taken from <a href="https://www.wikiwand.com/en/Mushroom">here</a>
+Given an image of a mushroom (like on the left) we want to find out if it’s edible.</p>
+<p>You see those things at the top which look like variable assignments? Those are if statements. Let’s take a look at one of those.</p>
+<p><em>“odor = a: e (400.0)”</em></p>
+<p>If the smell (<em>odor</em>) of the mushroom is “<em>a</em>” for almond, then it is edible (<em>e</em>) and we are <em>400.0</em> points confident that it is edible. Each of these statements is a <strong>feature</strong>.</p>
+<p>Features are just attributes of an object. The features of a bike are: it has wheels, it has handlebars etc.</p>
+<p>We do this on and on until we reach a point where the odor is neutral (<em>n</em>) at which point we start to check more **features **of the mushroom.</p>
+<hr>
+<h3 id="making-decision-trees-using-a-formal-language">Making decision trees using a formal language<a hidden class="anchor" aria-hidden="true" href="#making-decision-trees-using-a-formal-language">#</a></h3>
+<p>Okay, We can draw them but how do we write decision trees? There’s a nice notation for that.</p>
+<h2 id="httpscdn-images-1mediumcommax8001ds4vcu4u3sdkuoms5jknmapngnotice-how-the-x1-decision-becomes-true-if-x1-is-not-true-this-is-because-of-the-not-symbol-before-it-in-the-formal-notation">Let’s jump right into an example.
+<img src="https://cdn-images-1.medium.com/max/800/1*eyHyrMqFuaJCEbFiuzGIdg.png" alt="">Sorry for the blurry formula. It’s a problem with screen shotting LaTeX 😢
+The fancy little “<em><strong>^</strong></em>” means “<em>and</em>”. It’s some fancy mathematical notation. For more notation like this, check out this <a href="https://medium.com/brandons-computer-science-notes/mathematical-logic-f53f9c60d8d9">other article</a> I wrote. In this notation, when we don’t see anything connecting 2 items (like <em>x2</em> and <em>x5</em>) we assume it is “<em>and</em>”. We want a decision tree that returns **True **when both *x2 *and <em>x5</em> are true.
+<img src="https://cdn-images-1.medium.com/max/800/1*TMJZmOcSn53PReeaxfeBGw.png" alt="">
+Okay, let’s see another one.
+<img src="https://cdn-images-1.medium.com/max/800/1*LtuzvXS1JjJ0Ab8e5KT7GQ.png" alt="">
+This one features a lot more logic symbols. You might want to check out this <a href="https://medium.com/brandons-computer-science-notes/mathematical-logic-f53f9c60d8d9">other article</a> I wrote. Okay, the “∨” symbol means “<em>or</em>” and the “¬” means “<em>not</em>”.
+<img src="https://cdn-images-1.medium.com/max/800/1*DS4VcU4U3SDkUomS5jknmA.png" alt="">Notice how the X1 decision becomes True if X1 is **not **true. This is because of the “not” symbol before it in the formal notation.</h2>
+<h3 id="splitting-candidates-in-the-tree">Splitting candidates in the tree<a hidden class="anchor" aria-hidden="true" href="#splitting-candidates-in-the-tree">#</a></h3>
+<p>Decision trees are made by taking data from the root node and splitting the data into parts.
+<img src="https://cdn-images-1.medium.com/max/600/0*LFepwBvXOWkxezDX" alt="">Taken from <a href="https://www.wikiwand.com/en/Decision_tree_learning">here</a>
+Taking the Titanic example from earlier, we split the data so that it makes the most sense and is in alignment with the data we have.</p>
+<p>One of the problems with decision trees is the question “<em>what is the best way to split the data?</em>” Sometimes you’ll instinctively know, other times you’ll need an algorithm</p>
+<p>We want to design a function which when given a dataset will split the data accordingly.</p>
+<p>If we have numerical features we can split it based on the data we see. There are many different ways of splitting. We can sort all the values in the dataset and decide the split thresholds between instances of different classes. We can also cut them straight down the middle. There are too many splitting algorithms to discuss here. So instead we’ll go through a simple algorithm.(1, a), (2, b), (1, c), (0, b), (3, b)</p>
+<p>So we have 3 classes (a, b, c). The first thing we do is put them into different categories.</p>
+<pre><code>{(0, b)}, {(1, a), (1, c)}, {(2, b)}, {(3, b)}
+</code></pre>
+<p>Now we have 4 different <em>sets</em>. For more on set theory, <a href="https://medium.com/brandons-computer-science-notes/a-primer-on-set-theory-746cd0b13d13">click here</a>.</p>
+<p>Let’s just pick some arbitrary numbers here. We’ll split them like so:</p>
+<pre><code>Split 1 &lt;= 0.5
+Split 2 &lt;= 1.5 but &gt; 0.5
+Split 3 &gt; 1.5
+</code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*6imRsG1-PADkjrYaYtzBgg.png" alt="">
+We now have a decision tree split up. If we didn’t split the data up, the tree wouldn’t look much like a tree. Imagine what the tree might look like if our split was “<em>all data less than 3</em>”. Everything would be there! It wouldn’t be very tree-like.</p>
+<hr>
+<h3 id="occams-razor">Occam&rsquo;s razor<a hidden class="anchor" aria-hidden="true" href="#occams-razor">#</a></h3>
+<p><img src="https://cdn-images-1.medium.com/max/600/0*hmAFTUepd_9u3P4x.jpeg" alt="">Image of William of Ockham, from <a href="https://www.wikiwand.com/en/William_of_Ockham">here</a>.
+Occam&rsquo;s razor is a philosophy attributed to William of Ockham in the 14th century. In short, the quote is:</p>
+<blockquote>
+<p>“When you have two competing theories that make exactly the same predictions, the simpler one is the better one.”</p>
+</blockquote>
+<p>We can use this principle in machine learning, especially when deciding when to split up decision trees.</p>
+<blockquote>
+<p>“The simplest tree that classifies the training instances accurcately will work well on previously unseen instances.”</p>
+</blockquote>
+<p>The simplest tree will often be the best tree, so long as all other possible trees make the same results.</p>
+<hr>
+<h3 id="finding-the-best-splitsgif-from-giphyhttpsgiphycomgifsrupaulsdragrace-episode-10-rupauls-drag-race-e0z06zqqlm7jsg6hv2-sometimes-the-subject-youre-teaching-is-just-plain-old-boring-gif-provided-to-try-to-alleviate-the-boredom">Finding the best splitsGif from <a href="https://giphy.com/gifs/rupaulsdragrace-episode-10-rupauls-drag-race-E0Z06zqqlm7jSG6hV2">Giphy</a>. Sometimes, the subject you’re teaching is just plain old boring. Gif provided to try to alleviate the boredom.<a hidden class="anchor" aria-hidden="true" href="#finding-the-best-splitsgif-from-giphyhttpsgiphycomgifsrupaulsdragrace-episode-10-rupauls-drag-race-e0z06zqqlm7jsg6hv2-sometimes-the-subject-youre-teaching-is-just-plain-old-boring-gif-provided-to-try-to-alleviate-the-boredom">#</a></h3>
+<p>Trying to find and return the smallest possible decision tree that accurately classifies the training set is very very hard. In fact, it’s an <a href="https://www.wikiwand.com/en/NP-hardness">NP-hard</a> problem.</p>
+<p>Instead, we’ll try to approximate the best result instead of getting the best result. We’re going to talk a lot about probability and statistics, if you want to know more about probability and statistics <a href="https://medium.com/brandons-computer-science-notes/an-introduction-to-probability-statistics-3f5630824411">click here</a>.</p>
+<p>What we want is information that explicitly splits the data into two. We don’t want something that can include both male and females, we want purity. One singular class for each split.</p>
+<p>This measure of purity is called information. It represents the expected amount of information that would be needed to specify whether a new instance should be classified as the left or right split.</p>
+<p>To find the best splits, we must first learn a few interesting things.</p>
+<hr>
+<h3 id="expected-value">Expected Value<a hidden class="anchor" aria-hidden="true" href="#expected-value">#</a></h3>
+<p>This part talks about random variables. For more on random variables, check out <a href="https://medium.com/brandons-computer-science-notes/an-introduction-to-probability-statistics-3f5630824411">this article</a> on statistics &amp; probability I wrote.</p>
+<p>The expected value is exactly what it sounds like, what do you expect the value to be? You can use this to work out the average score of a dice roll over 6 rolls, or anything relating to probability where it has a value property.</p>
+<p>Suppose we’re counting types of bikes, and we have 4 bikes. We assign a code to each bike like so:
+<img src="https://cdn-images-1.medium.com/max/800/1*abbFixm6lr_ENDq5OuVFsw.png" alt="">
+For every bike, we give it a number. For every coding, we can see we use 2 bits. Either 0 or 1. For the expected value, not only do we need the value for the variable but the probability. Each bike has equal probability. So each bike has a 25% chance of appearing.</p>
+<h2 id="httpscdn-images-1mediumcommax8001whvopbsgoqybrumh-a_ybgpng">Calculating the expected value we multiply the probability by 2 bits, which gets us:
+<img src="https://cdn-images-1.medium.com/max/800/1*COX5CcPoUAawmFXqd_27WQ.png" alt="">
+What if the probability wasn’t equal?
+<img src="https://cdn-images-1.medium.com/max/800/1*2BN_KfFV2guDUfs89gBSLA.png" alt="">
+What we need to do is to multiply the number of bits by the probability
+<img src="https://cdn-images-1.medium.com/max/800/1*wHvOPbsGOQYbRuMh-A_Ybg.png" alt=""></h2>
+<h3 id="entropy">Entropy<a hidden class="anchor" aria-hidden="true" href="#entropy">#</a></h3>
+<p>This measure of <em>purity</em> is called the <a href="https://en.wikipedia.org/wiki/Information_theory"><strong>information</strong></a>. It represents the <a href="https://en.wikipedia.org/wiki/Expected_value">expected</a> amount of <a href="https://en.wikipedia.org/wiki/Self-information">information</a> that would be needed to specify whether a new instance (first-name) should be classified as male or female, given the example that reached the node. We calculate it based on the number of male and female classes at the node.</p>
+<p>Remember earlier when we talked about purity? Entropy is a measure of impurity. It’s how uncertain something is. The formula for entropy is:
+<img src="https://cdn-images-1.medium.com/max/800/1*c_3RiTHigg36ry1XOTiQwg.png" alt="">
+Entropy is trying to give a number to how uncertain something is.</p>
+<p>You can also have conditional entropy, which looks like this:
+<img src="https://cdn-images-1.medium.com/max/800/1*GJo4JB5Jv8i5OWKct9OJZA.png" alt=""></p>
+<h4 id="information-gain-example">Information Gain Example<a hidden class="anchor" aria-hidden="true" href="#information-gain-example">#</a></h4>
+<p>Let’s show this using an example.
+<img src="https://cdn-images-1.medium.com/max/800/1*uMkQDAal44EIn2257ypZUw.png" alt="">
+What’s the information gain of splitting on Humidity?
+<img src="https://cdn-images-1.medium.com/max/800/1*kppGR115DWCB7CGCNG2k0A.png" alt="">An example of splitting on humidity
+We have 9+ and 5-. What does that mean? That means in the table we have 9 features where data is positive and 5 where it’s no. So go down the PlayTennis table and count 9 times for positive (Yes) and 5 times for negative (No).</p>
+<p>Now we want to find out the information gain of humidity. If humidity is high, we look at the data and count how many yes’s for humidity high. So when humidity is high, we have 3+ and 4-. 3 positives and 4 negatives.
+<img src="https://cdn-images-1.medium.com/max/800/1*FP039Ozp4LvQISAfgF1Rmw.png" alt="">D indicates the specific sample, D.<img src="https://cdn-images-1.medium.com/max/800/1*uMkQDAal44EIn2257ypZUw.png" alt="">
+The information gain is the gap between uncertainty. We have 14 sets of data in total, The denominator is always 14. Now we just calculate them using the formula. The information gain of playing tennis (yes) when the humidity is high is:
+<img src="https://cdn-images-1.medium.com/max/800/1*7exXE5m7ACI5wWMGv4OKug.png" alt="">3 yes’s and 4 no’s
+And the information gain of playing tennis when the humidity is normal is:
+<img src="https://cdn-images-1.medium.com/max/800/1*0SACBDQmRdlC64HO8wYjAg.png" alt="">6 yes’s and 1 no.
+This isn’t how likely something is to happen, it’s just how much information we gain from this. We use information gain when we want to split something. In the below example we want to find out whether it is better to split on humidity or wind.
+<img src="https://cdn-images-1.medium.com/max/800/1*j3b8QX69jtM7fTfsniP1ow.png" alt="">
+Now we know what the information gain on each split is using entropy, we apply the information gain formula.
+<img src="https://cdn-images-1.medium.com/max/800/1*f6WKkGsiJVULpmGWmRTTmQ.png" alt="">
+The information gain on splitting by humidity amongst our sample, D, is 0.151.</p>
+<p>If we use the same formula for entropy in the wind part, we get these results:
+<img src="https://cdn-images-1.medium.com/max/800/1*rNuDYRWkgn5QbKD27rDDLQ.png" alt="">
+And if we put them into the information gain formula we get:
+<img src="https://cdn-images-1.medium.com/max/800/1*fs8BNCd10a-3d90E8AiYuQ.png" alt="">
+It is better to split on humidity rather than wind as humidity has a higher information gain.</p>
+<hr>
+<h3 id="definition-of-accuracy">Definition of accuracy<a hidden class="anchor" aria-hidden="true" href="#definition-of-accuracy">#</a></h3>
+<p>What we want to do is to check how accurate a machine learning model is.
+<img src="https://cdn-images-1.medium.com/max/800/1*nQGqgAMF-PfSxHchOoTIWQ.png" alt="">
+M(x) means given a sample, X, we give the predicted classification. The label. lx is actually the true label. So this sample has already been labeled so we know the true label. This set of samples shows that these are correctly labeled.</p>
+<p>What we do is feed the algorithm a sample set where we already know the classification of every single item in that sample set. We then measure how many times the machine learning algorithm was right.</p>
+<hr>
+<h3 id="overfitting-with-noisy-data">Overfitting with noisy data<a hidden class="anchor" aria-hidden="true" href="#overfitting-with-noisy-data">#</a></h3>
+<p>Look at the below example. We have this formula and noisy data.
+<img src="https://cdn-images-1.medium.com/max/800/1*YfenrQToBs03KizsRUDm4A.png" alt="">
+Noisy data means that the data isn’t correct. Our formula is X1 and X2 = True. Our noisy data is True and False = True, which is wrong.</p>
+<p>The x3, x4, x5 are all additional features. We don’t care about them, but this is just an example to show that sometimes we have many additional features in a machine learning model which we don’t care about.</p>
+<p>We build a decision tree that can match the training data perfectly.
+<img src="https://cdn-images-1.medium.com/max/800/1*X7wC32mD2NEODDl0ME2jzw.png" alt="">
+The accuracy is
+<img src="https://cdn-images-1.medium.com/max/800/1*BIzo-gvZI24GTCCCj0sT1w.png" alt="">
+The problem is that it matches the training data perfectly, 100% but because of the noisy data it doesn’t perform very well on the true data. That one small error makes a larger decision tree and causes it to not perform as well in the real world.</p>
+<p>If we build a decision tree that works well with the true data, we’ll get this:
+<img src="https://cdn-images-1.medium.com/max/800/1*QrPJtfJ1LIJttuCa42itWg.png" alt="">
+Even though it performs worse in the training set, due to not worrying about noisy data it performs perfectly with real-world data.</p>
+<p>Let’s see another example of overfitting.</p>
+<hr>
+<h3 id="overfitting-with-noise-free-data">Overfitting with noise-free data<a hidden class="anchor" aria-hidden="true" href="#overfitting-with-noise-free-data">#</a></h3>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*_CtD1GdnMkecKDPLe6_LEQ.png" alt="">
+Here are the probabilities for each one:
+<img src="https://cdn-images-1.medium.com/max/800/1*n-B1Cz6fO01G7zbVg2X9vw.png" alt=""><img src="https://cdn-images-1.medium.com/max/800/1*1AylUEp77wSf-Y_ohZqskw.png" alt="">
+There’s a 50% chance that the resultant,* x3*, is True. There’s a 0.66% chance that the resultant, *Y*, is True.</p>
+<p>For our first model let’s have a quick look.
+<img src="https://cdn-images-1.medium.com/max/800/1*Vs0Dbag9ScC1uYApUqdFBw.png" alt="">
+The accuracy is:
+<img src="https://cdn-images-1.medium.com/max/800/1*c4hLm7KbonQorvCDSweTUg.png" alt="">
+It’s good on training data, but on real world data (D_true) it doesn’t perform as well. From this, we can tell that overfitting has occurred.</p>
+<hr>
+<h3 id="preventing-overfitting">Preventing overfitting<a hidden class="anchor" aria-hidden="true" href="#preventing-overfitting">#</a></h3>
+<p>The reason for overfitting is because the training model is trying to fit as well as possible over the training data, even if there is noise within the data. The first suggestion is to try and reduce noise in your data.</p>
+<p>Another possibility is that there is no noise, but the training data is small resulting in a difference from the true sample. More data would work.</p>
+<p>It’s hard to give an exact idea of how to prevent overfitting as it differs from model to model.</p>
+<hr>
+<p>Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won&rsquo;t spam you. I will only send you posts similar to this one 😊✨</p>
+<pre><code>#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+
+#mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;}
+#mergeRow-gdpr {margin-top: 20px;}
+#mergeRow-gdpr fieldset label {font-weight: normal;}
+#mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}
+</code></pre>
+<p>Like this article? Subscribe to my mailing list to get more like this✨</p>
+<p>Please tick this box to let me know you want to be contacted via email.
+Email</p>
+<p>If you&rsquo;re feeling extra generous, I have a <a href="https://www.paypal.me/BrandonSkerritt">PayPal </a> and even a <a href="https://www.patreon.com/user?u=15993188">Patreon</a>. I&rsquo;m  a university student who writes these blogs in their spare time. This blog is my full time job, so any and all donations are appreciated!</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://polymath.cloud/tags/university/">University</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share What is a Decision Tree in Machine Learning? on twitter"
+        href="https://twitter.com/intent/tweet/?text=What%20is%20a%20Decision%20Tree%20in%20Machine%20Learning%3f&amp;url=https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f&amp;hashtags=University%2cComputerScience">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share What is a Decision Tree in Machine Learning? on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f&amp;title=What%20is%20a%20Decision%20Tree%20in%20Machine%20Learning%3f&amp;summary=What%20is%20a%20Decision%20Tree%20in%20Machine%20Learning%3f&amp;source=https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share What is a Decision Tree in Machine Learning? on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f&title=What%20is%20a%20Decision%20Tree%20in%20Machine%20Learning%3f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share What is a Decision Tree in Machine Learning? on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share What is a Decision Tree in Machine Learning? on whatsapp"
+        href="https://api.whatsapp.com/send?text=What%20is%20a%20Decision%20Tree%20in%20Machine%20Learning%3f%20-%20https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share What is a Decision Tree in Machine Learning? on telegram"
+        href="https://telegram.me/share/url?text=What%20is%20a%20Decision%20Tree%20in%20Machine%20Learning%3f&amp;url=https%3a%2f%2fpolymath.cloud%2fwhat-is-a-decision-tree-in-machine-learning%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

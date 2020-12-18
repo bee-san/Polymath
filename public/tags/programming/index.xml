@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/programming/</link>
+    <description>Recent content in Programming on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Nov 2020 23:46:37 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithmic Design Paradigms</title>
+      <link>https://polymath.cloud/algorithms/</link>
+      <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/algorithms/</guid>
+      <description>Greedy Algorithms Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+Why Are Greedy Algorithms Called Greedy? Algorithms are called greedy when they utilise the greedy property. The greedy property is:
+ At that exact moment in time, what is the optimal choice to make?</description>
+    </item>
+    
+    <item>
+      <title>Python Zero to Hero</title>
+      <link>https://polymath.cloud/python/</link>
+      <pubDate>Thu, 01 Oct 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/python/</guid>
+      <description>What is Python? Python is a programming language created by Guido (pronounced gree-do) Van Rossum. Specifically, Python is an intrepreted, high-level, general purpose programming language.
+Let&amp;rsquo;s talk about what these mean.
+General Purpose General Purpose means that Python was created to do everything. Some programming languages like Matlab or R were created for data science. Others like HTML / CSS were created for web development.
+Python aims to do everything, it is generalised.</description>
+    </item>
+    
+  </channel>
+</rss>

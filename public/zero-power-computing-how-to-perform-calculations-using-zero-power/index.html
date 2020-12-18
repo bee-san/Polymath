@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Zero Power Computing — How to Perform Calculations Using Zero Power | Polymath.cloud</title>
+
+<meta name="keywords" content="Computer Science" />
+<meta name="description" content="Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.
+The smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="Zero Power Computing — How to Perform Calculations Using Zero Power" />
+<meta property="og:description" content="Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.
+The smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/" />
+<meta property="article:published_time" content="2019-04-08T00:28:02+00:00" />
+<meta property="article:modified_time" content="2019-04-08T00:28:02+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Zero Power Computing — How to Perform Calculations Using Zero Power"/>
+<meta name="twitter:description" content="Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.
+The smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Zero Power Computing — How to Perform Calculations Using Zero Power",
+  "name": "Zero Power Computing — How to Perform Calculations Using Zero Power",
+  "description": "Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU …",
+  "keywords": [
+    "Computer Science"
+  ],
+  "articleBody": "Moore’s law is dying. There have been countless articles on this. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.\nThe smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing. It is theoretically possible to perform computations with zero power. This article will explain how that is possible.\n In the 1950s Computer Scientists wanted to know if it is possible to build an accurate simulation of classical physics. Not a “close to” simulation, but 100% accurate.\nWhilst working this problem, they discovered something interesting:\nNewton’s Laws of Physics are reversible\nLet’s say you see a ball from a basketballers hand in an alternate world. In this world, friction doesn’t exist. For the next few examples, remember that** in this world friction doesn’t exist. **The ball is dropped, bouncing off the ground to the same starting height it started at.Gif by Michelle Sherrina on Giphy. Gif depicting a headless basketball player bouncing a basketball.\nLet’s put some arbitrary numbers on this now. Let’s say that the ball gains 6 units of energy to reach the floor.\nWhen the ball touches the floor, it goes back up again — using 6 units of energy.\nIn this world of pure Newtonian physics, the laws are reversible.\nIf we made a movie out of the ball falling; the ball would look the same going forwards in time as it would going backwards in time.\nLet’s see another example from this same world — taken from the book “Computing with Quantum Cats”.\nLet’s assume you have 2 balls of the same colour on a snooker table. One of the balls hits the other and you filmed this interaction. If you reversed the film it would make as much sense as it did going forward. If you presented this film to someone and asked them “Which ball hit the other ball?” they would not know the answer.\n Take a look at the ball below. We do not hold any information about how the ball got there, only that it is there. We don’t know whether it was placed, kicked, dropped or even teleported there. Photo by Ben Hershey on Unsplash. Image depicting a motionless tennis ball on the floor. We don’t know whether the ball was dropped from 40ft or 50ft, we hold no information about this ball.\nFrom the last few examples we can see that there is an interesting link between information and energy.\nAlthough each individual action is reversible, if we add more balls it’s not reversible. Let’s say we take the snooker example from earlier, but this time we watch a break at the start of the game:Image from Giphy. Image depicting a break in pool.\nWe can always tell which one is the future and which one is the past. The future is the one with more disorder.\nAs the second law of thermodynamics states:\n The amount of disorder in a system always increases and the result is not reversible.\n The term disorder is often called *entropy. *These rules of thermodynamics and entropy is useful to us since entropy is measured in information.\nWhat’s important to note here is that the relationship between thermodynamics, reversibility, and information are all based on the act of computation itself. Not the power required to run the computer or the power required to run the monitors.\nRolf Landauer found out in 1961 whilst a researcher at IBM that some computation does not need to dissipate energy. He found out that computation and the physical reality are united. In his own words: Photo of Rolf Landauer from here *“Information is not a disembodied abstract entity; it is always tied to a physical representation. It is represented by engraving on a stone tablet, a spin, a charge, a hole in a punched card, a mark on paper, or some other equivalent. This ties the handling of information to all the possibilities and restrictions of our real physical word.” — *Rolf Landauer\nWe have a connection between reversibility and thermodynamics. We have a connection between thermodynamics and information. Therefore we have a connection between reversibility and information.\nThe author John Gribbin describes a fun thought experiment to better get an overall view of this thinking. Figure 1 — Image depicting a ball on a box with the number “0” under it. There is another box with the number “1” on it over a hill. The 0 and 1 here represent binary bits. The hill represents the physical aspect to toggling the binary bit. When the ball goes over the hill and down the other side, it’ll toggle the binary bit to be 1.\nWhen it does the reverse, it’ll toggle the binary bit to be 0.\nThe ball traversing the hill would look like this: Figure 2- image depicting a ball going up one side of the hill using +6 energy and going down the other side of the hill using -6 energy. The ball eventually toggles the switch to 1. The ball gains an arbitrary amount of energy as it is pushed up the hill and it releases this energy going down the hill.\nIt has, effectively, cost 0 energy to toggle the binary bit. This is an important statement. John Von Neumann once said “it costs energy to toggle a switch” but our little experiment has displayed that it it possible to not expend energy.\nAlthough it cost nothing to toggle the switch (moving the ball from one side to the other) it will cost something to check where the ball is. It will cost something to check what position the switch is in.\nThe act of the computation itself can cost nothing, but everything else might cost something.\nComputers are entirely made up of toggles like this. If it costs nothing to toggle a simple switch like this, we can have entire circuit boards built up of gates that cost nothing.\n Gates Let’s take a look at some logic gates.\nA logic gate is a decision making tool. You give it some input and it gives out an output. One of the simpler logic gates is the AND gate. And gate taken from my post on logic gates, here Logic gates can only take 0 or 1 as input. The AND gate outputs the product of A and B. Or in other words, it only outputs 1 when A **and **B are 1. Truth table taken from my article here In all other instances when A and B are not both 1 the AND gate will output 0.\nIf we come across an AND gate and the output is 1 — we know for sure that the 2 inputs were 1 and 1.\nIf we come across an AND gate and the output is 0, we don’t know what the input was. It could of been A = 0, B = 1 or A = 1, B = 0 or A = 0, B = 0.\nWe cannot *reverse *the AND gate to find out what the input is when the output is 0.\nA reversible computer has to be built out of logic gates that can be reversed. The AND gate is not a reversible logic gate so it is not useful here. To build a computer which can replicate classical physics the components of the computer have to be reversible too.\n Reversible Programs Charles Bennet in 1973, whilst working at IBM, created a few simple reversible computer programs. The first half would do the computations and the second half would undo the computations. In his words: Photo of Charles H. Bennet. Image from here “The first half would generate the desired answer … as well as typically, some other information … the second half would dispose of the extranous information by reversing the process that generated it but would keep the desired answer.\n*This led me to believe that any computation could be rendered into this reversable format by accumulating a history of all information that would normally be thrown away, then disposing of this history by the reverse of the process that generated it. To prevent the reverse stage from destroying the desired output along with the undesired history, it suffices, before begginging the reverse stage, to copy the output on blank tape. Copying onto blank tape is already logically reversible.” — *Charles Bennet\nSimply put the proces is as follows:\n Compute the answer Write the answer down somewhere reverse all computations to get back to the original state   Fredkin Gates The Fredkin gate is a *universal *gate. Meaning that any logical or arthimetic instruction can be created using a Fredkin gate. Any logic circuit can be created using just Fredkin gates. This means that any computer can be made entirely out of Fredkin gates.\nIf you are not so sure on logic and gates, check out this previous article I’ve written here. Image of a Fredkin gate from here Wikipedia has a nice explanation for how Fredkin gates work, copied here with slight changes.\nThe Fredkin gate maps three inputs (A, B, C) onto three outputs (P, Q, R). The C input is mapped directly to the R output. If C = 0, no swap is performed; A maps to P and B maps to Q.\nOtherwise (if C = 1) the outputs are swapped. A maps to Q and B maps to P. C is **always **mapped to R.\nIf this is run backwards, it undoes itself. If the output of this Fredkin gate is fed to the input of another Fredkin gate (P to A, Q to B, R to c) the output of the second Fredkin gate is the same as the input of the first Fredkin gate.\n Conclusion If we build a perfect Fredkin gate we will get zero power computation. Computing would no longer cost energy. This can change everything. Blockchain uses up enough energy to power a country. Imagine a blockchain that consumed next to 0 energy, the only limitations for it would be the memory problems.\nThe battery life of a mobile phone would be 10x that of a phone today. The phone no longer has to waste power in computing things, the only power it wastes is keeping the screen on. But, there are always downsides to the upsides.\nThe problem with building a reversible computer is that it’s hard. It requires us to completely shift our mindset away from everything we know. Computer Scientists have always built computers to consume electricity. Which have always been built using traditional logic gates. This is a quantum shift in not only our thinking but, fundamentally, how every single device on the planet should behave.\nIt’s also a slow process. Although Fredkin gates can reverse and give us back the computational energy they can never give back time. What might take something 4 seconds on a CPU to compute would take 8 seconds on a Fredkin gate to compute. This is due to the fact that once you have computed it, you have to undo all the calculations — effectively 2 times the process.\nIt’s also impossible as of yet. Throughout this article we have assumed that we live in a frictionless world, which isn’t very reasonable. It’s theoretically possible, but not much work has been done here.\nIn the 1990s a research team discovered that the energy savings from a Fredkin gate are linearly proportional to how slowly you run them.\nIn 2016 it was announced that researchers had created a quantum Fredkin gate which could be used to build a quantum computer. This is a quantum gate, so cannot be used in ordinary analogue computing. It’s one step closer to building computers which can perform zero power computations, but it’s still a long way off.\n Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won’t spam you. I will only send you posts similar to this one 😊✨\n#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; } /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block. We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ #mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;} #mergeRow-gdpr {margin-top: 20px;} #mergeRow-gdpr fieldset label {font-weight: normal;} #mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}  Like this article? Subscribe to my mailing list to get more like this✨\nPlease tick this box to let me know you want to be contacted via email. Email\nIf you’re feeling extra generous, I have a PayPal  and even a Patreon. I’m a university student who writes these blogs in their spare time. This blog is my full time job, so any and all donations are appreciated!\n",
+  "wordCount" : "2160",
+  "inLanguage": "en",
+  "datePublished": "2019-04-08T00:28:02Z",
+  "dateModified": "2019-04-08T00:28:02Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/zero-power-computing-how-to-perform-calculations-using-zero-power/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      Zero Power Computing — How to Perform Calculations Using Zero Power
+    </h1>
+    <div class="post-meta">
+
+April 8, 2019&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>Moore’s law is dying. There have been <a href="https://www.extremetech.com/computing/256558-nvidias-ceo-declares-moores-law-dead">countless </a><a href="https://www.technologyreview.com/s/601441/moores-law-is-dead-now-what/">articles </a>on <a href="https://www.electronicsweekly.com/news/moores-law-still-law-2017-09/">this</a>. We cannot keep on packing transistors into a given unit of space, expecting each time that the power of the CPU doubles every year.</p>
+<p>The smaller and smaller the chips are made, the more problems that are produced. To think this rule would last forever is naïve, we’re running out of space and it’s going to cause problems. Luckily there’s a storm brewing. It is theoretically possible to perform computations with <strong>zero power</strong>. This article will explain how that is possible.</p>
+<hr>
+<p>In the 1950s Computer Scientists wanted to know if it is possible to build an accurate simulation of classical physics. Not a “close to” simulation, but 100% accurate.</p>
+<p>Whilst working this problem, they discovered something interesting:</p>
+<p><strong>Newton’s Laws of Physics are reversible</strong></p>
+<p>Let’s say you see a ball from a basketballers hand in an alternate world. In this world, friction doesn’t exist. For the next few examples, remember that** in this world friction doesn’t exist. **The ball is dropped, bouncing off the ground to the same starting height it started at.Gif by <a href="https://twitter.com/Sherchle">Michelle Sherrina</a> on <a href="https://giphy.com/gifs/basketball-dribble-dribbling-3o6ZtpY1ws3DohMK1W">Giphy</a>. Gif depicting a headless basketball player bouncing a basketball.</p>
+<p>Let’s put some arbitrary numbers on this now. Let’s say that the ball gains 6 units of energy to reach the floor.</p>
+<p>When the ball touches the floor, it goes back up again — using 6 units of energy.</p>
+<p>In this world of pure Newtonian physics, the laws are reversible.</p>
+<p>If we made a movie out of the ball falling; the ball would look the same going forwards in time as it would going backwards in time.</p>
+<p>Let’s see another example from this same world — taken from the book “Computing with Quantum Cats”.</p>
+<p>Let’s assume you have 2 balls of the same colour on a snooker table. One of the balls hits the other and you filmed this interaction. If you reversed the film it would make as much sense as it did going forward. If you presented this film to someone and asked them “Which ball hit the other ball?” they would not know the answer.</p>
+<hr>
+<p>Take a look at the ball below. We do not hold any information about how the ball got there, only that it is there. We don’t know whether it was placed, kicked, dropped or even teleported there.
+<img src="https://cdn-images-1.medium.com/max/600/1*r-M4KIgAsF-v3jFIFzgXdA.jpeg" alt="">Photo by <a href="https://unsplash.com/photos/VEW78A1YZ6I?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ben Hershey</a> on <a href="https://unsplash.com/search/photos/ball?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>. Image depicting a motionless tennis ball on the floor.
+We don’t know whether the ball was dropped from 40ft or 50ft, we hold no information about this ball.</p>
+<p>From the last few examples we can see that there is an interesting link between information and energy.</p>
+<p>Although each individual action is reversible, if we add more balls it’s not reversible. Let’s say we take the snooker example from earlier, but this time we watch a break at the start of the game:Image from <a href="https://giphy.com/">Giphy</a>. Image depicting a break in pool.</p>
+<p>We can always tell which one is the future and which one is the past. The future is the one with more <em>disorder</em>.</p>
+<p>As the <a href="https://www.wikiwand.com/en/Second_law_of_thermodynamics">second law of thermodynamics</a> states:</p>
+<blockquote>
+<p>The amount of disorder in a system always increases and the result is not reversible.</p>
+</blockquote>
+<p>The term disorder is often called *entropy. *These rules of thermodynamics and entropy is useful to us since entropy is measured in <em>information.</em></p>
+<p>What’s important to note here is that the relationship between thermodynamics, reversibility, and information are all based on the act of computation itself. Not the power required to run the computer or the power required to run the monitors.</p>
+<p>Rolf Landauer found out in 1961 whilst a researcher at IBM that some computation does not need to dissipate energy. He found out that computation and the physical reality are united. In his own words:
+<img src="https://cdn-images-1.medium.com/max/600/1*Ckfz1x26OvLWH1aVLiZt_A.jpeg" alt="">Photo of Rolf Landauer from <a href="http://ethw.org/Rolf_Landauer">here</a>
+*“Information is not a disembodied abstract entity; it is always tied to a physical representation. It is represented by engraving on a stone tablet, a spin, a charge, a hole in a punched card, a mark on paper, or some other equivalent. This ties the handling of information to all the possibilities and restrictions of our real physical word.” — *Rolf Landauer</p>
+<p>We have a connection between reversibility and thermodynamics. We have a connection between thermodynamics and information. Therefore we have a connection between reversibility and information.</p>
+<p>The author <a href="https://www.wikiwand.com/en/John_Gribbin">John Gribbin</a> describes a fun thought experiment to better get an overall view of this thinking.
+<img src="https://cdn-images-1.medium.com/max/800/1*SM_za4xcpq2v-ktDFasNlQ.png" alt="">Figure 1 — Image depicting a ball on a box with the number “0” under it. There is another box with the number “1” on it over a hill.
+The 0 and 1 here represent binary bits. The hill represents the physical aspect to toggling the binary bit. When the ball goes over the hill and down the other side, it’ll toggle the binary bit to be 1.</p>
+<p>When it does the reverse, it’ll toggle the binary bit to be 0.</p>
+<p>The ball traversing the hill would look like this:
+<img src="https://cdn-images-1.medium.com/max/800/1*qeILnsLCkz2GhZG_iz6X9A.png" alt="">Figure 2- image depicting a ball going up one side of the hill using +6 energy and going down the other side of the hill using -6 energy. The ball eventually toggles the switch to 1.
+The ball gains an arbitrary amount of energy as it is pushed up the hill and it releases this energy going down the hill.</p>
+<p>It has, effectively, cost 0 energy to toggle the binary bit. This is an important statement. John Von Neumann once said “it costs energy to toggle a switch” but our little experiment has displayed that it it possible to not expend energy.</p>
+<p>Although it cost nothing to toggle the switch (moving the ball from one side to the other) it will cost something to check where the ball is. It will cost something to check what position the switch is in.</p>
+<p>The act of the computation itself can cost nothing, but everything else might cost something.</p>
+<p>Computers are entirely made up of toggles like this. If it costs nothing to toggle a simple switch like this, we can have entire circuit boards built up of gates that cost nothing.</p>
+<hr>
+<h4 id="gates">Gates<a hidden class="anchor" aria-hidden="true" href="#gates">#</a></h4>
+<p>Let’s take a look at some logic gates.</p>
+<p>A logic gate is a decision making tool. You give it some input and it gives out an output. One of the simpler logic gates is the AND gate.
+<img src="https://cdn-images-1.medium.com/max/800/0*nD0uUIs3RzlTc9MB.jpg" alt="">And gate taken from my post on logic gates, <a href="https://medium.com/brandons-computer-science-notes/mathematical-logic-f53f9c60d8d9">here</a>
+Logic gates can only take 0 or 1 as input. The AND gate outputs the product of A and B. Or in other words, it only outputs 1 when A **and **B are 1.
+<img src="https://cdn-images-1.medium.com/max/800/1*qzJioXkK8ir2AOlWSQpFIg.png" alt="">Truth table taken from my article <a href="https://medium.com/brandons-computer-science-notes/mathematical-logic-f53f9c60d8d9">here</a>
+In all other instances when A and B are not both 1 the AND gate will output 0.</p>
+<p>If we come across an AND gate and the output is 1 — we know for sure that the 2 inputs were 1 and 1.</p>
+<p>If we come across an AND gate and the output is 0, we don’t know what the input was. It could of been A = 0, B = 1 or A = 1, B = 0 or A = 0, B = 0.</p>
+<p>We cannot *reverse *the AND gate to find out what the input is when the output is 0.</p>
+<p>A reversible computer has to be built out of logic gates that can be reversed. The AND gate is not a reversible logic gate so it is not useful here. To build a computer which can replicate classical physics the components of the computer have to be reversible too.</p>
+<hr>
+<h4 id="reversible-programs">Reversible Programs<a hidden class="anchor" aria-hidden="true" href="#reversible-programs">#</a></h4>
+<p>Charles Bennet in 1973, whilst working at IBM, created a few simple reversible computer programs. The first half would do the computations and the second half would undo the computations. In his words:
+<img src="https://cdn-images-1.medium.com/max/600/0*MmbMpqgIF34EuSdd.jpg" alt="">Photo of Charles H. Bennet. Image from <a href="about:invalid#zSoyz">here</a>
+<em>“The first half would generate the desired answer … as well as typically, some other information … the second half would dispose of the extranous information by reversing the process that generated it but would keep the desired answer.</em></p>
+<p>*This led me to believe that any computation could be rendered into this reversable format by accumulating a history of all information that would normally be thrown away, then disposing of this history by the reverse of the process that generated it. To prevent the reverse stage from destroying the desired output along with the undesired history, it suffices, before begginging the reverse stage, to copy the output on blank tape. Copying onto blank tape is already logically reversible.” — *Charles Bennet</p>
+<p>Simply put the proces is as follows:</p>
+<ul>
+<li>Compute the answer</li>
+<li>Write the answer down somewhere</li>
+<li>reverse all computations to get back to the original state</li>
+</ul>
+<hr>
+<h4 id="fredkin-gates">Fredkin Gates<a hidden class="anchor" aria-hidden="true" href="#fredkin-gates">#</a></h4>
+<p>The Fredkin gate is a *universal *gate. Meaning that any logical or arthimetic instruction can be created using a Fredkin gate. Any logic circuit can be created using just Fredkin gates. This means that any computer can be made entirely out of Fredkin gates.</p>
+<p>If you are not so sure on logic and gates, check out this previous article I’ve written <a href="https://medium.com/brandons-computer-science-notes/mathematical-logic-f53f9c60d8d9">here</a>.
+<img src="https://cdn-images-1.medium.com/max/800/0*kpZYPpWmSUsQh3tE.png" alt="">Image of a Fredkin gate from <a href="https://www.wikiwand.com/en/Fredkin_gate">here</a>
+<a href="https://www.wikiwand.com/en/Fredkin_gate">Wikipedia </a>has a nice explanation for how Fredkin gates work, copied here with slight changes.</p>
+<p>The Fredkin gate maps three inputs (A, B, C) onto three outputs (P, Q, R). The C input is mapped directly to the R output. If C = 0, no swap is performed; A maps to P and B maps to Q.</p>
+<p>Otherwise (if C = 1) the outputs are swapped. A maps to Q and B maps to P. C is **always **mapped to R.</p>
+<p>If this is run backwards, it undoes itself. If the output of this Fredkin gate is fed to the input of another Fredkin gate (P to A, Q to B, R to c) the output of the second Fredkin gate is the same as the input of the first Fredkin gate.</p>
+<hr>
+<h4 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h4>
+<p>If we build a perfect Fredkin gate we will get zero power computation. Computing would no longer cost energy. This can change everything. Blockchain uses up enough energy to <a href="https://www.technologyreview.com/s/609480/bitcoin-uses-massive-amounts-of-energybut-theres-a-plan-to-fix-it/">power a country</a>. Imagine a blockchain that consumed next to 0 energy, the only limitations for it would be the memory problems.</p>
+<p>The battery life of a mobile phone would be 10x that of a phone today. The phone no longer has to waste power in computing things, the only power it wastes is keeping the screen on. But, there are always downsides to the upsides.</p>
+<p>The problem with building a reversible computer is that it’s hard. It requires us to completely shift our mindset away from everything we know. Computer Scientists have always built computers to consume electricity. Which have always been built using traditional logic gates. This is a quantum shift in not only our thinking but, fundamentally, how every single device on the planet should behave.</p>
+<p>It’s also a slow process. Although Fredkin gates can reverse and give us back the computational energy they can never give back time. What might take something 4 seconds on a CPU to compute would take 8 seconds on a Fredkin gate to compute. This is due to the fact that once you have computed it, you have to undo all the calculations — effectively 2 times the process.</p>
+<p>It’s also impossible as of yet. Throughout this article we have assumed that we live in a frictionless world, which isn’t very reasonable. It’s theoretically possible, but not much work has been done here.</p>
+<p>In the 1990s a research team <a href="https://cs.stackexchange.com/a/38053">discovered</a> that the energy savings from a Fredkin gate are linearly proportional to how <em>slowly</em> you run them.</p>
+<p>In 2016 it was <a href="http://advances.sciencemag.org/content/2/3/e1501531">announced</a> that researchers had created a quantum Fredkin gate which could be used to build a quantum computer. This is a quantum gate, so cannot be used in ordinary analogue computing. It’s one step closer to building computers which can perform zero power computations, but it’s still a long way off.</p>
+<hr>
+<p>Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won&rsquo;t spam you. I will only send you posts similar to this one 😊✨</p>
+<pre><code>#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+
+#mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;}
+#mergeRow-gdpr {margin-top: 20px;}
+#mergeRow-gdpr fieldset label {font-weight: normal;}
+#mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}
+</code></pre>
+<p>Like this article? Subscribe to my mailing list to get more like this✨</p>
+<p>Please tick this box to let me know you want to be contacted via email.
+Email</p>
+<p>If you&rsquo;re feeling extra generous, I have a <a href="https://www.paypal.me/BrandonSkerritt">PayPal </a> and even a <a href="https://www.patreon.com/user?u=15993188">Patreon</a>. I&rsquo;m  a university student who writes these blogs in their spare time. This blog is my full time job, so any and all donations are appreciated!</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Zero Power Computing — How to Perform Calculations Using Zero Power on twitter"
+        href="https://twitter.com/intent/tweet/?text=Zero%20Power%20Computing%e2%80%8a%e2%80%94%e2%80%8aHow%20to%20Perform%20Calculations%20Using%20Zero%20Power&amp;url=https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f&amp;hashtags=ComputerScience">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Zero Power Computing — How to Perform Calculations Using Zero Power on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f&amp;title=Zero%20Power%20Computing%e2%80%8a%e2%80%94%e2%80%8aHow%20to%20Perform%20Calculations%20Using%20Zero%20Power&amp;summary=Zero%20Power%20Computing%e2%80%8a%e2%80%94%e2%80%8aHow%20to%20Perform%20Calculations%20Using%20Zero%20Power&amp;source=https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Zero Power Computing — How to Perform Calculations Using Zero Power on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f&title=Zero%20Power%20Computing%e2%80%8a%e2%80%94%e2%80%8aHow%20to%20Perform%20Calculations%20Using%20Zero%20Power">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Zero Power Computing — How to Perform Calculations Using Zero Power on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Zero Power Computing — How to Perform Calculations Using Zero Power on whatsapp"
+        href="https://api.whatsapp.com/send?text=Zero%20Power%20Computing%e2%80%8a%e2%80%94%e2%80%8aHow%20to%20Perform%20Calculations%20Using%20Zero%20Power%20-%20https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Zero Power Computing — How to Perform Calculations Using Zero Power on telegram"
+        href="https://telegram.me/share/url?text=Zero%20Power%20Computing%e2%80%8a%e2%80%94%e2%80%8aHow%20to%20Perform%20Calculations%20Using%20Zero%20Power&amp;url=https%3a%2f%2fpolymath.cloud%2fzero-power-computing-how-to-perform-calculations-using-zero-power%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

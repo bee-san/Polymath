@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Algorithmic Design Paradigms | Polymath.cloud</title>
+
+<meta name="keywords" content="Python, Programming, Computer Science, Ebook, Datastructures and Algorithms" />
+<meta name="description" content="Learn about Greedy, Divide &amp; Conquer, amd Dynamic Programming.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/algorithms/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="Algorithmic Design Paradigms" />
+<meta property="og:description" content="Learn about Greedy, Divide &amp; Conquer, amd Dynamic Programming." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/algorithms/" />
+<meta property="article:published_time" content="2020-11-01T23:46:37+00:00" />
+<meta property="article:modified_time" content="2020-11-01T23:46:37+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Algorithmic Design Paradigms"/>
+<meta name="twitter:description" content="Learn about Greedy, Divide &amp; Conquer, amd Dynamic Programming."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Algorithmic Design Paradigms",
+  "name": "Algorithmic Design Paradigms",
+  "description": "Greedy Algorithms Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find …",
+  "keywords": [
+    "Python", "Programming", "Computer Science", "Ebook", "Datastructures and Algorithms"
+  ],
+  "articleBody": "Greedy Algorithms Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.\nWhy Are Greedy Algorithms Called Greedy? Algorithms are called greedy when they utilise the greedy property. The greedy property is:\n At that exact moment in time, what is the optimal choice to make?\n Greedy algorithms are greedy. They do not look into the future to decide the global optimal solution. They are only concerned with the optimal solution locally. This means that the overall optimal solution may be different from the solution the algorithm chooses.\nThey never look backwards at what they’ve done to see if they could optimise globally. This is the main difference between Greedy and Dynamic Programming.\n What Are Greedy Algorithms Used For? Greedy algorithms are very fast. A lot faster than the two other alternatives (Divide \u0026 Conquer, and Dynamic Programming). They’re used because they’re fast.\nMost of the popular algorithms using Greedy have shown that Greedy gives the global optimal solution every time. Some of these include:\n Dijkstra’s Algorithm Kruskal’s algorithm Prim’s algorithm Huffman trees  We’re going to explore greedy algorithms using a famous example - counting change. There isn’t much to this paradigm.\n How Do I Create a Greedy Algorithm? Your algorithm needs to follow this property:\n At that exact moment in time, what is the optimal choice to make?\n And that’s it. There isn’t much to it. Greedy algorithms are generally easier to code than Divide \u0026 Conquer or Dynamic Programming.\n Counting Change Using Greedy Imagine you’re a vending machine. Someone gives you £1 and buys a drink for £0.70p. There’s no 30p coin in pound sterling, how do you calculate how much change to return?\nFor reference, this is the denomination of each coin in the UK:\n1p, 2p, 5p, 10p, 20p, 50p, £1\rThe greedy algorithm starts from the highest denomination and works backwards. Our algorithm starts at £1. £1 is more than 30p, so it can’t use it. It does this for 50p. It reaches 20p. 20p The algorithm needs to return change of 10p. It tries 20p again, but 20p  10p. It then goes to 10p. It chooses 1 10p, and now our return is 0 we stop the algorithm.\nWe return 1x20p and 1x10p.\nThis algorithm works quite well in real life. Let’s use another example, this time we have the denomination next to how many of that coin is in the machine, (denomination, how many).\n(1p, 10), (2p, 3), (5p, 1), (10p, 0), (20p, 1p), (50p, 19p), (100p, 16)\rThe algorithm is asked to return change of 30p again. 100p (£1) is no. Same for 50. 20p, we can do that. We pick 1x 20p. We now need to return 10p. 20p has run out, so we move down 1.\n10p has run out, so we move down 1.\nWe have 5p, so we choose 1x5p. We now need to return 5p. 5p has run out, so we move down one.\nWe choose 1 2p coin. We now need to return 3p. We choose another 2p coin. We now need to return 1p. We move down one.\nWe choose 1x 1p coin.\nIn total, our algorithm selected these coins to return as change:\n# (value, how many we return as change)\r (10, 1)\r(5, 1)\r(2, 2)\r(1, 1)\rLet’s code something. First, we need to define the problem. We’ll start with the denominations.\ndenominations = [1, 2, 5, 10, 20, 50, 100]\r# 100p is £1\r Now onto the core function. Given denominations and an amount to give change, we want to return a list of how many times that coin was returned.\nIf our denominations list is as above, then [6, 3, 0, 0, 0, 0, 0] represents taking 6 1p coins and 3 2p coins, but 0 of all other coins.\ndenominations = [1, 2, 5, 10, 20, 50, 100]\r# 100p is £1\r def returnChange(change, denominations):\rtoGiveBack = [0] * len(denominations)\rfor pos, coin in reversed(list(enumerate(denominations))):\rWe create a list, the size of denominations long and fill it with 0’s.\nWe want to loop backwards, from largest to smallest. Reversed(x) reverses x and lets us loop backwards. Enumerate means “for loop through this list, but keep the position in another variable”. In our example when we start the loop. coin = 100 and pos = 6.\nOur next step is repeatedly choosing a coin for as long as we can use that coin. If we need to give change = 40 we want our algorithm to choose 20, then 20 again until it can no longer use 20. We do this using a for loop.\ndenominations = [1, 2, 5, 10, 20, 50, 100]\r# 100p is £1\r def returnChange(change, denominations):\r# makes a list size of length denominations filled with 0\r toGiveBack = [0] * len(denominations)\r# goes backwards through denominations list\r # and also keeps track of the counter, pos.\r for pos, coin in enumerate(reversed(denominations)):\r# while we can still use coin, use it until we can't\r while coin  change:\rWhile the coin can still fit into change, add that coin to our return list, toGiveBack and remove it from change.\ndenominations = [1, 2, 5, 10, 20, 50, 100]\r# 100p is £1\r def returnChange(change, denominations):\r# makes a list size of length denominations filled with 0\r toGiveBack = [0] * len(denominations)\r# goes backwards through denominations list\r # and also keeps track of the counter, pos.\r for pos, coin in enumerate(reversed(denominations)):\r# while we can still use coin, use it until we can't\r while coin  change:\rchange = change - coin\rtoGiveBack[pos] += 1\rreturn(toGiveBack)\rprint(returnChange(30, denominations))\r# returns [0, 0, 0, 1, 1, 0, 0]\r # 1x 10p, 1x 20p\r The runtimeof this algorithm is dominated by the 2 loops, thus it is O(n^2).\n Is Greedy Optimal? Does Greedy Always Work? It is optimal locally, but sometimes it isn’t optimal globally. In the change giving algorithm, we can force a point at which it isn’t optimal globally.\nThe algorithm for doing this is:\n Pick 3 denominations of coins. 1p, x, and less than 2x but more than x.  We’ll pick 1, 15, 25.\n Ask for change of 2 * second denomination (15)  We’ll ask for change of 30. Now, let’s see what our Greedy algorithm does.\n[5, 0, 1]\rIt choses 1x 25p, and 5x 1p. The optimal solution is 2x 15p.\nOur Greedy algorithm failed because it didn’t look at 15p. It looked at 25p and thought “yup, that fits. Let’s take it.”\nIt then looked at 15p and thought “that doesn’t fit, let’s move on”.\nThis is an example of where Greedy Algorithms fail.\nTo get around this, you would either have to create currency where this doesn’t work or to brute-force the solution. Or use Dynamic Programming.\nGreedy Algorithms are sometimes globally optimal. From earlier, we saw these algorithms are globally optimal:\n Dijkstra’s Algorithm Kruskal’s algorithm Prim’s algorithm Huffman trees  There are other globally optimal solutions, but Greedy is faster and easier to program than these solutions.\n Dijkstra’s Algorithm Dijkstra’s algorithm finds the shortest path from a node to every other node in the graph. In our example, we’ll be using a weighted directed graph. Each edge has a direction, and each edge has a weight.\nDijkstra’s algorithm has many uses. It can be very useful within road networks where you need to find the fastest route to a place. The algorithm is also used for:\n IP Routing A* Algorithm Telephone networks  The algorithm follows these rules:\n Every time we want to visit a new node, we will choose the node with the smallest known distance. Once we’ve moved to the node, we check each of its neighbouring nodes. We calculate the distance from the neighbouring nodes to the root nodes by summing the cost of the edges that lead to that new node. If the distance to a node is less than a known distance, we’ll update the shortest distance.  Our first step is to pick the starting node. Let’s choose A. All the distances start at infinity, as we don’t know their distance until we reach a node that does know the distance.\nWe mark off A on our unvisited nodes list. The distance from A to A is 0. The distance from A to B is 4. The distance from A to C is 2. We updated our distance listing on the right-hand side.\nWe then pick the smallest edge where the vertex hasn’t been chosen. The smallest edge is A - C, and we haven’t chosen C yet. We visit C.\nNotice how we’re picking the smallest distance from our current node to a node we haven’t visited yet. We’re being greedy. In this case, the greedy method is the global optimal solution.\nWe can get to B from C. We now need to pick a minimum. min(4, 2 + 1) = 3.\nSince A - C - B is smaller than A - B, we update B with this information. We then add in the distances from the other nodes we can now reach.\nOur next smallest vertex with a node we haven’t visited yet is B, with 3. We visit B.\nWe do the same for B. Then we pick the smallest vertex we haven’t visited yet, D.\nWe don’t update any of the distances this time. Our last node is then E.\nThere are no updates again. To find the shortest path from A to the other nodes, we walk back through our graph.\nWe pick A first, then C, then B. If you need to create the shortest path from A to every other node as a graph, you can run this algorithm using a table on the right hand side.\nUsing this table it is easy to draw out the shortest distance from A to every other node in the graph:\n Fractional Knapsack Problem Using Greedy Algorithm Imagine you are a thief. You break into the house of Judy Holliday - 1951 Oscar winner for Best Actress. Judy is a hoarder of gems. Judy’s house is lined to the brim with gems.\nYou brought with you a bag - a knapsack if you will. This bag has a weight of 7. You happened to have a listing of all of Judy’s items, from some insurance paper. The items read as:\n![](https://skerritt.blog/content/images/2019/06/Screenshot_2019-06-23-Greedy-Algorithms-1-.png\nThe first step to solving the fractional knapsack problem is to calculate value/weight for each item.\nAnd now we greedily select the largest ones. To do this, we can sort them according to value/weight} in descending order. Luckily for us, they are already sorted. The largest one is 3.2.\nknapsack value = 16\rknapsack total weight = 5 (out of 7)\rThen we select Francium (I know it’s not a gem, but Judy is a bit strange 😉)\nknapsack value = 19\rknapsack weight = 6\rNow, we add Sapphire. But if we add Sapphire, our total weight will come to 8.\nIn the fractional knapsack problem, we can cut items up to take fractions of them. We have a weight of 1 left in the bag. Our sapphire is weight 2. We calculate the ratio of:\nWeight of knapsack left / weight of item\nAnd then multiply this ratio by the value of the item to get how much value of that item we can take.\n1/2 * 6 = 3\nknapsack value = 21\rknapsack weight = 7\rThe greedy algorithm can optimally solve the fractional knapsack problem, but it cannot optimally solve the {0, 1} knapsack problem. In this problem instead of taking a fraction of an item, you either take it {1} or you don’t {0}. To solve this, you need to use Dynamic Programming.\nThe runtimefor this algorithm is O(n log n). Calculating value/weight is O(1). Our main step is sorting from largest value/weight, which takes O(n log n) time.\n Greedy vs Divide \u0026 Conquer vs Dynamic Programming  Conclusion Greedy algorithms are very fast, but may not provide the optimal solution. They are also easier to code than their counterparts.\nDivide \u0026 Conquer Divide and conquer algorithms aren’t really taught in programming textbooks, but it’s something every programmer should know. Divide and conquer algorithms are the backbone of concurrency and multi-threading.\nOften I’ll hear about how you can optimise a for loop to be faster or how switch statements are slightly faster than if statements. Most computers have more than one core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem at a different angle.\nDivide and Conquer is one of the ways to attack a problem from a different angle. Throughout this article, I’m going to talk about creating a divide and conquer solutions and what it is. Don’t worry if you have zero experience or knowledge on the topic. This article is designed to be read by someone with very little programming knowledge.\nI’m going to explain this using 3 examples. The first will be a simple explanation. The second will be some code. The final will get into the mathematical core of divide and conquer techniques. (Don’t worry, I hate maths too).\nNo time to read this? Sign up to my email list to get this in PDF form. You’ll also get some extra content that isn’t in this post ✨ Sign up here.\nWhat is divide and conquer? 🌎 Divide and conquer is where you divide a large problem up into many smaller, much easier to solve problems. The rather small example below illustrates this.\nWe take the equation “3 + 6 + 2 + 4” and we cut it down into the smallest possible set of equations, which is [3 + 6, 2 + 4]. It could also be [2 + 3, 4 + 6]. The order doesn’t matter, as long as we turn this one long equation into many smaller equations.\nLet’s say we have 8 numbers:\nAnd we want to add them all together. We first divide the problem into 8 equal sub-problems. We do this by breaking the addition up into individual numbers.\nWe then begin to add 2 numbers at a time.\nThen 4 numbers into 8 numbers which is our resultant.\nWhy do we break it down to individual numbers at stage 1? Why don’t we just start from stage 2? Because while this list of numbers is even if the list was odd you would need to break it down to individual numbers to better handle it.\nA divide and conquer algorithm tries to break a problem down into as many little chunks as possible since it is easier to solve with little chunks. It typically does this with recursion.\nFormally the technique is, as defined in the famous Introduction to Algorithms by Cormen, Leiserson, Rivest, and Stein is:\n Divide  If the problem is small, then solve it directly. Otherwise, divide the problem into smaller subsets of the same problem.\nConquer  Conquer the smaller problems by solving them recursively. If the subproblems are small enough, recursion is not needed and you can solve them directly.\nRecursion is when a function calls itself. It’s a hard concept to understand if you’ve never heard of it before. This page provides a good explanation. In short, a recursive function is one like this:\nn = 6\rdef recur_factorial(n):\rif n == 1:\rreturn n\relse:\rreturn n * recur_factorial(n-1)\rprint(recur_factorial(n))\rI’ll fully explain the code in a second.\nCombine  Take the solutions to the sub-problems and merge them into a solution to the original problem.\nWith the code from above, some important things to note. The Divide part is also the recursion part. We divide the problem up at return n * recur_factorial(n-1).\nSpecifically, the recur_factorial(n-1) part is where we divide the problem up.\nThe conquer part is the recursion part too, but also the if statement. If the problem is small enough, we solve it directly (by returning n). Else, we perform return n * recur_factorial(n-1).\nCombine. We do this with the multiplication symbol. Eventually, we return the factorial of the number. If we didn’t have the symbol there, and it was return recur_factorial(n-1) it wouldn’t combine and it wouldn’t output anything remotely similar to the factorial. (It’ll output 1, for those interested).\nWe’re going to explore how divide and conquer works in some famous algorithms, Merge Sort and the solution to the Towers of Hanoi.\n Merge Sort 🤖 Merge Sort is a sorting algorithm. The algorithm works as follows:\n Divide the sequence of n numbers into 2 halves Recursively sort the two halves Merge the two sorted halves into a single sorted sequence  In this image, we break down the 8 numbers into separate digits. Just like we did earlier. Once we’ve done this, we can begin the sorting process.\nIt compares 51 and 13. Since 13 is smaller, it puts it in the left-hand side. It does this for (10, 64), (34, 5), (32, 21).\nIt then merges (13, 51) with (10, 64). It knows that 13 is the smallest in the first list, and 10 is the smallest in the right list. 10 is smaller than 13, therefore we don’t need to compare 13 to 64. We’re comparing \u0026 merging two sorted lists.\nIn recursion we use the term base case to refer to the absolute smallest value we can deal with. With Merge Sort, the base case is 1. That means we split the list up until we get sub-lists of length 1. That’s also why we go down all the way to 1 and not 2. If the base case was 2, we would stop at the 2 numbers.\nIf the length of the list (n) is larger then 1, then we divide the list and each sub-list by 2 until we get sub-lists of size 1. If n = 1, the list is already sorted so we do nothing.\nMerge Sort is an example of a divide and conquer algorithm. Let’s look at one more algorithm to really understand how divide and conquer works.\n Towers of Hanoi 🗼 The Towers of Hanoi is a mathematical problem which consists of 3 pegs and in this instance, 3 discs. This problem is mostly used to teach recursion, but it does have some real world uses.\nEach disc is a different size. We want to move all discs to peg C so that the largest is on the bottom, second largest on top of the largest, third largest (smallest) on top of all of them. There are some rules to this game:\n We can only move 1 disc at a time. A disc cannot be placed on top of other discs that are smaller than it.  We want to use the smallest number of moves possible. If we have 1 disc, we only need to move it once. If we have 2 discs, we need to move it 3 times.\nThe number of moves is powers of 2 minus 1. If we have 4 discs, we calculate the minimum number of moves as 2^4 = 16 - 1 = 15.\nTo solve the above example we want to store the smallest disc in a buffer peg (1 move). See below for a gif on solving Tower of Hanoi with 3 pegs and 3 discs.\nNotice how we need to have a buffer to store the discs.\nWe can generalise this problem. If we have n discs: move n-1 from A to B recursively, move largest from A to C, move n-1 from B to C recursively.\nIf there is an even number of pieces the first move is always into the middle. If there are an odd number of pieces the first move is always to the other end.\nLet’s begin to code the algorithm for ToH, in pseudocode.\nfunction MoveTower(disk, source, dest, spare):\rif disk == 0, then:\rmove disk from source to dest\rWe start with a base case, disk == 0. source is the peg you’re starting at. dest is the final destination peg. spare is the spare peg.\nFUNCTION MoveTower(disk, source, dest, spare):\rIF disk == 0, THEN:\rmove disk from source to dest\rELSE:\rMoveTower(disk - 1, source, spare, dest) // Step 1\rmove disk from source to dest // Step 2\rMoveTower(disk - 1, spare, dest, source) // Step 3\rEND IF\rNotice that with step 1 we switch dest and source. We do not do this for step 3.\nWith recursion, we can be sure of 2 things:\n It always has a base case (if it doesn’t, how does the algorithm know to end?) The function calls itself.  The algorithm gets a little confusing with steps 1 and 3. They both call the same function. This is where multi-threading comes in. You can run steps 1 and 3 on different threads - at the same time.\nSince 2 is more than 1, we move it down one more level again. So far you’ve seen what the divide and conquer technique is. You should understand how it works and what code looks like. Next, let’s learn how to formally define an algorithm to a problem using divide and conquer. This part is the most important in my opinion. Once you know this, it’ll be exponentially easier to create divide and conquer algorithms.\n Fibonacci Numbers 🐰 The Fibonacci numbers can be found in nature. The way rabbits produceis in the style of the Fibonacci numbers. You have 2 rabbits that make 3, 3 rabbits make 5, 5 rabbits make 9 and so on.\nThe numbers start at 1 and the next number is the current number + the previous number. Here it’s 1 + 0 = 1. Then 1 + 1 = 2. 2 + 1 = 3 and so on.\nWe can describe this relation using a recursion. A recurrence is an equation which defines a function in terms of its smaller inputs. Recurrence and recursion sound similar and are similar.\nWith Fibonacci numbers if n = 0 or 1, it results in 1. Else, recursively add f(n-1) + f(n -2) until you reach the base case. Let’s start off by creating a non-recursive Fibonacci number calculator.\nWe know that if n = 0 or 1, return 1.\ndef f(n):\rif n == 0 or n == 1:\rreturn 1\rThe Fibonacci numbers are the last two numbers added together.\ndef f(n):\rif n == 0 or n == 1:\rreturn 1\relse:\rfibo = 1\rfibroPrev = 1\rfor i in range (2, n):\rtemp = fibo\rfibo = fibo + fiboPrev\rfiboPrev = temp\rreturn fibo\rNow we’ve seen this, let’s turn it into recursion using a recurrence.\nWhen creating a recurrence, we always start with the base case. The base case here is if n == 0 or 1, return n.\nIf we don’t return n, but instead return 1 this leads to a bug. For example, F(0) would result in 1. When really, it should result in 0.\nNext, we have the formula. If n isn’t 0 or 1, what do we do? We calculate F(n - 1) + F(n - 2). In the end, we want to merge all the numbers together to get our final result. We do this using addition.\nThis is the formal definition of the Fibonacci numbers. Normally, recurrences are used to talk about the running time of a divide and conquer algorithm. My algorithms professor and I think it’s actually a good tool to create divide and conquer algorithms.\ndef F(n):\rif n == 0 or n == 1:\rreturn n\relse:\rreturn F(n-1)+F(n-2)\rWith knowledge of divide and conquer, the above code is cleaner and easier to read.\nWe often calculate the result of a recurrence using an execution tree. Computer overlords 🤖 don’t need to do this, but it’s useful for humans to see how your divide and conquer algorithm works. For F(4) this looks like:\nn is 4, and n is larger than 0 or 1. So we do f(n-1) + f(n-2). We ignore the addition for now. This results in 2 new nodes, 3 and 2. 3 is larger than 0 or 1 so we do the same. Same for 2. We do this until we get a bunch of nodes which are either 0 or 1. We then add all the nodes together. 1 + 1 + 0 + 0 + 1 = 3, which is the right answer.\n Conclusion 📕 Once you’ve identified how to break a problem down into many smaller pieces, you can use concurrent programming to execute these pieces at the same time (on different threads) thereby speeding up the whole algorithm.\nDivide and conquer algorithms are one of the fastest and perhaps easiest ways to increase the speed of an algorithm and are incredibly useful in everyday programming. Here are the most important topics we covered in this article:\n What is divide and conquer? Recursion MergeSort Towers of Hanoi Coding a divide and conquer algorithm Recurrences Fibonacci numbers  The next step is to explore multithreading. Choose your programming language of choice and Google, as an example, “Python multithreading”. Figure out how it works and see if you can attack any problems in your own code from this new angle.\nYou can also learn about how to solve recurrences (finding out the asymptotic running time of a recurrence), which is the next article I’m going to write. If you don’t want to miss it, or you liked this article do consider subscribing to my email list 😁✨\nDynamic Programming Dynamic programming (DP) is breaking down an optimisation problem into smaller sub-problems, and storing the solution to each sub-problems so that each sub-problem is only solved once.\nIt is both a mathematical optimisation method and a computer programming method.\nOptimisation problems seek the maximum or minimum solution. Dynamic programming is often used for optimisation problems. The general rule is that if you encounter a problem where the initial algorithm is solved in 2n time, it might be better solved using DP. \n Why Is Dynamic Programming Called Dynamic Programming? Richard Bellman invented DP in the 1950s. Bellman named it Dynamic Programming because at the time, RAND (his employer) disliked mathematical research and didn’t want to fund it. He named it Dynamic Programming to hide the fact he was really doing mathematical research.\nBellman explains the reasoning behind the term dynamic programming in his autobiography, Eye of the Hurricane: An Autobiography (1984, page 159). He explains:\n “I spent the Fall quarter (of 1950) at RAND. My first task was to find a name for multistage decision processes. An interesting question is, Where did the name, dynamic programming, come from? The 1950s were not good years for mathematical research. We had a very interesting gentleman in Washington named Wilson. He was Secretary of Defense, and he actually had a pathological fear and hatred of the word research. I’m not using the term lightly; I’m using it precisely. His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. You can imagine how he felt, then, about the term mathematical. The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that I was really doing mathematics inside the RAND Corporation. What title, what name, could I choose? In the first place I was interested in planning, in decision making, in thinking. But planning, is not a good word for various reasons. I decided therefore to use the word “programming”. I wanted to get across the idea that this was dynamic, this was multistage, this was time-varying. I thought, let’s kill two birds with one stone. Let’s take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. It also has a very interesting property as an adjective, and that is it’s impossible to use the word dynamic in a pejorative sense. Try thinking of some combination that will possibly give it a pejorative meaning. It’s impossible. Thus, I thought dynamic programming was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities.”\n  What are Sub-Problems? Sub-problems are smaller versions of the original problem. Let’s see an example. With the equation below:\n1 + 2 + 3 + 4\nWe can break this down to:\n1 + 2\n3 + 4\nOnce we solve these two smaller problems, we can add the solutions to these problems to find the solution to the overall problem.\nNotice how this sub-problem breaks down the original problem into components that build up the solution. While this is a small example, it illustrates the beauty of DP well. If we expand the problem to adding 100’s of numbers it becomes clearer as to why we need DP. Take this example:\n6 + 5 + 3 + 3 + 2 + 4 + 6 + 5\nWe have 6 + 5 twice. We work out what 6 + 5 is the first time. When we see it the second time we think to ourselves:\n “Ah, 6 + 5. I’ve seen this before. It’s 11!”\n In DP we store the solution to the problem in memory so we do not need to recalculate it. By finding the solutions for every single sub-problem, we can tackle the original problem itself.\nThe act of storing a solution is called memoisation.\n What is Memoisation in Dynamic Programming? First, let’s see why storing answers to solutions make sense. We’re going to look at a famous divide and conquer problem, Fibonacci sequence. Divide and conquer is dynamic programming, but without storing the solution.\nThere are 3 main parts to divide and conquer:\n Divide the problem into smaller sub-problems of the same type. Conquer - solve the sub-problems recursively. Combine - Combine all the sub-problems to create a solution to the original problem.  Dynamic programming has one extra step added to step 2. This is memoisation.\nThe Fibonacci sequence is a sequence of numbers. It’s the last number + the current number. We start at 1.\n1 + 0 = 1\n1 + 1 = 2\n2 + 1 = 3\n3 + 2 = 5\n5 + 3 = 8\nIn Python, this is common programmed as:\ndef F(n):\rif n == 0 or n == 1:\rreturn n\relse:\rreturn F(n-1)+F(n-2)\rIf you’re not familiar with recursion I have a blog post written for you that you should read first.\nLet’s calculate F(4). In an execution tree, this looks like:\nWe calculate F(2) twice. This may be a small example, but on bigger inputs (such as F(10)) the repetition builds up. The purpose of dynamic programming is to not calculate the same thing twice.\nInstead of calculating F(2) twice, we store the solution somewhere and only calculate it once.\nWe’ll store the solution in an array. F(2) = 1. Our array will then look like memo[2] = 1. Below is some Python code to calculate the Fibbonacci sequence using DP.\ndef fibonacciVal(n):\rmemo[0], memo[1] = 0, 1\rfor i in range(2, n+1):\rmemo[i] = memo[i-1] + memo[i-2]\rreturn memo[n]\rThe examples set out here are in Python. I’ll do my best to keep the code agnostic. Meaning that if you want to program this in Java, it shouldn’t be too hard to convert it over.\n How to Identify Dynamic Programming Problems In theory, every problem can be solved dynamically. The question is then:\n “When should I solve this problem with dynamic programming?”\n We should use dynamic programming for problems that are on the border between tractable problems and intracable problems.\nTractable problems are those that can be solved in polynomial time. That’s just a fancy way of saying we can solve it in a fast manner. Binary search and sorting,are all fast. Intractable problems are those that run in exponential time. They’re slow. Generally speaking, intractable problems are those that can only be solved by bruteforcing through every single combination (NP hard).\nWhen we see terms such as:\n “shortest/longest, minimized/maximized, least/most, fewest/greatest, biggest/smallest”\n We know it’s an optimisation problem.\nAnother cool thing with DP algorithms is that their proof of correctness is usually self-evident. Other algorithmic strategies are often much harder to prove correct, and therefore more error-prone.\nFor instance, greedy algorithms may seem conceptually simpler, and usually, run faster, but they’re much harder to prove correct because they require making a lot of implicit assumptions about the structure of the input.\nWhen we see these kinds of terms, the problem may ask for a specific number ( “find the minimum number of edit operations”) or it may ask for a result ( “find the longest common subsequence”). The latter type of problem is harder to recognize as a dynamic programming problem. If something sounds like optimisation, it could be solved by DP.\nNow, imagine we’ve found a problem that’s an optimisation problem, but we’re not sure if it can be solved with DP. First, identify what we’re optimising for. Once we realize what we’re optimising for, we have to decide how easy it is to perform that optimisation. Sometimes, the greedy approach is sufficient for an optimal solution.\nDynamic programming takes the brute force approach. It Identifies repeated work, and eliminates the repetition.\nBefore we even start to formulate the problem as a dynamic programming problem, we think about what the brute force solution might look like. Could there possibly be repeated substeps in the brute force solution? If so, we try to formulate the problem as a dynamic programming problem.\nMastering dynamic programming is all about understanding the problem. List all the inputs that can affect the answers. Once we’ve identified all the inputs and outputs, try to identify whether the problem can be broken into subproblems. If we can identify subproblems, we can probably use DP.\nList all inputs that affect the answer, and worry about reducing the size of that set later. Once we have identified the inputs and outputs, we try to identify whether the problem can be broken into smaller subproblems. If we can identify smaller subproblems, then we can probably apply dynamic programming to solve the problem. Then, figure out what the recurrence is and solve it. When we’re trying to figure out the recurrence, remember that whatever recurrence we write has to help us find the answer. Sometimes the answer will be the result of the recurrence, and sometimes we will have to obtain the result by looking at a few results from the recurrence\nJust because a problem can be solved with dynamic programming does not mean there isn’t a more efficient solution out there. Solving a problem with dynamic programming feels like magic, but remember that dynamic programming is merely a clever brute force. Sometimes it pays off well, and sometimes it helps only a little.  How to Solve Problems using Dynamic Programming Now we have an understanding of what dynamic programming is and how it generally works, let’s look at how we’ll create a dynamic programming solution to a problem. We’re going to explore the process of dynamic programming using the Weighted Interval Scheduling Problem.\nPretend you’re the owner of a dry cleaner. You have n customers come in and give you clothes to clean. You can only clean one customers pile of clothes (PoC) at a time. Each pile of clothes, i, must be cleaned at some pre-determined start time s_i and some predetermined finish time f_i.\nEach pile of clothes has an assiocated value, v_i, based on how important it is to your business. For example, some customers may pay more to have their clothes cleaned faster. Or some may be repeating customers and you want them to be happy.\nAs the owner of this dry cleaners you must determine the optimal schedule of clothes that maximises the total value of this day. This problem is a re-wording of the Weighted Interval scheduling problem.\nYou will now see 4 steps to solving a DP problem. Sometimes, you can skip a step. Sometimes, your problem is already well defined and you don’t need to worry about the first few steps.\nStep 1. Write the Problem out Grab a piece of paper. Write out the problem. Specifically:\n What is the problem? What are the subproblems? What would the solution roughly look like?  In the dry cleaner problem, let’s put down into words the subproblems. What we want to determine is the maximum value schedule for each pile of clothes such that the clothes are sorted by start time.\nWhy sorted by start time? Good question! We want to keep track of processes which are currently running. If we sort by finish time, it doesn’t make much sense in our heads. We could have 2 with similar finish times, but entirely different start times. Time moves in a linear fashion. If we have piles of clothes that start at 1 pm, we know that. If we have a pile of clothes that finishes at 3 pm, it’s kind of seeing it backwards. Doesn’t make so much sense.\nWe can find the maximum value schedule for piles n-1 through to n. And then for n - 2 through to n. And so on. By finding the solution to every single sub-problem, we can tackle the original problem itself. The maximum value schedule for piles 1 through n. Since the sub-problems are smaller versions of the original problem, sub-problems can be used to solve the original problem.\nWith the interval scheduling problem, the only way we can solve it is by brute-forcing all subsets of the problem until we find an optimal one. What we’re saying is that instead of brute-forcing one by one, we divide it up. We brute force from n-1 through to n. Then we do the same for n-2 through to n. Eventually, we have loads of smaller problems, which we can solve dynamically. We want to build the solutions to our sub-problems such that each sub-problem builds on the previous problems.\n2. Mathematical Recurrences I know, mathematics sucks. If you’ll bare with me here you’ll find that this isn’t that hard. Mathematical recurrences are used to:\n Define the running time of a divide and conquer (dynamic programming) technique\n But, between you and me, they can also be used to define a problem. If it’s difficult to turn your subproblems into maths, then it may be the wrong subproblem.\nThere are 2 steps to creating a mathematicla recurrence:\n1: Define the Base Case Base cases are the smallest possible denomination of a problem.\nWhen creating a recurrence, ask yourself these questions:\n “What decision do I make at step 0?”\n It doesn’t have to be 0. The base case is the smallest possible denomination of a problem. We saw this with the Fibonacci sequence. The base was was:\n If n == 0 or n == 1, return 1  It’s important to know where the base case lies, so we can create the recurrence. In our problem, we have one decision to make:\n Put that pile of clothes on to be washed  or\n Don’t wash that pile of clothes today  If n is 0, that is, if we have 0 PoC then we do nothing. Our base case is then:\n if n == 0, return 0\n 2: What Decision Do I Make at Step n? Now we know what the base case is, if we’re at step n what do we do? For each pile of clothes that is compatible with the schedule so far (compatible means that the start time is after the finish time of the pile of clothes currently being washed), the algorithm chooses two options.\nNow we know what happens at the base case, and what happens else. We now need to find out what information the algorithm needs to go backwards (or forwards).\n “If my algorithm is at step i, what information would it need to decide what to do in step i+1?”\n To decide between the two options, the algorithm needs to know the next compatible PoC (pile of clothes). The next compatible PoC for a given pile, p, is the PoC, n, such that s_n (the start time for PoC n) happens after f_p (the finish time for PoC p). The difference between s_n and f_p should be minimised.\nIn English, imagine we have one washing machine. We put in a pile of clothes at 13:00. Our next pile of clothes starts at 13:01. We can’t just open the washing machine and put them in. Our next compatible pile of clothes is the one that starts after the finish time of the one currently being washed.\n “If my algorithm is at step i, what information did it need to decide what to do in step i-1?”\n The algorithm needs to know about future decisions. The ones made for PoC i through n in order to decide to run or not to run PoC i-1.\nNow that we’ve answered these questions, perhaps we’ve started to form a recurring mathematical decision in our mind. If not, that’s also okay, it becomes easier to write recurrences as we get exposed to more problems.\nHere’s our recurrence:\nLet’s explore in detail what makes this mathematical recurrence. OPT(i) represents the maximum value schedule for PoC i through to n such that PoC are sorted by start times. OPT(i) is our subproblem from earlier.\nWe start with the base case. All recurrences need somewhere to stop. If we call OPT(0) we’ll be returned with 0.\nTo determine the value of OPT(i), we consider two options. We want to take the maximum of these options to meet our goal. Our goal is the maximum value schedule for all piles of clothes. Once we choose the option that gives the maximum result at step i, we memoize its value as OPT(i).\nThe two options — to run or not to run PoC i — are represented mathematically as follows:\nv_i + OPT(next[n])\nThis represents the decision to run PoC i. It adds the value gained from PoC i to OPT(next[n]), where next[n] represents the next compatible pile of clothing following PoC i. When we add these two values together, we get the maximum value schedule from i through to n such that they are sorted by start time if i is ran.\nSorted by start time here because next[n] is the one immediately after v_i, so by default, they are sorted by start time.\nOPT(i + 1)\nIf we decide not to run i, our value is then OPT(i + 1). The value is not gained. OPT(i + 1) gives the maximum value schedule for i+1 through to n, such that they are sorted by start times.\n3. Determine the Dimensions of the Memoization Array and the Direction in Which It Should Be Filled The solution to our DP problem is OPT(1). We can write out the solution as the maximum value schedule for PoC 1 through n such that PoC are sorted by start time. This goes hand in hand with “maximum value schedule for PoC i through to n”. Our solution can be written as OPT(1).\nFrom step 2:\nGoing back to our Fibonacci numbers earlier, our DP solution relied on the fact that the Fibonacci numbers for 0 through to n - 1 were already memoised. That is, to find F(5) we already memoised F(0), F(1), F(2), F(3), F(4). We want to do the same thing here.\nThe problem we have is figuring out how to fill out a memoisation table. In the scheduling problem, we know that OPT(1) relies on the solutions to OPT(2) and OPT(next[1]). PoC 2 and next[1] have start times after PoC 1 due to sorting. We need to fill our memoisation table from OPT(n) to OPT(1).\nWe can clearly see our array is one dimensional, from 1 to n. But, if we couldn’t clearly see that we can work it out another way. The dimensions of the array are equal to the number and size of the variables on which OPT(x) relies. In our algorithm, we have OPT(i) - one variable, i. This means our array will be 1-dimensional and its size will be n, as there are n piles of clothes.\nIf we know that n = 5, then our memoization array might look like this:\nmemo = [0, OPT(1), OPT(2), OPT(3), OPT(4), OPT(5)]\n0 is also the base case. memo[0] = 0, per our recurrence from earlier.\n4. Coding Our Solution Personally, when I am coding a Dynamic Programming solution, I like to read the recurrence and try to recreate it. Our first step is to initialise the array to size (n + 1). In Python, we don’t need to do this. But you may need to do it if you’re using a different language.\nOur second step is to set the base case.\nTo find the profit with the inclusion of job[i]. we need to find the latest job that doesn’t conflict with job[i]. The idea is to use Binary Search to find the latest non-conflicting job. I’ve copied the code from herebut edited slightly.\nFirst, let’s define what a “job” is. As we saw, a job consists of 3 things:\n# Class to represent a job  class Job: def __init__ (self, start, finish, profit): self.start = start self.finish = finish self.profit = profit Start time, finish time, and the total profit (benefit) of running that job.\nThe next step we want to program is the schedule.\n# The main function that returns the maximum possible  # profit from given array of jobs\r def schedule(job): # Sort jobs according to start time  job = sorted(job, key = lambda j: j.start) # Create an array to store solutions of subproblems. table[i]  # stores the profit for jobs till arr[i] (including arr[i])  n = len(job) table = [0 for _ in range(n)] table[0] = job[0].profit;\rEarlier, we learnt that the table is 1 dimensional. We sort the jobs by start time, create this empty table and set table[0] to be the profit of job[0]. Since we’ve sorted by start times, the first compatiable job is always job[0].\nOur next step is to fill in the entries using the recurrence we learnt earlier. To find the next compatiable job, we’re using Binary Search. In the full code posted later, it’ll include this. For now, let’s worry about understanding the algorithm.\nIf the next compatiable job returns -1, that means that all jobs before index, i, conflict with it (so cannot be used). Inclprof means we’re including that item in the maximum value set. We then store it in table[i], so we can use this calculation again later.\n# Fill entries in table[] using recursive property  for i in range(1, n): # Find profit including the current job  inclProf = job[i].profit l = binarySearch(job, i) if (l != -1): inclProf += table[l]; # Store maximum of including and excluding  table[i] = max(inclProf, table[i - 1]) Our final step is then to return the profit of all items up to n-1.\nreturn table[n-1] The full code can be seen below:\n# Python program for weighted job scheduling using Dynamic  # Programming and Binary Search  # Class to represent a job  class Job: def __init__ (self, start, finish, profit): self.start = start self.finish = finish self.profit = profit # A Binary Search based function to find the latest job  # (before current job) that doesn't conflict with current  # job. \"index\" is index of the current job. This function  # returns -1 if all jobs before index conflict with it.  def binarySearch(job, start_index): # https://en.wikipedia.org/wiki/Binary_search_algorithm\r # Initialize 'lo' and 'hi' for Binary Search  lo = 0\rhi = start_index - 1\r# Perform binary Search iteratively  while lo  hi: mid = (lo + hi) // 2\rif job[mid].finish  job[start_index].start: if job[mid + 1].finish  job[start_index].start: lo = mid + 1\relse: return mid else: hi = mid - 1\rreturn -1\r# The main function that returns the maximum possible  # profit from given array of jobs  def schedule(job): # Sort jobs according to start time  job = sorted(job, key = lambda j: j.start) # Create an array to store solutions of subproblems. table[i]  # stores the profit for jobs till arr[i] (including arr[i])  n = len(job) table = [0 for _ in range(n)] table[0] = job[0].profit; # Fill entries in table[] using recursive property  for i in range(1, n): # Find profit including the current job  inclProf = job[i].profit l = binarySearch(job, i) if (l != -1): inclProf += table[l]; # Store maximum of including and excluding  table[i] = max(inclProf, table[i - 1]) return table[n-1] # Driver code to test above function  job = [Job(1, 2, 50), Job(3, 5, 20), Job(6, 19, 100), Job(2, 100, 200)] print(\"Optimal profit is\"), print(schedule(job))\rCongrats! 🥳 We’ve just written our first dynamic program! Now that we’ve wet our feet, lets walk through a different type of dynamic programming problem.\n Knapsack Problem Imagine you are a criminal. Dastardly smart. You break into Bill Gate’s mansion. Wow, okay!?!? How many rooms is this? His washing machine room is larger than my entire house??? Ok, time to stop getting distracted. You brought a small bag with you. A knapsack - if you will.\nYou can only fit so much into it. Let’s give this an arbitrary number. The bag will support weight 15, but no more. What we want to do is maximise how much money we’ll make, b.\nThe greedy approach is to pick the item with the highest value which can fit into the bag. Let’s try that. We’re going to steal Bill Gate’s TV. £4000? Nice. But his TV weighs 15. So… We leave with £4000.\nBill Gate’s has a lot of watches. Let’s say he has 2 watches. Each watch weighs 5 and each one is worth £2250. When we steal both, we get £4500 with a weight of 10.\nIn the greedy approach, we wouldn’t choose these watches first. But to us as humans, it makes sense to go for smaller items which have higher values. The Greedy approach cannot optimally solve the {0,1} Knapsack problem. The {0, 1} means we either take the item whole {1} or we don’t {0}. Dynamic programming can however optimally solve the {0, 1} knapsack problem.\nThe simple solution to this problem is to consider all the subsets of all items. For every single combination of Bill Gate’s stuff, we calculate the total weight and value of this combination.\nWe consider only those with weight less than W_max. We then pick the combination which has the highest value. This is a disaster! How long would this take? Bill Gate’s would come back home far before you’re even 1/3rd of the way there! In Big O, this algorithm takes O(n^2) time.\nYou can see we already have a rough idea of the solution and what the problem is, without having to write it down in maths!\n Maths Imagine we had a listing of every single thing in Bill Gate’s house. Maybe we stole it from some insurance papers. Now, think about the future. What is the optimal solution to this problem?\nWe have a subset, L, which is the optimal solution. L is a subset of S, the set containing all of Bill Gate’s stuff.\nLet’s pick a random item, N. L either contains N or it doesn’t. If it doesn’t use N, the optimal solution for the problem is the same as {1, 2, …, N-1}. This is assuming that Bill Gate’s stuff is sorted by value / weight.\nSuppose that the optimum of the original problem is not optimum of the sub-problem. if we have sub-optimum of the smaller problem then we have a contradiction - we should have an optimum of the whole problem.\nIf L contains N, then the optimal solution for the problem is the same as {1, 2, 3, …, N-1}. We know the item is in, so L already contains N. To complete the computation we focus on the remaining items. We find the optimal solution to the remaining items.\nBut, we now have a new maximum allowed weight of W_max - W_n. If item N is contained in the solution, the total weight is now the max weight take away item N (which is already in the knapsack).\nThese are the 2 cases. Either item N is in the optimal solution or it isn’t.\nIf the weight of item N is greater than W_max, then it cannot be included so case 1 is the only possibility.\nTo more precisely define this recursive solution, let S_k = {1, 2, …, k} and S_0 = ∅\nLet B[k, w] be the maximum total benefit obtained using a subset of S_k. Having total weight at most w.\nThen we define B[0, w] = 0 for each w \\le W_max, and:\nOur desired solution is then B[n, W_max].\nTabulation of Knapsack Problem Okay, pull out some pen and paper. No, really. Things are about to get confusing real fast. This memoisation table is 2-dimensional. We have these items:\n(1, 1), (3, 4), (4, 5), (5, 7)\rWhere the tuples are (weight, value).\nWe have 2 variables, so our array is 2-dimensional. The first dimension is from 0 to 7. Our second dimension is the values.\nAnd we want a weight of 7 with maximum benefit.\nThe weight is 7. We start counting at 0 (not a DP thing, just a programming thing). We put each tuple on the left-hand side. Ok. Now to fill out the table!\nThe columns are weight. At weight 0, we have a total weight of 0. At weight 1, we have a total weight of 1. Obvious, I know. But this is an important distinction to make which will be useful later on.\nWhen our weight is 0, we can’t carry anything no matter what. The total weight of everything at 0 is 0.\nIf our total weight is 1, the best item we can take is (1, 1). As we go down through this array, we can take more items. At the row for (4, 3) we can either take (1, 1) or (4, 3). But for now, we can only take (1, 1). Our maximum benefit for this row then is 1.\nIf our total weight is 2, the best we can do is 1. We only have 1 of each item. We cannot duplicate items. So no matter where we are in row 1, the absolute best we can do is (1, 1).\nLet’s start using (4, 3) now. If the total weight is 1, but the weight of (4, 3) is 3 we cannot take the item yet until we have a weight of at least 3.\nNow we have a weight of 3. Let’s compare some things. We want to take the max of:\nMAX(4 + T[0][0], 1)\nIf we’re at 2, 3 we can either take the value from the last row or use the item on that row. We go up one row and count back 3 (since the weight of this item is 3).\nActually, the formula is whatever weight is remaining when we minus the weight of the item on that row. The weight of (4, 3) is 3 and we’re at weight 3. 3 - 3 = 0. Therefore, we’re at T[0][0]. T[previous row’s number][current total weight - item weight].\nMAX(4 + T[0][0], 1)\nThe 1 is because of the previous item. The max here is 4.\nmax(4 + t[0][1], 1)\nTotal weight is 4, item weight is 3. 4 - 3 = 1. Previous row is 0. t[0][1].\nI won’t bore you with the rest of this row, as nothing exciting happens. We have 2 items. And we’ve used both of them to make 5. Since there are no new items, the maximum value is 5.\nOnto our next row:\nHere’s a little secret. Our tuples are ordered by weight! That means that we can fill in the previous rows of data up to the next weight point. We know that 4 is already the maximum, so we can just fill it in. This is where memoisation comes into play! We already have the data, why bother re-calculating it?\nWe go up one row and head 4 steps back. That gives us:\nmax(4 + T[2][0], 5).\nNow we calculate it for total weight 5.\nmax(5 + T[2][1], 5) = 6\nWe just do the same thing again:\nmax(5 + T[2][2], 5) = 6\nNow we have total weight 7. We choose the max of:\nmax(5 + T[2][3], 5) = max(5 + 4, 5) = 9\nIf we had total weight 7 and we had the 3 items (1, 1), (4, 3), (5, 4) the best we can do is 9.\nSince our new item starts at weight 5, we can just copy from the previous row until we get to weight 5.\nWe then do another max.\nTotal weight - new item’s weight. This is 5 - 5 = 0. We want previous row at position 0.\nmax(7 + T[3][0], 6)\nThe 6 comes from the best on the previous row for that total weight.\nmax(7 + 0, 6) = 7\nmax(7 + T[3][1], 6) = 8\nmax(7+T[3][2], 9) = 9\n9 is the maximum value we can get by picking items from the set of items such that the total weight is \\le 7.\nFinding the Optimal Set for {0, 1} Knapsack Problem Using Dynamic Programming Now, what items do we actually pick for the optimal set? We start from this item:\nWe want to know where the 9 comes from. It’s coming from the top because the number directly above 9 on the 4th row is 9. Since it’s coming from the top, the item (7, 5) is not used in the optimal set.\nWhere does this 9 come from?\nThis 9 is not coming from the row above it. Item (5, 4) must be in the optimal set.\nWe now go up one row, and go back 4 steps. 4 steps because the item, (5, 4), has weight 4.\n4 does not come from the row above. The item (4, 3) must be in the optimal set.\nThe weight of item (4, 3) is 3. We go up and we go back 3 steps and reach:\nAs soon as we reach a point where the weight is 0, we’re done. Our two selected items are (5, 4) and (4, 3). The total weight is 7 and our total benefit is 9. We just add the two tuples together to find this out.\nLet’s begin coding this.\n Coding It Now we kn0w how it works, and we’ve derived the recurrence for it - it shouldn’t be too hard to code it. If our two-dimensional array is i (row) and j (column) then we have:\nif j  wt[i]:\rIf our weight j is less than the weight of item i (i does not contribute to j) then:\nif j  wt[i]:\rT[i][j] = T[i - 1][j]\relse:\r// weight of i = j\rT[i][j] = max(val[i] + t[i - 1][j-wt(i), t[i-1][j])\r// previous row, subtracting the weight of the item from the total weight or without including ths item\rThis is what the core heart of the program does. I’ve copied some code from hereto help explain this. I’m not going to explain this code much, as there isn’t much more to it than what I’ve already explained. If you’re confused by it, leave a comment (can be left anonymously) below or email me 😁\n# Returns the maximum value that can be put in a knapsack of  # capacity W  def knapSack(W , wt , val , n): # Base Case  if n == 0 or W == 0: return 0\r# If weight of the nth item is more than Knapsack of capacity  # W, then this item cannot be included in the optimal solution  if (wt[n-1]  W): return knapSack(W , wt , val , n-1) # return the maximum of two cases:  # (1) nth item included  # (2) not included  else: return max(val[n-1] + knapSack(W-wt[n-1] , wt , val , n-1), knapSack(W , wt , val , n-1)) # To test above function  val = [60, 100, 120] wt = [10, 20, 30] W = 50\rn = len(val) print(knapSack(W , wt , val , n))\r# output 220\r  Time Complexity of a Dynamic Programming Problem In DP, time complexity is calculated as:\nNumber of unique states * time taken per state\nFor our original problem, the Weighted Interval Scheduling Problem, we had n piles of clothes. Each pile of clothes is solved in constant time. The time complexity is:\nO(n) + O(1) = O(n)\nI’ve written a post about Big O notationif you want to learn more about time complexities.\nWith our Knapsack problem, we had n number of items. The table grows depending on the total capacity of the knapsack, our time complexity is:\nO(nw)\nWhere n is the number of items, and w is the capactity of the knapsack.\nI’m going to let you in on a little secret. It’s possible to work out the time complexity of an algorithm from its recurrence. You can use something called the Master Theorem to work it out. This is the theorem in a nutshell:\nTaken from here\nNow, I’ll be honest. The master therom deserves a blog post of its own. For now, I’ve found this video to be excellent:\n{% youtube OynWkEj0S-s %}\n Dynamic Programming vs Divide \u0026 Conquer vs Greedy Dynamic Programming \u0026 Divide and Conquer are incredibly similar. Dynamic Programming is based on Divide and Conquer, except we memoise the results.\nGreedy, on the other hand, is different. It aims to optimise by making the best choice at that moment. Sometimes, this doesn’t optimse for the whole problem. Take this question as an example. We have 3 coins:\n1p, 15p, 25p\nAnd someones wants us to give change of 30p. With Greedy, it would select 25, then 5 * 1 for a total of 6 coins. The optimal solution is 2 * 15. Greedy works from largest to smallest. At the point where it was at 25, the best choice would be to pick 25.\n Tabulation (Bottom-Up) vs Memoisation (Top-Down) There are 2 types of dynamic programming. Tabulation and Memoisation.\nMemoisation (Top-Down) We’ve computed all the subproblems but have no idea what the optimal evaluation order is. We would then perform a recursive call from the root, and hope we get close to the optimal solution or obtain a proof that we will arrive at the optimal solution. Memoisation ensures you never recompute a subproblem because we cache the results, thus duplicate sub-trees are not recomputed.\nFrom our Fibonacci sequence earlier, we start at the root node. The subtree F(2) isn’t calculated twice.\nThis starts at the top of the tree and evaluates the subproblems from the leaves/subtrees back up towards the root. Memoisation is a top-down approach.\nTabulation (Bottom-Up) We’ve also seen Dynamic Programming being used as a ‘table-filling’ algorithm. Usually, this table is multidimensional. This is like memoisation, but with one major difference. We have to pick the exact order in which we will do our computations. The knapsack problem we saw, we filled in the table from left to right - top to bottom. We knew the exact order of which to fill the table.\nSometimes the ‘table’ is not like the tables we’ve seen. It can be a more complicated structure such as trees. Or specific to the problem domain, such as cities within flying distance on a map.\nTabulation \u0026 Memosation - Advantages and Disadvantages Generally speaking, memoisation is easier to code than tabulation. Wecan write a ‘memoriser’ wrapper function that automatically does it for we. With tabulation, we have to come up with an ordering.\nMemoisation has memory concerns. If we’re computing something large such as F(10^8), each computation will be delayed as we have to place them into the array. And the array will grow in size very quickly.\nEither approach may not be time-optimal if the order we happen (or try to) visit subproblems is not optimal, specifically if there is more than one way to calculate a subproblem (normally caching would resolve this, but it’s theoretically possible that caching might not in some exotic cases). Memoization will usually add on our time-complexity to our space-complexity (e.g. with tabulation we have more liberty to throw away calculations, like using tabulation with Fib lets us use O(1) space, but memoization with Fib uses O(N) stack space).\nConclusion Most of the problems you’ll encounter within Dynamic Programmg already exist in one shape or another. Often, your problem will build on from the answers for previous problems. Here’s a list of common problems that use Dynamic Programming.\nI hope that whenever you encounter a problem, you think to yourself “can this problem be solved with DP?” and try it.\n",
+  "wordCount" : "10884",
+  "inLanguage": "en",
+  "datePublished": "2020-11-01T23:46:37.121Z",
+  "dateModified": "2020-11-01T23:46:37.121Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/algorithms/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      Algorithmic Design Paradigms
+    </h1>
+    <div class="post-meta">
+
+November 1, 2020&nbsp;·&nbsp;52 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<h1 id="greedy-algorithms">Greedy Algorithms<a hidden class="anchor" aria-hidden="true" href="#greedy-algorithms">#</a></h1>
+<p><strong>Greedy algorithms</strong> aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.</p>
+<h2 id="why-are-greedy-algorithms-called-greedy">Why Are Greedy Algorithms Called Greedy?<a hidden class="anchor" aria-hidden="true" href="#why-are-greedy-algorithms-called-greedy">#</a></h2>
+<p>Algorithms are called <em>greedy</em> when they utilise the greedy property. The greedy property is:</p>
+<blockquote>
+<p>At that exact moment in time, what is the optimal choice to make?</p>
+</blockquote>
+<p>Greedy algorithms are greedy. They do not look into the future to decide the global optimal solution. They are only concerned with the optimal solution locally. This means that the overall optimal solution may be different from the solution the algorithm chooses.</p>
+<p>They never look backwards at what they&rsquo;ve done to see if they could optimise globally. This is the main difference between Greedy and <a href="https://skerritt.blog/dynamic-programming/">Dynamic Programming</a>.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="what-are-greedy-algorithms-used-for">What Are Greedy Algorithms Used For?<a hidden class="anchor" aria-hidden="true" href="#what-are-greedy-algorithms-used-for">#</a></h2>
+<p>Greedy algorithms are very fast. A lot faster than the two other alternatives (Divide &amp; Conquer, and Dynamic Programming). They&rsquo;re used because they&rsquo;re fast.</p>
+<p>Most of the popular algorithms using Greedy have shown that Greedy gives the global optimal solution every time. Some of these include:</p>
+<ul>
+<li><a href="https://www.cs.cmu.edu/~deva/papers/tracking2011.pdf">Dijkstra&rsquo;s Algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Kruskal&rsquo;s algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim&rsquo;s algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Huffman_tree">Huffman trees</a></li>
+</ul>
+<p>We&rsquo;re going to explore greedy algorithms using a famous example - counting change. There isn&rsquo;t much to this paradigm.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="how-do-i-create-a-greedy-algorithm">How Do I Create a Greedy Algorithm?<a hidden class="anchor" aria-hidden="true" href="#how-do-i-create-a-greedy-algorithm">#</a></h2>
+<p>Your algorithm needs to follow this property:</p>
+<blockquote>
+<p>At that exact moment in time, what is the optimal choice to make?</p>
+</blockquote>
+<p>And that&rsquo;s it. There isn&rsquo;t much to it. Greedy algorithms are generally easier to code than <a href="https://dev.to/brandonskerritt/a-gentle-introduction-to-divide-and-conquer-algorithms-1ga">Divide &amp; Conquer</a> or <a href="https://skerritt.blog/dynamic-programming/">Dynamic Programming</a>.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h1 id="counting-change-using-greedy">Counting Change Using Greedy<a hidden class="anchor" aria-hidden="true" href="#counting-change-using-greedy">#</a></h1>
+<p>Imagine you&rsquo;re a vending machine. Someone gives you £1 and buys a drink for £0.70p. There&rsquo;s no 30p coin in <a href="https://en.wikipedia.org/wiki/Pound_sterling">pound sterling</a>, how do you calculate how much change to return?</p>
+<p>For reference, this is the denomination of each coin in the UK:</p>
+<!--kg-card-begin: code-->
+<pre><code>1p, 2p, 5p, 10p, 20p, 50p, £1
+</code></pre><!--kg-card-end: code-->
+<p>The greedy algorithm starts from the highest denomination and works backwards. Our algorithm starts at £1. £1 is more than 30p, so it can&rsquo;t use it. It does this for 50p. It reaches 20p. 20p &lt; 30p, so it takes 1 20p.</p>
+<p>The algorithm needs to return change of 10p. It tries 20p again, but 20p &gt; 10p. It then goes to 10p. It chooses 1 10p, and now our return is 0 we stop the algorithm.</p>
+<p>We return 1x20p and 1x10p.</p>
+<p>This algorithm works quite well in real life. Let&rsquo;s use another example, this time we have the denomination next to how many of that coin is in the machine, <code>(denomination, how many)</code>.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">(<span style="color:#ae81ff">1</span>p, <span style="color:#ae81ff">10</span>), (<span style="color:#ae81ff">2</span>p, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">5</span>p, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">10</span>p, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">20</span>p, <span style="color:#ae81ff">1</span>p), (<span style="color:#ae81ff">50</span>p, <span style="color:#ae81ff">19</span>p), (<span style="color:#ae81ff">100</span>p, <span style="color:#ae81ff">16</span>)
+</code></pre></div><!--kg-card-end: code-->
+<p>The algorithm is asked to return change of 30p again. 100p (£1) is no. Same for 50. 20p, we can do that. We pick 1x 20p. We now need to return 10p. 20p has run out, so we move down 1.</p>
+<p>10p has run out, so we move down 1.</p>
+<p>We have 5p, so we choose 1x5p. We now need to return 5p. 5p has run out, so we move down one.</p>
+<p>We choose 1 2p coin. We now need to return 3p. We choose another 2p coin. We now need to return 1p. We move down one.</p>
+<p>We choose 1x 1p coin.</p>
+<p>In total, our algorithm selected these coins to return as change:</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># (value, how many we return as change)</span>
+(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>)
+(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>)
+(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
+(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</code></pre></div><!--kg-card-end: code-->
+<p>Let&rsquo;s code something. First, we need to define the problem. We&rsquo;ll start with the denominations.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">denominations <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>]
+<span style="color:#75715e"># 100p is £1</span>
+</code></pre></div><!--kg-card-end: code-->
+<p>Now onto the core function. Given denominations and an amount to give change, we want to return a list of how many times that coin was returned.</p>
+<p>If our <code>denominations</code> list is as above, then <code>[6, 3, 0, 0, 0, 0, 0]</code> represents taking 6 1p coins and 3 2p coins, but 0 of all other coins.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">denominations <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>]
+<span style="color:#75715e"># 100p is £1</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">returnChange</span>(change, denominations):
+	toGiveBack <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> len(denominations)
+	<span style="color:#66d9ef">for</span> pos, coin <span style="color:#f92672">in</span> reversed(list(enumerate(denominations))):
+
+</code></pre></div><!--kg-card-end: code-->
+<p>We create a list, the size of denominations long and fill it with 0&rsquo;s.</p>
+<p>We want to loop backwards, from largest to smallest. <code>Reversed(x)</code> reverses x and lets us loop backwards. Enumerate means &ldquo;for loop through this list, but keep the position in another variable&rdquo;. In our example when we start the loop. <code>coin = 100</code> and <code>pos = 6</code>.</p>
+<p>Our next step is repeatedly choosing a coin for as long as we can use that coin. If we need to give <code>change = 40</code> we want our algorithm to choose 20, then 20 again until it can no longer use 20. We do this using a for loop.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">denominations <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>]
+<span style="color:#75715e"># 100p is £1</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">returnChange</span>(change, denominations):
+	<span style="color:#75715e"># makes a list size of length denominations filled with 0</span>
+	toGiveBack <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> len(denominations)
+
+	<span style="color:#75715e"># goes backwards through denominations list</span>
+	<span style="color:#75715e"># and also keeps track of the counter, pos.</span>
+	<span style="color:#66d9ef">for</span> pos, coin <span style="color:#f92672">in</span> enumerate(reversed(denominations)):
+		<span style="color:#75715e"># while we can still use coin, use it until we can&#39;t</span>
+		<span style="color:#66d9ef">while</span> coin <span style="color:#f92672">&lt;=</span> change:
+
+</code></pre></div><!--kg-card-end: code-->
+<p>While the coin can still fit into change, add that coin to our return list, <code>toGiveBack</code> and remove it from change.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">denominations <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>]
+<span style="color:#75715e"># 100p is £1</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">returnChange</span>(change, denominations):
+	<span style="color:#75715e"># makes a list size of length denominations filled with 0</span>
+	toGiveBack <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> len(denominations)
+
+	<span style="color:#75715e"># goes backwards through denominations list</span>
+	<span style="color:#75715e"># and also keeps track of the counter, pos.</span>
+	<span style="color:#66d9ef">for</span> pos, coin <span style="color:#f92672">in</span> enumerate(reversed(denominations)):
+		<span style="color:#75715e"># while we can still use coin, use it until we can&#39;t</span>
+		<span style="color:#66d9ef">while</span> coin <span style="color:#f92672">&lt;=</span> change:
+			change <span style="color:#f92672">=</span> change <span style="color:#f92672">-</span> coin
+			toGiveBack[pos] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#66d9ef">return</span>(toGiveBack)
+			
+<span style="color:#66d9ef">print</span>(returnChange(<span style="color:#ae81ff">30</span>, denominations))
+<span style="color:#75715e"># returns [0, 0, 0, 1, 1, 0, 0]</span>
+<span style="color:#75715e"># 1x 10p, 1x 20p</span>
+</code></pre></div><!--kg-card-end: code-->
+<p>The <a href="https://skerritt.blog/you-need-to-understand-big-o-notation-now/">runtime</a>of this algorithm is dominated by the 2 loops, thus it is O(n^2).</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="is-greedy-optimal-does-greedy-always-work">Is Greedy Optimal? Does Greedy Always Work?<a hidden class="anchor" aria-hidden="true" href="#is-greedy-optimal-does-greedy-always-work">#</a></h2>
+<p>It is optimal locally, but sometimes it isn&rsquo;t optimal globally. In the change giving algorithm, we can force a point at which it isn&rsquo;t optimal globally.</p>
+<p>The algorithm for doing this is:</p>
+<ul>
+<li>Pick 3 denominations of coins. 1p, x, and less than 2x but more than x.</li>
+</ul>
+<p>We&rsquo;ll pick 1, 15, 25.</p>
+<ul>
+<li>Ask for change of 2 * second denomination (15)</li>
+</ul>
+<p>We&rsquo;ll ask for change of 30. Now, let&rsquo;s see what our Greedy algorithm does.</p>
+<!--kg-card-begin: code-->
+<pre><code>[5, 0, 1]
+</code></pre><!--kg-card-end: code-->
+<p>It choses 1x 25p, and 5x 1p. The optimal solution is 2x 15p.</p>
+<p>Our Greedy algorithm failed because it didn&rsquo;t look at 15p. It looked at 25p and thought &ldquo;yup, that fits. Let&rsquo;s take it.&rdquo;</p>
+<p>It then looked at 15p and thought &ldquo;that doesn&rsquo;t fit, let&rsquo;s move on&rdquo;.</p>
+<p>This is an example of where Greedy Algorithms fail.</p>
+<p>To get around this, you would either have to create currency where this doesn&rsquo;t work or to brute-force the solution. Or use Dynamic Programming.</p>
+<p>Greedy Algorithms are sometimes globally optimal. From earlier, we saw these algorithms are globally optimal:</p>
+<ul>
+<li><a href="https://www.cs.cmu.edu/~deva/papers/tracking2011.pdf">Dijkstra&rsquo;s Algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Kruskal&rsquo;s algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim&rsquo;s algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Huffman_tree">Huffman trees</a></li>
+</ul>
+<p>There are other globally optimal solutions, but Greedy is faster and easier to program than these solutions.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h1 id="dijkstras-algorithm">Dijkstra&rsquo;s Algorithm<a hidden class="anchor" aria-hidden="true" href="#dijkstras-algorithm">#</a></h1>
+<p>Dijkstra&rsquo;s algorithm finds the shortest path from a node to every other node in the graph. In our example, we&rsquo;ll be using a <a href="https://skerritt.blog/graph-theory/">weighted directed graph</a>. Each edge has a direction, and each edge has a weight.</p>
+<p>Dijkstra&rsquo;s algorithm has many uses. It can be very useful within road networks where you need to find the fastest route to a place. The algorithm is also used for:</p>
+<ul>
+<li><a href="https://ieeexplore.ieee.org/document/5381955">IP Routing</a></li>
+<li><a href="https://dev.to/brandonskerritt/a-primer-on-search-algorithms-1768-temp-slug-3978406">A* Algorithm</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0020019006003498">Telephone networks</a></li>
+</ul>
+<p>The algorithm follows these rules:</p>
+<ol>
+<li>Every time we want to visit a new node, we will choose the node with the smallest known distance.</li>
+<li>Once we&rsquo;ve moved to the node, we check each of its neighbouring nodes. We calculate the distance from the neighbouring nodes to the root nodes by summing the cost of the edges that lead to that new node.</li>
+<li>If the distance to a node is less than a known distance, we&rsquo;ll update the shortest distance.</li>
+</ol>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-33-.png" alt="Greedy Algorithms"></p>
+<p>Our first step is to pick the starting node. Let&rsquo;s choose A. All the distances start at infinity, as we don&rsquo;t know their distance until we reach a node that does know the distance.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-35-.png" alt="Greedy Algorithms"></p>
+<p>We mark off A on our unvisited nodes list. The distance from A to A is 0. The distance from A to B is 4. The distance from A to C is 2. We updated our distance listing on the right-hand side.</p>
+<p>We then pick the smallest edge where the vertex hasn&rsquo;t been chosen. The smallest edge is A -&gt; C, and we haven&rsquo;t chosen C yet. We visit C.</p>
+<p>Notice how we&rsquo;re picking the smallest distance from our current node to a node we haven&rsquo;t visited yet. We&rsquo;re being greedy. In this case, the greedy method is the global optimal solution.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-36-.png" alt="Greedy Algorithms"></p>
+<!--kg-card-end: image-->
+<p>We can get to B from C. We now need to pick a minimum. min(4, 2 + 1) = 3.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-37-.png" alt="Greedy Algorithms"></p>
+<!--kg-card-end: image-->
+<p>Since A -&gt; C -&gt; B is smaller than A -&gt; B, we update B with this information. We then add in the distances from the other nodes we can now reach.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-40-.png" alt="Greedy Algorithms"></p>
+<!--kg-card-end: image-->
+<p>Our next smallest vertex with a node we haven&rsquo;t visited yet is B, with 3. We visit B.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-41-.png" alt="Greedy Algorithms"></p>
+<!--kg-card-end: image-->
+<p>We do the same for B. Then we pick the smallest vertex we haven&rsquo;t visited yet, D.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-42-.png" alt="Greedy Algorithms"></p>
+<!--kg-card-end: image-->
+<p>We don&rsquo;t update any of the distances this time. Our last node is then E.</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-43-.png" alt="Greedy Algorithms"></p>
+<!--kg-card-end: image-->
+<p>There are no updates again. To find the shortest path from A to the other nodes, we walk back through our graph.</p>
+<p>We pick A first, then C, then B. If you need to create the shortest path from A to every other node as a graph, you can run this algorithm using a table on the right hand side.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/Screenshot_2019-06-23-Greedy-Algorithms.png" alt="img"></p>
+<!--kg-card-end: html-->
+<p>Using this table it is easy to draw out the shortest distance from A to every other node in the graph:</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Blank-Diagram-44-.png" alt="Greedy Algorithms"></p>
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="fractional-knapsack-problem-using-greedy-algorithm">Fractional Knapsack Problem Using Greedy Algorithm<a hidden class="anchor" aria-hidden="true" href="#fractional-knapsack-problem-using-greedy-algorithm">#</a></h2>
+<p>Imagine you are a thief. You break into the house of Judy Holliday - <a href="https://en.wikipedia.org/wiki/23rd_Academy_Awards">1951 Oscar winner for Best Actress</a>. Judy is a hoarder of gems. Judy&rsquo;s house is lined to the brim with gems.</p>
+<p>You brought with you a bag - a knapsack if you will. This bag has a weight of 7. You happened to have a listing of all of Judy&rsquo;s items, from some insurance paper. The items read as:</p>
+<!--kg-card-begin: html-->
+<p>![](<a href="https://skerritt.blog/content/images/2019/06/Screenshot_2019-06-23-Greedy-Algorithms-1-.png">https://skerritt.blog/content/images/2019/06/Screenshot_2019-06-23-Greedy-Algorithms-1-.png</a></p>
+<!--kg-card-end: html-->
+<p>The first step to solving the fractional knapsack problem is to calculate value/weight for each item.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/Screenshot_2019-06-23-Greedy-Algorithms-2-.png" alt="img"></p>
+<!--kg-card-end: html-->
+<p>And now we greedily select the largest ones. To do this, we can sort them according to value/weight} in descending order. Luckily for us, they are already sorted. The largest one is 3.2.</p>
+<!--kg-card-begin: code-->
+<pre><code>knapsack value = 16
+knapsack total weight = 5 (out of 7)
+</code></pre><!--kg-card-end: code-->
+<p>Then we select Francium (I know it&rsquo;s not a gem, but Judy is a bit strange 😉)</p>
+<!--kg-card-begin: code-->
+<pre><code>knapsack value = 19
+knapsack weight = 6
+</code></pre><!--kg-card-end: code-->
+<p>Now, we add Sapphire. But if we add Sapphire, our total weight will come to 8.</p>
+<p>In the fractional knapsack problem, we can cut items up to take fractions of them. We have a weight of 1 left in the bag. Our sapphire is weight 2. We calculate the ratio of:</p>
+<p>Weight of knapsack left / weight of item</p>
+<p>And then multiply this ratio by the value of the item to get how much value of that item we can take.</p>
+<p>1/2 * 6 = 3</p>
+<!--kg-card-begin: code-->
+<pre><code>knapsack value = 21
+knapsack weight = 7
+</code></pre><!--kg-card-end: code-->
+<p>The greedy algorithm can optimally solve the fractional knapsack problem, but it cannot optimally solve the {0, 1} knapsack problem. In this problem instead of taking a fraction of an item, you either take it {1} or you don&rsquo;t {0}. To solve this, you need to use <a href="https://skerritt.blog/dynamic-programming/">Dynamic Programming</a>.</p>
+<p>The <a href="https://skerritt.blog/you-need-to-understand-big-o-notation-now/">runtime</a>for this algorithm is O(n log n). Calculating value/weight is O(1). Our main step is sorting from largest value/weight, which takes O(n log n) time.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="greedy-vs-divide--conquer-vs-dynamic-programming">Greedy vs Divide &amp; Conquer vs Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#greedy-vs-divide--conquer-vs-dynamic-programming">#</a></h2>
+<!--kg-card-begin: html-->
+<!--kg-card-end: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-10.png" alt="Greedy Algorithms"></p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Greedy algorithms are very fast, but may not provide the optimal solution. They are also easier to code than their counterparts.</p>
+<h1 id="divide--conquer">Divide &amp; Conquer<a hidden class="anchor" aria-hidden="true" href="#divide--conquer">#</a></h1>
+<p>Divide and conquer algorithms aren&rsquo;t really taught in programming textbooks, but it&rsquo;s something every programmer should know. Divide and conquer algorithms are the backbone of concurrency and multi-threading.</p>
+<p>Often I&rsquo;ll hear about how you can optimise a for loop to be faster or how switch statements are slightly faster than if statements. Most computers have more than one core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem at a different angle.</p>
+<p>Divide and Conquer is one of the ways to attack a problem from a different angle. Throughout this article, I&rsquo;m going to talk about creating a divide and conquer solutions and what it is. Don&rsquo;t worry if you have <strong>zero</strong> experience or knowledge on the topic. This article is designed to be read by someone with very little programming knowledge.</p>
+<p>I&rsquo;m going to explain this using 3 examples. The first will be a simple explanation. The second will be some code. The final will get into the mathematical core of divide and conquer techniques. (Don&rsquo;t worry, I hate maths too).</p>
+<p><strong>No time to read this?</strong> <a href="https://pages.convertkit.com/f01a7359c0/8d197d69e0">Sign</a> up to my email list to get this in PDF form. You&rsquo;ll also get some extra content that isn&rsquo;t in this post ✨ <a href="https://pages.convertkit.com/f01a7359c0/8d197d69e0">Sign up here.</a></p>
+<h2 id="what-is-divide-and-conquer-">What is divide and conquer? 🌎<a hidden class="anchor" aria-hidden="true" href="#what-is-divide-and-conquer-">#</a></h2>
+<p>Divide and conquer is where you divide a large problem up into many smaller, much easier to solve problems. The rather small example below illustrates this.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-14-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>We take the equation &ldquo;3 + 6 + 2 + 4&rdquo; and we cut it down into the smallest  possible set of equations, which is [3 + 6, 2 + 4]. It could also be [2 + 3, 4 + 6]. The order doesn&rsquo;t matter, as long as we turn this one long equation into many smaller equations.</p>
+<p>Let’s say we have 8 numbers:</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-43-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>And we want to add them all together. We first divide the problem into 8 equal sub-problems. We do this by breaking the addition up into individual numbers.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/image-33.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>We then begin to add 2 numbers at a time.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/image-34.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>Then 4 numbers into 8 numbers which is our resultant.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/image-35.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>Why do we break it down to individual numbers at stage 1? Why don&rsquo;t we just start from stage 2? Because while this list of numbers is even if the list was odd you would need to break it down to individual numbers to better handle it.</p>
+<p>A divide and conquer algorithm tries to break a problem down into as many little chunks as possible since it is easier to solve with little chunks. It typically does this with recursion.</p>
+<p>Formally the technique is, as defined in the famous <a href="https://www.amazon.co.uk/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/ref=as_li_ss_tl?keywords=Introduction+to+Algorithms&amp;qid=1551954553&amp;s=gateway&amp;sr=8-1&amp;linkCode=ll1&amp;tag=brandon0fe-21&amp;linkId=72a63dce0d8099988383cc3767340d40&amp;language=en_GB">Introduction to Algorithms</a> by Cormen, Leiserson, Rivest, and Stein is:</p>
+<ol>
+<li>Divide</li>
+</ol>
+<p>If the problem is small, then solve it directly. Otherwise, divide the problem into smaller subsets of the same problem.</p>
+<ol start="2">
+<li>Conquer</li>
+</ol>
+<p>Conquer the smaller problems by solving them recursively. If the subproblems are small enough, recursion is not needed and you can solve them directly.</p>
+<p>Recursion is when a function calls itself. It&rsquo;s a hard concept to understand if you&rsquo;ve never heard of it before. This page provides a good explanation. In short, a recursive function is one like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">recur_factorial</span>(n):
+   <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+       <span style="color:#66d9ef">return</span> n
+   <span style="color:#66d9ef">else</span>:
+       <span style="color:#66d9ef">return</span> n <span style="color:#f92672">*</span> recur_factorial(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+
+<span style="color:#66d9ef">print</span>(recur_factorial(n))
+</code></pre></div><p>I&rsquo;ll fully explain the code in a second.</p>
+<ol start="3">
+<li>Combine</li>
+</ol>
+<p>Take the solutions to the sub-problems and merge them into a solution to the original problem.</p>
+<p>With the code from above, some important things to note. The Divide part is also the recursion part. We divide the problem up at <code>return n * recur_factorial(n-1)</code>.</p>
+<p>Specifically, the <code>recur_factorial(n-1)</code> part is where we divide the problem up.</p>
+<p>The conquer part is the recursion part too, but also the if statement. If the problem is small enough, we solve it directly (by returning n). Else, we perform <code>return n * recur_factorial(n-1)</code>.</p>
+<p>Combine. We do this with the multiplication symbol. Eventually, we return the factorial of the number. If we didn&rsquo;t have the symbol there, and it was <code>return recur_factorial(n-1)</code> it wouldn&rsquo;t combine and it wouldn&rsquo;t output anything remotely similar to the factorial. (It&rsquo;ll output 1, for those interested).</p>
+<p>We&rsquo;re going to explore how divide and conquer works in some famous algorithms, Merge Sort and the solution to the Towers of Hanoi.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h3 id="merge-sort-">Merge Sort 🤖<a hidden class="anchor" aria-hidden="true" href="#merge-sort-">#</a></h3>
+<p>Merge Sort is a sorting algorithm. The algorithm works as follows:</p>
+<ul>
+<li>Divide the sequence of n numbers into 2 halves</li>
+<li>Recursively sort the two halves</li>
+<li>Merge the two sorted halves into a single sorted sequence</li>
+</ul>
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-48-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>In this image, we break down the 8 numbers into separate digits. Just like we did earlier. Once we&rsquo;ve done this, we can begin the sorting process.</p>
+<p>It compares 51 and 13. Since 13 is smaller, it puts it in the left-hand side. It does this for (10, 64), (34, 5), (32, 21).</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-49-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>It then merges (13, 51) with (10, 64). It knows that 13 is the smallest in the first list, and 10 is the smallest in the right list. 10 is smaller than 13, therefore we don&rsquo;t need to compare 13 to 64. We&rsquo;re comparing &amp; merging two <strong>sorted</strong> lists.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-50-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>In recursion we use the term <em>base case</em> to refer to the absolute smallest value we can deal with. With Merge Sort, the base case is 1. That means we split the list up until we get sub-lists of length 1. That&rsquo;s also why we go down all the way to 1 and not 2. If the base case was 2, we would stop at the 2 numbers.</p>
+<p>If the length of the list (n) is larger then 1, then we divide the list and each sub-list by 2 until we get sub-lists of size 1. If n = 1, the list is already sorted so we do nothing.</p>
+<p>Merge Sort is an example of a divide and conquer algorithm. Let&rsquo;s look at one more algorithm to really understand how divide and conquer works.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h3 id="towers-of-hanoi-">Towers of Hanoi 🗼<a hidden class="anchor" aria-hidden="true" href="#towers-of-hanoi-">#</a></h3>
+<p>The Towers of Hanoi is a mathematical problem which consists of 3 pegs and in this instance, 3 discs. This problem is mostly used to teach recursion, but it does have some <a href="https://www.ibm.com/developerworks/community/blogs/jfp/entry/towers_of_hanoi_at_large1?lang=en">real world uses.</a></p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-57-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>Each disc is a different size. We want to move all discs to peg C so that the largest is on the bottom, second largest on top of the largest, third largest (smallest) on top of all of them. There are some rules to this game:</p>
+<ol>
+<li>We can only move 1 disc at a time.</li>
+<li>A disc cannot be placed on top of other discs that are smaller than it.</li>
+</ol>
+<p>We want to use the smallest number of moves possible. If we have 1 disc, we only need to move it once. If we have 2 discs, we need to move it 3 times.</p>
+<p>The number of moves is powers of 2 minus 1. If we have 4 discs, we calculate the minimum number of moves as 2^4 = 16 - 1 = 15.</p>
+<p>To solve the above example we want to store the smallest disc in a buffer peg (1 move). See below for a gif on solving Tower of Hanoi with 3 pegs and 3 discs.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/gify-1.gif" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>Notice how we need to have a buffer to store the discs.</p>
+<p>We can generalise this problem. If we have n discs: move n-1 from A to B recursively, move largest from A to C, move n-1 from B to C recursively.</p>
+<p>If there is an even number of pieces the first move is always into the middle. If there are an odd number of pieces the first move is always to the other end.</p>
+<p>Let&rsquo;s begin to code the algorithm for ToH, in pseudocode.</p>
+<!--kg-card-begin: code-->
+<pre><code>function MoveTower(disk, source, dest, spare):
+    if disk == 0, then:
+        move disk from source to dest
+</code></pre><!--kg-card-end: code-->
+<p>We start with a base case, <code>disk == 0</code>. <code>source</code> is the peg you&rsquo;re starting at. <code>dest</code> is the final destination peg. <code>spare</code> is the spare peg.</p>
+<!--kg-card-begin: code-->
+<pre><code>FUNCTION MoveTower(disk, source, dest, spare):
+IF disk == 0, THEN:
+    move disk from source to dest
+ELSE:
+    MoveTower(disk - 1, source, spare, dest) // Step 1
+    move disk from source to dest // Step 2
+    MoveTower(disk - 1, spare, dest, source) // Step 3
+END IF
+</code></pre><!--kg-card-end: code-->
+<p>Notice that with step 1 we switch <code>dest</code> and <code>source</code>. We do not do this for step 3.</p>
+<p>With recursion, we can be sure of 2 things:</p>
+<ol>
+<li>It always has a base case (if it doesn&rsquo;t, how does the algorithm know to end?)</li>
+<li>The function calls itself.</li>
+</ol>
+<p>The algorithm gets a little confusing with steps 1 and 3. They both call the same function. This is where multi-threading comes in. You can run steps 1 and 3 on different threads - at the same time.</p>
+<p>Since 2 is more than 1, we move it down one more level again. So far you&rsquo;ve seen what the divide and conquer technique is. You should understand how it works and what code looks like. Next, let&rsquo;s learn how to formally define an algorithm to a problem using divide and conquer. This part is the most important in my opinion. Once you know this, it&rsquo;ll be exponentially easier to create divide and conquer algorithms.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h3 id="fibonacci-numbers-">Fibonacci Numbers 🐰<a hidden class="anchor" aria-hidden="true" href="#fibonacci-numbers-">#</a></h3>
+<p>The Fibonacci numbers can be found in nature. The way <a href="http://www.oxfordmathcenter.com/drupal7/node/487">rabbits produce</a>is in the style of the Fibonacci numbers. You have 2 rabbits that make 3, 3 rabbits make 5, 5 rabbits make 9 and so on.</p>
+<p>The numbers start at 1 and the next number is the current number + the previous number. Here it’s 1 + 0 = 1. Then 1 + 1 = 2. 2 + 1 = 3 and so on.</p>
+<p>We can describe this relation using a recursion. A recurrence is an equation which defines a function in terms of its smaller inputs. Recurrence and recursion sound similar and are similar.</p>
+<p>With Fibonacci numbers if n = 0 or 1, it results in 1. Else, recursively add f(n-1) + f(n -2) until you reach the base case. Let&rsquo;s start off by creating a non-recursive Fibonacci number calculator.</p>
+<p>We know that if n = 0 or 1, return 1.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>The Fibonacci numbers are the last two numbers added together.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">else</span>:
+    fibo <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    fibroPrev <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range (<span style="color:#ae81ff">2</span>, n):
+        temp <span style="color:#f92672">=</span> fibo
+        fibo <span style="color:#f92672">=</span> fibo <span style="color:#f92672">+</span> fiboPrev
+        fiboPrev <span style="color:#f92672">=</span> temp
+        <span style="color:#66d9ef">return</span> fibo
+</code></pre></div><p>Now we&rsquo;ve seen this, let&rsquo;s turn it into recursion using a recurrence.</p>
+<p><img src="https://skerritt.blog/content/images/2019/03/image-36.png" alt="Formula"></p>
+<p>When creating a recurrence, we always start with the base case. The base case here is if n == 0 or 1, return n.</p>
+<p>If we don&rsquo;t return n, but instead return 1 this leads to a bug. For example, F(0) would result in 1. When really, it should result in 0.</p>
+<p>Next, we have the formula. If n isn&rsquo;t 0 or 1, what do we do? We calculate F(n - 1) + F(n - 2). In the end, we want to merge all the numbers together to get our final result. We do this using addition.</p>
+<p><img src="https://skerritt.blog/content/images/2019/03/image-37.png" alt="formula"></p>
+<p>This is the formal definition of the Fibonacci numbers. Normally, recurrences are used to talk about the running time of a divide and conquer algorithm. My algorithms professor and I think it&rsquo;s actually a good tool to create divide and conquer algorithms.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">F</span>(n):
+  <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+    <span style="color:#66d9ef">return</span> n
+  <span style="color:#66d9ef">else</span>:
+    <span style="color:#66d9ef">return</span> F(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span>F(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+</code></pre></div><p>With knowledge of divide and conquer, the above code is cleaner and easier to read.</p>
+<p>We often calculate the result of a recurrence using an execution tree. Computer overlords 🤖 don&rsquo;t need to do this, but it&rsquo;s useful for humans to see how your divide and conquer algorithm works. For F(4) this looks like:</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/03/Blank-Diagram-30-.png" alt="A Gentle Introduction to Divide and Conquer Algorithms"></p>
+<!--kg-card-end: image-->
+<p>n is 4, and n is larger than 0 or 1. So we do f(n-1) + f(n-2). We ignore the addition for now. This results in 2 new nodes, 3 and 2. 3 is larger than 0 or 1 so we do the same. Same for 2. We do this until we get a bunch of nodes which are either 0 or 1. We then add all the nodes together. 1 + 1 + 0 + 0 + 1 = 3, which is the right answer.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="conclusion-">Conclusion 📕<a hidden class="anchor" aria-hidden="true" href="#conclusion-">#</a></h2>
+<p>Once you&rsquo;ve identified how to break a problem down into many smaller pieces, you can use concurrent programming to execute these pieces at the same time (on different <a href="https://www.wikiwand.com/en/Thread_(computing)">threads</a>) thereby speeding up the whole algorithm.</p>
+<p>Divide and conquer algorithms are one of the fastest and perhaps easiest ways to increase the speed of an algorithm and are incredibly useful in everyday programming. Here are the most important topics we covered in this article:</p>
+<ul>
+<li>What is divide and conquer?</li>
+<li>Recursion</li>
+<li>MergeSort</li>
+<li>Towers of Hanoi</li>
+<li>Coding a divide and conquer algorithm</li>
+<li>Recurrences</li>
+<li>Fibonacci numbers</li>
+</ul>
+<p>The next step is to explore multithreading. Choose your programming language of choice and Google, as an example, &ldquo;Python multithreading&rdquo;. Figure out how it works and see if you can attack any problems in your own code from this new angle.</p>
+<p>You can also learn about how to solve recurrences (finding out the asymptotic running time of a recurrence), which is the next article I&rsquo;m going to write. If you don&rsquo;t want to miss it, or you liked this article do consider subscribing to my email list 😁✨</p>
+<h1 id="dynamic-programming">Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#dynamic-programming">#</a></h1>
+<p>Dynamic programming (DP) is breaking down an optimisation problem into smaller sub-problems, and storing the solution to each sub-problems so that each sub-problem is only solved once.</p>
+<p>It is both a <a href="https://en.wikipedia.org/wiki/Mathematical_optimization">mathematical optimisation</a> method and a computer programming method.</p>
+<p><em>Optimisation problems</em> seek the maximum or minimum solution. Dynamic programming is often used for optimisation problems. The general rule is that if you encounter a problem where the initial algorithm is solved in 2<sup>n</sup> time, it might be better solved using DP.
+<a href="https://b.ck.page"><img src="https://skerritt.blog/content/images/2019/06/Copy-of-technologiclly-clairvoyant.png"></img></a></p>
+<hr>
+<!--kg-card-end: hr-->
+<h3 id="why-is-dynamic-programming-called-dynamic-programming">Why Is Dynamic Programming Called Dynamic Programming?<a hidden class="anchor" aria-hidden="true" href="#why-is-dynamic-programming-called-dynamic-programming">#</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a> invented DP in the 1950s. <a href="https://en.wikipedia.org/wiki/Dynamic_programming#History">Bellman named it Dynamic Programming</a> because at the time, RAND (his employer) disliked mathematical research and didn&rsquo;t want to fund it. He named it Dynamic Programming to hide the fact he was really doing mathematical research.</p>
+<p>Bellman explains the reasoning behind the term dynamic programming in his autobiography, Eye of the Hurricane: An Autobiography (1984, page 159). He explains:</p>
+<blockquote>
+<p>&ldquo;I spent the Fall quarter (of 1950) at RAND. My first task was to find a name for multistage decision processes. An interesting question is, Where did the name, dynamic programming, come from? The 1950s were not good years for mathematical research. We had a very interesting gentleman in Washington named Wilson. He was Secretary of Defense, and he actually had a pathological fear and hatred of the word research. I’m not using the term lightly; I’m using it precisely. His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. You can imagine how he felt, then, about the term mathematical. The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that I was really doing mathematics inside the RAND Corporation. What title, what name, could I choose? In the first place I was interested in planning, in decision making, in thinking. But planning, is not a good word for various reasons. I decided therefore to use the word “programming”. I wanted to get across the idea that this was dynamic, this was multistage, this was time-varying. I thought, let&rsquo;s kill two birds with one stone. Let&rsquo;s take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. It also has a very interesting property as an adjective, and that is it&rsquo;s impossible to use the word dynamic in a pejorative sense. Try thinking of some combination that will possibly give it a pejorative meaning. It&rsquo;s impossible. Thus, I thought dynamic programming was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities.&rdquo;</p>
+</blockquote>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="what-are-sub-problems">What are Sub-Problems?<a hidden class="anchor" aria-hidden="true" href="#what-are-sub-problems">#</a></h2>
+<p><img src="https://skerritt.blog/content/images/2019/06/undraw_process_e90d.svg" alt="cover photo image"></p>
+<p>Sub-problems are smaller versions of the original problem. Let&rsquo;s see an example. With the equation below:</p>
+<p>1 + 2 + 3 + 4</p>
+<p>We can break this down to:</p>
+<p>1 + 2</p>
+<p>3 + 4</p>
+<p>Once we solve these two smaller problems, we can add the solutions to these problems to find the solution to the overall problem.</p>
+<p>Notice how this sub-problem breaks down the original problem into components that build up the solution. While this is a small example, it illustrates the beauty of DP well. If we expand the problem to adding 100&rsquo;s of numbers it becomes clearer as to why we need DP. Take this example:</p>
+<p>6 + 5 + 3 + 3 + 2 + 4 + 6 + 5</p>
+<p>We have 6 + 5 twice. We work out what 6 + 5 is the first time. When we see it the second time we think to ourselves:</p>
+<blockquote>
+<p>&ldquo;Ah, 6 + 5. I&rsquo;ve seen this before. It&rsquo;s 11!&rdquo;</p>
+</blockquote>
+<p>In DP we store the solution to the problem in memory so we do not need to recalculate it. By finding the solutions for every single sub-problem, we can tackle the original problem itself.</p>
+<p>The act of storing a solution is called <em>memoisation</em>.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="what-is-memoisation-in-dynamic-programming">What is Memoisation in Dynamic Programming?<a hidden class="anchor" aria-hidden="true" href="#what-is-memoisation-in-dynamic-programming">#</a></h2>
+<p><img src="https://skerritt.blog/content/images/2019/06/undraw_task_31wc.svg" alt="cover photo"></p>
+<p>First, let&rsquo;s see why storing answers to solutions make sense. We&rsquo;re going to look at a famous divide and conquer problem, <em><a href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">Fibonacci sequence</a></em>. <a href="https://dev.to/brandonskerritt/a-gentle-introduction-to-divide-and-conquer-algorithms-1ga">Divide and conquer</a> is dynamic programming, but without storing the solution.</p>
+<p>There are 3 main parts to <a href="https://dev.to/brandonskerritt/a-gentle-introduction-to-divide-and-conquer-algorithms-1ga">divide and conquer</a>:</p>
+<ol>
+<li><strong>Divide</strong> the problem into smaller sub-problems of the same type.</li>
+<li><strong>Conquer</strong> - solve the sub-problems recursively.</li>
+<li><strong>Combine</strong> - Combine all the sub-problems to create a solution to the original problem.</li>
+</ol>
+<p>Dynamic programming has one extra step added to step 2. This is memoisation.</p>
+<p>The Fibonacci sequence is a sequence of numbers. It&rsquo;s the last number + the current number. We start at 1.</p>
+<p>1 + 0 = 1</p>
+<p>1 + 1 = 2</p>
+<p>2 + 1 = 3</p>
+<p>3 + 2 = 5</p>
+<p>5 + 3 = 8</p>
+<p>In Python, this is common programmed as:</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">F</span>(n):
+  <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+    <span style="color:#66d9ef">return</span> n
+  <span style="color:#66d9ef">else</span>:
+<span style="color:#66d9ef">return</span> F(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span>F(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+
+</code></pre></div><!--kg-card-end: code-->
+<p>If you&rsquo;re not familiar with recursion I have a <a href="https://dev.to/brandonskerritt/a-gentle-introduction-to-divide-and-conquer-algorithms-1ga">blog post written for you that you should read first.</a></p>
+<p>Let&rsquo;s calculate F(4). In an execution tree, this looks like:</p>
+<!--kg-card-begin: markdown-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-8.png" alt="What Is Dynamic Programming With Python Examples"></p>
+<!--kg-card-end: markdown-->
+<p>We calculate F(2) twice. This may be a small example, but on bigger inputs (such as F(10)) the repetition builds up. The purpose of dynamic programming is to not calculate the same thing twice.</p>
+<p>Instead of calculating F(2) twice, we store the solution somewhere and only calculate it once.</p>
+<p>We&rsquo;ll store the solution in an array. F(2) = 1. Our array will then look like memo[2] = 1. Below is some Python code to calculate the Fibbonacci sequence using DP.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacciVal</span>(n):
+	memo[<span style="color:#ae81ff">0</span>], memo[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>
+	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+		memo[i] <span style="color:#f92672">=</span> memo[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> memo[i<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
+	<span style="color:#66d9ef">return</span> memo[n]
+</code></pre></div><p>The examples set out here are in Python. I’ll do my best to keep the code agnostic. Meaning that if you want to program this in Java, it shouldn’t be too hard to convert it over.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="how-to-identify-dynamic-programming-problems">How to Identify Dynamic Programming Problems<a hidden class="anchor" aria-hidden="true" href="#how-to-identify-dynamic-programming-problems">#</a></h2>
+<p><img src="https://skerritt.blog/content/images/2019/06/undraw_file_searching_duff.svg" alt="cover photo image">
+In theory, every problem can be solved dynamically. The question is then:</p>
+<blockquote>
+<p>&ldquo;When should I solve this problem with dynamic programming?&rdquo;</p>
+</blockquote>
+<p>We should use dynamic programming for problems that are on the border between <em>tractable</em> problems and <em>intracable</em> problems.</p>
+<p><em><a href="https://www.britannica.com/technology/tractable-problem">Tractable problems</a></em> are those that can be solved in polynomial time. That&rsquo;s just a fancy way of saying we can solve it in a fast manner. Binary search and sorting,are all fast. <em><a href="https://www.umsl.edu/~siegelj/information_theory/classassignments/Lombardo/04_intractableproblems.html">Intractable problems</a></em> are those that run in exponential time. They&rsquo;re slow. Generally speaking, intractable problems are those that can only be solved by bruteforcing through every single combination (<a href="https://www.youtube.com/watch?v=YX40hbAHx3s">NP hard</a>).</p>
+<p>When we see terms such as:</p>
+<blockquote>
+<p>&ldquo;shortest/longest, minimized/maximized, least/most, fewest/greatest, biggest/smallest&rdquo;</p>
+</blockquote>
+<p>We know it&rsquo;s an optimisation problem.</p>
+<p>Another cool thing with DP algorithms is that their proof of correctness is usually self-evident. Other algorithmic strategies are often much harder to prove correct, and therefore more error-prone.</p>
+<p>For instance, greedy algorithms may seem conceptually simpler, and usually, run faster, but they’re much harder to prove correct because they require making a lot of implicit assumptions about the structure of the input.</p>
+<p>When we see these kinds of terms, the problem may ask for a specific number ( &ldquo;find the minimum number of edit operations&rdquo;) or it may ask for a result ( &ldquo;find the longest common subsequence&rdquo;). The latter type of problem is harder to recognize as a dynamic programming problem. If something sounds like optimisation, it could be solved by DP.</p>
+<p>Now, imagine we&rsquo;ve found a problem that&rsquo;s an optimisation problem, but we&rsquo;re not sure if it can be solved with DP. First, identify what we&rsquo;re optimising for. Once we realize what we&rsquo;re optimising for, we have to decide how easy it is to perform that optimisation. Sometimes, the <a href="https://brilliant.org/wiki/greedy-algorithm/">greedy approach</a> is sufficient for an optimal solution.</p>
+<p>Dynamic programming takes the brute force approach. It Identifies repeated work, and eliminates the repetition.</p>
+<p>Before we even start to formulate the problem as a dynamic programming problem, we think about what the brute force solution might look like. Could there possibly be repeated substeps in the brute force solution? If so, we try to formulate the problem as a dynamic programming problem.</p>
+<p>Mastering dynamic programming is all about understanding the problem. List all the inputs that can affect the answers. Once we&rsquo;ve identified all the inputs and outputs, try to identify whether the problem can be broken into subproblems. If we can identify subproblems, we can probably use DP.</p>
+<p>List all inputs that affect the answer, and worry about reducing the size of that set later.  Once we have identified the inputs and outputs, we try to identify whether the problem can be broken into smaller subproblems. If we can identify smaller subproblems, then we can probably apply dynamic programming to solve the problem. Then, figure out what the recurrence is and solve it. When we&rsquo;re trying to figure out the recurrence, remember that whatever recurrence we write has to help us find the answer. Sometimes the answer will be the result of the recurrence, and sometimes we will have to obtain the result by looking  at a few results from the recurrence</p>
+<p>Just because a problem can be solved with dynamic programming does not mean there isn&rsquo;t a more efficient solution out there. Solving a problem with dynamic programming feels like magic, but remember that dynamic programming is merely a clever brute force.  Sometimes it pays off well,  and sometimes it helps only a little.
+<img src="https://skerritt.blog/content/images/2019/06/dynamic-Programming-Process.png" alt="flowchart"></p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="how-to-solve-problems-using-dynamic-programming">How to Solve Problems using Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#how-to-solve-problems-using-dynamic-programming">#</a></h2>
+<p><img src="https://skerritt.blog/content/images/2019/06/undraw_problem_solving_ft81.svg" alt="img"></p>
+<p>Now we have an understanding of what dynamic programming is and how it generally works, let&rsquo;s look at how we&rsquo;ll create a dynamic programming solution to a problem. We&rsquo;re going to explore the process of dynamic programming using the <em><a href="https://courses.cs.washington.edu/courses/cse521/13wi/slides/06dp-sched.pdf">Weighted Interval Scheduling Problem</a></em>.</p>
+<p>Pretend you&rsquo;re the owner of a dry cleaner. You have <em>n</em> customers come in and give you clothes to clean. You can only clean one customers pile of clothes (PoC) at a time. Each pile of clothes, <em>i</em>, must be cleaned at some pre-determined start time s_i and some predetermined finish time f_i.</p>
+<p>Each pile of clothes has an assiocated value, v_i, based on how important it is to your business. For example, some customers may pay more to have their clothes cleaned faster. Or some may be repeating customers and you want them to be happy.</p>
+<p>As the owner of this dry cleaners you must determine the optimal schedule of clothes that maximises the total value of this day. This problem is a re-wording of the <em>Weighted Interval scheduling problem</em>.</p>
+<p>You will now see 4 steps to solving a DP problem. Sometimes, you can skip a step. Sometimes, your problem is already well defined and you don&rsquo;t need to worry about the first few steps.</p>
+<h2 id="step-1-write-the-problem-out">Step 1. Write the Problem out<a hidden class="anchor" aria-hidden="true" href="#step-1-write-the-problem-out">#</a></h2>
+<p><img src="https://skerritt.blog/content/images/2019/06/undraw_typewriter_i8xd.svg" alt="img"></p>
+<p>Grab a piece of paper. Write out the problem. Specifically:</p>
+<ul>
+<li>What is the problem?</li>
+<li>What are the subproblems?</li>
+<li>What would the solution roughly look like?</li>
+</ul>
+<p>In the dry cleaner problem, let&rsquo;s put down into words the subproblems. What we want to determine is the maximum value schedule for each pile of clothes such that the clothes are sorted by start time.</p>
+<p>Why sorted by start time? Good question! We want to keep track of processes which are currently running. If we sort by finish time, it doesn&rsquo;t make much sense in our heads. We could have 2 with similar finish times, but entirely different start times. Time moves in a linear fashion. If we have piles of clothes that start at 1 pm, we know that. If we have a pile of clothes that finishes at 3 pm, it&rsquo;s kind of seeing it backwards. Doesn&rsquo;t make so much sense.</p>
+<p>We can find the maximum value schedule for piles n-1 through to n. And then for n - 2 through to n. And so on. By finding the solution to every single sub-problem, we can tackle the original problem itself. The maximum value schedule for piles 1 through <em>n</em>. Since the sub-problems are smaller versions of the original problem, sub-problems can be used to solve the original problem.</p>
+<p>With the interval scheduling problem, the only way we can solve it is by brute-forcing all subsets of the problem until we find an optimal one. What we&rsquo;re saying is that instead of brute-forcing one by one, we divide it up. We brute force from n-1 through to n. Then we do the same for n-2 through to n. Eventually, we have loads of smaller problems, which we can solve dynamically. We want to build the solutions to our sub-problems such that each sub-problem builds on the previous problems.</p>
+<h2 id="2-mathematical-recurrences">2. Mathematical Recurrences<a hidden class="anchor" aria-hidden="true" href="#2-mathematical-recurrences">#</a></h2>
+<p><img src="https://skerritt.blog/content/images/2019/06/undraw_mathematics_4otb.svg" alt="cover photo">
+I know, mathematics sucks. If you&rsquo;ll bare with me here you&rsquo;ll find that this isn&rsquo;t that hard. <a href="https://en.wikipedia.org/wiki/Recurrence_relation">Mathematical recurrences</a> are used to:</p>
+<blockquote>
+<p>Define the running time of a divide and conquer (dynamic programming) technique</p>
+</blockquote>
+<p>But, between you and me, they can also be used to define a problem. If it&rsquo;s difficult to turn your subproblems into maths, then it may be the wrong subproblem.</p>
+<p>There are 2 steps to creating a mathematicla recurrence:</p>
+<h3 id="1-define-the-base-case">1: Define the Base Case<a hidden class="anchor" aria-hidden="true" href="#1-define-the-base-case">#</a></h3>
+<p>Base cases are the smallest possible denomination of a problem.</p>
+<p>When creating a recurrence, ask yourself these questions:</p>
+<blockquote>
+<p>&ldquo;What decision do I make at step 0?&rdquo;</p>
+</blockquote>
+<p>It doesn&rsquo;t have to be 0. The base case is the smallest possible denomination of a problem. We saw this with the Fibonacci sequence. The base was was:</p>
+<ul>
+<li>If n == 0 or n == 1, return 1</li>
+</ul>
+<p>It&rsquo;s important to know where the base case lies, so we can create the recurrence. In our problem, we have one decision to make:</p>
+<ul>
+<li>Put that pile of clothes on to be washed</li>
+</ul>
+<p>or</p>
+<ul>
+<li>Don’t wash that pile of clothes today</li>
+</ul>
+<p>If n is 0, that is, if we have 0 PoC then we do nothing. Our base case is then:</p>
+<blockquote>
+<p>if n == 0, return 0</p>
+</blockquote>
+<h3 id="2-what-decision-do-i-make-at-step-n">2: What Decision Do I Make at Step n?<a hidden class="anchor" aria-hidden="true" href="#2-what-decision-do-i-make-at-step-n">#</a></h3>
+<p>Now we know what the base case is, if we&rsquo;re at step n what do we do? For each pile of clothes that is compatible with the schedule so far (compatible means that the start time is after the finish time of the pile of clothes currently being washed), the algorithm chooses two options.</p>
+<p>Now we know what happens at the base case, and what happens else. We now need to find out what information the algorithm needs to go backwards (or forwards).</p>
+<blockquote>
+<p>&ldquo;If my algorithm is at step i, what information would it need to decide what to do in step i+1?&rdquo;</p>
+</blockquote>
+<p>To decide between the two options, the algorithm needs to know the next compatible PoC (pile of clothes). The next compatible PoC for a given pile, p, is the PoC, n, such that s_n (the start time for PoC n) happens after f_p (the finish time for PoC p). The difference between s_n and f_p should be minimised.</p>
+<p>In English, imagine we have one washing machine. We put in a pile of clothes at 13:00. Our next pile of clothes starts at 13:01. We can&rsquo;t just open the washing machine and put them in. Our next compatible pile of clothes is the one that starts after the finish time of the one currently being washed.</p>
+<blockquote>
+<p>&ldquo;If my algorithm is at step i, what information did it need to decide what to do in step i-1?&rdquo;</p>
+</blockquote>
+<p>The algorithm needs to know about future decisions. The ones made for PoC <em>i</em> through <em>n</em> in order to decide to run or not to run PoC <em>i-1</em>.</p>
+<p>Now that we’ve answered these questions, perhaps we’ve started to form a  recurring mathematical decision in our mind. If not, that’s also okay,  it becomes easier to write recurrences as we get exposed to more problems.</p>
+<p>Here’s our recurrence:</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/Screenshot_2019-06-23-What-Is-Dynamic-Programming-With-Python-Examples.png" alt="If you&rsquo;re reading this on Dev using a screenreader, it&rsquo;s much better for you to visit my blog https://skerritt.blog/dynamic-programming/ . There&rsquo;s a large amount of maths in this document that are images. On my blog, I&rsquo;m using MathJax which is accessibility friendly."></p>
+<p>Let&rsquo;s explore in detail what makes this mathematical recurrence. OPT(i) represents the maximum value schedule for PoC <em>i</em> through to <em>n</em> such that PoC are sorted by start times. OPT(i) is our subproblem from earlier.</p>
+<p>We start with the base case. All recurrences need somewhere to stop. If we call OPT(0) we&rsquo;ll be returned with 0.</p>
+<p>To determine the value of OPT(i), we consider two options. We want to take the maximum of these options to meet our goal. Our goal is the <em>maximum value schedule</em> for all piles of clothes. Once we choose the option that gives the maximum result at step <em>i,</em> we memoize its value as OPT(i).</p>
+<p>The two options — to run or not to run PoC i — are represented mathematically as follows:</p>
+<p>v_i + OPT(next[n])</p>
+<p>This represents the decision to run PoC i. It adds the value gained from PoC i to OPT(next[n]), where next[n] represents the next compatible pile of clothing following PoC i. When we add these two values together, we get the maximum value schedule from i through to n such that they are sorted by start time if i is ran.</p>
+<p>Sorted by start time here because next[n] is the one immediately after v_i, so by default, they are sorted by start time.</p>
+<p>OPT(i + 1)</p>
+<p>If we decide not to run <em>i</em>, our value is then OPT(i + 1). The value is not gained. OPT(i + 1) gives the maximum value schedule for i+1 through to n, such that they are sorted by start times.</p>
+<h2 id="3-determine-the-dimensions-of-the-memoization-array-and-the-direction-in-which-it-should-be-filled">3. Determine the Dimensions of the Memoization Array and the Direction in Which It Should Be Filled<a hidden class="anchor" aria-hidden="true" href="#3-determine-the-dimensions-of-the-memoization-array-and-the-direction-in-which-it-should-be-filled">#</a></h2>
+<p>The solution to our DP problem is OPT(1). We can write out the solution as the maximum value schedule for PoC 1 through n such that PoC are sorted by start time. This goes hand in hand with &ldquo;maximum value schedule for PoC i through to n&rdquo;. Our solution can be written as OPT(1).</p>
+<p>From step 2:</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/image-13.png" alt="img"></p>
+<p>Going back to our Fibonacci numbers earlier, our DP solution relied on the fact that the Fibonacci numbers for 0 through to n - 1 were already memoised. That is, to find F(5) we already memoised F(0), F(1), F(2), F(3), F(4). We want to do the same thing here.</p>
+<p>The problem we have is figuring out how to fill out a memoisation table. In the scheduling problem, we know that OPT(1) relies on the solutions to OPT(2) and OPT(next[1]). PoC 2 and next[1] have start times after PoC 1 due to sorting. We need to fill our memoisation table from OPT(n) to OPT(1).</p>
+<p>We can clearly see our array is one dimensional, from 1 to n. But, if we couldn&rsquo;t clearly see that we can work it out another way. The dimensions of the array are equal to the number and size of the variables on which OPT(x) relies. In our algorithm, we have OPT(i) - one variable, i. This means our array will be 1-dimensional and its size will be n, as there are n piles of clothes.</p>
+<p>If we know that <em>n</em> = 5, then our memoization array might look like this:</p>
+<p>memo = [0, OPT(1), OPT(2), OPT(3), OPT(4), OPT(5)]</p>
+<p>0 is also the base case. memo[0] = 0, per our recurrence from earlier.</p>
+<h2 id="4-coding-our-solution">4. Coding Our Solution<a hidden class="anchor" aria-hidden="true" href="#4-coding-our-solution">#</a></h2>
+<p>Personally, when I am coding a Dynamic Programming solution, I like to read the recurrence and try to recreate it. Our first step is to initialise the array to size (n + 1). In Python, we don&rsquo;t need to do this. But you may need to do it if you&rsquo;re using a different language.</p>
+<p>Our second step is to set the base case.</p>
+<p>To find the profit with the inclusion of job[i]. we need to find the latest job that doesn’t conflict with job[i].  The idea is to use Binary Search to find the latest non-conflicting job. I&rsquo;ve copied the code from <a href="https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/">here</a>but edited slightly.</p>
+<p>First, let&rsquo;s define what a &ldquo;job&rdquo; is. As we saw, a job consists of 3 things:</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Class to represent a job </span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Job</span>: 
+	<span style="color:#66d9ef">def</span> __init__ (self, start, finish, profit): 
+		self<span style="color:#f92672">.</span>start <span style="color:#f92672">=</span> start 
+		self<span style="color:#f92672">.</span>finish <span style="color:#f92672">=</span> finish 
+		self<span style="color:#f92672">.</span>profit <span style="color:#f92672">=</span> profit 
+</code></pre></div><!--kg-card-end: code-->
+<p>Start time, finish time, and the total profit (benefit) of running that job.</p>
+<p>The next step we want to program is the schedule.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># The main function that returns the maximum possible </span>
+<span style="color:#75715e"># profit from given array of jobs</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">schedule</span>(job): 
+	<span style="color:#75715e"># Sort jobs according to start time </span>
+	job <span style="color:#f92672">=</span> sorted(job, key <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> j: j<span style="color:#f92672">.</span>start) 
+
+	<span style="color:#75715e"># Create an array to store solutions of subproblems. table[i] </span>
+	<span style="color:#75715e"># stores the profit for jobs till arr[i] (including arr[i]) </span>
+	n <span style="color:#f92672">=</span> len(job) 
+	table <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)] 
+
+	table[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> job[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>profit;
+</code></pre></div><!--kg-card-end: code-->
+<p>Earlier, we learnt that the table is 1 dimensional. We sort the jobs by start time, create this empty table and set table[0] to be the profit of job[0]. Since we&rsquo;ve sorted by start times, the first compatiable job is always job[0].</p>
+<p>Our next step is to fill in the entries using the recurrence we learnt earlier. To find the next compatiable job, we&rsquo;re using Binary Search. In the full code posted later, it&rsquo;ll include this. For now, let&rsquo;s worry about understanding the algorithm.</p>
+<p>If the next compatiable job returns -1, that means that all jobs before index, i, conflict with it (so cannot be used).  Inclprof means we&rsquo;re including that item in the maximum value set. We then store it in table[i], so we can use this calculation again later.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	<span style="color:#75715e"># Fill entries in table[] using recursive property </span>
+	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n): 
+
+		<span style="color:#75715e"># Find profit including the current job </span>
+		inclProf <span style="color:#f92672">=</span> job[i]<span style="color:#f92672">.</span>profit 
+		l <span style="color:#f92672">=</span> binarySearch(job, i) 
+		<span style="color:#66d9ef">if</span> (l <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>): 
+			inclProf <span style="color:#f92672">+=</span> table[l]; 
+
+		<span style="color:#75715e"># Store maximum of including and excluding </span>
+		table[i] <span style="color:#f92672">=</span> max(inclProf, table[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) 
+</code></pre></div><!--kg-card-end: code-->
+<p>Our final step is then to return the profit of all items up to n-1.</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	<span style="color:#66d9ef">return</span> table[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] 
+</code></pre></div><!--kg-card-end: code-->
+<p>The full code can be seen below:</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Python program for weighted job scheduling using Dynamic </span>
+<span style="color:#75715e"># Programming and Binary Search </span>
+
+<span style="color:#75715e"># Class to represent a job </span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Job</span>: 
+	<span style="color:#66d9ef">def</span> __init__ (self, start, finish, profit): 
+		self<span style="color:#f92672">.</span>start <span style="color:#f92672">=</span> start 
+		self<span style="color:#f92672">.</span>finish <span style="color:#f92672">=</span> finish 
+		self<span style="color:#f92672">.</span>profit <span style="color:#f92672">=</span> profit 
+
+<span style="color:#75715e"># A Binary Search based function to find the latest job </span>
+<span style="color:#75715e"># (before current job) that doesn&#39;t conflict with current </span>
+<span style="color:#75715e"># job. &#34;index&#34; is index of the current job. This function </span>
+<span style="color:#75715e"># returns -1 if all jobs before index conflict with it. </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">binarySearch</span>(job, start_index): 
+	<span style="color:#75715e"># https://en.wikipedia.org/wiki/Binary_search_algorithm</span>
+
+	<span style="color:#75715e"># Initialize &#39;lo&#39; and &#39;hi&#39; for Binary Search </span>
+	lo <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+	hi <span style="color:#f92672">=</span> start_index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+
+	<span style="color:#75715e"># Perform binary Search iteratively </span>
+	<span style="color:#66d9ef">while</span> lo <span style="color:#f92672">&lt;=</span> hi: 
+		mid <span style="color:#f92672">=</span> (lo <span style="color:#f92672">+</span> hi) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
+		<span style="color:#66d9ef">if</span> job[mid]<span style="color:#f92672">.</span>finish <span style="color:#f92672">&lt;=</span> job[start_index]<span style="color:#f92672">.</span>start: 
+			<span style="color:#66d9ef">if</span> job[mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>finish <span style="color:#f92672">&lt;=</span> job[start_index]<span style="color:#f92672">.</span>start: 
+				lo <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+			<span style="color:#66d9ef">else</span>: 
+				<span style="color:#66d9ef">return</span> mid 
+		<span style="color:#66d9ef">else</span>: 
+			hi <span style="color:#f92672">=</span> mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># The main function that returns the maximum possible </span>
+<span style="color:#75715e"># profit from given array of jobs </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">schedule</span>(job): 
+	<span style="color:#75715e"># Sort jobs according to start time </span>
+	job <span style="color:#f92672">=</span> sorted(job, key <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> j: j<span style="color:#f92672">.</span>start) 
+
+	<span style="color:#75715e"># Create an array to store solutions of subproblems. table[i] </span>
+	<span style="color:#75715e"># stores the profit for jobs till arr[i] (including arr[i]) </span>
+	n <span style="color:#f92672">=</span> len(job) 
+	table <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)] 
+
+	table[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> job[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>profit; 
+
+	<span style="color:#75715e"># Fill entries in table[] using recursive property </span>
+	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n): 
+
+		<span style="color:#75715e"># Find profit including the current job </span>
+		inclProf <span style="color:#f92672">=</span> job[i]<span style="color:#f92672">.</span>profit 
+		l <span style="color:#f92672">=</span> binarySearch(job, i) 
+		<span style="color:#66d9ef">if</span> (l <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>): 
+			inclProf <span style="color:#f92672">+=</span> table[l]; 
+
+		<span style="color:#75715e"># Store maximum of including and excluding </span>
+		table[i] <span style="color:#f92672">=</span> max(inclProf, table[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) 
+
+	<span style="color:#66d9ef">return</span> table[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] 
+
+<span style="color:#75715e"># Driver code to test above function </span>
+job <span style="color:#f92672">=</span> [Job(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">50</span>), Job(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">20</span>), 
+	Job(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">100</span>), Job(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>)] 
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Optimal profit is&#34;</span>), 
+<span style="color:#66d9ef">print</span>(schedule(job))
+
+</code></pre></div><!--kg-card-end: code-->
+<p>Congrats! 🥳 We&rsquo;ve just written our first dynamic program!  Now that we’ve wet our feet,  lets walk through a different type of dynamic programming problem.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h1 id="knapsack-problem">Knapsack Problem<a hidden class="anchor" aria-hidden="true" href="#knapsack-problem">#</a></h1>
+<p>Imagine you are a criminal. Dastardly smart. You break into Bill Gate’s mansion. Wow, okay!?!? How many rooms is this? His washing machine room is larger than my entire house??? Ok, time to stop getting distracted. You brought a small bag with you. A knapsack - if you will.</p>
+<p>You can only fit so much into it. Let’s give this an arbitrary number. The bag will support weight 15, but no more. What we want to do is maximise how much money we&rsquo;ll make, b.</p>
+<p>The greedy approach is to pick the item with the highest value which can fit into the bag. Let&rsquo;s try that. We&rsquo;re going to steal Bill Gate&rsquo;s TV. £4000? Nice. But his TV weighs 15. So&hellip; We leave with £4000.</p>
+<p>Bill Gate&rsquo;s has a lot of watches. Let&rsquo;s say he has 2 watches. Each watch weighs 5 and each one is worth £2250. When we steal both, we get £4500 with a weight of 10.</p>
+<p>In the greedy approach, we wouldn&rsquo;t choose these watches first. But to us as humans, it makes sense to go for smaller items which have higher values. The Greedy approach cannot optimally solve the {0,1} Knapsack problem. The {0, 1} means we either take the item whole {1} or we don&rsquo;t {0}. Dynamic programming can however optimally solve the {0, 1} knapsack problem.</p>
+<p>The simple solution to this problem is to consider all the subsets of all items. For every single combination of Bill Gate&rsquo;s stuff, we calculate the total weight and value of this combination.</p>
+<p>We consider only those with weight less than W_max. We then pick the combination which has the highest value. This is a disaster! How long would this take? Bill Gate&rsquo;s would come back home far before you&rsquo;re even 1/3rd of the way there! In Big O, this algorithm takes O(n^2) time.</p>
+<p>You can see we already have a rough idea of the solution and what the problem is, without having to write it down in maths!</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="maths">Maths<a hidden class="anchor" aria-hidden="true" href="#maths">#</a></h2>
+<p>Imagine we had a listing of every single thing in Bill Gate&rsquo;s house. Maybe we stole it from some insurance papers. Now, think about the future. What is the optimal solution to this problem?</p>
+<p>We have a subset, L, which is the optimal solution. L is a subset of S, the set containing all of Bill Gate&rsquo;s stuff.</p>
+<p>Let&rsquo;s pick a random item, N. L either contains N or it doesn&rsquo;t. If it doesn&rsquo;t use N, the optimal solution for the problem is the same as {1, 2, &hellip;, N-1}. This is assuming that Bill Gate&rsquo;s stuff is sorted by value / weight.</p>
+<p>Suppose that the optimum of the original problem is not optimum of the sub-problem. if we have sub-optimum of the smaller problem then we have a contradiction - we should have an optimum of the whole problem.</p>
+<p>If L contains N, then the optimal solution for the problem is the same as {1, 2, 3, &hellip;, N-1}. We know the item is in, so L already contains N. To complete the computation we focus on the remaining items. We find the optimal solution to the remaining items.</p>
+<p>But, we now have a new maximum allowed weight of W_max - W_n. If item N is contained in the solution, the total weight is now the max weight take away item N (which is already in the knapsack).</p>
+<p>These are the 2 cases. Either item N is in the optimal solution or it isn&rsquo;t.</p>
+<p>If the weight of item N is greater than W_max, then it cannot be included so case 1 is the only possibility.</p>
+<p>To more precisely define this recursive solution, let S_k = {1, 2, &hellip;, k} and S_0 = ∅</p>
+<p>Let B[k, w] be the <em>maximum total benefit</em> obtained using a subset of S_k. Having total weight at most w.</p>
+<p>Then we define B[0, w] = 0 for each w \le W_max, and:</p>
+<p>Our desired solution is then B[n, W_max].</p>
+<p><img src="https://skerritt.blog/content/images/2019/06/image-14.png" alt="img"></p>
+<h3 id="tabulation-of-knapsack-problem">Tabulation of Knapsack Problem<a hidden class="anchor" aria-hidden="true" href="#tabulation-of-knapsack-problem">#</a></h3>
+<p>Okay, pull out some pen and paper. No, really. Things are about to get confusing real fast. This memoisation table is 2-dimensional. We have these items:</p>
+<!--kg-card-begin: code-->
+<pre><code>(1, 1), (3, 4), (4, 5), (5, 7)
+</code></pre><!--kg-card-end: code-->
+<p>Where the tuples are <code>(weight, value)</code>.</p>
+<p>We have 2 variables, so our array is 2-dimensional. The first dimension is from 0 to 7. Our second dimension is the values.</p>
+<p>And we want a weight of 7 with maximum benefit.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-15.png" alt="img"></p>
+<!--kg-card-end: html-->
+<p>The weight is 7. We start counting at 0 (not a DP thing, just a programming thing). We put each tuple on the left-hand side. Ok. Now to fill out the table!</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-16.png" alt="skerritt.blog"></p>
+<!--kg-card-end: html-->
+<p>The columns are weight. At weight 0, we have a total weight of 0. At weight 1, we have a total weight of 1. Obvious, I know. But this is an important distinction to make which will be useful later on.</p>
+<p>When our weight is 0, we can&rsquo;t carry anything no matter what. The total weight of everything at 0 is 0.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-17.png" alt="skerritt.blog"></p>
+<!--kg-card-end: html-->
+<p>If our total weight is 1, the best item we can take is (1, 1). As we go down through this array, we can take more items. At the row for (4, 3) we can either take (1, 1) or (4, 3). But for now, we can only take (1, 1). Our maximum benefit for this row then is 1.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-18.png" alt="skerritt.blog"></p>
+<!--kg-card-end: html-->
+<p>If our total weight is 2, the best we can do is 1. We only have 1 of each item. We cannot duplicate items. So no matter where we are in row 1, the absolute best we can do is (1, 1).</p>
+<p>Let&rsquo;s start using (4, 3) now. If the total weight is 1, but the weight of (4, 3) is 3 we cannot take the item yet until we have a weight of at least 3.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-19.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>Now we have a weight of 3. Let&rsquo;s compare some things. We want to take the max of:</p>
+<p>MAX(4 + T[0][0], 1)</p>
+<p>If we&rsquo;re at 2, 3 we can either take the value from the last row or use the item on that row. We go up one row and count back 3 (since the weight of this item is 3).</p>
+<p>Actually, the formula is whatever weight is remaining when we minus the weight of the item on that row. The weight of (4, 3) is 3 and we&rsquo;re at weight 3. 3 - 3 = 0. Therefore, we&rsquo;re at T[0][0]. T[previous row&rsquo;s number][current total weight - item weight].</p>
+<p>MAX(4 + T[0][0], 1)</p>
+<p>The 1 is because of the previous item. The max here is 4.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-20.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>max(4 + t[0][1], 1)</p>
+<p>Total weight is 4, item weight is 3. 4 - 3 = 1. Previous row is 0. t[0][1].</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-21.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>I won&rsquo;t bore you with the rest of this row, as nothing exciting happens. We have 2 items. And we&rsquo;ve used both of them to make 5. Since there are no new items, the maximum value is 5.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-22.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>Onto our next row:</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-23.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>Here&rsquo;s a little secret. Our tuples are ordered by weight! That means that we can fill in the previous rows of data up to the next weight point. We know that 4 is already the maximum, so we can just fill it in. This is where memoisation comes into play! We already have the data, why bother re-calculating it?</p>
+<p>We go up one row and head 4 steps back. That gives us:</p>
+<p>max(4 + T[2][0], 5).</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-24.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>Now we calculate it for total weight 5.</p>
+<p>max(5 + T[2][1], 5) = 6</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-25.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>We just do the same thing again:</p>
+<p>max(5 + T[2][2], 5) = 6</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-26.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>Now we have total weight 7. We choose the max of:</p>
+<p>max(5 + T[2][3], 5) = max(5 + 4, 5) = 9</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-27.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>If we had total weight 7 and we had the 3 items (1, 1), (4, 3), (5, 4) the best we can do is 9.</p>
+<p>Since our new item starts at weight 5, we can just copy from the previous row until we get to weight 5.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-28.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>We then do another max.</p>
+<p>Total weight - new item&rsquo;s weight. This is 5 - 5 = 0. We want previous row at position 0.</p>
+<p>max(7 + T[3][0], 6)</p>
+<p>The 6 comes from the best on the previous row for that total weight.</p>
+<p>max(7 + 0, 6) = 7</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-29.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>max(7 + T[3][1], 6) = 8</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-30.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>max(7+T[3][2], 9) = 9</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-31.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>9 is the maximum value we can get by picking items from the set of items such that the total weight is \le 7.</p>
+<h3 id="finding-the-optimal-set-for-0-1-knapsack-problem-using-dynamic-programming">Finding the Optimal Set for {0, 1} Knapsack Problem Using Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#finding-the-optimal-set-for-0-1-knapsack-problem-using-dynamic-programming">#</a></h3>
+<p>Now, what items do we actually pick for the optimal set? We start from this item:</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-32.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>We want to know where the 9 comes from. It&rsquo;s coming from the top because the number directly above 9 on the 4th row is 9. Since it&rsquo;s coming from the top, the item (7, 5) is not used in the optimal set.</p>
+<p>Where does this 9 come from?</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-33.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>This 9 is not coming from the row above it. <strong>Item (5, 4) must be in the optimal set.</strong></p>
+<p>We now go up one row, and go back 4 steps. 4 steps because the item, (5, 4), has weight 4.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-34.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>4 does not come from the row above. The item (4, 3) must be in the optimal set.</p>
+<p>The weight of item (4, 3) is 3. We go up and we go back 3 steps and reach:</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/06/image-35.png" alt=""></p>
+<!--kg-card-end: html-->
+<p>As soon as we reach a point where the weight is 0, we&rsquo;re done. Our two selected items are (5, 4) and (4, 3). The total weight is 7 and our total benefit is 9. We just add the two tuples together to find this out.</p>
+<p>Let&rsquo;s begin coding this.</p>
+<!--kg-card-begin: hr-->
+<hr>
+<!--kg-card-end: hr-->
+<h3 id="coding-it">Coding It<a hidden class="anchor" aria-hidden="true" href="#coding-it">#</a></h3>
+<p>Now we kn0w how it works, and we&rsquo;ve derived the recurrence for it - it shouldn&rsquo;t be too hard to code it. If our two-dimensional array is i (row) and j (column) then we have:</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> wt[i]:
+</code></pre></div><!--kg-card-end: code-->
+<p>If our weight j is less than the weight of item i (i does not contribute to j) then:</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> wt[i]:
+	T[i][j] <span style="color:#f92672">=</span> T[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][j]
+<span style="color:#66d9ef">else</span>:
+	<span style="color:#f92672">//</span> weight of i <span style="color:#f92672">&gt;=</span> j
+    T[i][j] <span style="color:#f92672">=</span> max(val[i] <span style="color:#f92672">+</span> t[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][j<span style="color:#f92672">-</span>wt(i), t[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j])
+    <span style="color:#f92672">//</span> previous row, subtracting the weight of the item <span style="color:#f92672">from</span> the total weight or without including ths item
+</code></pre></div><!--kg-card-end: code-->
+<p>This is what the core heart of the program does. I&rsquo;ve copied some code from <a href="https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/">here</a>to help explain this. I&rsquo;m not going to explain this code much, as there isn&rsquo;t much more to it than what I&rsquo;ve already explained. If you&rsquo;re confused by it, leave a comment (can be left anonymously) below or email me 😁</p>
+<!--kg-card-begin: code-->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Returns the maximum value that can be put in a knapsack of </span>
+<span style="color:#75715e"># capacity W </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">knapSack</span>(W , wt , val , n): 
+  
+    <span style="color:#75715e"># Base Case </span>
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> W <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>: 
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+  
+    <span style="color:#75715e"># If weight of the nth item is more than Knapsack of capacity </span>
+    <span style="color:#75715e"># W, then this item cannot be included in the optimal solution </span>
+    <span style="color:#66d9ef">if</span> (wt[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> W): 
+        <span style="color:#66d9ef">return</span> knapSack(W , wt , val , n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) 
+  
+    <span style="color:#75715e"># return the maximum of two cases: </span>
+    <span style="color:#75715e"># (1) nth item included </span>
+    <span style="color:#75715e"># (2) not included </span>
+    <span style="color:#66d9ef">else</span>: 
+        <span style="color:#66d9ef">return</span> max(val[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> knapSack(W<span style="color:#f92672">-</span>wt[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] , wt , val , n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), 
+                   knapSack(W , wt , val , n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)) 
+  
+  
+<span style="color:#75715e"># To test above function </span>
+val <span style="color:#f92672">=</span> [<span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">120</span>] 
+wt <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>] 
+W <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+n <span style="color:#f92672">=</span> len(val) 
+<span style="color:#66d9ef">print</span>(knapSack(W , wt , val , n))
+<span style="color:#75715e"># output 220</span>
+</code></pre></div><hr>
+<!--kg-card-end: hr-->
+<h2 id="time-complexity-of-a-dynamic-programming-problem">Time Complexity of a Dynamic Programming Problem<a hidden class="anchor" aria-hidden="true" href="#time-complexity-of-a-dynamic-programming-problem">#</a></h2>
+<p>In DP, <a href="https://skerritt.blog/you-need-to-understand-big-o-notation-now/">time complexity</a> is calculated as:</p>
+<p>Number of unique states * time taken per state</p>
+<p>For our original problem, the Weighted Interval Scheduling Problem, we had n piles of clothes. Each pile of clothes is solved in constant time. The time complexity is:</p>
+<p>O(n) + O(1) = O(n)</p>
+<p><a href="https://skerritt.blog/you-need-to-understand-big-o-notation-now/">I&rsquo;ve written a post about Big O notation</a>if you want to learn more about time complexities.</p>
+<p>With our Knapsack problem, we had n number of items. The table grows depending on the total capacity of the knapsack, our time complexity is:</p>
+<p>O(nw)</p>
+<p>Where n is the number of items, and w is the capactity of the knapsack.</p>
+<p>I&rsquo;m going to let you in on a little secret. It&rsquo;s possible to work out the time complexity of an algorithm from its recurrence. You can use something called the Master Theorem to work it out. This is the theorem in a nutshell:</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/05/image-16.png" alt="What Is Dynamic Programming With Python Examples"><figcaption>Taken from <a href="https://medium.com/@randerson112358/master-theorem-909f52d4364">here</a></figcaption></p>
+<!--kg-card-end: image-->
+<p>Now, I&rsquo;ll be honest. The master therom deserves a blog post of its own. For now, I&rsquo;ve found this video to be excellent:</p>
+<p>{% youtube OynWkEj0S-s %}</p>
+<hr>
+<!--kg-card-end: hr-->
+<h3 id="dynamic-programming-vs-divide--conquer-vs-greedy">Dynamic Programming vs Divide &amp; Conquer vs Greedy<a hidden class="anchor" aria-hidden="true" href="#dynamic-programming-vs-divide--conquer-vs-greedy">#</a></h3>
+<p>Dynamic Programming &amp; <a href="https://dev.to/brandonskerritt/a-gentle-introduction-to-divide-and-conquer-algorithms-1ga">Divide and Conquer</a> are incredibly similar. Dynamic Programming is based on Divide and Conquer, except we memoise the results.</p>
+<p>Greedy, on the other hand, is different. It aims to optimise by making the best choice at that moment. Sometimes, this doesn&rsquo;t optimse for the whole problem. Take this question as an example. We have 3 coins:</p>
+<p>1p, 15p, 25p</p>
+<p><a href="https://en.wikipedia.org/wiki/Change-making_problem">And someones wants us to give change of 30p</a>. With Greedy, it would select 25, then 5 * 1 for a total of 6 coins. The optimal solution is 2 * 15. Greedy works from largest to smallest. At the point where it was at 25, the best choice would be to pick 25.</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/05/image-15.png" alt="What Is Dynamic Programming With Python Examples"></p>
+<hr>
+<!--kg-card-end: hr-->
+<h2 id="tabulation-bottom-up-vs-memoisation-top-down">Tabulation (Bottom-Up) vs Memoisation (Top-Down)<a hidden class="anchor" aria-hidden="true" href="#tabulation-bottom-up-vs-memoisation-top-down">#</a></h2>
+<p>There are 2 types of dynamic programming. Tabulation and Memoisation.</p>
+<h3 id="memoisation-top-down">Memoisation (Top-Down)<a hidden class="anchor" aria-hidden="true" href="#memoisation-top-down">#</a></h3>
+<p>We&rsquo;ve computed all the subproblems but have no idea what the optimal evaluation order is. We would then perform a recursive call from the root, and hope we get close to the optimal solution or obtain a proof that we will arrive at the optimal solution. Memoisation ensures you never recompute a subproblem because we cache the results, thus duplicate sub-trees are not recomputed.</p>
+<!--kg-card-begin: image-->
+<p><img src="https://skerritt.blog/content/images/2019/05/image-8.png" alt="What Is Dynamic Programming With Python Examples"></p>
+<!--kg-card-end: image-->
+<p>From our Fibonacci sequence earlier, we start at the root node. The subtree F(2) isn&rsquo;t calculated twice.</p>
+<p>This starts at the top of the tree and evaluates the subproblems from the leaves/subtrees back up towards the root. <strong>Memoisation is a top-down approach.</strong></p>
+<h3 id="tabulation-bottom-up">Tabulation (Bottom-Up)<a hidden class="anchor" aria-hidden="true" href="#tabulation-bottom-up">#</a></h3>
+<p>We&rsquo;ve also seen Dynamic Programming being used as a &lsquo;table-filling&rsquo; algorithm. Usually, this table is multidimensional. This is like memoisation, but with one major difference. We have to pick the exact order in which we will do our computations. The knapsack problem we saw, we filled in the table from left to right - top to bottom. We knew the exact order of which to fill the table.</p>
+<p>Sometimes the &lsquo;table&rsquo; is not like the tables we&rsquo;ve seen. It can be a more complicated structure such as trees. Or specific to the problem domain, such as cities within flying distance on a map.</p>
+<h3 id="tabulation--memosation---advantages-and-disadvantages">Tabulation &amp; Memosation - Advantages and Disadvantages<a hidden class="anchor" aria-hidden="true" href="#tabulation--memosation---advantages-and-disadvantages">#</a></h3>
+<p>Generally speaking, memoisation is easier to code than tabulation. Wecan write a &lsquo;memoriser&rsquo; wrapper function that automatically does it for we. With tabulation, we have to come up with an ordering.</p>
+<p>Memoisation has memory concerns. If we&rsquo;re computing something large such as F(10^8), each computation will be delayed as we have to place them into the array. And the array will grow in size very quickly.</p>
+<p>Either approach may not be time-optimal if the order we happen (or try to) visit subproblems is not optimal, specifically if there is more than one way to calculate a subproblem (normally caching would resolve this, but it&rsquo;s theoretically possible that caching might not in some exotic cases). Memoization will usually add on our time-complexity to our space-complexity (e.g. with tabulation we have more liberty to throw away calculations, like using tabulation with Fib lets us use O(1) space, but memoization with Fib uses O(N) stack space).</p>
+<!--kg-card-begin: html-->
+<p><img src="https://skerritt.blog/content/images/2019/05/image-17.png" alt="What Is Dynamic Programming With Python Examples"></p>
+<!--kg-card-end: image-->
+<h2 id="conclusion-1">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion-1">#</a></h2>
+<p>Most of the problems you&rsquo;ll encounter within Dynamic Programmg already exist in one shape or another. Often, your problem will build on from the answers for previous problems. <a href="https://en.wikipedia.org/wiki/Dynamic_programming#Algorithms_that_use_dynamic_programming">Here&rsquo;s a list of common problems that use Dynamic Programming.</a></p>
+<p>I hope that whenever you encounter a problem, you think to yourself &ldquo;can this problem be solved with DP?&rdquo; and try it.</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://polymath.cloud/tags/datastructures-and-algorithms/">Datastructures and Algorithms</a></li>
+      <li><a href="https://polymath.cloud/tags/python/">Python</a></li>
+      <li><a href="https://polymath.cloud/tags/ebook/">Ebook</a></li>
+      <li><a href="https://polymath.cloud/tags/programming/">Programming</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Algorithmic Design Paradigms on twitter"
+        href="https://twitter.com/intent/tweet/?text=Algorithmic%20Design%20Paradigms&amp;url=https%3a%2f%2fpolymath.cloud%2falgorithms%2f&amp;hashtags=Python%2cProgramming%2cComputerScience%2cEbook%2cDatastructuresandAlgorithms">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Algorithmic Design Paradigms on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2falgorithms%2f&amp;title=Algorithmic%20Design%20Paradigms&amp;summary=Algorithmic%20Design%20Paradigms&amp;source=https%3a%2f%2fpolymath.cloud%2falgorithms%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Algorithmic Design Paradigms on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2falgorithms%2f&title=Algorithmic%20Design%20Paradigms">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Algorithmic Design Paradigms on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2falgorithms%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Algorithmic Design Paradigms on whatsapp"
+        href="https://api.whatsapp.com/send?text=Algorithmic%20Design%20Paradigms%20-%20https%3a%2f%2fpolymath.cloud%2falgorithms%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Algorithmic Design Paradigms on telegram"
+        href="https://telegram.me/share/url?text=Algorithmic%20Design%20Paradigms&amp;url=https%3a%2f%2fpolymath.cloud%2falgorithms%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

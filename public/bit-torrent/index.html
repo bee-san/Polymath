@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>How Does BitTorrent Work? a Plain English Guide | Polymath.cloud</title>
+
+<meta name="keywords" content="University, Computer Science, Datastructures and Algorithms, Infosec" />
+<meta name="description" content="No talk about downloading things on BitTorrent. Or the best clients to do so.
+Just a deep-dive into the technical side of it.
+Anyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.
+BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/bit-torrent/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="How Does BitTorrent Work? a Plain English Guide" />
+<meta property="og:description" content="No talk about downloading things on BitTorrent. Or the best clients to do so.
+Just a deep-dive into the technical side of it.
+Anyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.
+BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/bit-torrent/" />
+<meta property="article:published_time" content="2019-11-20T13:02:50+00:00" />
+<meta property="article:modified_time" content="2019-11-20T13:02:50+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How Does BitTorrent Work? a Plain English Guide"/>
+<meta name="twitter:description" content="No talk about downloading things on BitTorrent. Or the best clients to do so.
+Just a deep-dive into the technical side of it.
+Anyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.
+BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Does BitTorrent Work? a Plain English Guide",
+  "name": "How Does BitTorrent Work? a Plain English Guide",
+  "description": "No talk about downloading things on BitTorrent. Or the best clients to do so.\nJust a deep-dive into the technical side of it.\nAnyone can read this article. Requires ZERO knowledge …",
+  "keywords": [
+    "University", "Computer Science", "Datastructures and Algorithms", "Infosec"
+  ],
+  "articleBody": "No talk about downloading things on BitTorrent. Or the best clients to do so.\nJust a deep-dive into the technical side of it.\nAnyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.\nBitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.\nLet’s dive right in.\nTable of Contents  💭 Who Created BitTorrent? 🥊 BitTorrent vs Cient-Server Downloading 📑 High Level Overview 📁 What’s in a Torrent Descriptor File, Anyway? 🧀 The Piece Selection Algorithm of BitTorrent 🌆 What Are Sub-Pieces and the Piece Selection Algorithm?  6.1. 1️⃣ Strict Policy\n6.2. 2️⃣ Rarest First\n6.3. 3️⃣ Random First Piece\n6.4. 4️⃣ Endgame Mode 7. 🌱 Resource Allocation Using Tit-For-Tat 8. 🎐 The Choking Algorithm 9. 😎 Optimistic Unchoking 10. 🤕 Anti-Snubbing 11. 🤔 What If We Upload Only? 12. 🐝 What Is a Tracker?\n12.1. 🗼 Public Trackers\n12.2. 🔐 Private Trackers\n12.3. 🔢 Multi-Tracker Torrents 13. 🧲 Magnet Links - Trackerless Torrents 14. 🐍 Distributed Hash Tables 15. 📌 Routing Table 16. 🤺 Attacks on BitTorrent\n 💭 Who Created BitTorrent? Bram Cohen invented the BitTorrent protocol in 2001. Cohen wrote the first client implementation in Python.\nCohen collected free pornography to lure beta testers to use BitTorrent in the summer of 2002.\n 🥊 BitTorrent vs Cient-Server Downloading In traditional downloading, the server uploads the file, and the client downloads the file. For popular files, this isn’t very effective.\n500 people downloading the same file will put the server under strain. This strain will cap the upload speed, so clients can not download the file fast.\nSecond, client-server costs a lot of money. The amount we pay increases with how popular a file is.\nThird, it’s centralised. Say the system dies, the file no longer exists - no one can download it.\nBitTorrent aims to solve these problems. In a peer-to-peer network, every peer is connected to every other peer in the network. Semi-centralised peer-to-peer networks possess one or more peers with higher authority than most peers.  📑 High Level Overview BitTorrent is a way to share files. It’s often used for large files. BitTorrent is an alternative to a single source sharing a file, such as a server. BitTorrent can productively work on lower bandwidth.\nThe first release of the BitTorrent client had no search engine and no peer exchange, users who wanted to upload a file had to create a small torrent descriptor file that they would upload to a torrent index site.\nWhen a user wants to share a file, they seed their file. This user is called a seeder. They upload a torrent descriptor file to an exchange (we’ll talk about this later). Anyone who wants to download that file will download this torrent descriptor. We call those who download peers. Their torrent client will connect to a tracker (discussed later) and the tracker will send them a list of IP addresses of other seeds and peers in the swarm. The *swarm *is all PC’s related to a certain torrent.\nThe torrent descriptor file contains a list of trackers and metadata on the file we’re downloading. A peer will connect to a seed and download parts of the file. Once the peer completes a download, they could function as a seed. Although, it is possible to function as a seed while also downloading (and is very common).\nOnce the seed has shared the file to a peer, that peer will act as a seed. Instead of the client-server model where only 1 server exists to upload the file, in BitTorrent, multiple people can upload the same file.\nBitTorrent splits the file up into chunks called pieces, each of a certain size. Sometimes it’s 256KB, sometimes it’s 1MB. As each peer receives a piece, they become a seed of that piece for other peers.\nWith BitTorrent, we do not have a single source to download from. We could download a few pieces from your home country, then download a few that your home country doesn’t own from a far-away country.\nThe protocol hashes the pieces to make sure no seed has tampered with the original file. Then stores the hash in the torrent descriptor on the tracker.\nThis is how BitTorrent works at a very high level. We will now go into detail. We aim to answer these questions:\n What if a peer only downloads and never uploads? Who do we download from, or upload to? What is a magnet link? What is a torrent descriptor? What hashing algorithm is used? How does BitTorrent selects what pieces to download?  And much more.\n 📁 What’s in a Torrent Descriptor File, Anyway? It’s a dictionary (or hashmap) file.\nThe file is described as:\n Announce  The URL of the tracker. Remember earlier when we contacted the tracker server to find other peers using the same file? We found that tracker by using the announce key in the torrent descriptor file.\n Info  This maps to a dictionary whose keys depend on whether one or more files are being shared. The keys are:\nFiles (child of info, is a list)\nFiles only exists when multiple files are being shared. Files is a list of dictionaries. Each dictionary corresponding to a file. Each of these dictionaries has 2 keys.\n**Length - **the size of the file in bytes.\nPath - A list of strings corresponding to subdirectory names, the last of which is the actual file name.\n Length  The size of the file in bytes (only when one file is being shared)\n Name  Suggested filename. Or the suggested directory name.\n Pieces length  The number of bytes per piece.\nThe piece’s length must be a power of two and at least 16KiB.\nThis is $$2^8 ; KiB = 256 ; KiB = 262,144 ; B$$\n Pieces  A hash list.\nA list of hashes calculated on various chunks of data. We split the data into pieces. Calculate the hashes for those pieces, store them in a list.\nBitTorrent uses SHA-1, which returns a 160-bit hash. Pieces will be a string whose length is a multiple of 20 bytes.\nIf the torrent contains multiple files, the pieces are formed by concatenating the files in the order they appear in the files directory.\nAll pieces in the torrent are the full piece length except for the last piece which may be shorter.\nNow, I can guess what you’re thinking.\n “SHA-1? What is this? The early 2000s?”\n And I agree. BitTorrent is moving from SHA-1 to SHA256.\nStill confused? Not to worry! I designed this JSON file that describes what a torrent file looks like. Note: I’ve concatenated some things. This makes it easier to read and understand the general layout. I made the numbers up, following the rules of BitTorrent’s torrent descriptor.\n{ \"Announce\": \"url of tracker\", \"Info\": { \"Files\": [ { \"Length\": 16, \"path\": \"/folder/to/path\" }, { \"length\": 193, \"path\": \"/another/folder\" } ] }, \"length\": 192, \"name\":\" Ubuntu.iso\", \"Pieces length\": 262144, \"Pieces\": [AAF4C61DDCC5E8A2DABEDE0F3B482CD9AEA9434D, CFEA2496442C091FDDD1BA215D62A69EC34E94D0] }   🧀 The Piece Selection Algorithm of BitTorrent One of the largest questions in BitTorrent is “what pieces should I select to download?”\nWith a traditional client-server model, we download the whole file. But now, we get to pick what pieces to download.\nThe idea is to download the pieces that no one else has - the rare pieces. By downloading the rare pieces, we make them less rare by uploading them.\n🌆 What Are Sub-Pieces and the Piece Selection Algorithm? BitTorrent uses TCP, a transmission protocol for packets. TCP has a mechanism called slow start.\nSlow start is a mechanism which balances the speed of a TCP network connection. It escalates the amount of data transmitted until it finds the network’s maximum carrying capacity. cwdn stands for the Congestion Window. TCP Slow Start TCP does this because if we send 16 connections at once, the server may not be used to the traffic and congestion will happen on the network.\nIf we’re not regularly sending data, TCP may cap our network connection at a slower speed than normal.\nBitTorrent makes sure to always send data by breaking pieces down into further sub-pieces.\nEach sub-piece is about 16KB in size. The size for a piece is not fixed, but it is somewhere around 1MB.\nThe protocol always has some number of requests (five) for a sub-piece pipe-lined. When a new sub-piece is download, the client sends a new request. This helps speed things up.\nSub-pieces can be downloaded from other peers.\nTwo core policies govern the Piece Selection Algorithm.\n1️⃣ Strict Policy Once the BitTorrent client requests a sub-piece of a piece, any remaining sub-pieces of that piece are requested before any sub-pieces from other pieces. In this image, it makes sense to download all the sub-pieces of this piece first rather than start downloading another piece.\n2️⃣ Rarest First The main policy in BitTorrent is to pick the rarest first. We want to download the piece which the fewest other peers own.\nThis is so we can make it ‘un-rare’. If only one peer has a piece and they go offline, no one will get the complete file.\nA plethora of benefits exist for this policy.\nGrowing the seed\nRarest first makes sure that we download only new pieces from the seed.\nThe seed will begin as a bottleneck. The one peer with the file.\nA downloader can see what pieces their peers possess, and the rarest first policy will cause us to fetch the pieces from the seed which have not been uploaded by other peers.\nLet’s visualise this. Each peer is connected to every other peer. Not displayed as it’s messy. The list of nodes (peers) is inter-connected. I cannot draw this as the diagram is unfavourable.\nEach arrow towards a sub-piece what that peer has downloaded. We downloaded a sub-piece that no one else has other than the seed. This means this sub-piece is rare.\nOur upload rate is higher than that of the seed, so all peers will want to download from us. Also, they would want to download the rarest pieces first, and as we are one of 2 holders of the rarest piece.\nWhen everyone downloads from us, we can download faster from them. This is the tit-for-tat algorithm (discussed later).\nIncreased download speed\nThe more peers that hold the piece, the faster the download can happen. This is because we can download sub-pieces from other peers.\nEnable uploading\nA rare piece is most wanted by other peers and getting a rare piece means peers will be interested in uploading from us. As we will see later, the more we upload, the more we can download.\nMost common last\nIt is sensible to leave the most common pieces to the end of the download. As many peers hold common pieces, the probability of being able to download them is much larger than that of rare pieces.\nPrevent rarest piece missing\nWhen the seed dies, all the different pieces of the file should be distributed somewhere among the remaining peers.\n3️⃣ Random First Piece Once we download, we have nothing to upload. We need the first piece, fast. The rarest first policy is slow. Rare pieces are downloaded slower because we can download its sub-pieces from only a few peers.\n4️⃣ Endgame Mode Sometime’s a peer with a slow transfer rate will try to give us a sub-piece. Causing a delay of the download. To prevent this, there is “endgame mode”.\nvia GIPHY\nRemember the pipe-lining principle? There are always several requests for sub-pieces pending. Assume we are downloading from 2 peers, and there is 1 other peer we are not downloading from. When all the sub-pieces a peer lacks are requested, they broadcast this request to all peers. This helps us get the last chunk of the file. If a peer has the missing sub-piece, they will send that back to our computer.\nOnce a sub-piece arrives, we send a cancel-message telling the other peers to ignore our request.  🌱 Resource Allocation Using Tit-For-Tat No centralised resource allocation in BitTorrent exists. Instead, every peer maximises their download rate.\nA peer will download from whoever they can. To decide who to upload to, they will use a variant of the “tit-for-tat”algorithm.\nThe tit-for-tat strategy comes from game theory. The essence is:\n “Do onto others as they do onto you”\n  On the first move, cooperate On each succeeding move do what your opponent did the previous move Be prepared to forgive after carrying out just one act of retaliation   🎐 The Choking Algorithm Choking is a temporary refusal to upload to another peer, but we can still download from them.\nTo cooperate peers upload, and to not cooperate they “choke” the connection to their peers. The principle is to upload to peers who have uploaded to us. We want several bidirectional connections at the same time and to achieve Pareto Efficiency.\n We consider an allocation Pareto Efficient if there is no other allocation in which some individual is better off and no individual is worse off.\n Thus the big question, is how to determine which peers to choke and which to unchoke?\nA peer always unchokes a fixed number of its peers (the default is 4).\nCurrent download rates decide which peers to unchoke. We use a 20-second average to decide this. Because of the use of TCP (slow-start) rapidly choking and unchoking is bad. Thus, this is calculated every 10 seconds.\nIf our upload rate is high more peers will allow us to download from them. This means that we can get a higher download rate if we are a good uploader. This is the most important feature of the BitTorrent protocol.\nThe protocol prohibits many “free riders” which are peers who only download and don’t upload.\nFor a peer-to-peer network to be efficient, all peers need to contribute to the network.\n 😎 Optimistic Unchoking BitTorrent also allows an additional unchoked peer, where the download rate criteria aren’t used.\nWe call this optimistic unchoking. Checking unused connections aren’t better than the ones in use.\nWe shift the optimistic unchoke every 30 seconds. Enough time for the upload reaches full speed. Same for the upload. If this new connection turns out to be better than one of the existing unchoked connections, it will replace it.\nThe optimistic unchoke is randomly selected.\nThis also allows peers who do not upload and only download to download the file, even if they refuse to cooperate. Albeit, they will download at a much slower speed.\n 🤕 Anti-Snubbing What happens if all peers uploading to another peer decide to choke it? We then have to find new peers, but the optimistic unchoking mechanism only checks one unused connection every 30 seconds. To help the download rate recover more, BitTorrent has snubbing.\nIf a client hasn’t received anything from a particular peer for 60 seconds, it will presume that it has been ‘snubbed’.\nFollowing the mentality of tit-for-tat, we retaliate and refuse to upload to that peer (except if they become an optimistic unchoke).\nThe peer will then increase the number of optimistic unchokes to find new connections quicker.\n 🤔 What If We Upload Only? We see that using the choking algorithm implemented in BitTorrent we favour peers who are kind to us. If I can download fast from them, we allow them to upload fast from me.\nWhat about no downloads? Then it’s impossible to know which peers to unchoke using this choking algorithm. When a download is completed, we use a new choking algorithm.\nThis new choking algorithm unchokes peers with the highest upload rate. This ensures that pieces get uploaded faster, and they get replicated faster.\nPeers with good upload rates are also not being served by others.\n 🐝 What Is a Tracker? Trackers are special types of server that help in communication between peers.\nCommunication in BitTorrent is important. How do we learn what other peers exist?\nThe tracker knows who owns the file, and how much.\nOnce a peer-to-peer download has started, communication can continue without a tracker.\nSince the creation of the distributed hash table method for trackerless torrents, BitTorrent trackers are largely redundant.\n🗼 Public Trackers These are trackers that anyone can use.\nThe Pirate Bay operated one of the most popular public trackers until disabling it in 2009, opting only for magnet links (discussed soon).\n🔐 Private Trackers Private trackers are private. They restrict use by requiring users to register with the site. The method for controlling registration is often an invitation system. To use this tracker we need an invitation.\n🔢 Multi-Tracker Torrents Multi-tracker torrents contain multiple trackers in a single torrent file. This provides redundancy if one tracker fails, the other trackers can continue to maintain the swarm for the torrent.\nWith this configuration, it is possible to have multiple unconnected swarms for a single torrent - which is bad. Some users can connect to one specific tracker while being unable to connect to another. This can create a disjoint set which can impede the efficiency of a torrent to transfer the files it describes.\n 🧲 Magnet Links - Trackerless Torrents Earlier, I talked about how the Pirate Bay got rid of trackers and started using trackerless torrents.\nWhen we download a torrent, we get a hash of that torrent. To download the torrent without a tracker, we need to find other peers also downloading the torrent. To do this, we need to use a distributed hash table.\nLet’s explore Distributed Hash Tables.\n🐍 Distributed Hash Tables Distributed Hash Tables (DHT) give us a dictionary-like interface, but the nodes are distributed across a network. The trick with DHTs is that the node that gets to store a particular key is found by hashing that key.\nIn effect, each peer becomes a mini-tracker.\nEach node (client/server implementing the DHT protocol) has a unique identifier known as the “node ID”. We choose node IDs at random from the same 160-bit space as BitTorrent infohashes.\nInfohashes are a SHA-1 hash of:\n ITEM: length(size) and path (path with filename) Name: The name to search for Piece length: The length(size) of a single piece Pieces: SHA-1 Hash of EVERY piece of this torrent Private: flag for restricted access  We use a distance metric to compare two node IDs or a node ID and an infohash for “closeness”.\nNodes must have a routing table containing the contact information for a few other nodes.\nNodes know about each other in the DHT. They know many nodes with IDs that are close to their own but few with far-away IDs.\nThe distance metric is XOR and is interpreted as an integer.\n$$distance(A, B) = |A \\oplus B |$$\nSmaller values are closer.\nWhen a node wants to find peers for a torrent, they use the distance metric to compare the infohash of the torrent with the IDs of the nodes in its routing table or the ID of one node with the ID of another node.\nThen they contact the nodes in the routing table closet to the infohash and asks them for contact information of peers downloading the torrent.\nIf a contacted node knows about peers for the torrent, they return the peer contact information with the response. Otherwise, the contacted node must respond with the contact information of the nodes in its routing table closet to the infohash of the torrent. The original node queries nodes that are closer to the target infohash until it cannot find any closer nodes. After the node exhausts the search, the client then inserts the peer contact information for itself onto the responding nodes with IDs closest to the infohash of the torrent. In the future, other nodes can easily find us.\nThe return value for a query for peers includes an opaque value known as the “token.” For a node to announce that its controlling peer is downloading a torrent, it must present the token received from the same queried node in a recent query for peers.\nWhen a node attempts to “announce” a torrent, the queried node checks the token against the querying node’s IP address. This is to prevent malicious hosts from signing up other hosts for torrents.\nThe querying node returns the token to the same node that they receive the token from. We must accept tokens for a reasonable amount of time after they have been distributed. The BitTorrent implementation uses the SHA-1 hash of the IP address concatenated onto a secret that changes every five minutes and tokens up to ten minutes old are accepted.\n 📌 Routing Table Every node maintains a routing table of known good nodes. We use the routing table starting points for queries in the DHT. We return nodes from the routing table in response to queries from other nodes.\nNot all nodes we learn about are equal. Some are “good” and some are not. Many nodes using the DHT can send queries and receive responses, but cannot respond to queries from other nodes. Each node’s routing table must contain only known good nodes.\nA good node is a node has responded to one of our queries within the last 15 minutes. A node is also good if it has ever responded to our queries and has sent us a query within the last 15 minutes. After 15 minutes of inactivity, a node becomes questionable. Nodes become bad when they fail to respond to multiple queries in a row. Nodes that we see are good are given priority over nodes with an unknown status. The routing table covers the entire node ID space from 0 to 2160. We subdivide the routing table into “buckets” that each cover a portion of the space.\nAn empty table has one bucket with an ID space range of min=0, max=2160.\nAn empty table has only one bucket so any node must fit within it. Each bucket can only hold K nodes, currently eight, before becoming “full.”\nWhen a bucket is full of known good nodes, we may add no more nodes unless our node ID falls within the range of the bucket. The bucket is replaced by two buckets each with half of the old bucket. Nodes from the old bucket are distributed among the new buckets.\nFor a new table with only one bucket, we always split the full bucket into two new buckets covering the ranges 0..2159 and 2159..2160.\nWhen the bucket is full of good nodes, we simply discard the new node. When nodes in the bucket become bad (if they do) we replace them with a new node.\nWhen nodes are considered questionable and haven’t been since, in the last 15 minutes, the least recently seen node is pinged. The node either responds or doesn’t respond. A response means we move to the next node. We do this until we find a node that fails to respond. If we don’t find any, then the bucket is considered good.\nWhen we do find one, we try one more time before discarding the node and replacing them with a new good node.\nEach bucket should maintain a “last changed” property to show how “fresh” the contents are.\nWhen a node in a bucket is pinged and responds, or a node is added to a bucket, or a node is replaced with another node, the bucket’s last changed property is updated.\nBuckets are refreshed if the last changed property has not been updated in the last 15 minutes.\n 🤺 Attacks on BitTorrent Few attacks on the BitTorrent network exist. Everything is public. Our IP address, what we’re downloading - everything. Why attack an open network?\nWhy attack a completely open network?\nOnly 7 entries are listed on Exploit-DB - a database of known exploits against a service. And most of them relate to specific clients.\nThe principal attack on the BitTorrent network is to stop piracy. We’ve gone this far without talking about piracy, but it is often synonymous with BitTorrent.\nThe main attack on BitTorrent is Torrent Poisoning.\nTorrent Poisoning This attack aims to get the IP addresses of peers pirating content or to poison the content in some way.\nMadonna’s American Life album release is an example of content poisoning. Before the release, tracks were released of similar length and file size. The tracks featured a clip of Madonna saying:\n “What the fuck do you think you’re doing?”\n Followed by a few minutes of silence.\nHere are some methods of poisoning a torrent.\nIndex Poisoning The index allows users to locate the IP addresses of peers with the desired content. This method of attack makes searching for peers difficult.\nThe attacker inserts a large amount of invalid information into the index to prevent users from finding the correct information.\nThe idea is to slow down the download, by having the peer try to download pieces from an invalid peer.\nDecoy Insertion They insert corrupted versions of a file into the network.\nImagine 500 copies of a file and only 2 of them being the real file, this deters pirates from finding the real file.\nMost websites with lists of torrents a voting system. This deters this attack, as the top of searches is filled with non-corrupted files However, most websites with lists of torrents a voting\nThis deters this attack, as the top of searches is filled with non-corrupted files.\nIn GameDevTycoon, the file was released before the initial upload to piracy sites. Unbeknownst to pirates, the file was corrupted. Winning the game is impossible in the pirated version. Everything else was perfect.\n🧙🏼‍♂️ Defence Against the Dark Bittorrent Attack Most popular torrents are released by individuals or groups who built up a rapport over many years. On private trackers, individuals can be pointed to. Poisoned torrents are quickly labelled and the poster can be banned.\nOr, on public trackers, downloading torrents made by trusted groups is preferable. After all, would you prefer to download Ubuntu from the Ubuntu team, or the user xxx-HACKER-ELITE-GHOST-PROTOCOL-xxx?\nOn public trackers, if a torrent is poisoned the torrent is reported and removed.\nThe simplest way to defend against a BitTorrent attack is to use an IP address not associated with you. Whether this is through a VPN or some other service.\n👋🏻 Conclusion Here are the things we’ve learnt:\n What a Torrent Descriptor file is How BitTorrent chooses peers How BitTorrent chooses pieces Tit-For-Tat algorithms Trackers Attacks on the BitTorrent network  Here are some things you may choose to do:\n Build your own BitTorrent client Explore BitTorrent’s proposals (BEPs) to learn more about how it works, and what’s next for the algorithm Read the official BitTorrent specification  ",
+  "wordCount" : "4452",
+  "inLanguage": "en",
+  "datePublished": "2019-11-20T13:02:50Z",
+  "dateModified": "2019-11-20T13:02:50Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/bit-torrent/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      How Does BitTorrent Work? a Plain English Guide
+    </h1>
+    <div class="post-meta">
+
+November 20, 2019&nbsp;·&nbsp;21 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>No talk about downloading things on BitTorrent. Or the best clients to do so.</p>
+<p>Just a deep-dive into the technical side of it.</p>
+<p>Anyone can read this article. Requires ZERO knowledge on networking or BitTorrent to read this.</p>
+<p>BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for <a href="https://blog.paloaltonetworks.com/app-usage-risk-report-visualization/">3.35% of all worldwide bandwidth</a>, more than half of the 6% of total bandwidth dedicated to file sharing.</p>
+<p>Let&rsquo;s dive right in.</p>
+<h1 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h1>
+<ol>
+<li><a href="#-who-created-bittorrent">💭 Who Created BitTorrent?</a></li>
+<li><a href="#-bittorrent-vs-cient-server-downloading">🥊 BitTorrent vs Cient-Server Downloading</a></li>
+<li><a href="#-high-level-overview">📑 High Level Overview</a></li>
+<li><a href="#-what-s-in-a-torrent-descriptor-file-anyway">📁 What&rsquo;s in a Torrent Descriptor File, Anyway?</a></li>
+<li><a href="#-the-piece-selection-algorithm-of-bittorrent">🧀 The Piece Selection Algorithm of BitTorrent</a></li>
+<li><a href="#-what-are-sub-pieces-and-the-piece-selection-algorithm">🌆 What Are Sub-Pieces and the Piece Selection Algorithm?</a></li>
+</ol>
+<p>6.1. <a href="#1-strict-policy">1️⃣ Strict Policy</a></p>
+<p>6.2. <a href="#2-rarest-first">2️⃣ Rarest First</a></p>
+<p>6.3. <a href="#3-random-first-piece">3️⃣ Random First Piece</a></p>
+<p>6.4. <a href="#4-endgame-mode">4️⃣ Endgame Mode</a>
+7. <a href="#-resource-allocation-using-tit-for-tat">🌱 Resource Allocation Using Tit-For-Tat</a>
+8. <a href="#-the-choking-algorithm">🎐 The Choking Algorithm</a>
+9. <a href="#-optimistic-unchoking">😎 Optimistic Unchoking</a>
+10. <a href="#-anti-snubbing">🤕 Anti-Snubbing</a>
+11. <a href="#-what-if-we-upload-only">🤔 What If We Upload Only?</a>
+12. <a href="#-what-is-a-tracker">🐝 What Is a Tracker?</a></p>
+<p>12.1. <a href="#-public-trackers">🗼 Public Trackers</a></p>
+<p>12.2. <a href="#-private-trackers">🔐 Private Trackers</a></p>
+<p>12.3. <a href="#-multi-tracker-torrents">🔢 Multi-Tracker Torrents</a>
+13. <a href="#-magnet-links-trackerless-torrents">🧲 Magnet Links - Trackerless Torrents</a>
+14. <a href="#-distributed-hash-tables">🐍 Distributed Hash Tables</a>
+15. <a href="#-routing-table">📌 Routing Table</a>
+16. <a href="#-attacks-on-bittorrent">🤺 Attacks on BitTorrent</a></p>
+<hr>
+<h1 id="-who-created-bittorrent">💭 Who Created BitTorrent?<a hidden class="anchor" aria-hidden="true" href="#-who-created-bittorrent">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_Creation_process_ukbh.svg" alt="">
+<a href="https://en.wikipedia.org/wiki/Bram_Cohen">Bram Cohen</a> invented the BitTorrent protocol in 2001. Cohen wrote the first client implementation in Python.</p>
+<p>Cohen collected free pornography to lure beta testers to use BitTorrent in the summer of 2002.</p>
+<hr>
+<h2 id="-bittorrent-vs-cient-server-downloading">🥊 BitTorrent vs Cient-Server Downloading<a hidden class="anchor" aria-hidden="true" href="#-bittorrent-vs-cient-server-downloading">#</a></h2>
+<p><img src="/content/images/2019/08/undraw_selecting_1lx3.svg" alt="">
+In traditional downloading, the server uploads the file, and the client downloads the file.
+<img src="/content/images/2019/08/ClientServer.png" alt="Two objects, a laptop and a server. The laptop is asking Netflix to watch &quot;Stranger Things&quot;. Netflix replies with &quot;yes, here is Stranger Things&quot;">
+For popular files, this isn&rsquo;t very effective.</p>
+<p>500 people downloading the same file will put the server under strain. This strain will cap the upload speed, so clients can not download the file fast.</p>
+<p>Second, client-server costs a lot of money. The amount we pay increases with how popular a file is.</p>
+<p>Third, it’s centralised. Say the system dies, the file no longer exists - no one can download it.</p>
+<h2 id="contentimages201908peer-to-peer-network-centralisedsvg">BitTorrent aims to solve these problems.
+<img src="/content/images/2019/08/image-5.png" alt="Two columns on this table. First column says &quot;Client-server downloading&quot;. Second column says &quot;BitTorrent&quot;. THE CLIENT-server downloading says &quot;centraliesd&quot;, &quot;popular files can cause strain&quot;, &quot;costs a lot of money&quot;. Bittorrent says &quot;decentralised, popular  files do not cause strain, ,cost does not scale with the popularity of a file. Sorry this alt text is slightly broken my blogging system just implemented alt text and it isn&rsquo;t that good :(">
+In a peer-to-peer network, every peer is connected to every other peer in the network.
+<img src="/content/images/2019/08/Peer-to-peer-network.svg" alt="">
+<em>Semi-centralised peer-to-peer networks</em> possess one or more peers with higher authority than most peers.
+<img src="/content/images/2019/08/Peer-to-peer-network-centralised.svg" alt=""></h2>
+<h1 id="-high-level-overview">📑 High Level Overview<a hidden class="anchor" aria-hidden="true" href="#-high-level-overview">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_features_overview_jg7a.svg" alt="">
+BitTorrent is a way to share files. It’s often used for large files. BitTorrent is an alternative to a single source sharing a file, such as a server. BitTorrent can productively work on lower bandwidth.</p>
+<p>The first release of the BitTorrent client had no search engine and no peer exchange, users who wanted to upload a file had to create a small <em>torrent descriptor file</em> that they would upload to a torrent index site.</p>
+<p>When a user wants to share a file, they seed their file. This user is called a <em>seeder</em>. They upload a torrent descriptor file to an exchange (we’ll talk about this later). Anyone who wants to download that file will download this torrent descriptor.
+<img src="/content/images/2019/08/ClientServer-1.png" alt="Laptop downloading a torrent descriptor file">
+We call those who download <em>peers</em>. Their torrent client will connect to a tracker (discussed later) and the tracker will send them a list of IP addresses of other seeds and peers in the swarm. The *swarm *is all PC’s related to a certain torrent.</p>
+<p>The torrent descriptor file contains a list of trackers and metadata on the file we’re downloading.
+<img src="/content/images/2019/08/ClientServer--2-.png" alt="Laptop asking the tracker who else is downloading the file Ubuntu. Tracker replies with IP ddresses">
+A peer will connect to a seed and download parts of the file.
+<img src="/content/images/2019/08/peer-to-peer-bit-torrent.png" alt="">
+Once the peer completes a download, they could function as a seed. Although, it is possible to function as a seed while also downloading (and is very common).</p>
+<p>Once the seed has shared the file to a peer, that peer will act as a seed. Instead of the client-server model where only 1 server exists to upload the file, in BitTorrent, multiple people can upload the same file.</p>
+<p>BitTorrent splits the file up into chunks called pieces, each of a certain size. Sometimes it’s 256KB, sometimes it’s 1MB. As each peer receives a piece, they become a seed of that piece for other peers.</p>
+<p>With BitTorrent, we do not have a single source to download from. We could download a few pieces from your home country, then download a few that your home country doesn’t own from a far-away country.</p>
+<p>The protocol <a href="/hash-functions/">hashes</a> the pieces to make sure no seed has tampered with the original file. Then stores the hash in the torrent descriptor on the tracker.</p>
+<p>This is how BitTorrent works at a very high level. We will now go into detail. We aim to answer these questions:</p>
+<ul>
+<li>What if a peer only downloads and never uploads?</li>
+<li>Who do we download from, or upload to?</li>
+<li>What is a magnet link?</li>
+<li>What is a torrent descriptor?</li>
+<li>What hashing algorithm is used?</li>
+<li>How does BitTorrent selects what pieces to download?</li>
+</ul>
+<p>And much more.</p>
+<hr>
+<h2 id="-whats-in-a-torrent-descriptor-file-anyway">📁 What&rsquo;s in a Torrent Descriptor File, Anyway?<a hidden class="anchor" aria-hidden="true" href="#-whats-in-a-torrent-descriptor-file-anyway">#</a></h2>
+<p><img src="/content/images/2019/08/undraw_file_manager_j85s.svg" alt="">
+It&rsquo;s a dictionary (or hashmap) file.</p>
+<p>The file is described as:</p>
+<ul>
+<li><strong>Announce</strong></li>
+</ul>
+<p>The URL of the tracker. Remember earlier when we contacted the tracker server to find other peers using the same file? We found that tracker by using the announce key in the torrent descriptor file.</p>
+<ul>
+<li><strong>Info</strong></li>
+</ul>
+<p>This maps to a dictionary whose keys depend on whether one or more files are being shared. The keys are:</p>
+<p><strong>Files (child of info, is a list)</strong></p>
+<p>Files only exists when multiple files are being shared. Files is a list of dictionaries. Each dictionary corresponding to a file.
+Each of these dictionaries has 2 keys.</p>
+<p>**Length - **the size of the file in bytes.</p>
+<p><strong>Path</strong> -  A list of strings corresponding to subdirectory names, the last of which is the actual file name.</p>
+<ul>
+<li><strong>Length</strong></li>
+</ul>
+<p>The size of the file in bytes (only when one file is being shared)</p>
+<ul>
+<li><strong>Name</strong></li>
+</ul>
+<p>Suggested filename. Or the suggested directory name.</p>
+<ul>
+<li><strong>Pieces length</strong></li>
+</ul>
+<p>The number of bytes per piece.</p>
+<p>The piece&rsquo;s length must be a power of two and at least 16KiB.</p>
+<p>This is $$2^8 ; KiB = 256 ; KiB = 262,144 ; B$$</p>
+<ul>
+<li><strong>Pieces</strong></li>
+</ul>
+<p>A hash list.</p>
+<p>A list of hashes calculated on various chunks of data. We split the data into pieces. Calculate the hashes for those pieces, store them in a list.</p>
+<p>BitTorrent uses SHA-1, which returns a 160-bit hash. Pieces will be a string whose length is a multiple of 20 bytes.</p>
+<p>If the torrent contains multiple files, the pieces are formed by concatenating the files in the order they appear in the files directory.</p>
+<p>All pieces in the torrent are the full piece length except for the last piece which may be shorter.</p>
+<p>Now, I can guess what you’re thinking.</p>
+<blockquote>
+<p>&ldquo;SHA-1? What is this? The early 2000s?&rdquo;</p>
+</blockquote>
+<p>And I agree. <a href="http://bittorrent.org/beps/bep_0052.html">BitTorrent is moving from SHA-1 to SHA256.</a></p>
+<p>Still confused? Not to worry! I designed this JSON file that describes what a torrent file looks like. Note: I’ve concatenated some things. This makes it easier to read and understand the general layout. I made the numbers up, following the rules of BitTorrent’s torrent descriptor.</p>
+<pre><code>{
+    &quot;Announce&quot;: &quot;url of tracker&quot;,
+    &quot;Info&quot;: {
+        &quot;Files&quot;: [
+            {
+                &quot;Length&quot;: 16,
+                &quot;path&quot;: &quot;/folder/to/path&quot;
+            },
+            {
+                &quot;length&quot;: 193,
+                &quot;path&quot;: &quot;/another/folder&quot;
+            }
+        ]
+    },
+    &quot;length&quot;: 192,
+    &quot;name&quot;:&quot; Ubuntu.iso&quot;,
+    &quot;Pieces length&quot;: 262144,
+    &quot;Pieces&quot;: [AAF4C61DDCC5E8A2DABEDE0F3B482CD9AEA9434D, CFEA2496442C091FDDD1BA215D62A69EC34E94D0]
+}
+</code></pre>
+<hr>
+<h1 id="-the-piece-selection-algorithm-of-bittorrent">🧀 The Piece Selection Algorithm of BitTorrent<a hidden class="anchor" aria-hidden="true" href="#-the-piece-selection-algorithm-of-bittorrent">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_selecting_1lx3-1.svg" alt="">
+One of the largest questions in BitTorrent is “what pieces should I select to download?”</p>
+<p>With a traditional client-server model, we download the whole file. But now, we get to pick what pieces to download.</p>
+<p>The idea is to download the pieces that no one else has - the rare pieces. By downloading the rare pieces, we make them less rare by uploading them.</p>
+<h2 id="-what-are-sub-pieces-and-the-piece-selection-algorithm">🌆 What Are Sub-Pieces and the Piece Selection Algorithm?<a hidden class="anchor" aria-hidden="true" href="#-what-are-sub-pieces-and-the-piece-selection-algorithm">#</a></h2>
+<p>BitTorrent uses TCP, a transmission protocol for packets. TCP has a mechanism called <em><a href="https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/slow-start-tcp.html">slow start</a></em>.</p>
+<p>Slow start is a mechanism which balances the speed of a TCP network connection. It escalates the amount of data transmitted until it finds the network’s maximum carrying capacity. <code>cwdn</code> stands for the Congestion Window.
+<img src="/content/images/2019/08/tcp_slow_start-3.svg" alt="Image shows a server and a laptop. Laptop sends 1 request, server responds. congestion window (cwdn) increases to 2. Laptop sends 2 requests, gets 2 responses. congestion window increases to 4. Laptop sends 4 requests, gets 4 responses.">TCP Slow Start
+TCP does this because if we send 16 connections at once, the server may not be used to the traffic and congestion will happen on the network.</p>
+<p>If we’re not regularly sending data, TCP may cap our network connection at a slower speed than normal.</p>
+<p>BitTorrent makes sure to always send data by breaking pieces down into further sub-pieces.</p>
+<p>Each sub-piece is about 16KB in size. The size for a piece is not fixed, but it is somewhere around 1MB.</p>
+<p>The protocol always has some number of requests (five) for a sub-piece pipe-lined. When a new sub-piece is download, the client sends a new request. This helps speed things up.</p>
+<p><img src="/content/images/2019/08/pipeline-bit-torrent-3.svg" alt="Image showing one overall piece with multiple sub-pieces inside of it. The program has downloaded 1 sub-piece. There are 5 sub-pieces left to download and 1 ha already been downloaded for a total of 6 sub-pieces. 3 of the sub-pieces have a red arrow to indicate they are pipelined to be downloading next.">
+Sub-pieces can be downloaded from other peers.</p>
+<p>Two core policies govern the Piece Selection Algorithm.</p>
+<h3 id="1-strict-policy">1️⃣ Strict Policy<a hidden class="anchor" aria-hidden="true" href="#1-strict-policy">#</a></h3>
+<p>Once the BitTorrent client requests a sub-piece of a piece, any remaining sub-pieces of that piece are requested before any sub-pieces from other pieces.
+<img src="/content/images/2019/08/piece-selection-policy-1.svg" alt="">
+In this image, it makes sense to download all the sub-pieces of this piece first rather than start downloading another piece.</p>
+<h3 id="2-rarest-first">2️⃣ Rarest First<a hidden class="anchor" aria-hidden="true" href="#2-rarest-first">#</a></h3>
+<p>The main policy in BitTorrent is to pick the rarest first. We want to download the piece which the fewest other peers own.</p>
+<p>This is so we can make it ‘un-rare’. If only one peer has a piece and they go offline, no one will get the complete file.</p>
+<p>A plethora of benefits exist for this policy.</p>
+<p><strong>Growing the seed</strong></p>
+<p>Rarest first makes sure that we download only new pieces from the seed.</p>
+<p>The seed will begin as a bottleneck. The one peer with the file.</p>
+<p>A downloader can see what pieces their peers possess, and the rarest first policy will cause us to fetch the pieces from the seed which have not been uploaded by other peers.</p>
+<p>Let&rsquo;s visualise this.
+<img src="/content/images/2019/08/rarest_first--1--1.svg" alt="A list of peers, all downloading a file. No peer has one piece other than us. We are the only ones other than the seed with the rarest piece.">Each peer is connected to every other peer. Not displayed as it&rsquo;s messy.
+The list of nodes (peers) is inter-connected. I cannot draw this as the diagram is unfavourable.</p>
+<p>Each arrow towards a sub-piece what that peer has downloaded. We downloaded a sub-piece that no one else has other than the seed. This means this sub-piece is rare.</p>
+<p>Our upload rate is higher than that of the seed, so all peers will want to download from us. Also, they would want to download the rarest pieces first, and as we are one of 2 holders of the rarest piece.</p>
+<p>When everyone downloads from us, we can download faster from them. This is the tit-for-tat algorithm (discussed later).</p>
+<p><strong>Increased download speed</strong></p>
+<p>The more peers that hold the piece, the faster the download can happen. This is because we can download sub-pieces from other peers.</p>
+<p><strong>Enable uploading</strong></p>
+<p>A rare piece is most wanted by other peers and getting a rare piece means peers will be interested in uploading from us. As we will see later, the more we upload, the more we can download.</p>
+<p><strong>Most common last</strong></p>
+<p>It is sensible to leave the most common pieces to the end of the download. As many peers hold common pieces, the probability of being able to download them is much larger than that of rare pieces.</p>
+<p><strong>Prevent rarest piece missing</strong></p>
+<p>When the seed dies, all the different pieces of the file should be distributed somewhere among the remaining peers.</p>
+<h3 id="3-random-first-piece">3️⃣ Random First Piece<a hidden class="anchor" aria-hidden="true" href="#3-random-first-piece">#</a></h3>
+<p>Once we download, we have nothing to upload. We need the first piece, fast. The rarest first policy is slow. Rare pieces are downloaded slower because we can download its sub-pieces from only a few peers.</p>
+<h3 id="4-endgame-mode">4️⃣ Endgame Mode<a hidden class="anchor" aria-hidden="true" href="#4-endgame-mode">#</a></h3>
+<p>Sometime’s a peer with a slow transfer rate will try to give us a sub-piece. Causing a delay of the download. To prevent this, there is “endgame mode”.</p>
+<p><a href="https://giphy.com/gifs/avengers-endgame-gEYoiDrq2L8R9ddAM9">via GIPHY</a></p>
+<p>Remember the pipe-lining principle? There are always several requests for sub-pieces pending.
+<img src="/content/images/2019/08/Peer-to-peer-network--1-.svg" alt="Our computer is missing a piece, so we enter endgame mode.">Assume we are downloading from 2 peers, and there is 1 other peer we are not downloading from.
+When all the sub-pieces a peer lacks are requested, they broadcast this request to all peers. This helps us get the last chunk of the file.
+<img src="/content/images/2019/08/Peer-to-peer-network--4-.svg" alt="We find a peer with the sub-piece we need, so we get it from them.">
+If a peer has the missing sub-piece, they will send that back to our computer.</p>
+<h2 id="we-cancel-the-request-to-all-other-peerscontentimages201908peer-to-peer-network--5-svg">Once a sub-piece arrives, we send a cancel-message telling the other peers to ignore our request.
+<img src="/content/images/2019/08/Peer-to-peer-network--5-.svg" alt="We cancel the request to all other peers"></h2>
+<h1 id="-resource-allocation-using-tit-for-tat">🌱 Resource Allocation Using Tit-For-Tat<a hidden class="anchor" aria-hidden="true" href="#-resource-allocation-using-tit-for-tat">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_Gardening_eaf3-1.svg" alt="">
+No centralised resource allocation in BitTorrent exists. Instead, every peer maximises their download rate.</p>
+<p>A peer will download from whoever they can. To decide who to upload to, they will use a variant of the <a href="https://en.wikipedia.org/wiki/Tit_for_tat">&ldquo;tit-for-tat&rdquo;</a>algorithm.</p>
+<p>The tit-for-tat strategy comes from game theory. The essence is:</p>
+<blockquote>
+<p>&ldquo;Do onto others as they do onto you&rdquo;</p>
+</blockquote>
+<ol>
+<li>On the first move, cooperate</li>
+<li>On each succeeding move do what your opponent did the previous move</li>
+<li>Be prepared to forgive after carrying out just one act of retaliation</li>
+</ol>
+<hr>
+<h2 id="-the-choking-algorithm">🎐 The Choking Algorithm<a hidden class="anchor" aria-hidden="true" href="#-the-choking-algorithm">#</a></h2>
+<p><img src="/content/images/2019/08/undraw_hang_out_h9ud.svg" alt="">
+Choking is a temporary refusal to upload to another peer, but we can still download from them.</p>
+<p>To cooperate peers upload, and to not cooperate they “choke” the connection to their peers. The principle is to upload to peers who have uploaded to us.
+<img src="/content/images/2019/08/cooperate-vs-no-cooperation.svg" alt="During cooperation, we can download pieces from peers. When the other peer does not cooperate, they do not tell us that we can&rsquo;t download the piece.">
+We want several bidirectional connections at the same time and to achieve <em>Pareto Efficiency</em>.</p>
+<blockquote>
+<p>We consider an allocation Pareto Efficient if there is no other allocation in which some individual is better off and no individual is worse off.</p>
+</blockquote>
+<p>Thus the big question, is how to determine which peers to choke and which to unchoke?</p>
+<p>A peer always unchokes a fixed number of its peers (the default is 4).</p>
+<p>Current download rates decide which peers to unchoke. We use a 20-second average to decide this. Because of the use of TCP (slow-start) rapidly choking and unchoking is bad. Thus, this is calculated every 10 seconds.</p>
+<p>If our upload rate is high more peers will allow us to download from them. <strong>This means that we can get a higher download rate if we are a good uploader.</strong> This is the most important feature of the BitTorrent protocol.</p>
+<p>The protocol prohibits many “free riders” which are peers who only download and don’t upload.</p>
+<p>For a peer-to-peer network to be efficient, all peers need to contribute to the network.</p>
+<hr>
+<h1 id="-optimistic-unchoking">😎 Optimistic Unchoking<a hidden class="anchor" aria-hidden="true" href="#-optimistic-unchoking">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_happy_feeling_slmw.svg" alt="">
+BitTorrent also allows an additional unchoked peer, where the download rate criteria aren’t used.</p>
+<p>We call this optimistic unchoking. Checking unused connections aren’t better than the ones in use.</p>
+<p>We shift the optimistic unchoke every 30 seconds. Enough time for the upload reaches full speed. Same for the upload. If this new connection turns out to be better than one of the existing unchoked connections, it will replace it.</p>
+<p>The optimistic unchoke is randomly selected.</p>
+<p>This also allows peers who do not upload and only download to download the file, even if they refuse to cooperate. Albeit, they will download at a much slower speed.</p>
+<hr>
+<h1 id="-anti-snubbing">🤕 Anti-Snubbing<a hidden class="anchor" aria-hidden="true" href="#-anti-snubbing">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_Group_chat_unwm.svg" alt="">
+What happens if all peers uploading to another peer decide to choke it? We then have to find new peers, but the optimistic unchoking mechanism only checks one unused connection every 30 seconds. To help the download rate recover more, BitTorrent has snubbing.</p>
+<p>If a client hasn’t received anything from a particular peer for 60 seconds, it will presume that it has been ‘snubbed’.</p>
+<p>Following the mentality of tit-for-tat, we retaliate and refuse to upload to that peer (except if they become an optimistic unchoke).</p>
+<p>The peer will then increase the number of optimistic unchokes to find new connections quicker.</p>
+<hr>
+<h2 id="-what-if-we-upload-only">🤔 What If We Upload Only?<a hidden class="anchor" aria-hidden="true" href="#-what-if-we-upload-only">#</a></h2>
+<p><img src="/content/images/2019/08/undraw_trends_a5mf.svg" alt="">
+We see that using the choking algorithm implemented in BitTorrent we favour peers who are kind to us. If I can download fast from them, we allow them to upload fast from me.</p>
+<p>What about no downloads? Then it’s impossible to know which peers to unchoke using this choking algorithm. When a download is completed, we use a new choking algorithm.</p>
+<p>This new choking algorithm unchokes peers with the highest upload rate. This ensures that pieces get uploaded faster, and they get replicated faster.</p>
+<p>Peers with good upload rates are also not being served by others.</p>
+<hr>
+<h1 id="-what-is-a-tracker">🐝 What Is a Tracker?<a hidden class="anchor" aria-hidden="true" href="#-what-is-a-tracker">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_privacy_protection_nlwy.svg" alt="">
+Trackers are special types of server that help in communication between peers.</p>
+<p>Communication in BitTorrent is important. How do we learn what other peers exist?</p>
+<p>The tracker knows who owns the file, and how much.</p>
+<p>Once a peer-to-peer download has started, communication can continue without a tracker.</p>
+<p>Since the creation of the distributed hash table method for trackerless torrents, BitTorrent trackers are largely redundant.</p>
+<h3 id="-public-trackers">🗼 Public Trackers<a hidden class="anchor" aria-hidden="true" href="#-public-trackers">#</a></h3>
+<p>These are trackers that anyone can use.</p>
+<p><a href="https://arstechnica.com/tech-policy/2009/11/pirate-bay-kills-its-own-bittorrent-tracker/">The Pirate Bay operated one of the most popular public trackers until disabling it in 2009</a>, opting only for magnet links (discussed soon).</p>
+<h3 id="-private-trackers"><strong>🔐 Private Trackers</strong><a hidden class="anchor" aria-hidden="true" href="#-private-trackers">#</a></h3>
+<p>Private trackers are private. They restrict use by requiring users to register with the site. The method for controlling registration is often an invitation system. To use this tracker we need an invitation.</p>
+<h3 id="-multi-tracker-torrents"><strong>🔢 Multi-Tracker Torrents</strong><a hidden class="anchor" aria-hidden="true" href="#-multi-tracker-torrents">#</a></h3>
+<p>Multi-tracker torrents contain multiple trackers in a single torrent file. This provides redundancy if one tracker fails, the other trackers can continue to maintain the swarm for the torrent.</p>
+<p>With this configuration, it is possible to have multiple unconnected swarms for a single torrent - which is bad. Some users can connect to one specific tracker while being unable to connect to another. This can create a disjoint set which can impede the efficiency of a torrent to transfer the files it describes.</p>
+<hr>
+<h2 id="-magnet-links---trackerless-torrents">🧲 Magnet Links - Trackerless Torrents<a hidden class="anchor" aria-hidden="true" href="#-magnet-links---trackerless-torrents">#</a></h2>
+<p><img src="/content/images/2019/08/undraw_plans_y8ru.svg" alt="">
+Earlier, I talked about how the Pirate Bay got rid of trackers and started using trackerless torrents.</p>
+<p>When we download a torrent, we get a hash of that torrent. To download the torrent without a tracker, we need to find other peers also downloading the torrent. To do this, we need to use a <em>distributed hash table</em>.</p>
+<p>Let&rsquo;s explore Distributed Hash Tables.</p>
+<h1 id="-distributed-hash-tables">🐍 Distributed Hash Tables<a hidden class="anchor" aria-hidden="true" href="#-distributed-hash-tables">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_special_event_4aj8.svg" alt="">
+Distributed Hash Tables (DHT) give us a dictionary-like interface, but the nodes are distributed across a network. The trick with DHTs is that the node that gets to store a particular key is found by hashing that key.</p>
+<p>In effect, each peer becomes a mini-tracker.</p>
+<p>Each node (client/server implementing the DHT protocol) has a unique identifier known as the “node ID”. We choose node IDs at random from the same 160-bit space as BitTorrent infohashes.</p>
+<p><a href="https://stackoverflow.com/questions/28348678/what-exactly-is-the-info-hash-in-a-torrent-file/28601408">Infohashes </a>are a SHA-1 hash of:</p>
+<ol>
+<li>ITEM: length(size) and path (path with filename)</li>
+<li>Name: The name to search for</li>
+<li>Piece length: The length(size) of a single piece</li>
+<li>Pieces: SHA-1 Hash of EVERY piece of this torrent</li>
+<li>Private: flag for restricted access</li>
+</ol>
+<p>We use a distance metric to compare two node IDs or a node ID and an infohash for “closeness”.</p>
+<p>Nodes must have a routing table containing the contact information for a few other nodes.</p>
+<p>Nodes know about each other in the DHT. They know many nodes with IDs that are close to their own but few with far-away IDs.</p>
+<p>The distance metric is XOR and is interpreted as an integer.</p>
+<p>$$distance(A, B) = |A \oplus B |$$</p>
+<p>Smaller values are closer.</p>
+<p>When a node wants to find peers for a torrent, they use the distance metric to compare the infohash of the torrent with the IDs of the nodes in its routing table or the ID of one node with the ID of another node.</p>
+<p>Then they contact the nodes in the routing table closet to the infohash and asks them for contact information of peers downloading the torrent.</p>
+<p>If a contacted node knows about peers for the torrent, they return the peer contact information with the response. Otherwise, the contacted node must respond with the contact information of the nodes in its routing table closet to the infohash of the torrent.
+<img src="/content/images/2019/08/known_nodes.svg" alt="">
+The original node queries nodes that are closer to the target infohash until it cannot find any closer nodes. After the node exhausts the search, the client then inserts the peer contact information for itself onto the responding nodes with IDs closest to the infohash of the torrent. In the future, other nodes can easily find us.</p>
+<p>The return value for a query for peers includes an opaque value known as the “token.” For a node to announce that its controlling peer is downloading a torrent, it must present the token received from the same queried node in a recent query for peers.</p>
+<p>When a node attempts to “announce” a torrent, the queried node checks the token against the querying node’s IP address. This is to prevent malicious hosts from signing up other hosts for torrents.</p>
+<p>The querying node returns the token to the same node that they receive the token from. We must accept tokens for a reasonable amount of time after they have been distributed. The BitTorrent implementation uses the SHA-1 hash of the IP address concatenated onto a secret that changes every five minutes and tokens up to ten minutes old are accepted.</p>
+<hr>
+<h1 id="-routing-table">📌 Routing Table<a hidden class="anchor" aria-hidden="true" href="#-routing-table">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_Map_dark_k9pw.svg" alt="">
+Every node maintains a routing table of known good nodes. We use the routing table starting points for queries in the DHT. We return nodes from the routing table in response to queries from other nodes.</p>
+<p>Not all nodes we learn about are equal. Some are “good” and some are not. Many nodes using the DHT can send queries and receive responses, but cannot respond to queries from other nodes. Each node’s routing table must contain only known good nodes.</p>
+<p>A good node is a node has responded to one of our queries within the last 15 minutes. A node is also good if it has ever responded to our queries and has sent us a query within the last 15 minutes. After 15 minutes of inactivity, a node becomes questionable. Nodes become bad when they fail to respond to multiple queries in a row. Nodes that we see are good are given priority over nodes with an unknown status.
+<img src="/content/images/2019/08/known_nodes--1-.svg" alt="">
+The routing table covers the entire node ID space from 0 to 2160. We subdivide the routing table into “buckets” that each cover a portion of the space.</p>
+<p>An empty table has one bucket with an ID space range of min=0, max=2160.</p>
+<p>An empty table has only one bucket so any node must fit within it. Each bucket can only hold K nodes, currently eight, before becoming “full.”</p>
+<p>When a bucket is full of known good nodes, we may add no more nodes unless our node ID falls within the range of the bucket. The bucket is replaced by two buckets each with half of the old bucket. Nodes from the old bucket are distributed among the new buckets.</p>
+<p>For a new table with only one bucket, we always split the full bucket into two new buckets covering the ranges 0..2159 and 2159..2160.</p>
+<p>When the bucket is full of good nodes, we simply discard the new node. When nodes in the bucket become bad (if they do) we replace them with a new node.</p>
+<p>When nodes are considered questionable and haven’t been since, in the last 15 minutes, the least recently seen node is pinged. The node either responds or doesn’t respond. A response means we move to the next node. We do this until we find a node that fails to respond. If we don’t find any, then the bucket is considered good.</p>
+<p>When we do find one, we try one more time before discarding the node and replacing them with a new good node.</p>
+<p>Each bucket should maintain a “last changed” property to show how “fresh” the contents are.</p>
+<p>When a node in a bucket is pinged and responds, or a node is added to a bucket, or a node is replaced with another node, the bucket’s last changed property is updated.</p>
+<p>Buckets are refreshed if the last changed property has not been updated in the last 15 minutes.</p>
+<hr>
+<h1 id="-attacks-on-bittorrent">🤺 Attacks on BitTorrent<a hidden class="anchor" aria-hidden="true" href="#-attacks-on-bittorrent">#</a></h1>
+<p><img src="/content/images/2019/08/undraw_hacker_mind_6y85.svg" alt="">
+Few attacks on the BitTorrent network exist. Everything is public. Our IP address, what we’re downloading - everything.
+Why attack an open network?</p>
+<p>Why attack a completely open network?</p>
+<p><a href="https://www.exploit-db.com/">Only 7 entries are listed on Exploit-DB</a> - a database of known exploits against a service. And most of them relate to specific clients.</p>
+<p>The principal attack on the BitTorrent network is to stop piracy. We’ve gone this far without talking about piracy, but it is often synonymous with BitTorrent.</p>
+<p>The main attack on BitTorrent is <em>Torrent Poisoning</em>.</p>
+<h3 id="torrent-poisoning">Torrent Poisoning<a hidden class="anchor" aria-hidden="true" href="#torrent-poisoning">#</a></h3>
+<p>This attack aims to get the IP addresses of peers pirating content or to poison the content in some way.</p>
+<p>Madonna’s American Life album release is an example of content poisoning. Before the release, tracks were released of similar length and file size. <a href="https://www.youtube.com/watch?v=XU5xC00m-gA">The tracks featured a clip of Madonna saying</a>:</p>
+<blockquote>
+<p>&ldquo;What the fuck do you think you&rsquo;re doing?&rdquo;</p>
+</blockquote>
+<p>Followed by a few minutes of silence.</p>
+<p>Here are some methods of poisoning a torrent.</p>
+<h3 id="index-poisoning"><strong>Index Poisoning</strong><a hidden class="anchor" aria-hidden="true" href="#index-poisoning">#</a></h3>
+<p>The index allows users to locate the IP addresses of peers with the desired content. This method of attack makes searching for peers difficult.</p>
+<p>The attacker inserts a large amount of invalid information into the index to prevent users from finding the correct information.</p>
+<p>The idea is to slow down the download, by having the peer try to download pieces from an invalid peer.</p>
+<h3 id="decoy-insertion">Decoy Insertion<a hidden class="anchor" aria-hidden="true" href="#decoy-insertion">#</a></h3>
+<p>They insert corrupted versions of a file into the network.</p>
+<p>Imagine 500 copies of a file and only 2 of them being the real file, this deters pirates from finding the real file.</p>
+<p>Most websites with lists of torrents a voting system. This deters this attack, as the top of searches is filled with non-corrupted files
+However, most websites with lists of torrents a voting</p>
+<p>This deters this attack, as the top of searches is filled with non-corrupted files.</p>
+<p>In GameDevTycoon, the file was released before the initial upload to piracy sites. Unbeknownst to pirates, the file was corrupted. Winning the game is impossible in the pirated version. Everything else was perfect.</p>
+<h3 id="-defence-against-the-dark-bittorrent-attack">🧙🏼‍♂️ Defence Against the Dark Bittorrent Attack<a hidden class="anchor" aria-hidden="true" href="#-defence-against-the-dark-bittorrent-attack">#</a></h3>
+<p>Most popular torrents are released by individuals or groups who built up a rapport over many years. On private trackers, individuals can be pointed to. Poisoned torrents are quickly labelled and the poster can be banned.</p>
+<p>Or, on public trackers, downloading torrents made by trusted groups is preferable. After all, would you prefer to download Ubuntu from the Ubuntu team, or the user xxx-HACKER-ELITE-GHOST-PROTOCOL-xxx?</p>
+<p>On public trackers, if a torrent is poisoned the torrent is reported and removed.</p>
+<p>The simplest way to defend against a BitTorrent attack is to use an IP address not associated with you. Whether this is through a VPN or some other service.</p>
+<h1 id="-conclusion">👋🏻 Conclusion<a hidden class="anchor" aria-hidden="true" href="#-conclusion">#</a></h1>
+<p>Here are the things we&rsquo;ve learnt:</p>
+<ul>
+<li>What a Torrent Descriptor file is</li>
+<li>How BitTorrent chooses peers</li>
+<li>How BitTorrent chooses pieces</li>
+<li>Tit-For-Tat algorithms</li>
+<li>Trackers</li>
+<li>Attacks on the BitTorrent network</li>
+</ul>
+<p>Here are some things you may choose to do:</p>
+<ul>
+<li><a href="https://allenkim67.github.io/programming/2016/05/04/how-to-make-your-own-bittorrent-client.html">Build your own BitTorrent client</a></li>
+<li><a href="https://www.bittorrent.org/beps/bep_0000.html">Explore BitTorrent&rsquo;s proposals (BEPs) to learn more about how it works, and what&rsquo;s next for the algorithm</a></li>
+<li><a href="https://www.bittorrent.org/beps/bep_0003.html">Read the official BitTorrent specification</a></li>
+</ul>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://polymath.cloud/tags/datastructures-and-algorithms/">Datastructures and Algorithms</a></li>
+      <li><a href="https://polymath.cloud/tags/infosec/">Infosec</a></li>
+      <li><a href="https://polymath.cloud/tags/university/">University</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share How Does BitTorrent Work? a Plain English Guide on twitter"
+        href="https://twitter.com/intent/tweet/?text=How%20Does%20BitTorrent%20Work%3f%20a%20Plain%20English%20Guide&amp;url=https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f&amp;hashtags=University%2cComputerScience%2cDatastructuresandAlgorithms%2cInfosec">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share How Does BitTorrent Work? a Plain English Guide on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f&amp;title=How%20Does%20BitTorrent%20Work%3f%20a%20Plain%20English%20Guide&amp;summary=How%20Does%20BitTorrent%20Work%3f%20a%20Plain%20English%20Guide&amp;source=https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share How Does BitTorrent Work? a Plain English Guide on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f&title=How%20Does%20BitTorrent%20Work%3f%20a%20Plain%20English%20Guide">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share How Does BitTorrent Work? a Plain English Guide on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share How Does BitTorrent Work? a Plain English Guide on whatsapp"
+        href="https://api.whatsapp.com/send?text=How%20Does%20BitTorrent%20Work%3f%20a%20Plain%20English%20Guide%20-%20https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share How Does BitTorrent Work? a Plain English Guide on telegram"
+        href="https://telegram.me/share/url?text=How%20Does%20BitTorrent%20Work%3f%20a%20Plain%20English%20Guide&amp;url=https%3a%2f%2fpolymath.cloud%2fbit-torrent%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

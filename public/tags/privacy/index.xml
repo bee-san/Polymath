@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Privacy on Polymath.cloud</title>
+    <link>https://polymath.cloud/tags/privacy/</link>
+    <description>Recent content in Privacy on Polymath.cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Dec 2020 23:46:37 +0000</lastBuildDate>
+    
+	<atom:link href="https://polymath.cloud/tags/privacy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Management Fundamentals for AWS</title>
+      <link>https://polymath.cloud/aws-management/</link>
+      <pubDate>Thu, 03 Dec 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/aws-management/</guid>
+      <description>AWS Config One of the largest headaches we have is understanding:
+ What resources do we have? Do we have resources that are no longer needed? Their status, security vulns. How are they linked? What changes have occurred on a resource? Is the infrastructure compliant with governance controls? Accurate auditing information?  AWS Config records and captures source changes allowing us to perform actions against the data. It can:
+ Capture resource changes Act as a resource inventory.</description>
+    </item>
+    
+    <item>
+      <title>Creating your own VPN with PiHole &amp; UnBound on AWS</title>
+      <link>https://polymath.cloud/pihole-vpn/</link>
+      <pubDate>Sun, 29 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/pihole-vpn/</guid>
+      <description>Introduction In this blog post we will:
+ Create our own VPN on AWS Add PiHole to iit Use Unbound as our DNS resolver Access the VPN using Wireguard Not go bankrupt doing it!  Step 1 Create an AWS lightsail instance on Amazon.
+We use Lightsail instead of EC2 because EC costs £0.12 / GB on outbound transfers. That means for 1 TB / month it&amp;rsquo;ll cost £120.
+Lightsail costs £3.</description>
+    </item>
+    
+  </channel>
+</rss>
