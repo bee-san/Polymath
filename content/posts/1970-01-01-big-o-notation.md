@@ -355,7 +355,7 @@ for word in sentence:
 
 $O(n^2)$! A disaster! But, knowing that this is a disaster means we can speed it up. Dictionaries are sorted by default. What if we sort our list of words in the sentence, and checked each word that way? We only need to loop through the dictionary once. And if the word we want to check is less than the word we're on in the dictionary, we switch to the second word in the list.
 
-Now our algorithm is $O(n log n)$. We recognise that this isn't a disaster, so we can move on! **Knowing time complexities isn't only useful in interviews. It's an essential tool to improve our algorithms.**
+Now our algorithm is $O(n \; log \; n)$. We recognise that this isn't a disaster, so we can move on! **Knowing time complexities isn't only useful in interviews. It's an essential tool to improve our algorithms.**
 
 We can hasten many polynomial algorithms we construct using knowledge of [algorithmic design](https://skerritt.blog/dynamic-programming/).
 
@@ -451,14 +451,14 @@ Yup! The hardest part is figuring out what our program's complexity is first. Si
 
 <figure>
 	<img src="/media/bigo/nlogn.png" alt="A straight line representing constant complexity">
-	<figcaption>$n log n$ is between $log n$ and $n^2$
+	<figcaption>$n \; log \; n$ is between $log n$ and $n^2$
     </figcaption>
 </figure>
 
 It falls between O(n) and O(n2)
-**This is the fastest time possible for a comparison sort.** We cannot get any faster unless we use some special property, like Radix sort. O(n log n) is the fastest comparison sort time. 
+**This is the fastest time possible for a comparison sort.** We cannot get any faster unless we use some special property, like Radix sort. O($n \; log \; n$) is the fastest comparison sort time. 
 
-It's rather famous, because Mergesort runs in O(n log n). Mergesort is a great algorithm not only because it sorts fast, but because the idea is used to build other algorithms. 
+It's rather famous, because Mergesort runs in O($n \; log \; n$). Mergesort is a great algorithm not only because it sorts fast, but because the idea is used to build other algorithms. 
 
 Mergesort is used to teach [divide & conquer algorithms](https://skerritt.blog/divide-and-conquer-algorithms/). And for good reason, it's a fantastic sorting algorithm that has roots outside of sorting. 
 
@@ -573,9 +573,9 @@ ret = search(ret['IMDBrating'])
 
 We find Shrek with an IMDB score of 7.8. But we're only sorted on the title, not the IMDB rating. We have to use sequential search to find all other films with the same rating. 
 
-Binary search is $O(log n)$ and sequential search is $O(n)$, this makes our algorithm $O(n log n)$. This isn't a disaster, so we can sure it's not a terrible algorithm.
+Binary search is $O(log \; n)$ and sequential search is $O(n)$, this makes our algorithm $O(n \; log \; n)$. This isn't a disaster, so we can sure it's not a terrible algorithm.
 
-Even in the instances where our algorithms are not strictly related to other algorithms, we can still compare them to things we know. $O(log n)$ means halfing. $O(n^2)$ means a nested for loop. 
+Even in the instances where our algorithms are not strictly related to other algorithms, we can still compare them to things we know. $O(log \; n)$ means halfing. $O(n^2)$ means a nested for loop. 
 
 One last thing, we don't always deal with `n`. Take this below algorithm:
 
@@ -814,11 +814,11 @@ Or we can write:
 
 $$2n + 3 \le 5n^2 , n \geq 1$$
 
-$f(n) = 2n + 3$
+$$f(n) = 2n + 3$$
 
-$c = 5$
+$$c = 5$$
 
-$g(n) = n^2$
+$$g(n) = n^2$$
 
 Can this same function be both $O(n)$ and $O(n^2)$? Yes. It can be. This is where our definition of big o comes into play. It's the upperbounded limit. We can say it is $n^2, 2^n$ and any higher. But we cannot say it's lower.
 

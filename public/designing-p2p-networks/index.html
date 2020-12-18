@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Designing effective p2p networks | Polymath.cloud</title>
+
+<meta name="keywords" content="" />
+<meta name="description" content="This is an opinion piece on designing effective peer to peer (p2p) networks. I&rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I&rsquo;ll drea\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d
+ When should I use a peer to peer network? This is a hard question to answer, because P2P networks can be used for all networking.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/designing-p2p-networks/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="Designing effective p2p networks" />
+<meta property="og:description" content="This is an opinion piece on designing effective peer to peer (p2p) networks. I&rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I&rsquo;ll drea\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d
+ When should I use a peer to peer network? This is a hard question to answer, because P2P networks can be used for all networking." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/designing-p2p-networks/" />
+<meta property="article:published_time" content="2020-01-06T20:52:00+00:00" />
+<meta property="article:modified_time" content="2020-01-06T20:52:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Designing effective p2p networks"/>
+<meta name="twitter:description" content="This is an opinion piece on designing effective peer to peer (p2p) networks. I&rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I&rsquo;ll drea\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d
+ When should I use a peer to peer network? This is a hard question to answer, because P2P networks can be used for all networking."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Designing effective p2p networks",
+  "name": "Designing effective p2p networks",
+  "description": "This is an opinion piece on designing effective peer to peer (p2p) networks. I\u0026amp;rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) …",
+  "keywords": [
+    
+  ],
+  "articleBody": "This is an opinion piece on designing effective peer to peer (p2p) networks. I’ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I’ll drea\\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d\n When should I use a peer to peer network? This is a hard question to answer, because P2P networks can be used for all networking. Just like with programming, we need to use the right tool for the job.\nP2P networks are very good at scaling incredibly fast, automatically. Effective p2p networks improve with more users, not degrade.\nIf you are building a platform with a shared goal (ie share files) and you can imagine the platform growing uncontrollably big, p2p networks are good. Or if you do not want anyone to shut down your network (in a client-server model, turn off your servers) a p2p network is effective.\nLet’s walk through what all good peer to peer networks share.\n Rewards All peer to peer networks have a reward system in place. The user does some work, and they are rewarded. Even if the reward isn’t clearly defined, there is always a reward for taking part in the peer to peer network.\nIn Bitcoin, this is clearly earning Bitcoin. Bittorrent rewards participants with faster download speeds. Tor rewards other Tor members with more privacy.\nThe idea of a reward is to disper free-riders. Those that partake in the network without giving anything back. There are 2 ways to defer free-riders:\n Forcing every user to give back. Rewarding users who give back.  Tor is the former, all users who join Tor are part of the network. The only reward that can be given is to become a guard node, which provides no obvious benefit for the user other than to feel good about themselves.\nMost peer to peer networks choose the latter, rewarding users who give back.\nIn Bittorrent, those who seed are rewarded with higher download rates. The more you seed, the faster you can download. In Bitcoin, users are rewarded for mining the blockchain in the form of Bitcoin.\nThus, this leads us to look at peer to peer networks from 2 interesting perspectives. Human civilisations, or reinforcement learning machines.\nSince reinforcement learning closely resmbles how humans work, I will not discuss it much. But the implications are important. Agents in the network seek to optimise their own personal reward, which in turn, if the network is made correctly, optimises the whole network.\n Optimisation of the network An ideal p2p network will improve the more people that use it. In Tor, the more people that use it the more privacy is given to those who need it.\nA simple distinction, but one that must be made. As the network grows older, ideally it forever reaches its global optimised state.\nUnlike client-server, where the more users there are the harder it becomes to maintain the network, an effective peer to peer network gets better the more people that use it.\nOptimisation of the network as it grows is often done through the rewards system. As Tor grows, the privacy of each user increases. Thus, the more that use Tor, the better. And each user has their own personal reward, but together this creates a positive movement for the whole network.\nIn Bitcoin, the more that mine Bitcoin the larger incentive it is to use better computers. Better computers = faster mines = more money. This creates a competition amongst users. **Who can contribute to the network the most? **Without getting into economics, the miners will spend more on Bitcoin. Meaning that they have to sell Bitcoin at a higher rate to make profit back. Meaning that the price of Bitcoin goes up. Which, can be seen as a positive for the whole network.\nNot to mention that Bitcoin’s security from a 51% attack relies on more users on the network. Again, as the network grows the better it becomes.\nWhen choosing a reward, it is important to look at the local rewards (what the user themselves gets) and to look at the greater rewards, what the network will get for participating.\nI also reccomend rewards which increase as the network grows. Scalable rewards.\nSo, at the start the network sucks? Yup! That’s how these things work. With a client-server architecture, it can be amazing from the start. But with a peer to peer network, it kinda sucks a lot for the first users. With Bitcoin, what was the incentive? You get this coin that’s worth…. nothing at all, actually.\nTor. The incentive? Well, if there’s only 3 users then there is no incentive.\nBittorrent. The incentive? You can download this one persons files.\nIn peer to peer networks, generally they suck for the first couple users and only increase over time. So how then, do we build an effective peer to peer network that other people will want to use?\nThere are 2 methods to this.\n Forceful use (navy) Incredible technology  You can force users to use the network. This is how Tor got its start. The US Navy built Tor, and effectively they could force others in the Navy to use it.\nThe other option is incredible technology. In a peer to peer network, the first few users are often users who recgonise how incredible the technology is. Think about Bitcoin. The first few users fell in love with the technology behind it, and truly believed it could one day be great.\nWith a great rewards system in place, the first users of Bitcoin realised it could grow up to be something huge. Amazing technology attracts the first few users, and those users are often technologically minded.\n Automatic Optimisation Here is my opinion part! I believe that we can use artifical intelligence to automatically optimise a p2p network. Humans are cool and all, but we’re pretty slow when it comes to making changes.\np2p networks already use technology to find shortest routes, or preferred routes. As networks become more and more complicated, simple hand written algorithms might not be enough.\nPicture this.\nIn our network, we have multiple nodes all interconnected. Each node has a rating. This rating signifies how good that node is. Good here, could mean fast, it could mean trust worthy or the likes. We’ll generalise it to mean “good” that encompasses everything.\nEverytime another node uses this node, its “good” rating increases. Much like a neural network.\nNodes can have a “good” rating of 0, as in they do not contribute to the network.\nHow would a node with a rating of 0 ever increase its good rating if we were using simple pathfinding algorithms? If a node has a good rating of 1, does that mean every bit of data would go through this node?\nWhat if we introduce more numbers. The speed of the node. The amount of time the node has spent contributing to the network. The contributions made. User ratings. And more.\nAnd our goal was to create the “best” path across the network, taking into account all of these numbers and to maximise our own personal reward, whatever that may be.\nThis seems like a perfect scenario for reinforcement learning. Multiple inputs in an effort to maximise our own personal reward. Exploratory choices, meaning that a node with a “good” rating of 0 may be chosen.\nUs humans would eventually work it out like this anyway, where we choose certain nodes to have more privlege than others (in Tor, this is called a guard node. Generally speaking these are not true p2p networks, but instead hybrid).\nNow we have a rough picture of how to use reinforcement learning to optimise the network, optimise our personal reward and to give everyone in the network a fair shot. Let’s see why assigning nodes with a higher “good” value than others is a great idea.\n Jobs for the people In almost all peer to peer networks, jobs are assigned to nodes. Dependent mostly on whether they want it or not, sometimes jobs are given to nodes at random.\nIn Bitcoin, we have miners whose job it is to mine the blockchain. In Tor, we have guard nodes. In some other cryptocurrencies, nodes have higher privlegedes than others.\nAt the moment, peer to peer networking is seen as more of a communistic vision. Which is cool, but humans assign other humans jobs based on their skills. And in some networks, we do the same.\nIf a node has proven to be trustworthy, than we shall make it a guard node. If a node wants to mine the blockchain, it becomes a miner.\nI’d like to make a distinction here. These nodes do not have more rights than the other nodes, they simply have a job to do.\nIf we give everyone the same job, the network will tend towards global optimisation much slower. Let’s say we have a new file sharing system. Our system will let you download files from others.\nWe have a file, Ubuntu.iso, which is being seeded by 10 people. We choose at randomly a seed. This seed has an upload speed of 1 mbps while all the other seeders have an upload speed of 200mbps. It makes logical sense to use the uploaders with faster speed, as the one users upload speed will be poorly affected by us requesting a file. Resulting in an unhappy human who cannot upload a Facebook image!\nIt makes sense logically to choose from a subsection of people with high upload speeds. Effectively, we have given these people ‘jobs’.\nThere are 2 types of jobs in peer to peer networks:\n Rewarded Jobs Unpaid Internships (jobs)  With rewarded jobs, the uploaders get a higher reward for working as an effective uploader. This reward might be priority access to downloads from other high uploaders. This is how Bittorrent works.\nWith unpaid jobs, there is no reward. There is no incentive for one to choose a job, it is simply gifted to those. This is how guard nodes work in Tor.\nDeciding on what jobs to give, and whether it is rewarded or not is problem specific. Say, for example, we have a job called “maintainer of the Blockchain”. This job means that these people each have a copy of the blockchain. And only they do, no one else can. Any cryptocurrency nerd reading this may already see the problem.\nIn order to view the blockchain, you need to have this job. But not every citizen of the world has a spare 300gb to view the chain. They cannot get the job, because they do not meet the required specification.\nThis is another issue. Do people choose their own jobs? Are they automatically assigned? Can we reject people if they do not meet the job specification?\nWith only a small percent controling the blockchain, it leaves it open to a 51% attack. A small few will hold all the power. It will not work well in this instance.\nI propose that jobs are automatically assigned based on the specification of the user, but any user can request a job. The only jobs they should be rejected for is high trust jobs, such as guard nodes. But, the specification of their computer should not be taken into account for trust jobs.\nHumans that pick their own jobs is just too slow, the network needs to react fast and scale fast. Humans are not fast. But we do not want to prevent humans from accessing resources because of their circumstances.\nWhen assigning jobs, it is important that the jobs work in harmony.\nI suggest taking inspiration from bee hives or ant colonies for this. Human jobs are simply too hard to model, to focus on a much smaller example is wise. Afterall, you don’t see ants that are SEO experts 😉\nAnother thing to consider if you follow my advice of automatically assigned jobs + opt in is punishment. Should there be a punishment if someone takes a job for which they are unfit? Should a 30gb computer take a punishment for trying to maintain a 300gb file?\nOn the one hand, only a very small percent of the population will choose their own jobs, and will ignore the assigned job and choose something for which they are unfit. But, to achieve global optimisation we must make sure every single thing is accounted for. Unforunately, in this world, those that do jobs that they are not capable of should be punished. I would not say to reduce the resources available to them through the job, but perhaps reduce the reward of using the network in some way.\n Data Structures Every single effective peer to peer network uses data structures. The blockchain is just a fancy linked list with some extra properties. Bittorrent’s magnet links work based on distributed hash tables.\nData structures are absolutely vital to peer to peer networks. I do not want to get into every data structure available, but knowledge of them is important.\nWe can design a network using a distributed data structure that already exists, or we can build a new data structure / algorithm based on pre-existing ones.\n Policy changes Throughout this article, I have talked about designing the network to be perfect from the get go. Any human knows this isn’t possible. So how then, do we change the network when it’s in effect? How do we implement policy changes?\n Dictatorship Let the people decide The people can form a democracy  In our first instance, we have dictatorship. You, the creator decides on changes. You create these changes, and they go out to the network. We don’t care what the participants think, only that the change has taken place.\nThis is the most effective for easily implementing policy changes, but it ruins the trust. In my opinion, a good peer to peer network reduces trust. We should not need to trust anyone. However, trust is important in some networks. It depends on the network itself.\nIf the network was for a digital currency, why would you trust this entire currency in the hands of a single person? But for a privacy centered network, having this trust in one person or body of people can increase the trust throughout the network. It reduces the chance of a 51% attack backdoor in the early days, building trust from day 0.\nAs the network progresses, it strays further and further away from a 51% attack. Which means we lose trust, we do not need to trust that it is safe from a 51% attack if the network is large enough.\nIn my opinion, an effective p2p network should move from a dictatorship and move towards a democracy. As time progresses, the will of one indivudal can change. They may sell out the network.\nBut again, this brings problems. What if there is a critical failure in the code and there needs to be a change made? This is for the designer to decide.\nWe can alternatively let the people decide. From the get go, no single person has full control. Every time a change is made, a % of the network (likely 51) will need to agree to the change. Complete control for the network. No trusting the developer involved.\nAt the start, this may be problematic. Although if no one cares about your network at the start, it’s better that way. Humans are incredibly slow too. Imagine a critical bug in the code that had to be fixed right there and then. Humans may take weeks to decide. Many will not even respond to the decision.\nThe alternative, is a democracy. Give certain people more power than others. Have the community vote in leaders, or have the leaders be pre-selected. These leaders than decide on changes to the codebase. This reduces the trust, especially if they are voted in. But nothing is stopping them from teaming together to get the maximum personal reward while not doing anything for the many.\nAll in all, deciding on policy changes is a tricky subject. And one that should be decided before the network is made.\nAlthough something to remember is trust. Will the users need to trust you, personally? If so, try and work towards a goal where that trust is reduced. Diversify that trust over to others. Remove trust completely, make them only trust themselves. Effective peer to peer networks are unlike client-server models where one person controls all the power. Effective P2P networks are for the people.\n Conclusion Because p2p networks are problem specific, this article serves mainly as a list of questions to answer in designing an effective p2p network.\n",
+  "wordCount" : "2803",
+  "inLanguage": "en",
+  "datePublished": "2020-01-06T20:52:00Z",
+  "dateModified": "2020-01-06T20:52:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/designing-p2p-networks/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      Designing effective p2p networks
+    </h1>
+    <div class="post-meta">
+
+January 6, 2020&nbsp;·&nbsp;14 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>This is an opinion piece on designing effective peer to peer (p2p) networks. I&rsquo;ve written extensively about peer to peer networks, and have even designed my own (albeit, bad) cryptocurrency. Very often, I&rsquo;ll drea\m up and design peer to peer networks. So this is more of an informed opinion than a random opinion.d</p>
+<hr>
+<h1 id="when-should-i-use-a-peer-to-peer-network">When should I use a peer to peer network?<a hidden class="anchor" aria-hidden="true" href="#when-should-i-use-a-peer-to-peer-network">#</a></h1>
+<p>This is a hard question to answer, because P2P networks can be used for all networking. Just like with programming, we need to use the right tool for the job.</p>
+<p>P2P networks are very good at scaling incredibly fast, automatically. Effective p2p networks improve with more users,  not degrade.</p>
+<p>If you are building a platform with a shared goal (ie share files) and you can imagine the platform growing uncontrollably big, p2p networks are good. Or if you do not want anyone to shut down your network (in a client-server model, turn off your servers) a p2p network is effective.</p>
+<p>Let&rsquo;s walk through what all good peer to peer networks share.</p>
+<hr>
+<h1 id="rewards">Rewards<a hidden class="anchor" aria-hidden="true" href="#rewards">#</a></h1>
+<p>All peer to peer networks have a reward system in place. The user does some work, and they are rewarded. Even if the reward isn&rsquo;t clearly defined, there is always a reward for taking part in the peer to peer network.</p>
+<p>In Bitcoin, this is clearly earning Bitcoin. Bittorrent rewards participants with faster download speeds. Tor rewards other Tor members with more privacy.</p>
+<p>The idea of a reward is to disper free-riders. Those that partake in the network without giving anything back. There are 2 ways to defer free-riders:</p>
+<ul>
+<li>Forcing every user to give back.</li>
+<li>Rewarding users who give back.</li>
+</ul>
+<p>Tor is the former, all users who join Tor are part of the network. The only reward that can be given is to become a guard node, which provides no obvious benefit for the user other than to feel good about themselves.</p>
+<p>Most peer to peer networks choose the latter, rewarding users who give back.</p>
+<p>In Bittorrent,  those who seed are rewarded with higher download rates. The more you seed, the faster you  can download. In Bitcoin, users are rewarded for mining the blockchain in the form of Bitcoin.</p>
+<p>Thus, this leads us to look at peer to peer networks from 2 interesting perspectives. Human civilisations, or reinforcement learning machines.</p>
+<p>Since reinforcement learning closely resmbles how humans work, I will not discuss it much. But the implications are important. Agents in the network seek to optimise their own personal reward, which in turn, if the network is made correctly, optimises the whole network.</p>
+<hr>
+<h1 id="optimisation-of-the-network">Optimisation of the network<a hidden class="anchor" aria-hidden="true" href="#optimisation-of-the-network">#</a></h1>
+<p>An ideal p2p network will improve the more people that use it. In Tor, the more people that use it the more privacy is given to those who need it.</p>
+<p>A simple distinction, but one that must be made. As the network grows older, ideally it forever reaches its global optimised state.</p>
+<p>Unlike client-server, where the more users there are the harder it becomes to maintain the network, an effective peer to peer network gets <strong>better</strong> the more people that use it.</p>
+<p>Optimisation of the network as it grows is often done through the rewards system. As Tor grows, the privacy of each user increases. Thus, the more that use Tor, the better. And each user has their own personal reward, but together this creates a positive movement for the whole network.</p>
+<p>In Bitcoin, the more that mine Bitcoin the larger incentive it is to use better computers. Better computers = faster mines = more money. This creates a competition amongst users. **Who can contribute to the network the most? **Without getting into economics, the miners will spend more on Bitcoin. Meaning that they have to sell Bitcoin at a higher rate to make profit back. Meaning that the price of Bitcoin goes up. Which, can be seen as a positive for the whole network.</p>
+<p>Not to mention that Bitcoin&rsquo;s security from a 51% attack relies on more users on the network. Again, as the network grows the better it becomes.</p>
+<p>When choosing a reward, it is important to look at the local rewards (what the user themselves gets) and to look at the greater rewards, what the network will get for participating.</p>
+<p>I also reccomend rewards which increase as the network grows. Scalable rewards.</p>
+<p>&lt;Img of client-server starting to struggle, but peer to peer network having a good time&gt;</p>
+<h3 id="so-at-the-start-the-network-sucks">So, at the start the network sucks?<a hidden class="anchor" aria-hidden="true" href="#so-at-the-start-the-network-sucks">#</a></h3>
+<p>Yup! That&rsquo;s how these things work. With a client-server architecture, it can be amazing from the start. But with a peer to peer network, it kinda sucks a lot for the first users. With Bitcoin, what was the incentive? You get this coin that&rsquo;s worth&hellip;. nothing at all, actually.</p>
+<p>Tor. The incentive? Well, if there&rsquo;s only 3 users then there is no incentive.</p>
+<p>Bittorrent. The incentive? You can download this one persons files.</p>
+<p>In peer  to peer networks, generally they suck for the first couple users and only increase over time. So how then, do we build an effective peer to peer network that other people will want to use?</p>
+<p>There are 2 methods to this.</p>
+<ul>
+<li>Forceful use (navy)</li>
+<li>Incredible technology</li>
+</ul>
+<p>You can force users to use the network. This is how Tor got its start. The US Navy built Tor, and effectively they could force others in the Navy to use it.</p>
+<p>The other option is incredible technology. In a peer to peer network, the first few users are often users who recgonise how incredible the technology is. Think about Bitcoin. The first few users fell in love with the technology behind it, and truly believed it could one day be great.</p>
+<p>With a great rewards system in place, the first users of Bitcoin realised it could grow up to be something huge. Amazing technology attracts the first few users, and those users are often technologically minded.</p>
+<hr>
+<h2 id="automatic-optimisation">Automatic Optimisation<a hidden class="anchor" aria-hidden="true" href="#automatic-optimisation">#</a></h2>
+<p>Here is my opinion part! I believe that we can use artifical intelligence to automatically optimise a p2p network. Humans are cool and all, but we&rsquo;re pretty slow when it comes to making changes.</p>
+<p>p2p networks already use technology to find shortest routes, or preferred routes. As networks become more and more complicated, simple hand written algorithms might not be enough.</p>
+<p>Picture this.</p>
+<p>In our network, we have multiple nodes all interconnected. Each node has a rating. This rating signifies how good that node is. Good here, could mean fast, it could mean trust worthy or the likes. We&rsquo;ll generalise it to mean &ldquo;good&rdquo; that encompasses everything.</p>
+<p>Everytime another node uses this node, its &ldquo;good&rdquo; rating increases. Much like a neural network.</p>
+<p>Nodes can have a &ldquo;good&rdquo; rating of 0, as in they do not contribute to the network.</p>
+<p>How would a node with a rating of 0 ever increase its good rating if we were using simple pathfinding algorithms? If a node has a good rating of 1, does that mean every bit of data would go through this node?</p>
+<p>What if we introduce more numbers. The speed of the node. The amount of time the node has spent contributing to the network. The contributions made. User ratings.  And more.</p>
+<p>And our goal was to create the &ldquo;best&rdquo; path across the network, taking into account all of these numbers and to maximise our own personal reward, whatever that may be.</p>
+<p>This seems like a perfect scenario for reinforcement learning. Multiple inputs in an effort to maximise our own personal reward. Exploratory choices, meaning that a node with a &ldquo;good&rdquo; rating of 0 may be chosen.</p>
+<p>Us humans would eventually work it out like this anyway, where we choose certain nodes to have more privlege than others (in Tor, this is called a guard node. Generally speaking these are not true p2p networks, but instead hybrid).</p>
+<p>Now we have a rough picture of how to use reinforcement learning to optimise the network, optimise our personal reward and to give everyone in the network a fair shot. Let&rsquo;s see why assigning nodes with a higher &ldquo;good&rdquo; value than others is a great idea.</p>
+<hr>
+<h1 id="jobs-for-the-people">Jobs for the people<a hidden class="anchor" aria-hidden="true" href="#jobs-for-the-people">#</a></h1>
+<p>In almost all peer to peer networks, jobs are assigned to nodes. Dependent mostly on whether they want it or not, sometimes jobs are given to nodes at random.</p>
+<p>In Bitcoin, we have miners whose job it is to mine the blockchain. In Tor, we have guard nodes. In some other cryptocurrencies, nodes have higher privlegedes than others.</p>
+<p>At the moment, peer to peer networking is seen as more of a communistic vision. Which is cool, but humans assign other humans jobs based on their skills. And in some networks, we do the same.</p>
+<p>If a node has proven to be trustworthy, than we shall make it a guard node. If a node wants to mine the blockchain, it becomes a miner.</p>
+<p>I&rsquo;d like to make a distinction here. These nodes do not have more rights than the other nodes, they simply have a job to do.</p>
+<p>If we give everyone the same job, the network will tend towards global optimisation much slower. Let&rsquo;s say we have a new file sharing system. Our system will let you download files from others.</p>
+<p>We have a file, Ubuntu.iso, which is being seeded by 10 people. We choose at randomly a seed. This seed has an upload speed of 1 mbps while all the other seeders have an upload speed of 200mbps. It makes logical sense to use the uploaders with faster speed, as the one users upload speed will be poorly affected by us requesting a file. Resulting in an unhappy human who cannot upload a Facebook image!</p>
+<p>It makes sense logically to choose from a subsection of people with high upload  speeds. Effectively, we have given these people &lsquo;jobs&rsquo;.</p>
+<p>There are 2 types of jobs in peer to peer networks:</p>
+<ul>
+<li>Rewarded Jobs</li>
+<li>Unpaid Internships (jobs)</li>
+</ul>
+<p>With rewarded jobs, the uploaders get a higher reward for working as an effective uploader. This reward might be priority access to downloads from other high uploaders. This is how Bittorrent works.</p>
+<p>With unpaid jobs, there is no reward. There is no incentive for one to choose a job, it is simply gifted to those. This is how guard nodes work in Tor.</p>
+<p>Deciding on what jobs to give, and whether it is rewarded or not is problem specific. Say, for example, we have a job called &ldquo;maintainer of the Blockchain&rdquo;. This job means that these people each have a copy of the blockchain. And only they do, no one else can. Any cryptocurrency nerd reading this may already see the problem.</p>
+<p>In order to view the blockchain, you need to have this job. But not every citizen of the world has a spare 300gb to view the chain. They cannot get the job, because they do not meet the required specification.</p>
+<p>This is another issue. Do people choose their own jobs? Are they automatically assigned? Can we reject people if they do not meet the job specification?</p>
+<p>With only a small percent controling the blockchain, it leaves it open to a 51% attack. A small few will hold all the power. It will not work well in this instance.</p>
+<p>I propose that jobs are automatically assigned based on the specification of the user, but any user can request a job. The only jobs they should be rejected for is high trust jobs, such as guard nodes. But, the specification of their computer should not be taken into account for trust jobs.</p>
+<p>Humans that pick their own jobs is just too slow, the network needs to react fast and scale fast. Humans are not fast. But we do not want to prevent humans from accessing resources because of their circumstances.</p>
+<p>When assigning jobs, it is important that the jobs work in harmony.</p>
+<p>I suggest taking inspiration from bee hives or ant colonies for this. Human jobs are simply too hard to model, to focus on a much smaller example is wise. Afterall, you don&rsquo;t see ants that are SEO experts 😉</p>
+<p>Another thing to consider if you follow my advice of automatically assigned jobs + opt in is punishment. Should there be a punishment if someone takes a job for which they are unfit? Should a 30gb computer take a punishment for trying to maintain a 300gb file?</p>
+<p>On the one hand, only a very small percent of the population will choose their own jobs, and will ignore the assigned job and choose something for which they are unfit. But, to achieve global optimisation we must make sure every single thing is accounted for.  Unforunately, in this world, those that do jobs that they are not capable of should be punished. I would not say to reduce the resources available to them through the job, but perhaps reduce the reward of using the network in some way.</p>
+<hr>
+<h1 id="data-structures">Data Structures<a hidden class="anchor" aria-hidden="true" href="#data-structures">#</a></h1>
+<p>Every single effective peer to peer network uses data structures. The blockchain is just a fancy linked list with some extra properties. Bittorrent&rsquo;s magnet links work based on distributed hash tables.</p>
+<p>Data structures are absolutely vital to peer to peer networks. I do not want to get into every data structure available, but knowledge of them is important.</p>
+<p>We can design a network using a <a href="https://en.wikipedia.org/wiki/Category:Distributed_data_structures">distributed data structure</a> that already exists, or we can build a new data structure / algorithm based on pre-existing ones.</p>
+<hr>
+<h1 id="policy-changes">Policy changes<a hidden class="anchor" aria-hidden="true" href="#policy-changes">#</a></h1>
+<p>Throughout this article, I have talked about designing the network to be perfect from the get go. Any human knows this isn&rsquo;t possible. So how then, do we change the network when it&rsquo;s in effect? How do we implement policy changes?</p>
+<ol>
+<li>Dictatorship</li>
+<li>Let the people decide</li>
+<li>The people can form a democracy</li>
+</ol>
+<p>In our first instance, we have dictatorship. You, the creator decides on changes. You create these changes, and they go out to the network. We don&rsquo;t care what the participants think, only that the change has taken place.</p>
+<p>This is the most effective for easily implementing policy changes, but it ruins the trust. In my opinion, a good peer to peer network reduces trust. We should not need to trust anyone. However, trust is important in some networks. It depends on the network itself.</p>
+<p>If the network was for a digital currency, why would you trust this entire currency in the hands of a single person? But for a privacy centered network, having this trust in one person or body of people can increase the trust throughout the network. It reduces the chance of a 51% attack backdoor in the early days, building trust from day 0.</p>
+<p>As the network progresses, it strays further and further away from a 51% attack. Which means we lose trust, we do not need to trust that it is safe from a 51% attack if the network is large enough.</p>
+<p>In my opinion, an effective p2p network should move from a dictatorship and move towards a democracy. As time progresses, the will of one indivudal can change. They may sell out the network.</p>
+<p>But again, this brings problems. What if there is a critical failure in the code and there needs to be a change made? This is for the designer to decide.</p>
+<p>We can alternatively let the people decide. From the get go, no single person has full control. Every time a change is made, a % of the network (likely 51) will need to agree to the change. Complete control for the network. No trusting the developer involved.</p>
+<p>At the start, this may be problematic. Although if no one cares about your network at the start, it&rsquo;s better that way. Humans are incredibly slow too. Imagine a critical bug in the code that had to be fixed right there and then. Humans may take weeks to decide. Many will not even respond to the decision.</p>
+<p>The alternative, is a democracy. Give certain people more power than others. Have the community vote in leaders, or have the leaders be pre-selected. These leaders than decide on changes to the codebase. This reduces the trust, especially if they are voted in. But nothing is stopping them from teaming together to get the maximum personal reward while not doing anything for the many.</p>
+<p>All in all, deciding on policy changes is a tricky subject. And one that should be decided before the network is made.</p>
+<p>Although something to remember is trust. Will the users need to trust you, personally? If so, try and work towards a goal where that trust is reduced. Diversify that trust over to others. Remove trust completely, make them only trust themselves. Effective peer to peer networks are unlike client-server models where one person controls all the power. Effective P2P networks are for the people.</p>
+<hr>
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>Because p2p networks are problem specific, this article serves mainly as a list of questions to answer in designing an effective p2p network.</p>
+
+</div>
+  <footer class="post-footer">
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Designing effective p2p networks on twitter"
+        href="https://twitter.com/intent/tweet/?text=Designing%20effective%20p2p%20networks&amp;url=https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Designing effective p2p networks on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f&amp;title=Designing%20effective%20p2p%20networks&amp;summary=Designing%20effective%20p2p%20networks&amp;source=https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Designing effective p2p networks on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f&title=Designing%20effective%20p2p%20networks">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Designing effective p2p networks on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Designing effective p2p networks on whatsapp"
+        href="https://api.whatsapp.com/send?text=Designing%20effective%20p2p%20networks%20-%20https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Designing effective p2p networks on telegram"
+        href="https://telegram.me/share/url?text=Designing%20effective%20p2p%20networks&amp;url=https%3a%2f%2fpolymath.cloud%2fdesigning-p2p-networks%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

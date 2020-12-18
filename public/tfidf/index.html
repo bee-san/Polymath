@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Finding The Most Important Sentences Using NLP &amp; TF-IDF | Polymath.cloud</title>
+
+<meta name="keywords" content="University, Computer Science" />
+<meta name="description" content="We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!
+When we’re done, it’ll look like this: News article found here.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/tfidf/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="Finding The Most Important Sentences Using NLP &amp; TF-IDF" />
+<meta property="og:description" content="We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!
+When we’re done, it’ll look like this: News article found here." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/tfidf/" />
+<meta property="article:published_time" content="2019-04-07T17:34:19+00:00" />
+<meta property="article:modified_time" content="2019-04-07T17:34:19+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Finding The Most Important Sentences Using NLP &amp; TF-IDF"/>
+<meta name="twitter:description" content="We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!
+When we’re done, it’ll look like this: News article found here."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Finding The Most Important Sentences Using NLP \u0026 TF-IDF",
+  "name": "Finding The Most Important Sentences Using NLP \x26 TF-IDF",
+  "description": "We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document …",
+  "keywords": [
+    "University", "Computer Science"
+  ],
+  "articleBody": "We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!\nWhen we’re done, it’ll look like this: News article found here. Red box highlights the most important sentences. The red box is not in the final product, is only used for illustration purposes.\n Term frequency * Inverse Document Frequency Don’t worry, the name of the algorithm makes me fall asleep every time I hear it said out loud too. This algorithm is 2 algorithms multiplied together. Let’s see how both of these work:\nTerm Frequency Term frequency (TF) is how often a word appears in a document, divided by how many words there are. The Term Frequency (TF) of a term, t, and a document, d. Let’s say you’re reading a news article on Brexit. The word “Brexit” will appear a lot, so the term frequency of the word “Brexit” is high.\nQuite often, we would want to build a dictionary (hashmap) of term frequencies alongside the term. Like {word: term frequency of that word} and then iterate through this dictionary to find out which word appears the most times.\nNow, what if I told you that the term frequency dictionary would look a little like this:\n{\"and\": 0.87, \"the\": 0.73}  You can see how these common English words aren’t useful to us. Of course, most English texts have these words in them, but we call English words like these stopwords. Stopwords usually refer to the most common words in a language, although there isn’t one singular definition. You have to choose stopwords per usage. You have to decide on what words to use. Before processing some text you’ll usually want to remove stopwords to better process the text.\nWords with capital letters in them differ from words without capitals. In programming, “Africa” and “africa” are two different things. Because of this, we want to turn everything into lowercase or uppercase to better process our text. We’re going to turn all words into lowercase.\nGiven a string, we want to remove stop words and turn it into lowercase. Our extension will give us a string of all text on a BBC news article. Don’t worry about where we get the text from yet, that’s done later in the Firefox extension section. For now, assume we have text that looks like this:\n... These are external links and will open in a new windowA neat feature of many modern laptops is the ability to power them up through the USB port. Unlike the rectangular USB ports of old, the newer type - USB-C - can carry enough power to charge your machine.That’s great news: it means ...  The above text is shortened to prevent the reader from falling asleep. GitHub freaks out on this page when I try to insert the stopwords_array, so I had to split it up like this.\nThis is the function which will “prettify” our documents. Line 3 is an array of stopwords I found on StackOverflow. I added “share” and “linkthese” since these are commons words in the news article we don’t want.\nLine 5 is Regex. The square brackets mean or. [,.] means “activate on a comma or a full stop ”. /g means global. Once you find one *‘,’ *or *‘.’ *don’t stop, continue searching the string. The empty string is what we’re replacing it with. If we find a full stop or a comma, replace it with nothing — delete it. This is because the words “Africa.” and “Africa” would be classified as two different words without this. From my Instagram, @Brandon.codes Line 4 splits the document up into separate words. The map function applies a function to every element in an array. Once the string is split up into an array of words we apply the toLowerCase() method to every element. It makes every word lowercase. From my Instagram, @Brandon.codes. The arrows are Arrow Functions (Lambda / Anonymous functions).\nWe then return the lowercase words once we’ve filtered out stop words. Filter() creates a new array with only the elements for which the function inside returns True.\nIf a word is a stop word, it’ll result in True which means we’ll get a new array of **only **the stopwords in the document. We use the negation operator “!” to get the opposite, which is what we want. To return a list of words with no stopwords in it.\nNow we want to count how many times each word appears in the document. This will be useful for both Term Frequency and Inverse Document Frequency. First, we want to get all the unique words from an array of words.\nWe convert the array into a set because sets have no repetitions. This lets us get only the **unique **words in the array. Sets also don’t have an order, so we can’t use array indices to access elements. We need to turn it straight back into an array. For more about Set Theory, check out this article I wrote.\nOkay, now time to count how many times a word appears in the words array.\nThis function goes through every single unique word and counts how many times that word appears in the array of words. The Term frequency function is quite long, so I’m going to break it down.\nLine 6 divides the document up into sentences. Sometimes sentences have white space before them. “Brandon. Dogs.” Has whitespace before “Dogs.” we apply the trim() method to each item to get rid of these trailing whitespace.\nRegarding line 7, The first 146 characters of the first word is social media links. The rest of that word is a title or sub-title. Here, look:\nShare this withEmailFacebookMessengerMessengerTwitterPinterestWhatsAppLinkedInCopy this linkThese are external links and will open in a new windowRyanair is tightening the rules on what passengers pay to take luggage onto the plane, in order to \"speed up boarding\".  This is annoying, as the title is an essential part of the story and needs to be taken into account. So we remove the first 146 characters of the first word to get:\nRyanair is tightening the rules on what passengers pay to take luggage onto the plane, in order to \"speed up boarding\"  Remember this formula? The Term Frequency (TF) of a term, t, and a document, d. The variable “TFVals” is calculating this formula. If we run the sentence “Hello, my name is Brandon. Brandon Brandon. The elephant jumps over the moon” through the term frequency function, we’ll get something that looks like this: TF only returns 1 “Brandon”, so not every Brandon has a TF score. For this example, bare in mind that TF only returns 1 Brandon because we are calculating the singular term (word) frequency. We have the term frequencies of words, but we want to calculate the most important sentences, not words. To do that, we go through every single sentence and see what words come up in that sentence which are in TFVals. TF only returns 1 “Brandon”, so not every Brandon has a TF score (like in the image above). For this example, bare in mind that TF only returns 1 Brandon because we are calculating the singular term (word) frequency.\nWe just need to add them all up and divide by how many words we have. Since we’re only adding up the TF values of non stop words, it’s only fair if we divide by how many non stop words there are, instead of how many words there are in a sentence. If we don’t divide by how many words we have, long sentences have an advantage over shorter ones. The sentence with the highest TF is “Brandon Brandon.” This is what line 20 onwards does below. We go through every single sentence and calculate the TF values of each sentence, just as we did above. New code starts at line 20.\nAnd that’s it. But we have a problem with using only Term Frequency. As you may have seen earlier, “Brandon Brandon” was the highest scoring TF out of all 3 sentences we looked at.\nPopularity isn’t enough. We don’t want sentences that have the most keywords in them as they may not make sense, or they may be repetitions of each other. Such as in the “Brandon” Brandon” sentence. It has a high TF value but doesn’t hold much content.\nIt doesn’t contain much information and isn’t useful. We want a sentence that is both rare, unique and contains keywords common in the article. This is where inverse document frequency comes in.\n Inverse document frequency Term frequency is how common a word is, inverse document frequency (IDF) is how unique or rare a word is. The formula for IDF is: t is the term and d is the documents. We have multiple documents, we’re treating each sentence as its own document.\nIDF used over many documents, whereas TF is built for one document. You can decide what a document is. In this article, each sentence is its own document.\nThe first few steps of IDF is the same as TF. We prettify the document, count the words in the document and get all the unique words.\nLines 1–6 is nothing new. The for loop on line 17 loops through every sentence in the document. Since each sentence is a new ‘document’, we need to count the words of each sentence individually. We have to prettify them to get rid of the stopwords and turn them into an array of words. We push the wordcount object of each new sentence into wordCountSentences.\nThere are 3 sentences here. We don’t care how many times Brandon appears over the whole document. I tried to pick the words to give you something interesting without making the maths too large, but in the process I developed narcissism. We’re now going to go through every single word and count how many times that word appears in every sentence and calculate the IDF score using the below formula. I use log 10 here. Note: all logarithms are constantly scaled, so it doesn’t matter much on what logarithm you use. A small example of how IDF is used. Now we just do this for every non stop word. New code starts on line 25.\nNow we want to get the IDF Values of all the sentences, we use the same code from TF here but replace some things to make it work.\nIf I’m being truthful with you, I did a simple “find and replace” the variables. Instead of “TF” in the comments, I replaced them with IDF. Instead of “TFVals”, I replaced it with “IDFVals”. Nothing important has happened here, so feel free to skip this part. New code starts on line 38. Now that we have written code to calculate the IDF value of sentences; we have completed the formula from earlier. “is a dog” has the highest IDF value.\nWe now know how unique or rare a sentence is. This isn’t that useful since we want the sentence to be information-rich too. We want some way to combine the popularity of TF with the uniqueness of IDF. This leads us to our next section…\n#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; } /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block. We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ #mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;} #mergeRow-gdpr {margin-top: 20px;} #mergeRow-gdpr fieldset label {font-weight: normal;} #mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}  Like this article? Subscribe to my mailing list to get more like this✨\nPlease tick this box to let me know you want to be contacted via email. Email\n TF-IDF revisited via GIPHY\n“Are we done yet? Can I wake up now?” Yes, very nearly done!\nWe now have TF and IDF functions implemented. The only thing left to do is to multiply them together.\nThe objects TF and IDF both stem from the same data, so TF isn’t going to contain something that isn’t in IDF. Because of this, we can iterate through one object and use the same key. We multiply the value in TFVals by the value from in IDFVals.\nOur next step is to calculate the 3 most important sentences in our TF-IDF Object. Iterating over the [key, value] of the object with a couple of if statements works perfectly.\nYou’ll see at the bottom we return the formatted string. We format it so it looks nice when we insert it into the webpage. Each is a line break, a space in the text. The black dots are bullet points. We’re now going to implement this algorithm into a Firefox extension. 🔥🦊\n Getting \u0026 changing text in a BBC news article Go to any BBC news article, right-click and press “inspect element”. You’ll see a nice box at the bottom of the screen. Use the element selector tool in the top left-hand corner and hover over the article. We can see that the whole article is encompassed within a CSS class of ‘story-body’. If we go further in, we can see that all the actual text in the article is encompassed by paragraph tags, inside this CSS class. We’re going to use JQuery to select the text.\nThis line selects all the  tags within the story-body class. Now we want to get the text, we do this by applying the method .text().\nWe want to add our text to the top of the article. JQuery has a method called prepend which lets us prepend data to the top of an object.\nAnd we’re done! We can now identify the most important sentences in a BBC News article and display them right at the top. Just time to turn it into an extension.\n Firefox extension basics Firefox extensions have 2 main parts. The Javascript you wrote and the manifest.json file which tells Mozilla what your extension does. We’re going over manifest.json now.\nmanifest_version tells Firefox what version of manifest you are using. *Name *tells Firefox what the name of your extension is. *Version *tells Firefox what version number your extension is. These 3 are mandatory.\n*description *tells Firefox what your extension does.\n*content_scripts *tells Firefox what scripts to load when the URL matches what you have inputted. In order for the scripts you have specified to run, the current URL must match at least one of the URLs you have specified. You can use 2 special characters here:\n “*****” Matches zero or more characters. In this instance, I don’t know whether the user will load HTTP or HTTPS so I have it step to load both. I also don’t know what exact article the user will look at, so I have it set to activate on any article. “?” matches exactly one character.  For example: \"*na?i\" would match \"illuminati\" and \"annunaki\", but not \"sagnarelli\".\nSince we’re going to be using jQuery, we’ll import the jQuery JS file as well into the website, before our script executes. You can grab the jQuery file from here. Copy and paste into a file named “jquery.js”.\nEnter “about:debugging” into your Firefox URL to load this page: From here, click *“Load Temporarary Add-on…” *and then click any of the files in the extension. Once you do, you should see this: Mozilla have a nice article on the basics of Firefox extensions, here.\nNow load any BBC news article to play with it!\n Conclusion You’ve now seen the awesome power of TF-IDF and a real-world application for it. This idea came to me because I have email anxiety. I get so nervous about reading emails that I wanted a quick summary of them to calm my thoughts. Alas, this is my first time ever writing Javascript. I started out on something easier like BBC news articles.\nHere are some ways you can improve upon this code, if you so wish:\n Dynamically select how many sentences in a summary you want. You can find out the average TF*IDF value in the whole article and anything over X you can include in the summary. This makes it so long articles are treated as equally as shorter articles. Extending this to work on any other websites you wish.   Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won’t spam you. I will only send you posts similar to this one 😊✨\n#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; } /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block. We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ #mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;} #mergeRow-gdpr {margin-top: 20px;} #mergeRow-gdpr fieldset label {font-weight: normal;} #mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}  Like this article? Subscribe to my mailing list to get more like this✨\nPlease tick this box to let me know you want to be contacted via email. Email\nIf you’re feeling extra generous, I have a PayPal  and even a Patreon. I’m a university student who writes these blogs in their spare time. This blog is my full time job, so any and all donations are appreciated!\n",
+  "wordCount" : "2908",
+  "inLanguage": "en",
+  "datePublished": "2019-04-07T17:34:19Z",
+  "dateModified": "2019-04-07T17:34:19Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/tfidf/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      Finding The Most Important Sentences Using NLP &amp; TF-IDF
+    </h1>
+    <div class="post-meta">
+
+April 7, 2019&nbsp;·&nbsp;14 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>We’re going to create a summary of BBC News Articles and place them at the top using a Firefox extension. This article is about the gnarly algorithm Term Frequency-Inverse Document Frequency (TF-IDF). We’re going to create a real-world usage in the form of a Firefox extension. I know what you’re thinking. “TF-IDF? Yawn 😴” but bare with me, it’s quite interesting!</p>
+<p>When we’re done, it’ll look like this:
+<img src="/content/images/2019/01/image-512.png" alt="">
+News article found <a href="https://www.bbc.co.uk/news/business-45289432">here</a>.  Red box highlights the most important sentences. The red box is not in  the final product, is only used for illustration purposes.</p>
+<hr>
+<h3 id="term-frequency--inverse-document-frequency">Term frequency * Inverse Document Frequency<a hidden class="anchor" aria-hidden="true" href="#term-frequency--inverse-document-frequency">#</a></h3>
+<p>Don’t worry, the name of the algorithm makes me fall asleep every time I hear it said out loud too. This algorithm is 2 algorithms multiplied together. Let’s see how both of these work:</p>
+<h4 id="term-frequency">Term Frequency<a hidden class="anchor" aria-hidden="true" href="#term-frequency">#</a></h4>
+<p>Term frequency (TF) is how often a word appears in a document, divided by how many words there are.
+<img src="https://cdn-images-1.medium.com/max/800/1*F4O-l5YkFEMU4WJQZOoBQw.png" alt="">The Term Frequency (TF) of a term, t, and a document, d.
+Let’s say you’re reading a news article on Brexit. The word “Brexit” will appear a lot, so the term frequency of the word “Brexit” is high.</p>
+<p>Quite often, we would want to build a dictionary (hashmap) of term frequencies alongside the term. Like <em>{word: term frequency of that word}</em> and then iterate through this dictionary to find out which word appears the most times.</p>
+<p>Now, what if I told you that the term frequency dictionary would look a little like this:</p>
+<pre><code>{&quot;and&quot;: 0.87, &quot;the&quot;: 0.73}
+</code></pre>
+<p>You can see how these common English words aren’t useful to us. Of course, most English texts have these words in them, but we call English words like these <em>stopwords</em>. Stopwords usually refer to the most common words in a language, although there isn’t one singular definition. You have to choose stopwords per usage. You have to decide on what words to use. Before processing some text you’ll usually want to remove stopwords to better process the text.</p>
+<p>Words with capital letters in them differ from words without capitals. In programming, “Africa” and “africa” are two different things. Because of this, we want to turn everything into lowercase or uppercase to better process our text. We’re going to turn all words into lowercase.</p>
+<p>Given a string, we want to remove stop words and turn it into lowercase. Our extension will give us a string of all text on a BBC news article. Don’t worry about where we get the text from yet, that’s done later in the Firefox extension section. For now, assume we have text that looks like this:</p>
+<pre><code>... These are external links and will open in a new windowA neat feature of many modern laptops is the ability to power them up through the USB port. Unlike the rectangular USB ports of old, the newer type - USB-C - can carry enough power to charge your machine.That’s great news: it means ...
+</code></pre>
+<p>The above text is shortened to prevent the reader from falling asleep. GitHub freaks out on this page when I try to insert the stopwords_array, so I had to split it up like this.</p>
+<p>This is the function which will “prettify” our documents. Line 3 is an array of stopwords I found on <a href="https://stackoverflow.com/questions/5631422/stop-word-removal-in-javascript">StackOverflow</a>. I added “<em>share</em>” and “<em>linkthese</em>” since these are commons words in the news article we don’t want.</p>
+<p>Line 5 is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">Regex</a>. The square brackets mean or. [,.] means <em>“activate on a comma or a full stop ”</em>. /g means global. Once you find one *‘,’ *or *‘.’ *don’t stop, continue searching the string. The empty string is what we’re replacing it with. If we find a full stop or a comma, replace it with nothing — delete it. This is because the words “Africa.” and “Africa” would be classified as two different words without this.
+<img src="https://cdn-images-1.medium.com/max/600/1*tBAPevEG7SV1GQMXA8OQWg.jpeg" alt="">From my Instagram, <a href="https://www.instagram.com/brandon.codes/">@Brandon.codes</a>
+Line 4 splits the document up into separate words. The <em>map</em> function applies a function to every element in an array. Once the string is split up into an array of words we apply the <em>toLowerCase()</em> method to every element. It makes every word lowercase.
+<img src="/content/images/2019/01/image-513.png" alt="">
+From my Instagram, <a href="https://www.instagram.com/brandon.codes/">@Brandon.codes</a>. The arrows are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Functions</a> (Lambda / Anonymous functions).</p>
+<p>We then return the lowercase words once we’ve filtered out stop words. <em>Filter()</em> creates a new array with only the elements for which the function inside returns True.</p>
+<p>If a word is a stop word, it’ll result in True which means we’ll get a new array of **only **the stopwords in the document. We use the negation operator “!” to get the opposite, which is what we want. To return a list of words with no stopwords in it.</p>
+<p>Now we want to count how many times each word appears in the document. This will be useful for both Term Frequency and Inverse Document Frequency. First, we want to get all the unique words from an array of words.</p>
+<p>We convert the array into a set because sets have no repetitions. This lets us get only the **unique **words in the array. Sets also don’t have an order, so we can’t use array indices to access elements. We need to turn it straight back into an array. For more about Set Theory, check out <a href="https://medium.com/brandons-computer-science-notes/a-primer-on-set-theory-746cd0b13d13">this article</a> I wrote.</p>
+<p>Okay, now time to count how many times a word appears in the words array.</p>
+<p>This function goes through every single unique word and counts how many times that word appears in the array of words. The Term frequency function is quite long, so I’m going to break it down.</p>
+<p>Line 6 divides the document up into sentences. Sometimes sentences have white space before them. “Brandon. Dogs.” Has whitespace before “Dogs.” we apply the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">trim()</a> method to each item to get rid of these trailing whitespace.</p>
+<p>Regarding line 7, The first 146 characters of the first word is social media links. The rest of that word is a title or sub-title. Here, look:</p>
+<pre><code>Share this withEmailFacebookMessengerMessengerTwitterPinterestWhatsAppLinkedInCopy this linkThese are external links and will open in a new windowRyanair is tightening the rules on what passengers pay to take luggage onto the plane, in order to &quot;speed up boarding&quot;.
+</code></pre>
+<p>This is annoying, as the title is an essential part of the story and needs to be taken into account. So we remove the first 146 characters of the first word to get:</p>
+<pre><code>Ryanair is tightening the rules on what passengers pay to take luggage onto the plane, in order to &quot;speed up boarding&quot;
+</code></pre>
+<p>Remember this formula?
+<img src="https://cdn-images-1.medium.com/max/800/1*F4O-l5YkFEMU4WJQZOoBQw.png" alt="">The Term Frequency (TF) of a term, t, and a document, d.
+The variable “<em>TFVals</em>” is calculating this formula. If we run the sentence “Hello, my name is Brandon. Brandon Brandon. The elephant jumps over the moon” through the term frequency function, we’ll get something that looks like this:
+<img src="https://cdn-images-1.medium.com/max/800/1*uTEkBVplTb57czjE2ZiuNw.png" alt="">TF only returns 1 “Brandon”, so not every Brandon has a TF score. For this example, bare in mind that TF only returns 1 Brandon because we are calculating the singular term (word) frequency.
+We have the term frequencies of words, but we want to calculate the most important <strong>sentences</strong>, not words. To do that, we go through every single sentence and see what words come up in that sentence which are in <em>TFVals</em>.
+<img src="/content/images/2019/01/image-514.png" alt="">
+TF only returns 1 “Brandon”, so not every Brandon has a TF score (like in the image above). For  this example, bare in mind that TF only returns 1 Brandon because we are  calculating the singular term (word) frequency.</p>
+<p>We just need to add them all up and divide by how many words we have. Since we’re only adding up the TF values of non stop words, it’s only fair if we divide by how many non stop words there are, instead of how many words there are in a sentence. If we don’t divide by how many words we have, long sentences have an advantage over shorter ones.
+<img src="https://cdn-images-1.medium.com/max/800/1*3L16z-glMZjfjvrAaYTKcg.png" alt="">The sentence with the highest TF is “Brandon Brandon.”
+This is what line 20 onwards does below. We go through every single sentence and calculate the TF values of each sentence, just as we did above. New code starts at line 20.</p>
+<p>And that’s it. But we have a problem with using only Term Frequency. As you may have seen earlier, “Brandon Brandon” was the highest scoring TF out of all 3 sentences we looked at.</p>
+<p>Popularity isn’t enough. We don’t want sentences that have the most keywords in them as they may not make sense, or they may be repetitions of each other. Such as in the “Brandon” Brandon” sentence. It has a high TF value but doesn’t hold much content.</p>
+<p>It doesn’t contain much information and isn’t useful. We want a sentence that is both rare, unique and contains keywords common in the article. This is where inverse document frequency comes in.</p>
+<hr>
+<h4 id="inverse-document-frequency">Inverse document frequency<a hidden class="anchor" aria-hidden="true" href="#inverse-document-frequency">#</a></h4>
+<p>Term frequency is how common a word is, inverse document frequency (IDF) is how unique or rare a word is. The formula for IDF is:
+<img src="/content/images/2019/01/image-515.png" alt="">
+t is the term and d is the documents. We have multiple documents, we’re treating each sentence as its own document.</p>
+<p>IDF used over many documents, whereas TF is built for one document. You can decide what a document is. In this article, each sentence is its own document.</p>
+<p>The first few steps of IDF is the same as TF. We prettify the document, count the words in the document and get all the unique words.</p>
+<p>Lines 1–6 is nothing new. The for loop on line 17 loops through every sentence in the document. Since each sentence is a new ‘document’, we need to count the words of each sentence individually. We have to prettify them to get rid of the stopwords and turn them into an array of words. We push the wordcount object of each new sentence into <em>wordCountSentences</em>.</p>
+<p>There are 3 sentences here. We don’t care how many times Brandon appears  over the whole document. I tried to pick the words to give you  something interesting without making the maths too large, but in the  process I developed narcissism.
+<img src="/content/images/2019/01/image-516.png" alt="">
+We’re now going to go through every single word and count how many times that word appears in every sentence and calculate the IDF score using the below formula.
+<img src="/content/images/2019/01/image-517.png" alt="">
+I use log 10 here. Note: all logarithms are constantly <a href="https://www.khanacademy.org/math/algebra2/exponential-and-logarithmic-functions/logarithmic-scale/v/logarithmic-scale">scaled</a>, so it doesn’t matter much on what logarithm you use.
+<img src="https://cdn-images-1.medium.com/max/800/1*8pJZji2F5uy6E6zAxKL06Q.png" alt="">A small example of how IDF is used.
+Now we just do this for every non stop word.
+<img src="https://cdn-images-1.medium.com/max/800/1*omR9oAN2-yDYfOcIv7bPEw.png" alt="">
+New code starts on line 25.</p>
+<p>Now we want to get the IDF Values of all the sentences, we use the same code from TF here but replace some things to make it work.</p>
+<p>If I’m being truthful with you, I did a simple “find and replace” the variables. Instead of “TF” in the comments, I replaced them with IDF. Instead of “<em>TFVals</em>”, I replaced it with “<em>IDFVals</em>”. Nothing important has happened here, so feel free to skip this part. New code starts on line 38.
+<img src="https://cdn-images-1.medium.com/max/800/1*kxm0bf_KleZ31r1GszSw8g.png" alt="">
+Now that we have written code to calculate the IDF value of sentences;  we have completed the formula from earlier. “is a dog” has the highest  IDF value.</p>
+<p>We now know how unique or rare a sentence is. This isn’t that useful since we want the sentence to be information-rich too. We want some way to combine the popularity of TF with the uniqueness of IDF. This leads us to our next section…</p>
+<pre><code>#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+
+#mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;}
+#mergeRow-gdpr {margin-top: 20px;}
+#mergeRow-gdpr fieldset label {font-weight: normal;}
+#mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}
+</code></pre>
+<p>Like this article? Subscribe to my mailing list to get more like this✨</p>
+<p>Please tick this box to let me know you want to be contacted via email.
+Email</p>
+<hr>
+<h3 id="tf-idf-revisited">TF-IDF revisited<a hidden class="anchor" aria-hidden="true" href="#tf-idf-revisited">#</a></h3>
+<p><a href="https://giphy.com/gifs/thisisgiphy-reaction-audience-26FxCOdhlvEQXbeH6">via GIPHY</a></p>
+<p>“Are we done yet? Can I wake up now?” Yes, very nearly done!</p>
+<p>We now have TF and IDF functions implemented. The only thing left to do is to multiply them together.</p>
+<p>The objects TF and IDF both stem from the same data, so TF isn’t going to contain something that isn’t in IDF. Because of this, we can iterate through one object and use the same key. We multiply the value in TFVals by the value from in IDFVals.</p>
+<p>Our next step is to calculate the 3 most important sentences in our TF-IDF Object. Iterating over the <em>[key, value]</em> of the object with a couple of if statements works perfectly.</p>
+<p>You’ll see at the bottom we return the formatted string. We format it so it looks nice when we insert it into the webpage. Each <!-- raw HTML omitted --> is a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br">line break,</a> a space in the text. The black dots are bullet points. We’re now going to implement this algorithm into a Firefox extension. 🔥🦊</p>
+<hr>
+<h3 id="getting--changing-text-in-a-bbc-news-article">Getting &amp; changing text in a BBC news article<a hidden class="anchor" aria-hidden="true" href="#getting--changing-text-in-a-bbc-news-article">#</a></h3>
+<p>Go to any <a href="https://www.bbc.co.uk/news">BBC</a> news article, right-click and press “inspect element”. You’ll see a nice box at the bottom of the screen. Use the element selector tool in the top left-hand corner and hover over the article. We can see that the whole article is encompassed within a CSS class of ‘story-body’.
+<img src="https://cdn-images-1.medium.com/max/1000/0*gtYohYjQ76R6kjcU.png" alt="">
+If we go further in, we can see that all the actual text in the article is encompassed by paragraph tags, inside this CSS class.
+<img src="https://cdn-images-1.medium.com/max/1000/0*5nY1VQtLqXTiPMHt.png" alt="">
+We’re going to use <a href="https://jquery.com/">JQuery </a>to select the text.</p>
+<p>This line selects all the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p"><!-- raw HTML omitted --></a> tags within the story-body class. Now we want to get the text, we do this by applying the method <em>.text()</em>.</p>
+<p>We want to add our text to the top of the article. JQuery has a method called prepend which lets us prepend data to the top of an object.</p>
+<p>And we’re done! We can now identify the most important sentences in a BBC News article and display them right at the top. Just time to turn it into an extension.</p>
+<hr>
+<h3 id="firefox-extension-basics">Firefox extension basics<a hidden class="anchor" aria-hidden="true" href="#firefox-extension-basics">#</a></h3>
+<p>Firefox extensions have 2 main parts. The Javascript you wrote and the <em>manifest.json</em> file which tells Mozilla what your extension does. We’re going over <em>manifest.json</em> now.</p>
+<p><em>manifest_version</em> tells Firefox what version of manifest you are using. *Name *tells Firefox what the name of your extension is. *Version *tells Firefox what version number your extension is. These 3 are mandatory.</p>
+<p>*description *tells Firefox what your extension does.</p>
+<p>*content_scripts *tells Firefox what scripts to load when the URL matches what you have inputted. In order for the scripts you have specified to run, the current URL must match at least one of the URLs you have specified. You can use 2 special characters here:</p>
+<ol>
+<li>“*****” Matches zero or more characters. In this instance, I don’t know whether the user will load HTTP or HTTPS so I have it step to load both. I also don’t know what exact article the user will look at, so I have it set to activate on any article.</li>
+<li>“<strong>?</strong>” matches exactly one character.</li>
+</ol>
+<p>For example: <code>&quot;*na?i&quot;</code> would match <code>&quot;illuminati&quot;</code> and <code>&quot;annunaki&quot;</code>, but not <code>&quot;sagnarelli&quot;</code>.</p>
+<p>Since  we’re going to be using jQuery, we’ll import the jQuery JS file as well  into the website, before our script executes. You can grab the jQuery  file from <a href="https://code.jquery.com/jquery-3.3.1.slim.js">here</a>. Copy and paste into a file named <em>“jquery.js”</em>.</p>
+<p>Enter “<em>about:debugging</em>” into your Firefox URL to load this page:
+<img src="https://cdn-images-1.medium.com/max/800/0*G8AooP4-C9x4vjHK.png" alt="">
+From here, click *“Load Temporarary Add-on…” *and then click any of the files in the extension. Once you do, you should see this:
+<img src="https://cdn-images-1.medium.com/max/800/0*L0rVhBpG2bOjkxt9.png" alt="">
+Mozilla have a nice article on the basics of Firefox extensions, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension">here</a>.</p>
+<p>Now load any <a href="https://www.bbc.co.uk/news">BBC news</a> article to play with it!</p>
+<hr>
+<h3 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h3>
+<p>You’ve now seen the awesome power of TF-IDF and a real-world application for it. This idea came to me because I have email anxiety. I get so nervous about reading emails that I wanted a quick summary of them to calm my thoughts. Alas, this is my first time ever writing Javascript. I started out on something easier like BBC news articles.</p>
+<p>Here are some ways you can improve upon this code, if you so wish:</p>
+<ul>
+<li>Dynamically select how many sentences in a summary you want. You can find out the average TF*IDF value in the whole article and anything over X you can include in the summary. This makes it so long articles are treated as equally as shorter articles.</li>
+<li>Extending this to work on any other websites you wish.</li>
+</ul>
+<hr>
+<p>Hey 👋 Want to subscribe to my blog and stay up to date with posts similar to this one? Subscribe to my email list below. I won&rsquo;t spam you. I will only send you posts similar to this one 😊✨</p>
+<pre><code>#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+
+#mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;}
+#mergeRow-gdpr {margin-top: 20px;}
+#mergeRow-gdpr fieldset label {font-weight: normal;}
+#mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}
+</code></pre>
+<p>Like this article? Subscribe to my mailing list to get more like this✨</p>
+<p>Please tick this box to let me know you want to be contacted via email.
+Email</p>
+<p>If you&rsquo;re feeling extra generous, I have a <a href="https://www.paypal.me/BrandonSkerritt">PayPal </a> and even a <a href="https://www.patreon.com/user?u=15993188">Patreon</a>. I&rsquo;m  a university student who writes these blogs in their spare time. This blog is my full time job, so any and all donations are appreciated!</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://polymath.cloud/tags/university/">University</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Finding The Most Important Sentences Using NLP &amp; TF-IDF on twitter"
+        href="https://twitter.com/intent/tweet/?text=Finding%20The%20Most%20Important%20Sentences%20Using%20NLP%20%26%20TF-IDF&amp;url=https%3a%2f%2fpolymath.cloud%2ftfidf%2f&amp;hashtags=University%2cComputerScience">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Finding The Most Important Sentences Using NLP &amp; TF-IDF on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2ftfidf%2f&amp;title=Finding%20The%20Most%20Important%20Sentences%20Using%20NLP%20%26%20TF-IDF&amp;summary=Finding%20The%20Most%20Important%20Sentences%20Using%20NLP%20%26%20TF-IDF&amp;source=https%3a%2f%2fpolymath.cloud%2ftfidf%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Finding The Most Important Sentences Using NLP &amp; TF-IDF on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2ftfidf%2f&title=Finding%20The%20Most%20Important%20Sentences%20Using%20NLP%20%26%20TF-IDF">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Finding The Most Important Sentences Using NLP &amp; TF-IDF on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2ftfidf%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Finding The Most Important Sentences Using NLP &amp; TF-IDF on whatsapp"
+        href="https://api.whatsapp.com/send?text=Finding%20The%20Most%20Important%20Sentences%20Using%20NLP%20%26%20TF-IDF%20-%20https%3a%2f%2fpolymath.cloud%2ftfidf%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Finding The Most Important Sentences Using NLP &amp; TF-IDF on telegram"
+        href="https://telegram.me/share/url?text=Finding%20The%20Most%20Important%20Sentences%20Using%20NLP%20%26%20TF-IDF&amp;url=https%3a%2f%2fpolymath.cloud%2ftfidf%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

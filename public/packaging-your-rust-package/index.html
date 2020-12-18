@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Packaging Your Rust Code | Polymath.cloud</title>
+
+<meta name="keywords" content="Rust" />
+<meta name="description" content="I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
+Follow me as we publish my package, RustScan, to multiple distributions.
+Semantic Versioning Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:
+Major.Minor.Bugs  If you have fixed some bugs, increment the bugs counter.">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/packaging-your-rust-package/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="Packaging Your Rust Code" />
+<meta property="og:description" content="I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
+Follow me as we publish my package, RustScan, to multiple distributions.
+Semantic Versioning Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:
+Major.Minor.Bugs  If you have fixed some bugs, increment the bugs counter." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/packaging-your-rust-package/" />
+<meta property="article:published_time" content="2020-08-07T17:35:33+00:00" />
+<meta property="article:modified_time" content="2020-08-07T17:35:33+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Packaging Your Rust Code"/>
+<meta name="twitter:description" content="I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.
+Follow me as we publish my package, RustScan, to multiple distributions.
+Semantic Versioning Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:
+Major.Minor.Bugs  If you have fixed some bugs, increment the bugs counter."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Packaging Your Rust Code",
+  "name": "Packaging Your Rust Code",
+  "description": "I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide. …",
+  "keywords": [
+    "Rust"
+  ],
+  "articleBody": "I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.\nFollow me as we publish my package, RustScan, to multiple distributions.\nSemantic Versioning Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:\nMajor.Minor.Bugs  If you have fixed some bugs, increment the bugs counter.\nIf you have added a minor feature, increment the minor counter.\nIf you have done something major, increment the major counter.\nWe can signify whether a release is still being rested or not by adding “rc” (release candidate) to the end of the version. “5.0.0rc1” signifies “release candidate 1” which means this is the first public testing release of version 5.0.0.\nCargo Cargo is a package registry system for Rust. Imagine it as PyPi (Pip for Python) or NPM (for JavaScript).\nAs a rustacean, you may have heard of this – and even used it to download packages yourself. So let’s skip right to the good part.\nBefore publishing to Cargo, we need to make sure our cargo.toml file has the required information.\nThere are 3 things we need:\n Name  The name of our project.\n Description  Describe what the project does.\n License  What license do you use? Specifically, we need to use a license identification code. View the Linux Foundation’s SPDX website for all the license identification codes.\nHowever, you will probably want more than these for your package. Some good ones are:\n Readme  The location of your README file, which is used to fill out the README on the Cargo website.\n Keywords  This is tags for your project. When a user searches a keyword such as “sewing”, and your project has that keyword, your project will come up in the search results.\nThis is RustScan’sCargo.toml:\n[package] name = \"rustscan\" version = \"1.0.1\" authors = [\"Brandon \"] edition = \"2018\" description = \"Faster Nmap Scanning with Rust\" homepage = \"https://github.com/brandonskerritt/rustscan\" repository = \"https://github.com/brandonskerritt/rustscan\" license = \"MIT\" keywords = [\"port\", \"scanning\", \"nmap\"] categories = [\"command-line-utilities\"] readme=\"README.md\"  For more information on the manifest file, look here:\nNow we’re ready to publish! Go to the Crates.io website and register an account. Then, go into the settings and create a new API key.\nNow in a terminal, execute cargo login . You’re now logged into Crates.io and can publish!\nBuild your Rust package using the release profile, which optimises it at the highest level Rust can provide:\ncargo build --release  And then publish it.\ncargo publish  Ta-da! Your package is now available on the Crates.io website, and can be installed with cargo .\nHomebrew Homebrew is a package manager used by Mac OS users, but can is also used on Linux.\nUnfortunately, I found the documentation to be lacklustre in explaining how to get a package into Homebrew.\nLet’s assume we are using GitHub to store our code.\nHomebrew expects a TAR archive. To get this, we create a new release on GitHub.\nOn the GitHub repo’s homepage, click “Releases” on the right hand side menu. You should be taken to this page. Click “Draft a new release”. Now create a new release. Use semantic versioning to create the Tag Version. Create a new release title, and describe the release.\nA good format for release descriptions is:\n# Features # Maintenance # Bugs  Similar to the semantic versioning rules. I normally pull these from pull requests, or write them down as I merge commits.\nOnce we’ve entered some information, click Publish release. We now have a published release of our app!\nOur code is now in .tar.gz format if we look on the releases page again. GitHub does it for us! Right click **Source code (tar.gz) **and click on “get link”. Now we have the link to our tar.gz folder.\nGo into a terminal, and type:\nwget   where  is replaced by the link you just copied.\nWe need the SHA256 Hash of the archive, so let’s calculate it:\nshasum -a 256 rustscan.tar.gz  Where rustscan.tar.gz is the file you just downloaded with wget.\nNote down the shasum, this is an important step for later. Also note down the link we used to download it with.\nThe GitHub Repository Homebrew requires a separate GitHub repository for your project. Or you can change the name of your current repository.\nHomebrew calls these taps. Taps are third party GitHub repositories with specific names and a configuration file.\nGo to GitHub and create a new repository. Naming it:\nhomebrew-  Where is the name of your project. Note it must start with the name “homebrew-\".\nIn my case, it is:\nhomebrew-rustscan  RustScan’s HomeBrew Repository. \nNow clone your new repo onto your machine:\ngit clone homebrew-  Creating the formula Homebrew requires a file called a formula. This is a Ruby file that details your project along with how to install the binary. You do not need to know Ruby to create this.\ncd into our newly cloned repo, and create the following file structure:\n- Formula/ - .rb  In my case:\n- Formula/ - rustscan.rb  Capitalise the folder name if it is not already.\nNow copy and paste the following file into your rustscan.rb (or whatever your project is called).\n# Documentation: https://docs.brew.sh/Formula-Cookbook # https://rubydoc.brew.sh/Formula # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST! class Rustscan :build def install system \"cargo\", \"build\", \"--release\", \"--bin\", \"rustscan\" bin.install \"target/release/rustscan\" end end  Change the class name to match the name of your program:\nclass Rustscan  Then add a short description and link the homepage (in my case, the GitHub repo).\n desc \"Faster Nmap Scanning with Rust\" homepage \"https://github.com/brandonskerritt/rustscan\"  Now we need to fill out the download link and the SHA-256.\n url \"https://github.com/RustScan/RustScan/archive/1.3.tar.gz\" sha256 \"3bbaf188fa4014a57596c4d4f928b75bdf42c058220424ae46b94f3a36b61f81\"  Remember earlier when I told you to write down the link \u0026 the shasum? This is exactly where you’d place them!\nNow insert your version number, the same one for the whole release:\nversion \"1.3.0\"  Our program relies on Rust to build the binary, we note this down here:\n depends_on \"rust\" = :build  The next step is to detail how to build the binary and install our program. We tell Homebrew to build the binary using cargo build, and then to install it with bin.install.\n def install system \"cargo\", \"build\", \"--release\", \"--bin\", \"rustscan\" bin.install \"target/release/rustscan\" end  And just like that, we’ve made the formula file.\nUpload this to your homebrew- repository like so:\ngit add . git commit -m 'First release' git push  Installing the Package Let’s install the package to double check everything went well.\nbrew tap brandonskerritt/rustscan brew install rustscan  Where brandonskerritt/rustscan is your GitHub username combined with the project’s name.\nMy username is Brandonskerritt, and the project is called rustscan.\nI created a one command install for my users. which is just the 2 commands combined. You may find this helpful.\nbrew tap brandonskerritt/rustscan \u0026\u0026 brew install rustscan  Debian The easiest way to create Debian binaries is to use the crate cargo-deb. Cargo-deb is installed\ncargo install cargo-deb  Once it is installed, run the command:\ncargo-deb  And we now have a .deb file for our project on our system architecture.\nBut what if we wanted to package for other architectures?\nLuckily I’ve created a (albeit badly made) Docker script to package for other architectures.\nThe script packages the project for:\n Amd64 Arm64 i386  It requires some editing (as it was made for RustScan), but once done it will automatically package your script for you.\nCreate a separate folder in your main project’s repo, such as rustscan-debbuilder.\nThen place these 3 files in there:\nentrypoint.sh\n#!/bin/bash cd /RustScan git pull --force #amd64 cargo deb #arm64 rustup target add arm-unknown-linux-gnueabihf cargo deb --target=arm-unknown-linux-gnueabihf #i386 rustup target add i686-unknown-linux-gnu cargo deb --target=i686-unknown-linux-gnu find target/ -name \\*.deb -exec cp {} /debs \\;  Change cd /RustScan to your project name.\nrun.sh\n#!/bin/bash docker build -t rustscan-builder . || exit # This creates a volume which binds your currentdirectory/debs to # the location where the deb files get spat out in the container. # You don't need to worry about it. Just chmod +x run.sh \u0026\u0026 ./run.sh and # you'll get yer .deb file in a few minutes. It runs faster after you've used it the first time. docker run -v \"$(pwd)/debs:/debs\" rustscan-builder  Dockerfile\nFROM rust:latest RUN git clone https://github.com/brandonskerritt/RustScan WORKDIR \"/RustScan\" RUN git pull --force RUN cargo install cargo-deb RUN apt update -y \u0026\u0026 apt upgrade -y RUN apt install libc6-dev-i386 -y RUN git clone --depth=1 https://github.com/raspberrypi/tools /raspberrypi-tools ENV PATH=/raspberrypi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/:$PATH ENV CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc RUN mkdir /root/.cargo RUN echo \"[target.arm-unknown-linux-gnueabihf]\"  /root/.cargo/config RUN echo \"strip = { path = \\\"arm-linux-gnueabihf-strip\\\" }\"  /root/.cargo/config RUN echo \"objcopy = { path = \\\"arm-linux-gnueabihf-objcopy\\\" }\"  /root/.cargo/config COPY ./entrypoint.sh /entrypoint.sh RUN chmod +x /entrypoint.sh ENTRYPOINT [\"/entrypoint.sh\"]  Change RUN git clone [https://github.com/brandonskerritt/RustScan](https://github.com/brandonskerritt/RustScan) to the git repository link of your choice.\nChange WORKDIR \"/RustScan to your project’s name.\nThe directory should look like:\n- rustscan-debbuilder / Dockerfile run.sh entrypoint.sh  Now to run this builder:\ncd rustscan-debbuilder chmod +x run.sh ./run.sh  And it will build 3 Debian binaries for you.\nInstallation of .deb files To install .deb files, you can run dpkg -i on the file, or you can double-click the file (on some systems).\nArc The easiest way to distribute for AUR is to use the Cargo package cargo-aur. Cargo-aur automatically builds a PKGBUILD file, which is the file needed by Arch package management tools to install the software.\nThe PKGBUILD file is similar to cargo.toml, or our Homebrew file.\nLet’s open up the file and edit some fields (if we want to).\n# Maintainer: Bee  pkgname=rustscan pkgver=1.4.1 pkgrel=1 pkgdesc=\"Faster Nmap Scanning with Rust\" url=\"https://github.com/brandonskerritt/rustscan\" license=(\"MIT\") arch=(\"x86_64\") provides=(\"rustscan\") options=(\"strip\") source=(\"https://github.com/brandonskerritt/rustscan/releases/download/v$pkgver/rustscan-$pkgver-x86_64.tar.gz\") sha256sums=(\"7bed834f5df925b720316341150df74ac2533cc968de54bb1164c95ea9b65db8\") package() { install -Dm755 rustscan -t \"$pkgdir/usr/bin/\" }  The pkgname is the name of the package. Please see the Arch wiki for guidance on naming conventions.\npkgver is the semantic version of our package. This is automatically taken from cargo.toml.\npkgrel means “this package has updated”. Nothing more to it, but the Arch Wiki explains this concept in more detail.\npkgdesc is the description of our package.\narch is the architecture our package will compile on.\nprovides is an array of packages that the software provides the features are. Packages providing the same item can be installed side-by-side unless one of them has a conflicts array.\noptions per the Arch Wiki:\n This array allows overriding some of the default behavior of makepkg, defined in /etc/makepkg.conf. To set an option, include the name in the array. To disable an option, place an ! before it.\n Personally, I don’t know why this is needed. But it’s an automated generation, so we can’t complain too much.\nsource is the location of the release on GitHub, and sha256sums are the checksums of the package.\nFinally, package() shows Arch how to install our package.\nUploading this package to the AUR  cargo aur built a tarball .tar file. Create a new release on GitHub and attach the.tar` file that was just created.  2. Create an account on the AUR https://aur.archlinux.org/\n Upload your SSH public key to your account.  Check for SSH keys with:\nls -al ~/.ssh  And you’re likely looking for a file like *id_rsa.pub. *\nIf this doesn’t exist, generate a new SSH key with:\n$ ssh-keygen -t rsa -b 4096 -C \"your_email@example.com\"  And follow the on-screen prompts. Or follow this guide if you are still confused.\nNext, go to your account page on the AUR and upload your public SSH key.\n In a new directory, git clone your repo on the AUR.  This is kind of confusing. But say the package name is rustscan (confirm there is no other package on the AUR using your projects name by searching here).\ngit clone ssh://aur@aur.archlinux.org/rustscan.git  I normally clone this in a folder format like:\n- rustscan / - rustscan / # the rust package - rustscan / # the package we have git cloned - homebrew-rustscan /  Make sure to change the name of the package rustscan to the name you want.\n  Copy the PKGBUILD you built in stage 1 into the new Git repo.\n  Run makepkg --printsrcinfo  .SRCINFO in the repo.\n  Your directory should now look like:\n rustscan /  rustscan / # the rust package rustscan / # the package we have git cloned  PKGBUILD .SRCINFO   homebrew-rustscan /      Now push these:\ngit add . git commit -m ‘initial release’ git push\n  And Ta-Da! We now have an Arch Linux AUR package!\nEventually, you may want to clean up the default Rust AUR package for whatever reason. This is the one RustScan uses. Feel free to copy \u0026 change it however you wish:\n# Maintainer: Hao Last_name_emited_for_privacy  pkgname=rustscan _pkgname=RustScan pkgver=1.6.0 pkgrel=1 pkgdesc=\"Faster Nmap Scanning with Rust\" arch=(\"x86_64\" \"i686\") url=\"https://github.com/rustscan/RustScan\" license=(\"GPL3\") provides=('rustscan') conflicts=('rustscan') depends=(\"nmap\") makedepends=(\"cargo\") source=(\"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz\") sha256sums=('a4ebe4b8eda88dd10d52d961578c95b5427cc34b3bf41e5df729a37122c68965') build() { cd ${_pkgname}-${pkgver} cargo build --release --locked --all-features --target-dir=target } package() { cd ${_pkgname}-${pkgver} install -Dm755 target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname} }  Note: someone else made this for RustScan.\n",
+  "wordCount" : "2167",
+  "inLanguage": "en",
+  "datePublished": "2020-08-07T17:35:33Z",
+  "dateModified": "2020-08-07T17:35:33Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/packaging-your-rust-package/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      Packaging Your Rust Code
+    </h1>
+    <div class="post-meta">
+
+August 7, 2020&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>I recently went through the trouble of distributing a Rust package. I wished that there was a simple guide on distributing one package to many platforms, so I wrote this guide.</p>
+<p>Follow me as we publish my package, RustScan, to multiple distributions.</p>
+<h1 id="semantic-versioning">Semantic Versioning<a hidden class="anchor" aria-hidden="true" href="#semantic-versioning">#</a></h1>
+<p>Semantic Versioning is a system defining how to write version numbers. The 3 numbers are:</p>
+<pre><code>Major.Minor.Bugs
+</code></pre>
+<p>If you have fixed some bugs, increment the bugs counter.</p>
+<p>If you have added a minor feature, increment the minor counter.</p>
+<p>If you have done something major, increment the major counter.</p>
+<p>We can signify whether a release is still being rested or not by adding &ldquo;rc&rdquo; (release candidate) to the end of the version. &ldquo;5.0.0rc1&rdquo; signifies &ldquo;release candidate 1&rdquo; which means this is the first public testing release of version 5.0.0.</p>
+<h1 id="cargo">Cargo<a hidden class="anchor" aria-hidden="true" href="#cargo">#</a></h1>
+<p>Cargo is a package registry system for Rust. Imagine it as PyPi (Pip for Python) or NPM (for JavaScript).</p>
+<p>As a rustacean, you may have heard of this – and even used it to download packages yourself. So let&rsquo;s skip right to the good part.</p>
+<p>Before publishing to Cargo, we need to make sure our <code>cargo.toml</code> file has the required information.</p>
+<p>There are 3 things we need:</p>
+<ul>
+<li>Name</li>
+</ul>
+<p>The name of our project.</p>
+<ul>
+<li>Description</li>
+</ul>
+<p>Describe what the project does.</p>
+<ul>
+<li>License</li>
+</ul>
+<p>What license do you use? Specifically, we need to use a license identification code. View the <a href="https://spdx.org/licenses/">Linux Foundation&rsquo;s SPDX</a> website for all the license identification codes.</p>
+<p>However, you will probably want more than these for your package. Some good ones are:</p>
+<ul>
+<li>Readme</li>
+</ul>
+<p>The location of your README file, which is used to fill out the README on the Cargo website.</p>
+<ul>
+<li>Keywords</li>
+</ul>
+<p>This is tags for your project. When a user searches a keyword such as &ldquo;sewing&rdquo;, and your project has that keyword, your project will come up in the search results.</p>
+<p>This is <a href="https://github.com/brandonskerritt/RustScan">RustScan&rsquo;s</a><code>Cargo.toml</code>:</p>
+<pre><code>[package]
+name = &quot;rustscan&quot;
+version = &quot;1.0.1&quot;
+authors = [&quot;Brandon &lt;my_email@skerritt.blog&gt;&quot;]
+edition = &quot;2018&quot;
+description = &quot;Faster Nmap Scanning with Rust&quot;
+homepage = &quot;https://github.com/brandonskerritt/rustscan&quot;
+repository = &quot;https://github.com/brandonskerritt/rustscan&quot;
+license = &quot;MIT&quot;
+keywords = [&quot;port&quot;, &quot;scanning&quot;, &quot;nmap&quot;]
+categories = [&quot;command-line-utilities&quot;]
+readme=&quot;README.md&quot;
+</code></pre>
+<p>For more information on the manifest file, look <a href="https://doc.rust-lang.org/cargo/reference/manifest.html">here</a>:</p>
+<p>Now we&rsquo;re ready to publish! Go to the <a href="https://crates.io/">Crates.io</a> website and register an account. Then, go into the settings and create a new API key.</p>
+<p><img src="https://skerritt.blog/content/images/2020/07/image.png" alt="">
+Now in a terminal, execute <code>cargo login &lt;API_KEY&gt;</code>. You&rsquo;re now logged into Crates.io and can publish!</p>
+<p>Build your Rust package using the release profile, which optimises it at the highest level Rust can provide:</p>
+<pre><code>cargo build --release
+</code></pre>
+<p>And then publish it.</p>
+<pre><code>cargo publish
+</code></pre>
+<p>Ta-da! Your package is now available on the Crates.io website, and can be installed with <code>cargo &lt;your_package_name&gt;</code>.</p>
+<h1 id="homebrew">Homebrew<a hidden class="anchor" aria-hidden="true" href="#homebrew">#</a></h1>
+<p>Homebrew is a package manager used by Mac OS users, but can is also used on Linux.</p>
+<p>Unfortunately, I found the documentation to be lacklustre in explaining how to get a package into Homebrew.</p>
+<p>Let&rsquo;s assume we are using GitHub to store our code.</p>
+<p>Homebrew expects a <code>TAR</code> archive. To get this, we create a new release on GitHub.</p>
+<p>On the GitHub repo&rsquo;s homepage, click &ldquo;Releases&rdquo; on the right hand side menu.
+<img src="https://skerritt.blog/content/images/2020/08/image-1.png" alt="">
+You should be taken to this page. Click &ldquo;Draft a new release&rdquo;.
+<img src="https://skerritt.blog/content/images/2020/08/image-2.png" alt="">
+Now create a new release.
+<img src="https://skerritt.blog/content/images/2020/07/image-3.png" alt="">
+Use semantic versioning to create the Tag Version. Create a new release title, and describe the release.</p>
+<p>A good format for release descriptions is:</p>
+<pre><code># Features
+
+# Maintenance
+
+# Bugs
+</code></pre>
+<p>Similar to the semantic versioning rules. I normally pull these from pull requests, or write them down as I merge commits.</p>
+<p>Once we&rsquo;ve entered some information, click <code>Publish release</code>. We now have a published release of our app!</p>
+<p>Our code is now in <code>.tar.gz</code> format if we look on the releases page again. GitHub does it for us!
+<img src="https://skerritt.blog/content/images/2020/07/image-4.png" alt="">
+Right click **Source code (tar.gz) **and click on &ldquo;get link&rdquo;. Now we have the link to our <code>tar.gz</code> folder.</p>
+<p>Go into a terminal, and type:</p>
+<pre><code>wget &lt;link&gt;
+</code></pre>
+<p>where <code>&lt;link&gt;</code> is replaced by the link you just copied.</p>
+<p>We need the SHA256 Hash of the archive, so let&rsquo;s calculate it:</p>
+<pre><code>shasum -a 256 rustscan.tar.gz
+</code></pre>
+<p>Where <code>rustscan.tar.gz</code> is the file you just downloaded with wget.</p>
+<p><strong>Note down the shasum, this is an important step for later. Also note down the link we used to download it with.</strong></p>
+<h3 id="the-github-repository">The GitHub Repository<a hidden class="anchor" aria-hidden="true" href="#the-github-repository">#</a></h3>
+<p>Homebrew requires a separate GitHub repository for your project. Or you can change the name of your current repository.</p>
+<p>Homebrew calls these <a href="https://docs.brew.sh/Taps">taps</a>. Taps are third party GitHub repositories with specific names and a configuration file.</p>
+<p>Go to GitHub and create a new repository. Naming it:</p>
+<pre><code>homebrew-&lt;project&gt;
+</code></pre>
+<p>Where <!-- raw HTML omitted --> is the name of your project. <strong>Note</strong> it must start with the name &ldquo;homebrew-&quot;.</p>
+<p>In my case, it is:</p>
+<pre><code>homebrew-rustscan
+</code></pre>
+<p><a href="https://github.com/RustScan/homebrew-rustscan">RustScan&rsquo;s HomeBrew Repository. </a></p>
+<p>Now clone your new repo onto your machine:</p>
+<pre><code>git clone homebrew-&lt;project&gt;
+</code></pre>
+<h3 id="creating-the-formula">Creating the formula<a hidden class="anchor" aria-hidden="true" href="#creating-the-formula">#</a></h3>
+<p>Homebrew requires a file called a formula. This is a Ruby file that details your project along with how to install the binary. You <strong>do not</strong> need to know Ruby to create this.</p>
+<p><code>cd</code> into our newly cloned repo, and create the following file structure:</p>
+<pre><code>- Formula/
+    - &lt;project&gt;.rb
+</code></pre>
+<p>In my case:</p>
+<pre><code>- Formula/
+    - rustscan.rb
+</code></pre>
+<p>Capitalise the folder name if it is not already.</p>
+<p>Now copy and paste the following file into your <code>rustscan.rb</code> (or whatever your project is called).</p>
+<pre><code># Documentation: https://docs.brew.sh/Formula-Cookbook
+#                https://rubydoc.brew.sh/Formula
+# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
+class Rustscan &lt; Formula
+  desc &quot;Faster Nmap Scanning with Rust&quot; 
+  homepage &quot;https://github.com/brandonskerritt/rustscan&quot;
+  url &quot;https://github.com/RustScan/RustScan/archive/1.3.tar.gz&quot;
+  sha256 &quot;3bbaf188fa4014a57596c4d4f928b75bdf42c058220424ae46b94f3a36b61f81&quot;
+  version &quot;1.3.0&quot;
+  depends_on &quot;rust&quot; =&gt; :build
+
+  def install
+    system &quot;cargo&quot;, &quot;build&quot;, &quot;--release&quot;, &quot;--bin&quot;, &quot;rustscan&quot;
+    bin.install &quot;target/release/rustscan&quot;
+  end
+end
+</code></pre>
+<p>Change the class name to match the name of your program:</p>
+<pre><code>class Rustscan &lt; Formula
+</code></pre>
+<p>Then add a short description and link the homepage (in my case, the GitHub repo).</p>
+<pre><code>  desc &quot;Faster Nmap Scanning with Rust&quot; 
+  homepage &quot;https://github.com/brandonskerritt/rustscan&quot;
+</code></pre>
+<p>Now we need to fill out the download link and the SHA-256.</p>
+<pre><code>  url &quot;https://github.com/RustScan/RustScan/archive/1.3.tar.gz&quot;
+  sha256 &quot;3bbaf188fa4014a57596c4d4f928b75bdf42c058220424ae46b94f3a36b61f81&quot;
+</code></pre>
+<p>Remember earlier when I told you to write down the link &amp; the shasum? This is exactly where you&rsquo;d place them!</p>
+<p>Now insert your version number, the same one for the whole release:</p>
+<pre><code>version &quot;1.3.0&quot;
+</code></pre>
+<p>Our program relies on Rust to build the binary, we note this down here:</p>
+<pre><code>  depends_on &quot;rust&quot; =&gt; :build
+</code></pre>
+<p>The next step is to detail how to build the binary and install our program. We tell Homebrew to build the binary using <code>cargo build</code>, and then to install it with <code>bin.install</code>.</p>
+<pre><code>  def install
+    system &quot;cargo&quot;, &quot;build&quot;, &quot;--release&quot;, &quot;--bin&quot;, &quot;rustscan&quot;
+    bin.install &quot;target/release/rustscan&quot;
+  end
+</code></pre>
+<p>And just like that, we&rsquo;ve made the formula file.</p>
+<p>Upload this to your <code>homebrew-&lt;project&gt;</code> repository like so:</p>
+<pre><code>git add .
+git commit -m 'First release'
+git push
+</code></pre>
+<h3 id="installing-the-package">Installing the Package<a hidden class="anchor" aria-hidden="true" href="#installing-the-package">#</a></h3>
+<p>Let&rsquo;s install the package to double check everything went well.</p>
+<pre><code>brew tap brandonskerritt/rustscan 
+brew install rustscan
+</code></pre>
+<p>Where <code>brandonskerritt/rustscan</code> is your GitHub username combined with the project&rsquo;s name.</p>
+<p>My username is Brandonskerritt, and the project is called rustscan.</p>
+<p>I created a one command install for my users. which is just the 2 commands combined. You may find this helpful.</p>
+<pre><code>brew tap brandonskerritt/rustscan &amp;&amp; brew install rustscan
+</code></pre>
+<h2 id="debian">Debian<a hidden class="anchor" aria-hidden="true" href="#debian">#</a></h2>
+<p>The easiest way to create Debian binaries is to use the crate <code>cargo-deb</code>. <a href="https://crates.io/crates/cargo-deb">Cargo-deb</a> is installed</p>
+<pre><code>cargo install cargo-deb
+</code></pre>
+<p>Once it is installed, run the command:</p>
+<pre><code>cargo-deb
+</code></pre>
+<p>And we now have a <code>.deb</code> file for our project on our system architecture.</p>
+<p>But what if we wanted to package for other architectures?</p>
+<p>Luckily I&rsquo;ve created a (albeit badly made) Docker script to package for other architectures.</p>
+<p>The script packages the project for:</p>
+<ul>
+<li>Amd64</li>
+<li>Arm64</li>
+<li>i386</li>
+</ul>
+<p>It requires some editing (as it was made for RustScan), but once done it will automatically package your script for you.</p>
+<p>Create a separate folder in your main project&rsquo;s repo, such as <code>rustscan-debbuilder</code>.</p>
+<p>Then place these 3 files in there:</p>
+<p><strong>entrypoint.sh</strong></p>
+<pre><code>#!/bin/bash
+
+cd /RustScan
+git pull --force
+
+#amd64
+cargo deb
+
+#arm64
+rustup target add arm-unknown-linux-gnueabihf
+cargo deb --target=arm-unknown-linux-gnueabihf
+
+#i386
+rustup target add i686-unknown-linux-gnu
+cargo deb --target=i686-unknown-linux-gnu
+
+find target/ -name \*.deb -exec cp {} /debs \;
+</code></pre>
+<p>Change <code>cd /RustScan</code> to your project name.</p>
+<p><strong>run.sh</strong></p>
+<pre><code>#!/bin/bash
+docker build -t rustscan-builder . || exit
+
+# This creates a volume which binds your currentdirectory/debs to 
+# the location where the deb files get spat out in the container.
+# You don't need to worry about it. Just chmod +x run.sh &amp;&amp; ./run.sh and
+# you'll get yer .deb file in a few minutes. It runs faster after you've used it the first time.
+docker run -v &quot;$(pwd)/debs:/debs&quot; rustscan-builder
+</code></pre>
+<p><strong>Dockerfile</strong></p>
+<pre><code>FROM rust:latest
+
+RUN git clone https://github.com/brandonskerritt/RustScan
+WORKDIR &quot;/RustScan&quot;
+RUN git pull --force
+RUN cargo install cargo-deb
+
+RUN apt update -y &amp;&amp; apt upgrade -y
+RUN apt install libc6-dev-i386 -y
+RUN git clone --depth=1 https://github.com/raspberrypi/tools /raspberrypi-tools
+ENV PATH=/raspberrypi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/:$PATH
+ENV CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
+RUN mkdir /root/.cargo
+RUN echo &quot;[target.arm-unknown-linux-gnueabihf]&quot; &gt;&gt; /root/.cargo/config
+RUN echo &quot;strip = { path = \&quot;arm-linux-gnueabihf-strip\&quot; }&quot; &gt;&gt; /root/.cargo/config
+RUN echo &quot;objcopy = { path = \&quot;arm-linux-gnueabihf-objcopy\&quot; }&quot; &gt;&gt; /root/.cargo/config
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [&quot;/entrypoint.sh&quot;]
+</code></pre>
+<p>Change <code>RUN git clone [https://github.com/brandonskerritt/RustScan](https://github.com/brandonskerritt/RustScan)</code> to the git repository link of your choice.</p>
+<p>Change <code>WORKDIR &quot;/RustScan</code> to your project&rsquo;s name.</p>
+<p>The directory should look like:</p>
+<pre><code>- rustscan-debbuilder /
+    Dockerfile
+    run.sh
+    entrypoint.sh
+</code></pre>
+<p>Now to run this builder:</p>
+<pre><code>cd rustscan-debbuilder
+chmod +x run.sh
+./run.sh
+</code></pre>
+<p>And it will build 3 Debian binaries for you.</p>
+<h3 id="installation-of-deb-files">Installation of .deb files<a hidden class="anchor" aria-hidden="true" href="#installation-of-deb-files">#</a></h3>
+<p>To install <code>.deb</code> files, you can run <code>dpkg -i</code> on the file, or you can double-click the file (on some systems).</p>
+<h1 id="arc">Arc<a hidden class="anchor" aria-hidden="true" href="#arc">#</a></h1>
+<p>The easiest way to distribute for AUR is to use the <a href="https://github.com/fosskers/cargo-aur">Cargo package</a> <code>cargo-aur</code>.
+Cargo-aur automatically builds a PKGBUILD file, which is the file needed by Arch package management tools to install the software.</p>
+<p>The PKGBUILD file is similar to <code>cargo.toml</code>, or our Homebrew file.</p>
+<p>Let&rsquo;s open up the file and edit some fields (if we want to).</p>
+<pre><code># Maintainer: Bee &lt;bee@fake.com&gt;
+pkgname=rustscan
+pkgver=1.4.1
+pkgrel=1
+pkgdesc=&quot;Faster Nmap Scanning with Rust&quot;
+url=&quot;https://github.com/brandonskerritt/rustscan&quot;
+license=(&quot;MIT&quot;)
+arch=(&quot;x86_64&quot;)
+provides=(&quot;rustscan&quot;)
+options=(&quot;strip&quot;)
+source=(&quot;https://github.com/brandonskerritt/rustscan/releases/download/v$pkgver/rustscan-$pkgver-x86_64.tar.gz&quot;)
+sha256sums=(&quot;7bed834f5df925b720316341150df74ac2533cc968de54bb1164c95ea9b65db8&quot;)
+
+package() {
+    install -Dm755 rustscan -t &quot;$pkgdir/usr/bin/&quot;
+}
+</code></pre>
+<p>The <code>pkgname</code> is the name of the package. Please see the <a href="https://wiki.archlinux.org/index.php/Arch_package_guidelines#Package_naming">Arch wiki</a> for guidance on naming conventions.</p>
+<p><code>pkgver</code> is the semantic version of our package. This is automatically taken from <code>cargo.toml</code>.</p>
+<p><code>pkgrel</code> means &ldquo;this package has updated&rdquo;. Nothing more to it, but the <a href="https://wiki.archlinux.org/index.php/PKGBUILD#pkgrel">Arch Wiki explains</a> this concept in more detail.</p>
+<p><code>pkgdesc</code> is the description of our package.</p>
+<p><code>arch</code> is the architecture our package will compile on.</p>
+<p><code>provides</code> is an array of packages that the software provides the features are. Packages providing the same item can be installed side-by-side unless one of them has a conflicts array.</p>
+<p><code>options</code> per the <a href="https://wiki.archlinux.org/index.php/PKGBUILD#pkgrel">Arch Wiki</a>:</p>
+<blockquote>
+<p>This array allows overriding some of the default behavior of <em>makepkg</em>, defined in <code>/etc/makepkg.conf</code>. To set an option, include the name in the array. To disable an option, place an <strong><code>!</code></strong> before it.</p>
+</blockquote>
+<p>Personally, I don&rsquo;t know why this is needed. But it&rsquo;s an automated generation, so we can&rsquo;t complain too much.</p>
+<p><code>source</code> is the location of the release on GitHub, and <code>sha256sums</code> are the checksums of the package.</p>
+<p>Finally, <code>package()</code> shows Arch how to install our package.</p>
+<h2 id="uploading-this-package-to-the-aur">Uploading this package to the AUR<a hidden class="anchor" aria-hidden="true" href="#uploading-this-package-to-the-aur">#</a></h2>
+<ol>
+<li><code>cargo aur</code> built a tarball <code>.tar</code> file. Create a new <code>release on GitHub and attach the</code>.tar` file that was just created.</li>
+</ol>
+<p><img src="https://skerritt.blog/content/images/2020/08/image.png" alt="">
+2. Create an account on the AUR <a href="https://aur.archlinux.org/">https://aur.archlinux.org/</a></p>
+<ol>
+<li>Upload your SSH public key to your account.</li>
+</ol>
+<p>Check for SSH keys with:</p>
+<pre><code>ls -al ~/.ssh
+</code></pre>
+<p>And you&rsquo;re likely looking for a file like *<code>id_rsa.pub</code>. *</p>
+<p>If this doesn&rsquo;t exist, generate a new SSH key with:</p>
+<pre><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>And follow the on-screen prompts. Or follow this <a href="https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">guide</a> if you are still confused.</p>
+<p>Next, go to your account page on the AUR and upload your public SSH key.</p>
+<ol>
+<li>In a new directory, git clone your repo on the AUR.</li>
+</ol>
+<p>This is kind of confusing. But say the package name is <code>rustscan</code> (confirm there is no other package on the AUR using your projects name by <a href="https://aur.archlinux.org/">searching here</a>).</p>
+<pre><code>git clone ssh://aur@aur.archlinux.org/rustscan.git
+</code></pre>
+<p>I normally clone this in a folder format like:</p>
+<pre><code>- rustscan /
+    - rustscan / # the rust package
+    - rustscan / # the package we have git cloned
+    - homebrew-rustscan /
+</code></pre>
+<p>Make sure to change the name of the package <code>rustscan</code> to the name you want.</p>
+<ol>
+<li>
+<p>Copy the PKGBUILD you built in stage 1 into the new Git repo.</p>
+</li>
+<li>
+<p>Run <code>makepkg --printsrcinfo &gt; .SRCINFO</code> in the repo.</p>
+</li>
+<li>
+<p>Your directory should now look like:</p>
+<ul>
+<li>rustscan /
+<ul>
+<li>rustscan / # the rust package</li>
+<li>rustscan / # the package we have git cloned
+<ul>
+<li>PKGBUILD</li>
+<li>.SRCINFO</li>
+</ul>
+</li>
+<li>homebrew-rustscan /</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Now push these:</p>
+<p>git add .
+git commit -m &lsquo;initial release&rsquo;
+git push</p>
+</li>
+</ol>
+<p>And Ta-Da! We now have an Arch Linux AUR package!</p>
+<p>Eventually, you may want to clean up the default Rust AUR package for whatever reason. This is the one RustScan uses. Feel free to copy &amp; change it however you wish:</p>
+<pre><code># Maintainer: Hao Last_name_emited_for_privacy &lt;email_emited_for_privacy&gt;
+
+pkgname=rustscan
+_pkgname=RustScan
+pkgver=1.6.0
+pkgrel=1
+pkgdesc=&quot;Faster Nmap Scanning with Rust&quot;
+arch=(&quot;x86_64&quot; &quot;i686&quot;)
+url=&quot;https://github.com/rustscan/RustScan&quot;
+license=(&quot;GPL3&quot;)
+provides=('rustscan')
+conflicts=('rustscan')
+depends=(&quot;nmap&quot;)
+makedepends=(&quot;cargo&quot;)
+source=(&quot;${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz&quot;)
+sha256sums=('a4ebe4b8eda88dd10d52d961578c95b5427cc34b3bf41e5df729a37122c68965')
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  cargo build --release --locked --all-features --target-dir=target
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  install -Dm755 target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+}
+</code></pre>
+<p>Note: someone else made this for RustScan.</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/rust/">Rust</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Packaging Your Rust Code on twitter"
+        href="https://twitter.com/intent/tweet/?text=Packaging%20Your%20Rust%20Code&amp;url=https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f&amp;hashtags=Rust">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Packaging Your Rust Code on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f&amp;title=Packaging%20Your%20Rust%20Code&amp;summary=Packaging%20Your%20Rust%20Code&amp;source=https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Packaging Your Rust Code on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f&title=Packaging%20Your%20Rust%20Code">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Packaging Your Rust Code on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Packaging Your Rust Code on whatsapp"
+        href="https://api.whatsapp.com/send?text=Packaging%20Your%20Rust%20Code%20-%20https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Packaging Your Rust Code on telegram"
+        href="https://telegram.me/share/url?text=Packaging%20Your%20Rust%20Code&amp;url=https%3a%2f%2fpolymath.cloud%2fpackaging-your-rust-package%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

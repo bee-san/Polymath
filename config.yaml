@@ -27,6 +27,9 @@ permalinks:
 custom_css:
   - "css/custom.css"
 
+markup.goldmark.rendere:
+  - unsafe: true
+
 outputs:
     home:
         - HTML

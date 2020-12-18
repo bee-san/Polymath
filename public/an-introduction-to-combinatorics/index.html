@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>An Introduction to Combinatorics | Polymath.cloud</title>
+
+<meta name="keywords" content="University, Computer Science" />
+<meta name="description" content="Please consider the following problems:
+ How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers? In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces? How many ways are there of rearranging the letters in the word “ABRACADABRA”?">
+<meta name="author" content="Bee">
+<link rel="canonical" href="https://polymath.cloud/an-introduction-to-combinatorics/" />
+<link href="https://polymath.cloud/assets/css/stylesheet.min.94a69f3d0b70cac76c6d6f7dfecc9f91f2319ec73d54be960b0d3624fa5a25e2.css" integrity="sha256-lKafPQtwysdsbW99/syfkfIxnsc9VL6WCw02JPpaJeI=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://polymath.cloud/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://polymath.cloud/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://polymath.cloud/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://polymath.cloud/apple-touch-icon.png">
+<link rel="mask-icon" href="https://polymath.cloud/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #009879;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
+<meta property="og:title" content="An Introduction to Combinatorics" />
+<meta property="og:description" content="Please consider the following problems:
+ How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers? In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces? How many ways are there of rearranging the letters in the word “ABRACADABRA”?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://polymath.cloud/an-introduction-to-combinatorics/" />
+<meta property="article:published_time" content="2019-01-26T15:16:12+00:00" />
+<meta property="article:modified_time" content="2019-01-26T15:16:12+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="An Introduction to Combinatorics"/>
+<meta name="twitter:description" content="Please consider the following problems:
+ How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers? In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces? How many ways are there of rearranging the letters in the word “ABRACADABRA”?"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "An Introduction to Combinatorics",
+  "name": "An Introduction to Combinatorics",
+  "description": "Please consider the following problems:\n How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls …",
+  "keywords": [
+    "University", "Computer Science"
+  ],
+  "articleBody": "Please consider the following problems:\n How many possible sudoku puzzles are there? Do 37 Londoners exist with the same number of hairs on their head? In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers? In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces? How many ways are there of rearranging the letters in the word “ABRACADABRA”?  What do you notice about these problems?\nFirst of all, unlike many mathematical problems that involve much abstract and technical language, they’re all easy to understand — even though some of them turn out to be frustratingly difficult to solve. This is one of the main delights of the subject.\nSecondly, although these problems may appear diverse and unrelated, they mainly involve selecting, arranging, and counting objects of various types. In particular, many of them have the forms. Does such-and-such exist? If so, how can we construct it, and how many of them are there? And which one is the ‘best’?\nThe subject of combinatorial analysis or combinatorics (pronounced com-bin-a-tor-ics) is concerned with such questions. We may loosely describe it as the branch of mathematics concerned with selecting, arranging, constructing, classifying, and counting or listing things.\nThis is really important, so make sure to memorise it: Permutations are ordered combinations. We don’t care about the order of combinations. If you have a locker number, 4457, you care about the order because 5474 wouldn’t work.\nProduct Rule If there is a sequence of K events with n1 … nk possible outcomes, then the total number of outcomes for the sequence of K events is n1 x n2 x … nk\nIt will be best to show this through an example.\nExample 1 In Kent, license plates are made up of two letters followed by 3 digits. How many possible license plates are there?\nWell, the first letter has 26 possible letters and so does the second letter. The first digit has 10 possible choices for the first digit, 10 for the second and 10 for the third.\nTherefore there is a total combination of: 26² * 10³ = 676,000\nDisjoint Events Two events are said to be disjoint if they cannot happen at the same time.\nThe Sum Rule If A and B are disjoint events and there are N possible outcomes for A and X possible outcomes for B then there are N + X possible outcomes for the event “Either A or B”\nExample 1 How many 3 digit numbers begin with 3 or 2? It’s best to get used to this notation. {0..9} means 0 through to 9, which is 10 numbers. Anyway, back to the question.\nWe represent the first number, starting with a 3 as\n3{0..9}{0..9}\nSo there is 1 * 10 * 10 for the first possible number.\nFor the second number starting with a 2, it is:\n2{0..9}{0..9}\nWhich is 1 * 10 * 10 for the second possible number.\nThen to find out how many 3 digit numbers begin with a 3 or 2 we do\n(10 * 10) + (10*10) = 100 + 100 = 200 possible 3 digit numbers.\nExample 2 I want to take two pieces of fruit with me for lunch. I have three bananas, four apples and two pears. How many ways can I select two pieces of fruit of different types?\nWe can split this question up into three parts:\nBanana or Pear = 3 * 2 = 6 Banana or Apple = 3 * 4 = 12 Apple or Pear = 4 * 2 = 8\nNote: Banana or pear = 3 * 2 is because there are 3 bananas and 2 pears.\nthen we just add them all together 6 + 12 + 8 = 26\nSet-Theoretic Interpretation If A and B are disjoint events (that is, the union of A and B is equal to the empty set) then A∪B = A + B\nA computer password is a string of 8 charecters where each charecter is an uppercase or digit. Each password must contain at least one digit. How many different passwords are there?\nSo there are 8 charecters _ _ _ _ _ _ _ _\nAnd each one is either an uppercase character or digit. We will make a variable to shorten it. X = {A..Z or 0..9} So there is 26 uppercase letters and 10 digits and we want to know what |{A..Z or 0..9}| is so using the above formula we could just do |A| + |B| which is just 26 + 10 = 36 possible outcomes for every charecter in the password.\nBut, there is a problem. There exists passwords which do not have numbers in them, at all. Becuase of this, we need to take them out of the data set.\nSo, there are 36⁸ possible password permutations. We know the alphabet is 26 letters long, so therefore there must be 26⁸ passwords which only contain letters (pigeon hole principle). Now we need to take away.\n36⁸ — 26⁸ = 2612282842880.\nHacking Apple’s Passwords A more fun and useful problem. Apple’s default password settings are one character has to be upper case, there has to be numbers and it has to be at least 7 characters long.\nThat means there is 26 * 2 possibilities for any given character in the password, so 52 possible outcomes and then add 10 as it could be a digit, 62⁷ = 3521614606208\nBut we can guess some things. Firstly, the typical user will have a capital letter at the start of their password and most often they will only use lowercase after that. The lowercase charecters will consist of {a..b or 0..9} as it has to include a number somewhere.\n{A..B}xxxxxx\nSo that’s 26 + 10 = 36, therefore the password is now 26¹ * 36⁶ = 56596340736 since the first charecter is an uppercase letter.\nButtt we can guess more information. The user’s password will start with a capital letter, contain only lower-case letters in it and end with a number. Do you have a password like this?Well, after this you might want to change it…\nSo, the format is:\n{A..B}xxxxx{0..9}\nWhere x = {a..b}\nOkay, so work this out one at a time.\n26¹ * 26⁵ * 10¹ = 3089157760.\nThe possibilities of passwords decreased by 300% by knowing some simple things about their password.\nBut wait, we can guess some more.\nThe password will likely be a word, followed by a number.\nAccording to this there are 15,000 words that are 6 letters long.\nWe know that the first letter will be a capital letter, snd we know that it ends with a number.\n{A..Z{(5 letters here to make the world}{0..9}\nSo we know that the first section will be 15,000 and then it’s followed by a random number, 0 to 9. So we have 15,000 + 10 = 15010\nA lot less than what was originally guessed. Knowing some basic information about a user, you can cut down the time it takes to hack their password by 3/4ths.\nCombinations Formula The combinations formula is used to find out how many combinations are possible. The formula is: Let’s say we have a deck of playing cards (52) and we want to find out how many different hands you can make when you pull out 5 cards, how would we work that out?\nIn this problem the order is irrelevant since it doesn’t matter what order we select the cards.\nWell, a typical hand might look like: 5 of Spades, 6 of Clubs, King of Hearts, Queen of Diamonds. and another typical hand might look like: 6 of Clubs, 5 of Spades, King of Hearts, Queen of Diamonds.\nThe order doesn’t matter here. And that’s how we work it out, using combinations. By diving by the number of hands that are different permutations but the same combination, aka how many different ways there are to arrange 5 cards.\nExample 2 Consider the problem of choosing 5 members from a group of 12 to work on a special project. How many distinct five-person teams can be chosen?\nThe number of 5-person teams is the same as the number of subsets of 5-combinations size that can be chosen from the set of twelve. So we would use the combinations formula for this:\nAnd simplifying this (by simply expanding the factorials and dividing the numbers by hand) we get 11 * 9 * 8 which is 792.\nThe subtraction rule is really simple. If given 2 sets, A and B and they share common outcomes between them then the total number of outcomes is A + B — (A intersection B)\nTeams that contain both or neither Suppose two members of the group of 12 insist on working as a pair — any team must contain either both or neither. How many five-person teams can be formed?\nCall the two members of the group that insist on working as a pair A and B. Then any team formed must contain both A and B or neither A nor B.\nBecause a team that contains both A and B contains exactly three other people from the remaining ten in the group, there are as many such teams as there are subsets of three people that can be chosen from the remaining ten.\nBy the combinations formula we get\nWhich is 120.\nBecause a team that contains neither A nor B contains exactly five from the other remaining ten, there are as many such teams as there are subsets of five people that can be chosen from the remaining ten. By the combination therom again there is\nWhich is 252.\nBecause the set of teams that contain both A and B is disjoint from the set of teams that contain neither A nor B, by the addition rule:\nNumber of teams containing both A and B or neither A nor B = Number of teams containing A and B + Number of teams containing neither A nor B which in maths is 120 + 252 = 372.\nK-permutations If you a selection of K distinct elements of a set, where order matters then you would use this formula:\nExample question How many ways are there to select 3 students for a prospectus photograph (order matters) from a group of 5?\nP(5, 3) = 5! / 2! = 60 Note: (5, 3) notes that you want to select 3 students from a set of 5.\nFurther reading Combinations vs Permutations *We throw around the term “combination” loosely, and usually in the wrong way. We say things like, “Hey, what’s your…*medium.com\n",
+  "wordCount" : "1780",
+  "inLanguage": "en",
+  "datePublished": "2019-01-26T15:16:12Z",
+  "dateModified": "2019-01-26T15:16:12Z",
+  "author":{
+    "@type": "Person",
+    "name": "Bee"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://polymath.cloud/an-introduction-to-combinatorics/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Polymath.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://polymath.cloud/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+</head>
+
+<body class="">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        .theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://polymath.cloud" accesskey="h">Polymath.cloud</a>
+            <span class="logo-switches">
+                <span class="theme-toggle">
+                    <a id="theme-toggle" accesskey="t">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </a>
+                </span>
+                
+            </span>
+        </div>
+        <ul class="menu" id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://polymath.cloud/archives" title="Archive">
+                    <span>
+                        Archive
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/search/" title="Search">
+                    <span>
+                        Search
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://polymath.cloud/tags/" title="Tags">
+                    <span>
+                        Tags
+                    </span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      An Introduction to Combinatorics
+    </h1>
+    <div class="post-meta">
+
+January 26, 2019&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Bee
+
+    </div>
+  </header> 
+
+  <div class="post-content">
+<p>Please consider the following problems:</p>
+<ul>
+<li>How many possible sudoku puzzles are there?</li>
+<li>Do 37 Londoners exist with the same number of hairs on their head?</li>
+<li>In a lottery where 6 balls are selected from 49, how often do two winning balls have consecutive numbers?</li>
+<li>In how many ways can we give change for £1 using only 10p, 20p, and 50p pieces?</li>
+<li>How many ways are there of rearranging the letters in the word “ABRACADABRA”?</li>
+</ul>
+<p>What do you notice about these problems?</p>
+<p>First of all, unlike many mathematical problems that involve much abstract and technical language, they’re all easy to understand — even though some of them turn out to be frustratingly difficult to solve. This is one of the main delights of the subject.</p>
+<p>Secondly, although these problems may appear diverse and unrelated, they mainly involve selecting, arranging, and counting objects of various types. In particular, many of them have the forms. Does such-and-such exist? If so, how can we construct it, and how many of them are there? And which one is the ‘best’?</p>
+<p>The subject of combinatorial analysis or combinatorics (pronounced com-bin-a-tor-ics) is concerned with such questions. We may loosely describe it as the branch of mathematics concerned with selecting, arranging, constructing, classifying, and counting or listing things.</p>
+<p>This is really important, so make sure to memorise it: Permutations are <strong>ordered</strong> combinations. We don’t care about the order of combinations. If you have a locker number, 4457, you care about the order because 5474 wouldn’t work.</p>
+<h3 id="product-rule">Product Rule<a hidden class="anchor" aria-hidden="true" href="#product-rule">#</a></h3>
+<p>If there is a sequence of K events with n1 … nk possible outcomes, then the total number of outcomes for the sequence of K events is n1 x n2 x … nk</p>
+<p>It will be best to show this through an example.</p>
+<h3 id="example-1">Example 1<a hidden class="anchor" aria-hidden="true" href="#example-1">#</a></h3>
+<p>In Kent, license plates are made up of two letters followed by 3 digits. How many possible license plates are there?</p>
+<p>Well, the first letter has 26 possible letters and so does the second letter. The first digit has 10 possible choices for the first digit, 10 for the second and 10 for the third.</p>
+<p>Therefore there is a total combination of: 26² * 10³ = 676,000</p>
+<h3 id="disjoint-events">Disjoint Events<a hidden class="anchor" aria-hidden="true" href="#disjoint-events">#</a></h3>
+<p>Two events are said to be disjoint if they cannot happen at the same time.</p>
+<h3 id="the-sum-rule">The Sum Rule<a hidden class="anchor" aria-hidden="true" href="#the-sum-rule">#</a></h3>
+<p>If A and B are disjoint events and there are N possible outcomes for A and X possible outcomes for B then there are N + X possible outcomes for the event “<strong>Either</strong> A or B”</p>
+<h3 id="example-1-1">Example 1<a hidden class="anchor" aria-hidden="true" href="#example-1-1">#</a></h3>
+<p>How many 3 digit numbers begin with 3 or 2? It’s best to get used to this notation. {0..9} means 0 through to 9, which is 10 numbers. Anyway, back to the question.</p>
+<p>We represent the first number, starting with a 3 as</p>
+<p>3{0..9}{0..9}</p>
+<p>So there is 1 * 10 * 10 for the first possible number.</p>
+<p>For the second number starting with a 2, it is:</p>
+<p>2{0..9}{0..9}</p>
+<p>Which is 1 * 10 * 10 for the second possible number.</p>
+<p>Then to find out how many 3 digit numbers begin with a 3 or 2 we do</p>
+<p>(10 * 10) + (10*10) = 100 + 100 = 200 possible 3 digit numbers.</p>
+<h3 id="example-2">Example 2<a hidden class="anchor" aria-hidden="true" href="#example-2">#</a></h3>
+<p>I want to take two pieces of fruit with me for lunch. I have three bananas, four apples and two pears. How many ways can I select two pieces of fruit of different types?</p>
+<p>We can split this question up into three parts:</p>
+<p>Banana or Pear = 3 * 2 = 6 Banana or Apple = 3 * 4 = 12 Apple or Pear = 4 * 2 = 8</p>
+<p>Note: Banana or pear = 3 * 2 is because there are 3 bananas and 2 pears.</p>
+<p>then we just add them all together 6 + 12 + 8 = 26</p>
+<h3 id="set-theoretic-interpretation">Set-Theoretic Interpretation<a hidden class="anchor" aria-hidden="true" href="#set-theoretic-interpretation">#</a></h3>
+<p>If A and B are disjoint events (that is, the union of A and B is equal to the empty set) then A∪B = A + B</p>
+<p>A computer password is a string of 8 charecters where each charecter is an uppercase or digit. Each password must contain at least one digit. How many different passwords are there?</p>
+<p>So there are 8 charecters <code>_ _ _ _ _ _ _ _</code></p>
+<p>And each one is either an uppercase character or digit. We will make a variable to shorten it. X = {A..Z or 0..9} So there is 26 uppercase letters and 10 digits and we want to know what |{A..Z or 0..9}| is so using the above formula we could just do |A| + |B| which is just 26 + 10 = 36 possible outcomes for every charecter in the password.</p>
+<p>But, there is a problem. There exists passwords which do not have numbers in them, at all. Becuase of this, we need to take them out of the data set.</p>
+<p>So, there are 36⁸ possible password permutations. We know the alphabet is 26 letters long, so therefore there must be 26⁸ passwords which only contain letters (pigeon hole principle). Now we need to take away.</p>
+<p>36⁸ — 26⁸ = 2612282842880.</p>
+<h3 id="hacking-apples-passwords">Hacking Apple’s Passwords<a hidden class="anchor" aria-hidden="true" href="#hacking-apples-passwords">#</a></h3>
+<p>A more fun and useful problem. Apple’s default password settings are one character has to be upper case, there has to be numbers and it has to be at least 7 characters long.</p>
+<p>That means there is 26 * 2 possibilities for any given character in the password, so 52 possible outcomes and then add 10 as it could be a digit, 62⁷ = 3521614606208</p>
+<p>But we can guess some things. Firstly, the typical user will have a capital letter at the start of their password and most often they will only use lowercase after that. The lowercase charecters will consist of {a..b or 0..9} as it has to include a number somewhere.</p>
+<p>{A..B}xxxxxx</p>
+<p>So that’s 26 + 10 = 36, therefore the password is now 26¹ * 36⁶ = 56596340736 since the first charecter is an uppercase letter.</p>
+<p>Buttt we can guess more information. The user’s password will start with a capital letter, contain only lower-case letters in it and end with a number. Do you have a password like this?Well, after this you might want to change it…</p>
+<p>So, the format is:</p>
+<p>{A..B}xxxxx{0..9}</p>
+<p>Where x = {a..b}</p>
+<p>Okay, so work this out one at a time.</p>
+<p>26¹ * 26⁵ * 10¹ = 3089157760.</p>
+<p>The possibilities of passwords decreased by 300% by knowing some simple things about their password.</p>
+<p>But wait, we can guess some more.</p>
+<p>The password will likely be a word, followed by a number.</p>
+<p>According to <a href="https://brandonskerritt.github.io/maths/An-Introduction-To-Combinatronics/wordfinder.yourdictionary.com/letter-words/6">this</a> there are 15,000 words that are 6 letters long.</p>
+<p>We know that the first letter will be a capital letter, snd we know that it ends with a number.</p>
+<p>{A..Z{(5 letters here to make the world}{0..9}</p>
+<p>So we know that the first section will be 15,000 and then it’s followed by a random number, 0 to 9. So we have 15,000 + 10 = 15010</p>
+<p>A lot less than what was originally guessed. Knowing some basic information about a user, you can cut down the time it takes to hack their password by 3/4ths.</p>
+<h3 id="combinations-formula">Combinations Formula<a hidden class="anchor" aria-hidden="true" href="#combinations-formula">#</a></h3>
+<p>The combinations formula is used to find out how many combinations are possible. The formula is:
+<img src="https://cdn-images-1.medium.com/max/800/0*Mrnh0TwGqLIjaS4J.png" alt="">
+Let’s say we have a deck of playing cards (52) and we want to find out how many different hands you can make when you pull out 5 cards, how would we work that out?</p>
+<p>In this problem the order is irrelevant since it doesn’t matter what order we select the cards.</p>
+<p>Well, a typical hand might look like: 5 of Spades, 6 of Clubs, King of Hearts, Queen of Diamonds. and another typical hand might look like: 6 of Clubs, 5 of Spades, King of Hearts, Queen of Diamonds.</p>
+<p>The order doesn’t matter here.
+<img src="https://cdn-images-1.medium.com/max/800/0*Gd9rYPiTw-Vbepzf.png" alt="">
+And that’s how we work it out, using combinations. By diving by the number of hands that are different permutations but the same combination, aka how many different ways there are to arrange 5 cards.</p>
+<h3 id="example-2-1">Example 2<a hidden class="anchor" aria-hidden="true" href="#example-2-1">#</a></h3>
+<p>Consider the problem of choosing 5 members from a group of 12 to work on a special project. How many distinct five-person teams can be chosen?</p>
+<p>The number of 5-person teams is the same as the number of subsets of 5-combinations size that can be chosen from the set of twelve. So we would use the combinations formula for this:</p>
+<p>And simplifying this (by simply expanding the factorials and dividing the numbers by hand) we get 11 * 9 * 8 which is 792.</p>
+<p>The subtraction rule is really simple. If given 2 sets, A and B and they share common outcomes between them then the total number of outcomes is A + B — (A intersection B)</p>
+<h3 id="teams-that-contain-both-or-neither">Teams that contain both or neither<a hidden class="anchor" aria-hidden="true" href="#teams-that-contain-both-or-neither">#</a></h3>
+<p>Suppose two members of the group of 12 insist on working as a pair — any team must contain either both or neither. How many five-person teams can be formed?</p>
+<p>Call the two members of the group that insist on working as a pair A and B. Then any team formed must contain both A and B or neither A nor B.</p>
+<p>Because a team that contains both A and B contains exactly three other people from the remaining ten in the group, there are as many such teams as there are subsets of three people that can be chosen from the remaining ten.</p>
+<p>By the combinations formula we get</p>
+<p>Which is 120.</p>
+<p>Because a team that contains neither A nor B contains exactly five from the other remaining ten, there are as many such teams as there are subsets of five people that can be chosen from the remaining ten. By the combination therom again there is</p>
+<p>Which is 252.</p>
+<p>Because the set of teams that contain both A and B is disjoint from the set of teams that contain neither A nor B, by the addition rule:</p>
+<p>Number of teams containing both A and B or neither A nor B = Number of teams containing A and B + Number of teams containing neither A nor B which in maths is 120 + 252 = 372.</p>
+<h3 id="k-permutations">K-permutations<a hidden class="anchor" aria-hidden="true" href="#k-permutations">#</a></h3>
+<p>If you a selection of K distinct elements of a set, where order matters then you would use this formula:</p>
+<h3 id="example-question">Example question<a hidden class="anchor" aria-hidden="true" href="#example-question">#</a></h3>
+<p>How many ways are there to select 3 students for a prospectus photograph (order matters) from a group of 5?</p>
+<p>P(5, 3) = 5! / 2! = 60 Note: (5, 3) notes that you want to select 3 students from a set of 5.</p>
+<h4 id="further-reading">Further reading<a hidden class="anchor" aria-hidden="true" href="#further-reading">#</a></h4>
+<p><a href="https://medium.com/i-math/combinations-permutations-fa7ac680f0ac"><strong>Combinations vs Permutations</strong></a>
+<a href="https://medium.com/i-math/combinations-permutations-fa7ac680f0ac">*We throw around the term “combination” loosely, and usually in the wrong way. We say things like, “Hey, what’s your…*medium.com</a></p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://polymath.cloud/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://polymath.cloud/tags/university/">University</a></li>
+    </ul>
+
+
+
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share An Introduction to Combinatorics on twitter"
+        href="https://twitter.com/intent/tweet/?text=An%20Introduction%20to%20Combinatorics&amp;url=https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f&amp;hashtags=University%2cComputerScience">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share An Introduction to Combinatorics on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f&amp;title=An%20Introduction%20to%20Combinatorics&amp;summary=An%20Introduction%20to%20Combinatorics&amp;source=https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share An Introduction to Combinatorics on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f&title=An%20Introduction%20to%20Combinatorics">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share An Introduction to Combinatorics on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share An Introduction to Combinatorics on whatsapp"
+        href="https://api.whatsapp.com/send?text=An%20Introduction%20to%20Combinatorics%20-%20https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share An Introduction to Combinatorics on telegram"
+        href="https://telegram.me/share/url?text=An%20Introduction%20to%20Combinatorics&amp;url=https%3a%2f%2fpolymath.cloud%2fan-introduction-to-combinatorics%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2020 <a href="https://polymath.cloud">Polymath.cloud</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<button class="top-link" id="top-link" type="button" aria-label="go to top" title="Go to Top" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <path d="M12 6H0l6-6z" /></svg>
+</button>
+
+
+
+<script defer src="https://polymath.cloud/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+    mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash = ''
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>
