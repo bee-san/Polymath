@@ -6,8 +6,7 @@ draft: false
 socialImage: /media/p2p.jpg
 ShowToc: true
 tags:
-  - "Computer Science"
-  - "Datastructures and Algorithms"
+  - "Open Source Software"
 ---
 
 # Introduction
