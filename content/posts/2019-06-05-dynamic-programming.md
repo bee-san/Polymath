@@ -531,7 +531,6 @@ We have 2 variables, so our array is 2-dimensional. The first dimension is from 
 
 And we want a weight of 7 with maximum benefit.
 
-{{ rawhtml }}
 <table>
 <tbody>
 	<tr>
@@ -592,8 +591,6 @@ And we want a weight of 7 with maximum benefit.
 </tr>
 </tbody>
 </table>
-
-{{ /rawhtml }}
 
 The weight is 7. We start counting at 0. We put each tuple on the left-hand side. Ok. Now to fill out the table!
 

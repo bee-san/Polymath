@@ -64,6 +64,7 @@ params:
         Content: >
             I write about esoteric computer science topics that you'd love.
             - Writer, Hacker, Author, Programmer.
+            
     socialIcons:
         - name: twitter
           url: "#"

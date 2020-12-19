@@ -29,8 +29,7 @@ The problem with open source is the [network effect.](https://en.wikipedia.org/w
  
 The better the project, the more popular it becomes. It’s a self-fulfilling cycle.
 
-![The infographic shows this information: Logo, Slogan, Badges, Quick Install, Gifs (what is your program, how does it work?), X vs Y (comparing to competitors), Documentation, Contributing](/media/populaross/loop4.svg)
-
+<img src="/media/populaross/loop4.svg" alt="Popularity -> More  Users -> More Contributors -> Better functionality -> Popularity and so on">
  
 As this cycle continues, it becomes harder for it to continue. That’s a blog post for another day. But first, let’s talk about where we start. 
 
@@ -63,7 +62,12 @@ A well-designed README answers these questions succinctly:
 
 This is how a `README` answers these questions.
 
-![](/media/populaross/Logo.png)
+
+<details>
+<summary><b>Open to view Infographic</b></summary>
+  <img src="/media/populaross/Logo.png" alt="The infographic shows this information: Logo, Slogan, Badges, Quick Install, Gifs (what is your program, how does it work?), X vs Y (comparing to competitors), Documentation, Contributing">
+</details>
+
 
 We’ll go through each of these.
 

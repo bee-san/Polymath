@@ -24,4 +24,8 @@ Some of the things I'm more well known for include:
 * Continue my work with TryHackMe
 * More awesome pentesting projects
 
-<iframe src="https://bees.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+<iframe
+scrolling="no"
+style="width:100%!important;height:220px;border:1px #ccc solid !important"
+src="https://buttondown.email/hacker?as_embed=true"
+></iframe><br /><br />
