@@ -1630,19 +1630,255 @@ $$max(7+T[3][2], 9) = 9$$
 ### Finding the Optimal Set for {0, 1} Knapsack Problem Using Dynamic Programming
 
 Now, what items do we actually pick for the optimal set? We start with this item:
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 45789
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td>8</td>
+	<td><mark><b>9</b></mark></td>
+</tr>
+</tbody>
+</table>
 We want to know where the 9 comes from. It's coming from the top because the number directly above 9 on the 4th row is 9. Since it's coming from the top, the item (7, 5) is not used in the optimal set.
 
 Where does this 9 come from?
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 45789
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td><mark><b>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td>8</td>
+	<td>9</td>
+</tr>
+</tbody>
+</table>
 This 9 is not coming from the row above it. **Item (5, 4) must be in the optimal set.**
 
 We now go up one row, and go back 4 steps. 4 steps because the item, (5, 4), has weight 4.
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 45789
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td><mark><b>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td>8</td>
+	<td>9</td>
+</tr>
+</tbody>
+</table>
 4 does not come from the row above. The item (4, 3) must be in the optimal set.
 
 The weight of item (4, 3) is 3. We go up and we go back 3 steps and reach:
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 45789
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td><mark><b>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td>8</td>
+	<td>9</td>
+</tr>
+</tbody>
+</table>
 As soon as we reach a point where the weight is 0, we're done. Our two selected items are (5, 4) and (4, 3). The total weight is 7 and our total benefit is 9. We add the two tuples together to find this out. 
 
 Let's begin coding this. 
@@ -1653,52 +1889,59 @@ Let's begin coding this.
 
 Now we know how it works, and we've derived the recurrence for it - it shouldn't be too hard to code it. If our two-dimensional array is i (row) and j (column) then we have:
 
-    if j < wt[i]:
+```python
+if j < wt[i]:
+```
 
 If our weight j is less than the weight of item i (i does not contribute to j) then:
 
-    if j < wt[i]:
-    	T[i][j] = T[i - 1][j]
-    else:
-    	// weight of i >= j
-        T[i][j] = max(val[i] + t[i - 1][j-wt(i), t[i-1][j])
-        // previous row, subtracting the weight of the item from the total weight or without including ths item
+```python
+if j < wt[i]:
+	T[i][j] = T[i - 1][j]
+else:
+	# weight of i >= j
+	T[i][j] = max(val[i] + t[i - 1][j-wt(i), t[i-1][j])
+	# previous row, subtracting the weight of the item from the total weight or without including ths item
+```
 
 This is what the core heart of the program does. I've copied some code from [here ](https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/)to help explain this. I'm not going to explain this code much, as there isn't much more to it than what I've already explained. If you're confused by it, leave a comment below or email me 😁
 
-    # Returns the maximum value that can be put in a knapsack of 
-    # capacity W 
-    def knapSack(W , wt , val , n): 
-      
-        # Base Case 
-        if n == 0 or W == 0: 
-            return 0
-      
-        # If weight of the nth item is more than Knapsack of capacity 
-        # W, then this item cannot be included in the optimal solution 
-        if (wt[n-1] > W): 
-            return knapSack(W , wt , val , n-1) 
-      
-        # return the maximum of two cases: 
-        # (1) nth item included 
-        # (2) not included 
-        else: 
-            return max(val[n-1] + knapSack(W-wt[n-1] , wt , val , n-1), 
-                       knapSack(W , wt , val , n-1)) 
-      
-      
-    # To test above function 
-    val = [60, 100, 120] 
-    wt = [10, 20, 30] 
-    W = 50
-    n = len(val) 
-    print(knapSack(W , wt , val , n))
-    # output 220
+```python
+# Returns the maximum value that can be put in a knapsack of 
+# capacity W 
+def knapSack(W , wt , val , n): 
+	
+	# Base Case 
+	if n == 0 or W == 0: 
+		return 0
+	
+	# If weight of the nth item is more than Knapsack of capacity 
+	# W, then this item cannot be included in the optimal solution 
+	if (wt[n-1] > W): 
+		return knapSack(W , wt , val , n-1) 
+	
+	# return the maximum of two cases: 
+	# (1) nth item included 
+	# (2) not included 
+	else: 
+		return max(val[n-1] + knapSack(W-wt[n-1] , wt , val , n-1), 
+					knapSack(W , wt , val , n-1)) 
+	
+	
+# To test above function 
+val = [60, 100, 120] 
+wt = [10, 20, 30] 
+W = 50
+n = len(val) 
+print(knapSack(W , wt , val , n))
+# output 220
+```
 
 ---
 
 ## Time Complexity of a Dynamic Programming Problem
-![](/content/images/2019/06/undraw_time_management_30iu.svg)
+![](/media/dp/undraw9.svg]
+
 [Time complexity](/you-need-to-understand-big-o-notation-now/) is calculated in Dynamic Programming as:
 
 $$Number \;of \;unique \;states * time \;taken \;per\; state$$
@@ -1716,8 +1959,16 @@ $$O(nw)$$
 Where n is the number of items, and w is the capacity of the knapsack.
 
 I'm going to let you in on a little secret. It's possible to work out the time complexity of an algorithm from its recurrence. You can use something called the Master Theorem to work it out. This is the theorem in a nutshell:
-![](/content/images/2019/05/image-16.png)Taken from [here](https://medium.com/@randerson112358/master-theorem-909f52d4364)
+
+<figure>
+    <img src="/media/dp/time1.png">
+    <figcaption><a href="https://medium.com/@randerson112358/master-theorem-909f52d4364"> Taken from here </a><figcaption>
+</figure>
+
 Now, I'll be honest. The master theorem deserves a blog post of its own. For now, I've found this video to be excellent:
+
+{{< youtube OynWkEj0S-s >}}
+
 
 ---
 
@@ -1730,17 +1981,50 @@ But, Greedy is different. It aims to optimise by making the best choice at that 
 1p, 15p, 25p
 
 [And someone wants us to give a change of 30p](https://en.wikipedia.org/wiki/Change-making_problem). With Greedy, it would select 25, then 5 * 1 for a total of 6 coins. The optimal solution is 2 * 15. Greedy works from largest to smallest. At the point where it was at 25, the best choice would be to pick 25. 
-Greedy vs Divide & Conquer vs Dynamic ProgrammingGreedyDivide & ConquerDynamic ProgrammingOptimises by making the best choice at the momentOptimises by breaking down a subproblem into simpler versions of itself and using multi-threading & recursion to solveSame as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.Doesn't always find the optimal solution, but is very fastAlways finds the optimal solution, but is slower than GreedyAlways finds the optimal solution, but could be pointless on small datasets.Requires almost no memoryRequires some memory to remember recursive callsRequires a lot of memory for memoisation / tabulation![](/content/images/2019/05/image-15.png)The same table is provided as an image if you wish to copy it
+
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Greedy vs Divide & Conquer vs Dynamic Programming</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><b>Greedy</b></td>
+          <td><b>Divide & Conquer</b></td>
+          <td><b>Dynamic Programming</b></td>
+        </tr>
+      <tr>
+        <td>Optimises by making the best choice at the moment</td>
+        <td>Optimises by breaking down a subproblem into simpler versions of itself and using multi-threading & recursion to solve</td>
+        <td>Same as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.</td>
+      </tr>
+      <tr>
+        <td>Doesn't always find the optimal solution, but is very fast</td>
+        <td>Always finds the optimal solution, but is slower than Greedy</td>
+        <td>Always finds the optimal solution, but could be pointless on small datasets.</td>
+      </tr>
+      <tr>
+        <td>Requires almost no memory</td>
+        <td>Requires some memory to remember recursive calls</td>
+        <td>Requires a lot of memory for memoisation / tabulation</td>
+    </tbody>
+</table>
+
 ---
 
 ## Tabulation (Bottom-Up) vs Memoisation (Top-Down)
-![](/content/images/2019/06/undraw_app_installation_mbdv.svg)
+![](/media/dp/undraw10.svg)
+
 There are 2 types of dynamic programming. Tabulation and Memoisation. 
 
 ### Memoisation (Top-Down)
 
 We've computed all the subproblems but have no idea what the optimal evaluation order is. We would then perform a recursive call from the root, and hope we get close to the optimal solution or obtain a proof that we will arrive at the optimal solution. Memoisation ensures you never recompute a subproblem because we cache the results, thus duplicate sub-trees are not recomputed. 
-![](/content/images/2019/05/image-8.png)
+
+![](/mediia/dp/tree.png)
+
 From our Fibonacci sequence earlier, we start at the root node. The subtree F(2) isn't calculated twice.
 
 This starts at the top of the tree and evaluates the subproblems from the leaves/subtrees back up towards the root. **Memoisation is a top-down approach.**
@@ -1758,7 +2042,37 @@ Generally speaking, memoisation is easier to code than tabulation. We can write 
 Memoisation has memory concerns. If we're computing something large such as F(10^8), each computation will be delayed as we have to place them into the array. And the array will grow in size very quickly.
 
 Either approach may not be time-optimal if the order we happen (or try to) visit subproblems is not optimal.  If there is more than one way to calculate a subproblem (normally caching would resolve this, but it's theoretically possible that caching might not in some exotic cases). Memoisation will usually add on our time-complexity to our space-complexity. For example with tabulation we have more liberty to throw away calculations, like using tabulation with Fib lets us use O(1) space, but memoisation with Fib uses O(N) stack space).
-Memoisation vs TabulationTabulationMemoisationCodeHarder to code as you have to know the orderEasier to code as functions may already exist to memoiseSpeedFast as you already know the order and dimensions of the tableSlower as you're creating them on the fly Table completenessThe table is fully computedTable does not have to be fully computed![](/content/images/2019/05/image-17.png)The same table is provided as an image if you wish to copy it
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Memoisation vs Tabulation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td></td>
+          <td><b>Tabulation</b></td>
+          <td><b>Memoisation</b></td>
+        </tr>
+      <tr>
+        <td>Code</td>
+        <td>Harder to code as you have to know the order</td>
+        <td>Easier to code as functions may already exist to memoise</td>
+      </tr>
+      <tr>
+        <td>Speed</td>
+        <td>Fast as you already know the order and dimensions of the table</td>
+        <td>Slower as you're creating them on the fly </td>
+      </tr>
+      <tr>
+        <td>Table completeness</td>
+        <td>The table is fully computed</td>
+        <td>Table does not have to be fully computed</td>
+    </tbody>
+</table>
+
+
 ---
 
 ## Conclusion
@@ -1766,42 +2080,3 @@ Memoisation vs TabulationTabulationMemoisationCodeHarder to code as you have to 
 Most of the problems you'll encounter within Dynamic Programming already exist in one shape or another. Often, your problem will build on from the answers for previous problems. [Here's a list of common problems that use Dynamic Programming.](https://en.wikipedia.org/wiki/Dynamic_programming#Algorithms_that_use_dynamic_programming)
 
 I hope that whenever you encounter a problem, you think to yourself "can this problem be solved with ?" and try it. 
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
