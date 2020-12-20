@@ -594,278 +594,260 @@ And we want a weight of 7 with maximum benefit.
 
 The weight is 7. We start counting at 0. We put each tuple on the left-hand side. Ok. Now to fill out the table!
 
-{{ rawhtml }}
 <table >
-	<tbody>
-		<tr>
-          	<td> </td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
-			
-		</tr>
-		<tr>
-			<td>(1, 1)</td>
-			<td>0</td>
-			<td></td>
-			<td></td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (4, 3)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (5, 4)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>(7, 5)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</tbody>
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td></td>
+	<td></td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
 </table>
-
-{{ /rawhtml }}
 
 
 The columns are weight. At weight 0, we have a total weight of 0. At weight 1, we have a total weight of 1. Obvious, I know. But this is an important distinction to make which will be useful later on.
 
 When our weight is 0, we can't carry anything no matter what. The total weight of everything at 0 is 0.
 
-{{ rawhtml }}
-
 <table >
-	<tbody>
-		<tr>
-          	<td> </td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
-			
-		</tr>
-		<tr>
-			<td>(1, 1)</td>
-			<td>0</td>
-			<td>1</td>
-			<td></td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (4, 3)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (5, 4)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>(7, 5)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</tbody>
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td></td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
 </table>
-
-{{ /rawhtml }}
 
 If our total weight is 1, the best item we can take is (1, 1). As we go down through this array, we can take more items. At the row for (4, 3) we can either take (1, 1) or (4, 3). But for now, we can only take (1, 1). Our maximum benefit for this row then is 1. 
 
-
-{{ rawhtml }}
-
 <table >
-	<tbody>
-		<tr>
-          	<td> </td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
-			
-		</tr>
-		<tr>
-			<td>(1, 1)</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1 </td>
-			<td>1 </td>
-			<td>1 </td>
-			<td> 1</td>
-		</tr>
-		<tr>
-			<td> (4, 3)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (5, 4)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>(7, 5)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</tbody>
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
 </table>
-
-{{ /rawhtml }}
-
 
 If our total weight is 2, the best we can do is 1. We only have 1 of each item. We cannot duplicate items. So no matter where we are in row 1, the absolute best we can do is (1, 1).
 
 Let's start using (4, 3) now. If the total weight is 1, but the weight of (4, 3) is 3 we cannot take the item yet until we have a weight of at least 3.
 
-{{ rawhtml }}
-
-
 <table >
-	<tbody>
-		<tr>
-          	<td> </td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
-			
-		</tr>
-		<tr>
-			<td>(1, 1)</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1 </td>
-			<td>1 </td>
-			<td>1 </td>
-			<td> 1</td>
-		</tr>
-		<tr>
-			<td> (4, 3)</td>
-			<td> 0</td>
-			<td> 1</td>
-			<td> 1</td>
-			<td></td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (5, 4)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>(7, 5)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</tbody>
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td></td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
 </table>
-
-{{ /rawhtml }}
 
 Now we have a weight of 3. Let's compare some things. We want to take the max of:
 
@@ -879,102 +861,579 @@ $$MAX(4 + T[0][0], 1)$$
 
 The 1 is because of the previous item. The max here is 4.
 
-{{ rawhtml }}
-
-
 <table >
-	<tbody>
-		<tr>
-          	<td> </td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
-			
-		</tr>
-		<tr>
-			<td>(1, 1)</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1 </td>
-			<td>1 </td>
-			<td>1 </td>
-			<td> 1</td>
-		</tr>
-		<tr>
-			<td> (4, 3)</td>
-			<td> 0</td>
-			<td> 1</td>
-			<td> 1</td>
-			<td>4</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td> (5, 4)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>(7, 5)</td>
-			<td> 0</td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</tbody>
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
 </table>
-
-{{ /rawhtml }}
 
 $$max(4 + t[0][1], 1)$$
 
-Total weight is 4, item weight is 3. 4 - 3 = 1. Previous row is 0. t[0][1].
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145 (5, 4) 0(7, 5) 0
+Total weight is 4, item weight is 3. 4 - 3 = 1. Previous row is 0. `t[0][1]`.
+
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
+
 I won't bore you with the rest of this row, as nothing exciting happens. We have 2 items. And we've used both of them to make 5. Since there are no new items, the maximum value is 5. 
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 0(7, 5) 0
+
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
+
 Onto our next row:
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 (7, 5) 0
+
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
+
 Here's a little secret. Our tuples are ordered by weight! That means that we can fill in the previous rows of data up to the next weight point. We know that 4 is already the maximum, so we can fill in the rest.. This is where memoisation comes into play! We already have the data, why bother re-calculating it?
 
 We go up one row and head 4 steps back. That gives us:
 
 $$max(4 + T[2][0], 5)$$.
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5(7, 5) 0
+
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
+
 Now we calculate it for total weight 5. 
 
 $$max(5 + T[2][1], 5) = 6$$
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 56(7, 5) 0
+
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
+
 We do the same thing again:
 
 $$max(5 + T[2][2], 5) = 6$$
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 566(7, 5) 0
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
 Now we have total weight 7. We choose the max of:
 
 $$max(5 + T[2][3], 5) = max(5 + 4, 5) = 9$$
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
 If we had total weight 7 and we had the 3 items (1, 1), (4, 3), (5, 4) the best we can do is 9.
 
 Since our new item starts at weight 5, we can copy from the previous row until we get to weight 5.
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 45
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td> </td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
 We then do another max.
 
 Total weight - new item's weight. This is $5 - 5 = 0$. We want the previous row at position 0.
@@ -984,11 +1443,188 @@ $$max(7 + T[3][0], 6)$$
 The 6 comes from the best on the previous row for that total weight. 
 
 $$max(7 + 0, 6) = 7$$
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 457
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td> </td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
 $$max(7 + T[3][1], 6) = 8$$
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 4578
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td>8</td>
+	<td> </td>
+</tr>
+</tbody>
+</table>
 $$max(7+T[3][2], 9) = 9$$
-01234567(1, 1)01111 1 1  1 (4, 3) 0 1 145555 (5, 4) 011 4 5669(7, 5) 0 1 1 45789
+<table >
+<tbody>
+<tr>
+	<td> </td>
+	<td>0</td>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+	<td>4</td>
+	<td>5</td>
+	<td>6</td>
+	<td>7</td>
+	
+</tr>
+<tr>
+	<td>(1, 1)</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>1 </td>
+	<td>1 </td>
+	<td> 1</td>
+</tr>
+<tr>
+	<td> (4, 3)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td>4</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td> (5, 4)</td>
+	<td> 0</td>
+	<td>1</td>
+	<td>1 </td>
+	<td>4 </td>
+	<td>5</td>
+	<td>6</td>
+	<td>6</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>(7, 5)</td>
+	<td> 0</td>
+	<td> 1</td>
+	<td> 1</td>
+	<td> 4</td>
+	<td>5</td>
+	<td>7</td>
+	<td>8</td>
+	<td>9</td>
+</tr>
+</tbody>
+</table>
 9 is the maximum value we can get by picking items from the set of items such that the total weight is $\le 7$.
 
 ### Finding the Optimal Set for {0, 1} Knapsack Problem Using Dynamic Programming
