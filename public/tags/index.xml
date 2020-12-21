@@ -12,20 +12,20 @@
     
     
     <item>
-      <title>Computer Science</title>
-      <link>https://polymath.cloud/tags/computer-science/</link>
+      <title>Open Source</title>
+      <link>https://polymath.cloud/tags/open-source/</link>
       <pubDate>Thu, 17 Dec 2020 16:43:37 +0000</pubDate>
       
-      <guid>https://polymath.cloud/tags/computer-science/</guid>
+      <guid>https://polymath.cloud/tags/open-source/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Datastructures and Algorithms</title>
-      <link>https://polymath.cloud/tags/datastructures-and-algorithms/</link>
+      <title>Open Source Software</title>
+      <link>https://polymath.cloud/tags/open-source-software/</link>
       <pubDate>Thu, 17 Dec 2020 16:43:37 +0000</pubDate>
       
-      <guid>https://polymath.cloud/tags/datastructures-and-algorithms/</guid>
+      <guid>https://polymath.cloud/tags/open-source-software/</guid>
       <description></description>
     </item>
     
@@ -93,6 +93,15 @@
     </item>
     
     <item>
+      <title>Datastructures and Algorithms</title>
+      <link>https://polymath.cloud/tags/datastructures-and-algorithms/</link>
+      <pubDate>Mon, 30 Nov 2020 21:21:14 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/tags/datastructures-and-algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Python</title>
       <link>https://polymath.cloud/tags/python/</link>
       <pubDate>Mon, 30 Nov 2020 21:21:14 +0000</pubDate>
@@ -116,6 +125,15 @@
       <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
       
       <guid>https://polymath.cloud/tags/books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computer Science</title>
+      <link>https://polymath.cloud/tags/computer-science/</link>
+      <pubDate>Sun, 01 Nov 2020 23:46:37 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/tags/computer-science/</guid>
       <description></description>
     </item>
     
@@ -233,15 +251,6 @@
       <pubDate>Fri, 29 Nov 2019 23:46:37 +0000</pubDate>
       
       <guid>https://polymath.cloud/tags/artificial-intelligence/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Open Source</title>
-      <link>https://polymath.cloud/tags/open-source/</link>
-      <pubDate>Fri, 16 Aug 2019 21:54:22 +0000</pubDate>
-      
-      <guid>https://polymath.cloud/tags/open-source/</guid>
       <description></description>
     </item>
     

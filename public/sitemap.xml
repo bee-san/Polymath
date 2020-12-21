@@ -8,12 +8,12 @@
   </url>
   
   <url>
-    <loc>https://polymath.cloud/tags/computer-science/</loc>
+    <loc>https://polymath.cloud/tags/open-source/</loc>
     <lastmod>2020-12-17T16:43:37+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://polymath.cloud/tags/datastructures-and-algorithms/</loc>
+    <loc>https://polymath.cloud/tags/open-source-software/</loc>
     <lastmod>2020-12-17T16:43:37+00:00</lastmod>
   </url>
   
@@ -103,6 +103,11 @@
   </url>
   
   <url>
+    <loc>https://polymath.cloud/tags/datastructures-and-algorithms/</loc>
+    <lastmod>2020-11-30T21:21:14+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://polymath.cloud/functional/</loc>
     <lastmod>2020-11-30T21:21:14+00:00</lastmod>
   </url>
@@ -139,6 +144,11 @@
   
   <url>
     <loc>https://polymath.cloud/tags/books/</loc>
+    <lastmod>2020-11-01T23:46:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://polymath.cloud/tags/computer-science/</loc>
     <lastmod>2020-11-01T23:46:37+00:00</lastmod>
   </url>
   
@@ -383,11 +393,6 @@
   </url>
   
   <url>
-    <loc>https://polymath.cloud/tags/open-source/</loc>
-    <lastmod>2019-08-16T21:54:22+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://polymath.cloud/ciphey/</loc>
     <lastmod>2019-08-16T21:54:22+00:00</lastmod>
   </url>
@@ -588,6 +593,10 @@
   
   <url>
     <loc>https://polymath.cloud/series/</loc>
+  </url>
+  
+  <url>
+    <loc>https://polymath.cloud/subscribed/</loc>
   </url>
   
 </urlset>

@@ -511,7 +511,7 @@ Our desired solution is then B[n, $W_{max}$].
 {{< math.inline >}}
 <p>
 $$
-OPT(i) = \begin{cases} B[k - 1, w], \quad \text{If w < }w_k \\ max{B[k-1, w], b_k + B[k - 1, w - w_k]}, \; \quad \text{otherwise} \end{cases}
+OPT(i) = \begin{cases} B[k - 1, w], \quad \text{If w < }w_k \\ max{B[k-1, w], b_k + B[k - 1, w - w_k]}, \ \quad \text{otherwise} \end{cases}
 $$
 </p>
 {{< /math.inline >}}
@@ -1940,11 +1940,11 @@ print(knapSack(W , wt , val , n))
 ---
 
 ## Time Complexity of a Dynamic Programming Problem
-![](/media/dp/undraw9.svg]
+![](/media/dp/undraw9.svg)
 
 [Time complexity](/you-need-to-understand-big-o-notation-now/) is calculated in Dynamic Programming as:
 
-$$Number \;of \;unique \;states * time \;taken \;per\; state$$
+$$Number \ of \ unique \ states * time \ taken \ per \ state$$
 
 For our original problem, the Weighted Interval Scheduling Problem, we had n piles of clothes. Each pile of clothes is solved in constant time. The time complexity is:
 
@@ -2023,7 +2023,7 @@ There are 2 types of dynamic programming. Tabulation and Memoisation.
 
 We've computed all the subproblems but have no idea what the optimal evaluation order is. We would then perform a recursive call from the root, and hope we get close to the optimal solution or obtain a proof that we will arrive at the optimal solution. Memoisation ensures you never recompute a subproblem because we cache the results, thus duplicate sub-trees are not recomputed. 
 
-![](/mediia/dp/tree.png)
+![](/media/dp/tree.png)
 
 From our Fibonacci sequence earlier, we start at the root node. The subtree F(2) isn't calculated twice.
 

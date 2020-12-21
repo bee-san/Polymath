@@ -17,9 +17,10 @@
       <pubDate>Thu, 17 Dec 2020 16:43:37 +0000</pubDate>
       
       <guid>https://polymath.cloud/make-popular-open-source-projects/</guid>
-      <description>TODO  Alt text on images Break up text Grammarly  Introduction I have around ~10k GitHub stars. I’ve come up with a bullet pointed actionable list of how to make open source projects popular.
+      <description>Introduction I have around ~10k GitHub stars. I’ve come up with a bullet-pointed actionable list of how to make open-source projects popular.
 One of the projects I created had 67 lines of code and had only existed for 3 days before it hit 1.7k stars.
-Humans are predictable creatures when it comes to our attention. I’ll show you data backed actionable insights that can help you create popular software.</description>
+Humans are predictable creatures when it comes to our attention. I’ll show you data-backed actionable insights that can help you create popular software.
+Why Bother? Popular Projects = More Contributors = Better Project What’s the point in getting more GitHub stars?</description>
     </item>
     
     <item>
@@ -965,6 +966,21 @@ The syntax of a function is f(x) = 2 * x.</description>
       
       <guid>https://polymath.cloud/search/</guid>
       <description>search</description>
+    </item>
+    
+    <item>
+      <title>Subscribed</title>
+      <link>https://polymath.cloud/subscribed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://polymath.cloud/subscribed/</guid>
+      <description>Thank you! Ahhhhhhhhhh!
+Thank you for subscribing to my newsletter!
+It means a lot to me. I have so much knowledge to share with you
+   Thank you so much for subscribing!
+Go to your email inbox, Gmail users click here to automatically go there and then click the &amp;ldquo;confirm&amp;rdquo; link.
+In the meantime, here are some of my favourite things:
+ My most popular articles each with 100K+ views The ebooks I&amp;rsquo;ve written, entirely free for you My GitHub projects Funny Dog Image  </description>
     </item>
     
   </channel>
