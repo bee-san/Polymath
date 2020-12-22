@@ -16,51 +16,14 @@ Divide and Conquer is one way to attack a problem from a different angle. Don't 
 
 I will explain this using 3 examples. The first will be a simple explanation. The second will be some code. The final will get into the mathematical core of divide and conquer techniques. (Don't worry, I hate maths too).
 
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
-
 ---
 
 ## What Is Divide and Conquer? 🌎
 
 Divide and conquer is where you divide a large problem up into many smaller, much easier to solve problems. The rather small example below illustrates this.
-![3+6+2+4 is divided into 3+6 and 2+4](/content/images/2019/03/Blank-Diagram-14-.png)
+
+![3+6+2+4 is divided into 3+6 and 2+4](/media/divide/breakdown.png)
+
 We take the equation "3 + 6 + 2 + 4" and cut it down into the smallest set of equations, which is [3 + 6, 2 + 4]. It could also be [2 + 3, 4 + 6]. The order doesn't matter, as long as we turn this one long equation into many smaller equations. 
 
 Let’s say we have 8 numbers:
@@ -69,16 +32,22 @@ $$4 + 6 + 3 + 2 + 8 + 7 + 5 + 1$$
 
 We want to add them all together. We first divide the problem into 8 equal sub-problems. We do this by breaking the addition up into individual numbers.
 
-$$4 6 3 2 8 7 5 1$$
+$$4 \ 6 \ 3 \ 2 \ 8 \ 7 \ 5 \ 1$$
 
 We then add 2 numbers at a time.
-![](/content/images/2019/03/image-34.png)
+
+![](/media/divide/up.png)
+
 Then 4 numbers into 8 numbers which is our resultant.
-![](/content/images/2019/03/image-35.png)
+
+![](/media/divide/4nums.png)
+
 Why do we break it down to individual numbers at stage 1? Why don't we just start from stage 2? Because while this list of numbers is even if the list was odd you would need to break it down to individual numbers to better handle it.
 
 A divide and conquer algorithm tries to break a problem down into as many little chunks as possible since it is easier to solve with little chunks. It does this with recursion.
-![Divide And Conquer technique visually explained](/content/images/2019/10/divide_and_conquer_visually_explained.svg)Sorting problem solved using divide & conquer
+
+![](/media/divide/sorting.svg)
+
 ---
 
 # Recursion
@@ -88,7 +57,7 @@ Before we get into the rest of the article, let's learn about recursion first.
 **Recursion is when a function calls itself.** It's a hard concept to understand if you've never heard of it before. [This page provides a good explanation](https://www.google.com/search?hl=en&amp;q=recursion). 
 
 Matryoshka dolls are these cute little things:
-![](/content/images/2019/10/image-7.png)
+![](/media/divide/dolls.png)
 We open up the bigger one, and inside is a slightly smaller one. Inside that one is another slightly small doll. Let's say, inside the last doll is a key. But we do not know how many dolls there are. How do we write a function that opens up the dolls until we find a key?
 
 We could use a while loop, but recursion is preferred here.
