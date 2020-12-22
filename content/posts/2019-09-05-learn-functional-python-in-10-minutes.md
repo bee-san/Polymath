@@ -3,6 +3,7 @@ title: Learn Functional Python in 10 Minutes
 slug: learn-functional-python-in-10-minutes
 date_published: 2019-09-05T11:30:00.000Z
 date: 2019-11-20T22:55:19.000Z
+ShowToc: true
 tags: 
     - University
     - Computer Science
@@ -12,62 +13,6 @@ excerpt: You’ll learn what the functional paradigm is as well as how to use fu
 ---
 
 In this short 10 minute article, you’ll learn what the functional paradigm is in Python. You’ll also learn about list comprehensions.
-
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
-  - [At least this isn't a pop up! 😅](#at-least-this-isnt-a-pop-up-)
-- [📌 Functional Paradigm](#-functional-paradigm)
-- [🌍 How Does Python's Map Work?](#-how-does-pythons-map-work)
-- [🔑 Lambda Expressions in Python](#-lambda-expressions-in-python)
-- [🔹 Reduce Function in Python](#-reduce-function-in-python)
-- [🍳 Filter](#-filter)
-- [☁ Higher Order Functions in Python](#-higher-order-functions-in-python)
-- [🎶 Partial Application with Functions](#-partial-application-with-functions)
-- [🐍 Functional Programming Isn’t Pythonic](#-functional-programming-isnt-pythonic)
-- [🎓 List Comprehensions](#-list-comprehensions)
-- [🤔 Comprehensions of Any Iterable](#-comprehensions-of-any-iterable)
-- [👋 Conclusion](#-conclusion)
-  - [At least this isn't a pop up! 😅](#at-least-this-isnt-a-pop-up--1)
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 ---
 
@@ -436,25 +381,26 @@ A list comprehension is only good for, well, lists. Map and filter work on any i
 # 🤔 Comprehensions of Any Iterable
 
 We can generate any iterable using a comprehension. Since Python 2.7, we can even generate a dictionary (hashmap).
-
-    # Taken from page 70 chapter 3 of Fluent Python by Luciano Ramalho
-    DIAL_CODES = [ 
-      (86, ‘China’),
-      (91, ‘India’),
-      (1, ‘United States’),
-      (62, ‘Indonesia’),
-      (55, ‘Brazil’),
-      (92, ‘Pakistan’),
-      (880, ‘Bangladesh’),
-      (234, ‘Nigeria’),
-      (7, ‘Russia’),
-      (81, ‘Japan’),
-      ]
-    >>> country_code = {country: code for code, country in DIAL_CODES}
-    >>> country_code
-    {’Brazil’: 55, ‘Indonesia’: 62, ‘Pakistan’: 92, ‘Russia’: 7, ‘China’: 86, ‘United States’: 1, ‘Japan’: 81, ‘India’: 91, ‘Nigeria’: 234, ‘Bangladesh’: 880}
-    >>> {code: country.upper() for country, code in country_code.items() if code < 66}
-    {1: ‘UNITED STATES’, 7: ‘RUSSIA’, 62: ‘INDONESIA’, 55: ‘BRAZIL’}
+```python
+# Taken from page 70 chapter 3 of Fluent Python by Luciano Ramalho
+DIAL_CODES = [ 
+    (86, ‘China’),
+    (91, ‘India’),
+    (1, ‘United States’),
+    (62, ‘Indonesia’),
+    (55, ‘Brazil’),
+    (92, ‘Pakistan’),
+    (880, ‘Bangladesh’),
+    (234, ‘Nigeria’),
+    (7, ‘Russia’),
+    (81, ‘Japan’),
+    ]
+>>> country_code = {country: code for code, country in DIAL_CODES}
+>>> country_code
+{’Brazil’: 55, ‘Indonesia’: 62, ‘Pakistan’: 92, ‘Russia’: 7, ‘China’: 86, ‘United States’: 1, ‘Japan’: 81, ‘India’: 91, ‘Nigeria’: 234, ‘Bangladesh’: 880}
+>>> {code: country.upper() for country, code in country_code.items() if code < 66}
+{1: ‘UNITED STATES’, 7: ‘RUSSIA’, 62: ‘INDONESIA’, 55: ‘BRAZIL’}
+```
     
 
 If it’s an iterable, we can generate it. Let’s look at one last example of sets. If you don’t know what a set is, [check out this other article I wrote](/a-primer-on-set-theory/). The TL;DR is:
@@ -462,11 +408,12 @@ If it’s an iterable, we can generate it. Let’s look at one last example of s
 - Sets are lists of elements, no element is repeated twice in that list
 - The order in sets do not matter.
 
-    # taken from page 87, chapter 3 of Fluent Python by Luciano Ramalho
-    >>> from unicodedata import name
-    >>> {chr(i) for i in range(32, 256) if ‘SIGN’ in name(chr(i), ‘’)}
-    {’×’, ‘¥’, ‘°’, ‘£’, ‘©’, ‘#’, ‘¬’, ‘%’, ‘µ’, ‘>‘, ‘¤’, ‘±’, ‘¶’, ‘§’, ‘<’, ‘=’, ‘®’, ‘$’, ‘÷’, ‘¢’, ‘+’}
-    
+```python
+# taken from page 87, chapter 3 of Fluent Python by Luciano Ramalho
+>>> from unicodedata import name
+>>> {chr(i) for i in range(32, 256) if ‘SIGN’ in name(chr(i), ‘’)}
+{’×’, ‘¥’, ‘°’, ‘£’, ‘©’, ‘#’, ‘¬’, ‘%’, ‘µ’, ‘>‘, ‘¤’, ‘±’, ‘¶’, ‘§’, ‘<’, ‘=’, ‘®’, ‘$’, ‘÷’, ‘¢’, ‘+’}
+```
 
 You may notice that sets have the same curly braces as dictionaries. Python is smart. It’ll know whether we're writing a dictionary comprehension or a set comprehension based on whether we provide the extra value for the dictionary or not. If you want to learn more about comprehensions, check out this [visual guide](https://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/).
 
@@ -475,42 +422,3 @@ You may notice that sets have the same curly braces as dictionaries. Python is s
 # 👋 Conclusion
 
 Functional programming is beautiful and pure. Functional code can be clean, but it can also be messy. You should use what you want to use.
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
