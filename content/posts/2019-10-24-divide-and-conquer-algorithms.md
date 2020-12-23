@@ -91,7 +91,7 @@ We love recursion because it's used in maths **all the time**. Computer scientis
 
 Not just because some people love maths, but because it makes it easier to implement. Need to calculate the Fibonacci numbers? The maths equation for this is:
 
-$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\\ F(n - 1) + F(n - 2), \; \text{if n > 1} \end{cases}$$
+$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\\ F(n - 1) + F(n - 2), \ \text{if n > 1} \end{cases}$$
 
 A natural recurrence in our formula! Instead of translating it into loops, we can just calculate it:
 
@@ -341,7 +341,7 @@ def f(n):
 
 Now we've seen this, let's turn it into recursion using a recurrence. Luckily for us, it's incredibly easy to go from a recurrence to code or from code to a recurrence, as they are both recurrences!
 
-$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\\ F(n - 1) + F(n - 2), \; \text{if n > 1} \end{cases}$$
+$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\\ F(n - 1) + F(n - 2), \ \text{if n > 1} \end{cases}$$
 
 We often calculate the result of a recurrence using an **execution tree.** We saw this earlier when exploring how to build it in code. For F(6) this looks like:
 

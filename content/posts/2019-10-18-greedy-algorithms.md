@@ -218,31 +218,81 @@ The algorithm follows these rules:
 2. Once we've moved to the node, we check each of its neighbouring nodes. We calculate the distance from the neighbouring nodes to the root nodes by summing the cost of the edges that lead to that new node.
 3. If the distance to a node is less than a known distance, we'll update the shortest distance.
 
-![](/content/images/2019/06/Blank-Diagram-33-.png)
+![](/media/greedy/d1.png)
+
 Our first step is to pick the starting node. Let's choose A. All the distances start at infinity, as we don't know their distance until we reach a node that knows the distance.
-![](/content/images/2019/06/Blank-Diagram-35-.png)
+
+![](/media/greedy/d2.png)
+
 We mark off A on our unvisited nodes list. The distance from A to A is 0. The distance from A to B is 4. The distance from A to C is 2. We updated our distance listing on the right-hand side.
 
 We pick the smallest edge where the vertex hasn't been chosen. The smallest edge is A -> C, and we haven't chosen C yet. We visit C.
 
 Notice how we're picking the smallest distance from our current node to a node we haven't visited yet. We're being greedy. Here, the greedy method is the global optimal solution.
-![](/content/images/2019/06/Blank-Diagram-36-.png)
+
+![](/media/greedy/d3.png)
+
 We can get to B from C. We now need to pick a minimum. $min(4, 2 + 1) = 3$.
-![](/content/images/2019/06/Blank-Diagram-37-.png)
+![](/media/greedy/d4.png)
 Since A -> C -> B is smaller than A -> B, we update B with this information. We then add in the distances from the other nodes we can now reach.
-![](/content/images/2019/06/Blank-Diagram-40-.png)
+![](/media/greedy/d5.png)
 Our next smallest vertex with a node we haven't visited yet is B, with 3. We visit B.
-![](/content/images/2019/06/Blank-Diagram-41-.png)
+![](/media/greedy/d6.png)
 We do the same for B. Then we pick the smallest vertex we haven't visited yet, D.
-![](/content/images/2019/06/Blank-Diagram-42-.png)
+![](/media/greedy/d7.png)
 We don't update any of the distances this time. Our last node is then E.
-![](/content/images/2019/06/Blank-Diagram-43-.png)
+![](/media/greedy/d8.png)
 There are no updates again. To find the shortest path from A to the other nodes, we walk back through our graph. 
 
 We pick A first, C second, B third. If you need to create the shortest path from A to every other node as a graph, you can run this algorithm using a table on the right-hand side. 
-Dijkstra's TableNodeDistance from APrevious nodeA0N/AB3CC2AD5BE6B
+
+<table>
+<thead>
+<tr>
+    <th colspan="3">Dijkstra's Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Node</td>
+    <td>Distance from A</td>
+    <td>Previous node</td>
+</tr>
+        <tr>
+    <td>A</td>
+    <td>0</td>
+    <td>N/A</td>
+                <tr>
+    <td>B</td>
+    <td>3</td>
+    <td>C</td>
+                    
+</tr>
+                        <tr>
+    <td>C</td>
+    <td>2</td>
+    <td>A</td>
+                    
+</tr>
+                        <tr>
+    <td>D</td>
+    <td>5</td>
+    <td>B</td>
+                    
+</tr>
+                        <tr>
+    <td>E</td>
+    <td>6</td>
+    <td>B</td>
+                    
+</tr>
+</tr>
+</tbody>
+</table>
+
+
 Using this table it is easy to draw out the shortest distance from A to every other node in the graph:
-![](/content/images/2019/06/Blank-Diagram-44-.png)
+![](/media/greedy/d9.png)
 ---
 
 # Minimum Spanning Trees Using Prim's Algorithm
@@ -257,25 +307,25 @@ We informally describe the algorithm as:
 2. Of all the edges not yet in the new tree, find the minimum weighted edge and transfer it to the new tree
 3. Repeat step 2 until all vertices are in the tree
 
-![](/content/images/2019/10/Prim-sAlgorithm1-1.svg)[This example is taken from here.](https://www.youtube.com/watch?v=cplfcGZmX7I)
+![](/media/greedy/prims1.svg)
 We have this graph. 
 
 Our next step is to pick an arbitrary node. 
-![](/content/images/2019/10/Prim-sAlgorithm2-1.svg)
+![](/media/greedy/prims2.svg)
 We pick the node A. We then examine all the edges connecting A to other vertices. Prim's algorithm is greedy. That means **it picks the shortest edge that connects to an unvisited vertex.**
 
 In our example, it picks B.
-![](/content/images/2019/10/Prim-sAlgorithm3-1.svg)
+![](/media/greedy/prims3.svg)
 We now look at all nodes reachable from A **and **B. This is the distinction between Dijkstra's and Prim's. With Dijkstra's, we're looking for a path from 1 node to a certain other node (nodes that have not been visited). With Prim's, we want the minimum spanning tree. 
 
 We have 3 edges with equal weights of 3. We pick 1 randomly.
-![](/content/images/2019/10/Prim-sAlgorithm4-1.svg)
+![](/media/greedy/prims4.svg)
 It is helpful to highlight our graph as we go along, because it makes it easier to create the minimum spanning tree.
-![](/content/images/2019/10/Prim-sAlgorithm5-1.svg)
+![](/media/greedy/prims5.svg)
 Now we look at all edges of A, B, and C. The shortest edge is C > E with a weight of 1.
-![](/content/images/2019/10/Prim-sAlgorithm6-3.svg)
+![](/media/greedy/prims6.svg)
 And we repeat:
-![](/content/images/2019/10/Prim-sAlgorithm7-1.svg)
+![](/media/greedy/prims7.svg)
 The edge B > E with a weight of 3 is the smallest edge. However, both vertices are always in our `VISITED` list. Meaning we do not pick this edge. We instead choose C > F, as we have not visited 
 ![](/content/images/2019/10/Prim-sAlgorithm8.svg)
 The only node left is G, so let's visit it.
@@ -293,31 +343,117 @@ $$2 + 3 + 3 + 1 + 6 + 9 = 24$$
 Imagine you are a thief. You break into the house of Judy Holliday - [1951 Oscar winner for Best Actress](https://en.wikipedia.org/wiki/23rd_Academy_Awards). Judy is a hoarder of gems. Judy's house is lined to the brim with gems.
 
 You brought with you a bag - a knapsack if you will. This bag has a weight of 7. You happened to have a listing of  Judy's items, from some insurance paper. The items read as:
-Judy's ItemsNameValueWeightDiamonds165Francium31Sapphire62Emerald21
+
+<table>
+<thead>
+<tr>
+<th colspan="3">Judy's Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Value</td>
+<td>Weight</td>
+</tr>
+    <tr>
+<td>Diamonds</td>
+<td>16</td>
+<td>5</td>
+            <tr>
+<td>Francium</td>
+<td>3</td>
+<td>1</td>
+                        <tr>
+<td>Sapphire</td>
+<td>6</td>
+<td>2</td>
+                        
+</tr>
+                            <tr>
+<td>Emerald</td>
+<td>2</td>
+<td>1</td>
+                        
+</tr>
+</tr>
+</tr>
+</tbody>
+</table>
+
+
 The first step to solving the fractional knapsack problem is to calculate $\frac{value}{weight}$ for each item.
-Judy's ItemsNameValueWeightValue / weightDiamonds1653.2Francium313Sapphire623Emerald212
+
+<table>
+<thead>
+<tr>
+<th colspan="4">Judy's Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Value</td>
+<td>Weight</td>
+<td>Value / weight</td>
+</tr>
+    <tr>
+<td>Diamonds</td>
+<td>16</td>
+<td>5</td>
+    <td>3.2</td>
+            <tr>
+<td>Francium</td>
+<td>3</td>
+<td>1</td>
+                <td>3</td>
+                        <tr>
+<td>Sapphire</td>
+<td>6</td>
+<td>2</td>
+                        <td>3</td>
+                        
+</tr>
+                            <tr>
+<td>Emerald</td>
+<td>2</td>
+<td>1</td>
+                                <td>2</td>
+                        
+</tr>
+</tr>
+</tr>
+</tbody>
+</table>
+
+
 And now we greedily select the largest ones. To do this, we can sort them according to $\frac{value}{weight}$ in descending order. Luckily for us, they are already sorted. The largest one is 3.2. 
 
-    knapsack value = 16
-    knapsack total weight = 5 (out of 7)
+```python
+knapsack value = 16
+knapsack total weight = 5 (out of 7)
+```
 
 Then we select Francium (I know it's not a gem, but Judy is a bit strange 😉)
-
-    knapsack value = 19
-    knapsack weight = 6
+```python
+knapsack value = 19
+knapsack weight = 6
+```
 
 Now, we add Sapphire. But if we add Sapphire, our total weight will come to 8. 
 
 In the fractional knapsack problem, we can cut items up to take fractions of them. We have a weight of 1 left in the bag. Our sapphire is weight 2. We calculate the ratio of:
 
-$$\frac{weight\;of\;knapsack\;left}{weight\;of\;item}$$
+$$\frac{weight\of\knapsack\left}{weight\of\item}$$
 
 And then multiply this ratio by the value of the item to get how much value of that item we can take.
 
 $$\frac{1}{2} * 6 = 3$$
 
-    knapsack value = 21
-    knapsack weight = 7
+```python
+knapsack value = 21
+knapsack weight = 7
+```
 
 The greedy algorithm can optimally solve the fractional knapsack problem, but it cannot optimally solve the {0, 1} knapsack problem. In this problem instead of taking a fraction of an item, you either take it {1} or you don't {0}. To solve this, you need to use [Dynamic Programming](/dynamic-programming/).
 
@@ -326,7 +462,37 @@ The [runtime ](/you-need-to-understand-big-o-notation-now/)for this algorithm is
 ---
 
 ## Greedy vs Divide & Conquer vs Dynamic Programming
-Greedy vs Divide & Conquer vs Dynamic Programming**Greedy****Divide & Conquer****Dynamic Programming**Optimises by making the best choice at the momentOptimises by breaking down a subproblem into simpler versions of itself and using multi-threading & recursion to solveSame as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.Doesn't always find the optimal solution, but is very fastAlways finds the optimal solution, but is slower than GreedyAlways finds the optimal solution, but could be pointless on small datasets.Requires almost no memoryRequires some memory to remember recursive callsRequires a lot of memory for memoisation / tabulation![](/content/images/2019/06/image-10.png)
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Greedy vs Divide & Conquer vs Dynamic Programming</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><strong>Greedy</strong></td>
+          <td><strong>Divide & Conquer</strong></td>
+          <td><strong>Dynamic Programming</strong></td>
+        </tr>
+      <tr>
+        <td>Optimises by making the best choice at the moment</td>
+        <td>Optimises by breaking down a subproblem into simpler versions of itself and using multi-threading & recursion to solve</td>
+        <td>Same as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.</td>
+      </tr>
+      <tr>
+        <td>Doesn't always find the optimal solution, but is very fast</td>
+        <td>Always finds the optimal solution, but is slower than Greedy</td>
+        <td>Always finds the optimal solution, but could be pointless on small datasets.</td>
+      </tr>
+      <tr>
+        <td>Requires almost no memory</td>
+        <td>Requires some memory to remember recursive calls</td>
+        <td>Requires a lot of memory for memoisation / tabulation</td>
+    </tbody>
+</table>
+
+
 To learn more about Divide & Conquer and Dynamic Programming, check out these 2 posts I wrote:
 
 - [Divide & Conquer](/divide-and-conquer-algorithms/)
@@ -337,42 +503,3 @@ To learn more about Divide & Conquer and Dynamic Programming, check out these 2 
 ## Conclusion
 
 Greedy algorithms are very fast, but may not provide the optimal solution. They are also easier to code than their counterparts. 
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
