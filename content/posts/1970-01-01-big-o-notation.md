@@ -81,7 +81,7 @@ The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponen
       </tr>
         <tr>
             <td>O($1$)</td>
-            <td>O($log\;n$)</td>
+            <td>O($log\n$)</td>
             <td>O($n$)</td>
           <td>O($n^2$), O($n^3$), O($n^x$)</td>
           <td>O($2^n$)</td>
@@ -134,8 +134,6 @@ Other asymptotic (time-measuring) notations are:
 Let's walk through every single column in our "The Big O Notation Table".
 
 ## 🟢 Constant Time
-
-![](/media/bigo/big_o_constant_time-1.png)
 
 <figure>
 	<img src="/media/bigo/big_o_constant_time-1.png" alt="A straight line representing constant complexity">
@@ -222,8 +220,6 @@ In English this is:
 - If it's not, check to see if that element is more than the item we want to find
 - If it is, ignore the right-hand side (all the numbers higher than the midpoint) of the list and choose a new midpoint.
 - Start over again, by finding the midpoint in the new list. 
-
-binary_search_gif
 
 <figure>
 	<img src="/media/bigo/binary_search_gif.gif" alt="A straight line representing constant complexity">
@@ -355,7 +351,7 @@ for word in sentence:
 
 $O(n^2)$! A disaster! But, knowing that this is a disaster means we can speed it up. Dictionaries are sorted by default. What if we sort our list of words in the sentence, and checked each word that way? We only need to loop through the dictionary once. And if the word we want to check is less than the word we're on in the dictionary, we switch to the second word in the list.
 
-Now our algorithm is $O(n \; log \; n)$. We recognise that this isn't a disaster, so we can move on! **Knowing time complexities isn't only useful in interviews. It's an essential tool to improve our algorithms.**
+Now our algorithm is $O(n \ log \ n)$. We recognise that this isn't a disaster, so we can move on! **Knowing time complexities isn't only useful in interviews. It's an essential tool to improve our algorithms.**
 
 We can hasten many polynomial algorithms we construct using knowledge of [algorithmic design](https://skerritt.blog/dynamic-programming/).
 
@@ -451,14 +447,14 @@ Yup! The hardest part is figuring out what our program's complexity is first. Si
 
 <figure>
 	<img src="/media/bigo/nlogn.png" alt="A straight line representing constant complexity">
-	<figcaption>$n \; log \; n$ is between $log n$ and $n^2$
+	<figcaption>$n \ log \ n$ is between $log n$ and $n^2$
     </figcaption>
 </figure>
 
-It falls between O(n) and O(n2)
-**This is the fastest time possible for a comparison sort.** We cannot get any faster unless we use some special property, like Radix sort. O($n \; log \; n$) is the fastest comparison sort time. 
+It falls between O(n) and $O(n^2)$.
+**This is the fastest time possible for a comparison sort.** We cannot get any faster unless we use some special property, like Radix sort. O($n \ log \ n$) is the fastest comparison sort time. 
 
-It's rather famous, because Mergesort runs in O($n \; log \; n$). Mergesort is a great algorithm not only because it sorts fast, but because the idea is used to build other algorithms. 
+It's rather famous, because Mergesort runs in O($n \ log \ n$). Mergesort is a great algorithm not only because it sorts fast, but because the idea is used to build other algorithms. 
 
 Mergesort is used to teach [divide & conquer algorithms](https://skerritt.blog/divide-and-conquer-algorithms/). And for good reason, it's a fantastic sorting algorithm that has roots outside of sorting. 
 
@@ -573,9 +569,9 @@ ret = search(ret['IMDBrating'])
 
 We find Shrek with an IMDB score of 7.8. But we're only sorted on the title, not the IMDB rating. We have to use sequential search to find all other films with the same rating. 
 
-Binary search is $O(log \; n)$ and sequential search is $O(n)$, this makes our algorithm $O(n \; log \; n)$. This isn't a disaster, so we can sure it's not a terrible algorithm.
+Binary search is $O(log \ n)$ and sequential search is $O(n)$, this makes our algorithm $O(n \ log \ n)$. This isn't a disaster, so we can sure it's not a terrible algorithm.
 
-Even in the instances where our algorithms are not strictly related to other algorithms, we can still compare them to things we know. $O(log \; n)$ means halfing. $O(n^2)$ means a nested for loop. 
+Even in the instances where our algorithms are not strictly related to other algorithms, we can still compare them to things we know. $O(log \ n)$ means halfing. $O(n^2)$ means a nested for loop. 
 
 One last thing, we don't always deal with `n`. Take this below algorithm:
 
@@ -640,7 +636,7 @@ This is an important distinction to make, because some caveats will confuse us o
 
 Given 2 positive functions, $f(n)$ and $g(n)$ we say $f(n)$ is $O(g(n))$, written $f(n) \in O(g(n))$, if there are constants $c$ and $n_0$ such that:
 
-$$f(n) \le c * g(n) \forall \;n \geq  n_o$$
+$$f(n) \le c * g(n) \forall \n \geq  n_o$$
 
 *[Side note: Asymptotic notation leans heavily into set theory. Check out my article on set theory here.](https://skerritt.blog/a-primer-on-set-theory/)*
 
@@ -662,7 +658,7 @@ This is just one of the many choices, because any real number $c \geq 7$ and any
 
 Another way to rephrase this is:
 
-$$7n-4 \le 7n \; where \; n \geq 1$$
+$$7n-4 \le 7n \ where \ n \geq 1$$
 
 The left hand side, $7n-4$ is f(n). c = 10. g(n) = n. Therefore we can say $f(n) =O(n)$ because $g(n) = n$. We say $f(n) \in O(n)$.
 
@@ -726,13 +722,13 @@ The constant C is 5, and $n_0 = 3$.
 
 ### Example 3
 
-$$13n^3 + 7n \;log \;n + 3$$ 
+$$13n^3 + 7n \log \n + 3$$ 
 
 > is $O(n^3)$
 
-Because $log \;n \le n \geq n^2$ for all $n \geq 1$, and for similar reasons as above we may conclude that:
+Because $log \n \le n \geq n^2$ for all $n \geq 1$, and for similar reasons as above we may conclude that:
 
-$13n^3 + 6nlog \;n + 3 \le 21 n^3$ for all 'large enough' n.
+$13n^3 + 6nlog \n + 3 \le 21 n^3$ for all 'large enough' n.
 
 In this instance, $c = 21$.
 
@@ -760,13 +756,13 @@ I hope you appreciate the easy example to break up the hard maths 😉
 
 ### Example 6 
 
-$$ 3 \;log \;n + \;log \;log \;n$$ 
+$$ 3 \log \n + \log \log \n$$ 
 
-> is $O(log \;n)$?
+> is $O(log \n)$?
 
-First we have this equality that $log \;n \le n$ for every $n \geq 1$. We can put a double log here like so: $log\;log\;n \le log \;n$. Log log n is smaller than log n. We replaced "n" with "log n" on both sides of $log \;n \le n$. So:
+First we have this equality that $log \n \le n$ for every $n \geq 1$. We can put a double log here like so: $log\log\n \le log \n$. Log log n is smaller than log n. We replaced "n" with "log n" on both sides of $log \n \le n$. So:
 
-$$3 \;log \;n + \;log\;log \;n \le 4 \;log \;n$$
+$$3 \log \n + \log\log \n \le 4 \log \n$$
 
 So:
 
@@ -774,17 +770,17 @@ $$c = 4, n_0 = 1$$
 
 ### Example 7
 
-$log \; n$ 
+$log \ n$ 
 
 > is $< O(\sqrt{n})$
 
 Log n grows slower than any function where this holds:
 
-$$log \; m \le m^\epsilon$$ for every $\epsilon > 0$ no matter how small it is, as long as it is positive.
+$$log \ m \le m^\epsilon$$ for every $\epsilon > 0$ no matter how small it is, as long as it is positive.
 
 Using this inequality if we plug in $\epsilon = \frac{1}{2}$ and we plug that into our equation $\sqrt{m} = m^{\frac{1}{2}}$.
 
-Knowing that $log \; m \le m^\epsilon$ we know that $O(log \; n) < O(\sqrt{n})$
+Knowing that $log \ m \le m^\epsilon$ we know that $O(log \ n) < O(\sqrt{n})$
 
 ### Example 8
 

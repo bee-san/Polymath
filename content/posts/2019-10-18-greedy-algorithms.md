@@ -8,65 +8,11 @@ tags:
     - Computer Science
     - Datastructures and Algorithms
 excerpt: Greedy algorithms aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
+showToc: true
+math: true
 ---
 
 **Greedy algorithms** aim to make the optimal choice at that given moment. Each step it chooses the optimal choice, without knowing the future. It attempts to find the globally optimal way to solve the entire problem using this method.
-
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
-  - [At least this isn't a full screen pop up! 😅](#at-least-this-isnt-a-full-screen-pop-up-)
-  - [Why Are Greedy Algorithms Called Greedy?](#why-are-greedy-algorithms-called-greedy)
-  - [What Are Greedy Algorithms Used For?](#what-are-greedy-algorithms-used-for)
-  - [How Do I Create a Greedy Algorithm?](#how-do-i-create-a-greedy-algorithm)
-- [Counting Change Using Greedy](#counting-change-using-greedy)
-  - [Is Greedy Optimal? Does Greedy Always Work?](#is-greedy-optimal-does-greedy-always-work)
-- [Dijkstra's Algorithm](#dijkstras-algorithm)
-  - [!](#)
-- [Minimum Spanning Trees Using Prim's Algorithm](#minimum-spanning-trees-using-prims-algorithm)
-  - [Fractional Knapsack Problem Using Greedy Algorithm](#fractional-knapsack-problem-using-greedy-algorithm)
-  - [Greedy vs Divide & Conquer vs Dynamic Programming](#greedy-vs-divide--conquer-vs-dynamic-programming)
-  - [Conclusion](#conclusion)
-  - [At least this isn't a full screen pop up! 😅](#at-least-this-isnt-a-full-screen-pop-up--1)
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
 
 ---
 
@@ -121,7 +67,9 @@ Imagine you're a vending machine. Someone gives you £1 and buys a drink for £0
 
 For reference, this is the denomination of each coin in the UK:
 
-    1p, 2p, 5p, 10p, 20p, 50p, £1
+```
+1p, 2p, 5p, 10p, 20p, 50p, £1
+```
 
 The greedy algorithm starts from the highest denomination and works backwards. Our algorithm starts at £1. £1 is more than 30p, so it can't use it. It does this for 50p. It reaches 20p. 20p < 30p, so it takes 1 20p.
 
@@ -131,7 +79,9 @@ We return 1x20p and 1x10p.
 
 This algorithm works well in real life. Let's use another example, this time we have the denomination next to how many of that coin is in the machine, `(denomination, how many)`.
 
-    (1p, 10), (2p, 3), (5p, 1), (10p, 0), (20p, 1p), (50p, 19p), (100p, 16)
+```
+(1p, 10), (2p, 3), (5p, 1), (10p, 0), (20p, 1p), (50p, 19p), (100p, 16)
+```
 
 The algorithm is asked to return change of 30p again. 100p (£1) is no. Same for 50. 20p, we can do that. We pick 1x 20p. We now need to return 10p. 20p has run out, so we move down 1.
 
@@ -145,28 +95,33 @@ We choose 1x 1p coin.
 
 Our algorithm selected these coins to return as change:
 
-    # (value, how many we return as change)
-    (10, 1)
-    (5, 1)
-    (2, 2)
-    (1, 1)
+```python
+# (value, how many we return as change)
+(10, 1)
+(5, 1)
+(2, 2)
+(1, 1)
+```
 
 Let's code something. First, we need to define the problem. We'll start with the denominations.
 
-    denominations = [1, 2, 5, 10, 20, 50, 100]
-    # 100p is £1
+```python
+denominations = [1, 2, 5, 10, 20, 50, 100]
+# 100p is £1
+```
 
 Now onto the core function. Given denominations and an amount to give change, we want to return a list of how many times that coin was returned. 
 
 If our `denominations` list is as above, `[6, 3, 0, 0, 0, 0, 0]` represents taking 6 1p coins and 3 2p coins, but 0 of all other coins.
 
-    denominations = [1, 2, 5, 10, 20, 50, 100]
-    # 100p is £1
-    
-    def returnChange(change, denominations):
-    	toGiveBack = [0] * len(denominations)
-    	for pos, coin in reversed(list(enumerate(denominations))):
-    
+```python
+denominations = [1, 2, 5, 10, 20, 50, 100]
+# 100p is £1
+
+def returnChange(change, denominations):
+    toGiveBack = [0] * len(denominations)
+    for pos, coin in reversed(list(enumerate(denominations))):
+```
 
 We create a list, the size of denominations long and fill it with 0's. 
 
@@ -174,41 +129,44 @@ We want to loop backwards, from largest to smallest. `Reversed(x)` reverses x an
 
 Our next step is choosing a coin for as long as we can use that coin. If we need to give `change = 40` we want our algorithm to choose 20, then 20 again until it can no longer use 20. We do this using a for loop. 
 
-    denominations = [1, 2, 5, 10, 20, 50, 100]
-    # 100p is £1
-    
-    def returnChange(change, denominations):
-    	# makes a list size of length denominations filled with 0
-    	toGiveBack = [0] * len(denominations)
-    
-    	# goes backwards through denominations list
-    	# and also keeps track of the counter, pos.
-    	for pos, coin in enumerate(reversed(denominations)):
-    		# while we can still use coin, use it until we can't
-    		while coin <= change:
-    
+```python
+denominations = [1, 2, 5, 10, 20, 50, 100]
+# 100p is £1
+
+def returnChange(change, denominations):
+    # makes a list size of length denominations filled with 0
+    toGiveBack = [0] * len(denominations)
+
+    # goes backwards through denominations list
+    # and also keeps track of the counter, pos.
+    for pos, coin in enumerate(reversed(denominations)):
+        # while we can still use coin, use it until we can't
+        while coin <= change:
+```
 
 While the coin can still fit into change, add that coin to our return list, `toGiveBack` and remove it from change.
 
-    denominations = [1, 2, 5, 10, 20, 50, 100]
-    # 100p is £1
-    
-    def returnChange(change, denominations):
-    	# makes a list size of length denominations filled with 0
-    	toGiveBack = [0] * len(denominations)
-    
-    	# goes backwards through denominations list
-    	# and also keeps track of the counter, pos.
-    	for pos, coin in enumerate(reversed(denominations)):
-    		# while we can still use coin, use it until we can't
-    		while coin <= change:
-    			change = change - coin
-    			toGiveBack[pos] += 1
-    	return(toGiveBack)
-    			
-    print(returnChange(30, denominations))
-    # returns [0, 0, 0, 1, 1, 0, 0]
-    # 1x 10p, 1x 20p
+```python
+denominations = [1, 2, 5, 10, 20, 50, 100]
+# 100p is £1
+
+def returnChange(change, denominations):
+    # makes a list size of length denominations filled with 0
+    toGiveBack = [0] * len(denominations)
+
+    # goes backwards through denominations list
+    # and also keeps track of the counter, pos.
+    for pos, coin in enumerate(reversed(denominations)):
+        # while we can still use coin, use it until we can't
+        while coin <= change:
+            change = change - coin
+            toGiveBack[pos] += 1
+    return(toGiveBack)
+            
+print(returnChange(30, denominations))
+# returns [0, 0, 0, 1, 1, 0, 0]
+# 1x 10p, 1x 20p
+```
 
 The [runtime ](/you-need-to-understand-big-o-notation-now/)of this algorithm is dominated by the 2 loops, thus it is $O(n^2)$.
 
@@ -228,7 +186,9 @@ We'll pick 1, 15, 25.
 
 We'll ask for change of 30. Now, let's see what our Greedy algorithm does.
 
-    [5, 0, 1]
+```
+[5, 0, 1]
+```
 
 It choses 1x 25p, and 5x 1p. The optimal solution is 2x 15p. 
 

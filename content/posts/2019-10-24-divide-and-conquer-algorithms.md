@@ -8,13 +8,16 @@ tags:
     - Computer Science
     - Datastructures and Algorithms
 excerpt: An easy to understand introduction to divide and conquer algorithms
+math: true
+showToc: true
 ---
 
 Often I'll hear about how you can optimise a for loop to be faster or how switch statements are faster than if statements. Most computers have over 1 core, with the ability to support multiple threads. Before worrying about optimising for loops or if statements try to attack your problem from a different angle.
 
-Divide and Conquer is one way to attack a problem from a different angle. Don't worry if you have **zero **experience or knowledge on the topic. This article is designed to be read by someone with very little programming knowledge.
+Divide and Conquer is one way to attack a problem from a different angle. Don't worry if you have **zero** experience or knowledge on the topic. This article is designed to be read by someone with very little programming knowledge.
 
 I will explain this using 3 examples. The first will be a simple explanation. The second will be some code. The final will get into the mathematical core of divide and conquer techniques. (Don't worry, I hate maths too).
+
 
 ---
 
@@ -57,20 +60,26 @@ Before we get into the rest of the article, let's learn about recursion first.
 **Recursion is when a function calls itself.** It's a hard concept to understand if you've never heard of it before. [This page provides a good explanation](https://www.google.com/search?hl=en&amp;q=recursion). 
 
 Matryoshka dolls are these cute little things:
+
 ![](/media/divide/dolls.png)
+
 We open up the bigger one, and inside is a slightly smaller one. Inside that one is another slightly small doll. Let's say, inside the last doll is a key. But we do not know how many dolls there are. How do we write a function that opens up the dolls until we find a key?
 
 We could use a while loop, but recursion is preferred here.
-![](/content/images/2019/10/matryoshkaDolls-1.svg)
+
+![](/media/divide/while.svg)
+
 To program this, we can write:
 
-    def getKey(doll):
-    	item = doll.open()
-        if item == key:
-        	return key
-    	else:
-        	return getKey(item)
-    getKey(doll)
+```python
+def getKey(doll):
+    item = doll.open()
+    if item == key:
+        return key
+    else:
+        return getKey(item)
+getKey(doll)
+```
 
 The function repeatedly calls itself until it finds a key, at which point it stops. The finding key point is called a *break case* or *exit condition*.
 
@@ -82,15 +91,17 @@ We love recursion because it's used in maths **all the time**. Computer scientis
 
 Not just because some people love maths, but because it makes it easier to implement. Need to calculate the Fibonacci numbers? The maths equation for this is:
 
-$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\ F(n - 1) + F(n - 2), \; \text{if n > 1} \end{cases}$$
+$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\\ F(n - 1) + F(n - 2), \; \text{if n > 1} \end{cases}$$
 
 A natural recurrence in our formula! Instead of translating it into loops, we can just calculate it:
 
-    def F(n):
-    	if n == 0 or n == 1:
-    		return n
-      	else:
-    		return F(n-1)+F(n-2)
+```python
+def F(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        return F(n-1)+F(n-2)
+```
 
 This is one of the reasons why [functional programming is so cool.](/learn-functional-python-in-10-minutes/)
 
@@ -116,15 +127,17 @@ Take the solutions to the sub-problems and merge them into a solution to the ori
 
 Let's look at another example, calculating the factorial of a number.
 
-    n = 6
-    
-    def recur_factorial(n):
-       if n == 1:
-           return n
-       else:
-           return n * recur_factorial(n-1)
-    
-    print(recur_factorial(n))
+```python
+n = 6
+
+def recur_factorial(n):
+    if n == 1:
+        return n
+    else:
+        return n * recur_factorial(n-1)
+
+print(recur_factorial(n))
+```
 
 With the code from above, some important things to note. The Divide part is also the recursion part. We divide the problem up at `return n * recur_factorial(n-1)`.
 
@@ -152,13 +165,18 @@ Merge Sort is a sorting algorithm. The algorithm works as follows:
 - Recursively sort the two halves
 - Merge the two sorted halves into a single sorted sequence
 
-![](/content/images/2019/03/Blank-Diagram-48-.png)
+![](/media/divide/merge1.png)
+
 In this image, we break down the 8 numbers into separate digits. Just like we did earlier. Once we've done this, we can begin the sorting process.
 
 It compares 51 and 13. Since 13 is smaller, it puts it in the left-hand side. It does this for (10, 64), (34, 5), (32, 21).
-![](/content/images/2019/03/Blank-Diagram-49-.png)
+
+![](/media/divide/merge2.png)
+
 It then merges (13, 51) with (10, 64). It knows that 13 is the smallest in the first list, and 10 is the smallest in the right list. 10 is smaller than 13, therefore we don't need to compare 13 to 64. We're comparing & merging two **sorted **lists.
-![](/content/images/2019/03/Blank-Diagram-50-.png)
+
+![](/media/divide/merge3.png)
+
 In recursion we use the term *base case* to refer to the absolute smallest value we can deal with. With Merge Sort, the base case is 1. That means we split the list up until we get sub-lists of length 1. That's also why we go down all the way to 1 and not 2. If the base case was 2, we would stop at the 2 numbers. 
 
 If the length of the list (n) is larger than 1, then we divide the list and each sub-list by 2 until we get sub-lists of size 1. If n = 1, the list is already sorted so we do nothing.
@@ -170,18 +188,22 @@ Merge Sort is an example of a divide and conquer algorithm. Let's look at one mo
 ### Towers of Hanoi 🗼
 
 The Towers of Hanoi is a mathematical problem which compromises 3 pegs and 3 discs. This problem is mostly used to teach recursion, but it has some [real-world uses.](https://www.ibm.com/developerworks/community/blogs/jfp/entry/towers_of_hanoi_at_large1?lang=en) The number of pegs & discs can change.
-![](/content/images/2019/03/Blank-Diagram-57-.png)
+
+![](/media/divide/hanoi1.png)
+
 Each disc is a different size. We want to move all discs to peg C so that the largest is on the bottom, second largest on top of the largest, third largest (smallest) on top of all of them. There are some rules to this game:
 
 1. We can only move 1 disc at a time.
-2.  A disc cannot be placed on top of other discs that are smaller than it.
+2. A disc cannot be placed on top of other discs that are smaller than it.
 
 We want to use the smallest number of moves possible. If we have 1 disc, we only need to move it once. 2 discs, we need to move it 3 times.
 
 The number of moves is a power of 2 minus 1. Say we have 4 discs, we calculate the minimum number of moves as $2^4 = 16 - 1 = 15$. 
 
 To solve the above example we want to store the smallest disc in a buffer peg (1 move). See below for a gif on solving Tower of Hanoi with 3 pegs and 3 discs.
-![](/content/images/2019/03/gify-1.gif)
+
+![](/media/divide/hanoi2.gif)
+
 Notice how we need to have a buffer to store the discs.
 
 We can generalise this problem. If we have n discs: move n-1 from A to B recursively, move largest from A to C, move n-1 from B to C recursively.
@@ -190,20 +212,25 @@ If there is an even number of pieces the first move is always into the middle. I
 
 Let's  code the algorithm for ToH, in pseudocode.
 
-    function MoveTower(disk, source, dest, spare):
-    	if disk == 0, then:
-    		move disk from source to dest
+```python
+function MoveTower(disk, source, dest, spare):
+    if disk == 0, then:
+        move disk from source to dest
+```
 
 We start with a base case, `disk == 0`. `source` is the peg you're starting at. `dest` is the final destination peg. `spare` is the spare peg. 
 
-    FUNCTION MoveTower(disk, source, dest, spare):
-    IF disk == 0, THEN:
-        move disk from source to dest
-    ELSE:
-        MoveTower(disk - 1, source, spare, dest)   // Step 1
-        move disk from source to dest              // Step 2
-        MoveTower(disk - 1, spare, dest, source)   // Step 3
-    END IF
+
+```python
+FUNCTION MoveTower(disk, source, dest, spare):
+IF disk == 0, THEN:
+    move disk from source to dest
+ELSE:
+    MoveTower(disk - 1, source, spare, dest)   // Step 1
+    move disk from source to dest              // Step 2
+    MoveTower(disk - 1, spare, dest, source)   // Step 3
+END IF
+```
 
 Notice that with step 1 we switch `dest` and `source`. We do not do this for step 3. 
 
@@ -244,14 +271,15 @@ The numbers start at 0 and the next number is the current number + the previous 
 
 Let's say we want to find the 5 Fibonacci number. We can do this:
 
-    # [0, 1]
-    0 + 1 = 1 # 3rd fib number
-    # [0, 1, 1]
-    1 + 1 = 2 # 4th fib number
-    # [0, 1, 1, 2]
-    2 + 1 = 3 # 5th fib number
-    # [0, 1, 1, 2, 3]
-    
+```python
+# [0, 1]
+0 + 1 = 1 # 3rd fib number
+# [0, 1, 1]
+1 + 1 = 2 # 4th fib number
+# [0, 1, 1, 2]
+2 + 1 = 3 # 5th fib number
+# [0, 1, 1, 2, 3]
+```
 
 Now the first thing when designing a divide and conquer algorithm is to design the recurrence. The recurrence always starts with a base case. 
 
@@ -259,9 +287,11 @@ We can describe this relation using a recursion. A recurrence is an equation whi
 
 As we saw, our base case is the 2 numbers at the start.
 
-    def f(n):
-    	if n == 0 or n == 1:
-        	return n
+```python
+def f(n):
+    if n == 0 or n == 1:
+        return n
+```
 
 To calculate the 4th Fibonacci number, we do (4 - 1) + (4 - 2). This means (last number in the sequence) + (the number before the last).  Or in other words:
 
@@ -271,45 +301,57 @@ If our number is not 0 or 1, we want to add the last 2 Fibonacci numbers togethe
 
 Let's take a look at our table quickly:
 
-    # [0, 1]
-    0 + 1 = 1
-    # [0, 1, 1]
-    1 + 1 = 2 
-    # [0, 1, 1, 2]
-    2 + 1 = 3 
-    # [0, 1, 1, 2, 3]
-    2 + 3 = 5
-    # [0, 1, 1, 2, 3, 5]
+```python
+# [0, 1]
+0 + 1 = 1
+# [0, 1, 1]
+1 + 1 = 2 
+# [0, 1, 1, 2]
+2 + 1 = 3 
+# [0, 1, 1, 2, 3]
+2 + 3 = 5
+# [0, 1, 1, 2, 3, 5]
+```
 
 But what if we don't have this list stored? How do we calculate the 6th number without creating a list at all? Well we know that the 6th number is the 5th number + the 4th number. Okay, what are those? The 5th number is the 4th number + the 3rd number. The 4th number is the 3rd number + the second number. 
 
 We know that the second number is always 1, as we've reached a base case.
-![](/content/images/2019/10/fib_diagram-1.svg)
+
+![](/media/divide/tree.svg)
+
 Eventually we break it down to the basecases. Okay, so we know our code calls itself to calculate the Fibonacci numbers of the previous ones:
 
-    def f(n):
-    	if n == 0 or n == 1:
-        	return n
-    	else:
-        	f(n-1) f(n-2)
+```python
+def f(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        f(n-1) f(n-2)
+```
 
 Okay, how do we merge the Fibonacci numbers at the end? As we saw, it is the last number **added **to the current number.
 
-    def f(n):
-    	if n == 0 or n == 1:
-        	return n
-    	else:
-        	f(n-1) + f(n-2)
+```python
+def f(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        f(n-1) + f(n-2)
+```
 
 Now we've seen this, let's turn it into recursion using a recurrence. Luckily for us, it's incredibly easy to go from a recurrence to code or from code to a recurrence, as they are both recurrences!
 
-$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\ F(n - 1) + F(n - 2), \; \text{if n > 1} \end{cases}$$
+$$  F(n) = \begin{cases} n, \text{If n = 0 or 1} \\\ F(n - 1) + F(n - 2), \; \text{if n > 1} \end{cases}$$
 
 We often calculate the result of a recurrence using an **execution tree.** We saw this earlier when exploring how to build it in code. For F(6) this looks like:
-![](/content/images/2019/10/fib_diagram-1.svg)
+
+![](/media/divide/tree2.svg)
+
 n is 4, and n is larger than 0 or 1. So we do f(n-1) + f(n-2). We ignore the addition for now. This results in 2 new nodes, 3 and 2. 3 is larger than 0 or 1 so we do the same. Same for 2. We do this until we get a bunch of nodes which are either 0 or 1. 
 
-We then add all the nodes together. 0 + 1 + 1 + 0 + 1 + 0 + 1 + 0 + 1 + 0 + 0 + 1 = 8.
+We then add all the nodes together. 
+
+$$0 + 1 + 1 + 0 + 1 + 0 + 1 + 0 + 1 + 0 + 0 + 1 = 8$$
 
 ---
 
@@ -328,22 +370,41 @@ For example, working out the largest item of a list. Given a list of words, how 
 Normally if our algorithm follows a famous divide & conquer (algorithm) we can infer our big o from that.
 
 [This is no different from calculating the big o notation of our own algorithms.](/big-o/#-how-to-calculate-big-o-notation-for-our-own-algorithms-with-examples)
-[
 
-All You Need to Know About Big O Notation [Python Examples]
-
-By the end of this article, you’ll thoroughly understand Big O notation. You’ll
-also know how to use it in the real world, and even the mathematics behind it! In computer science, time complexity is the computational complexity that
-describes the amount of time it takes to run an algorithm. Big O …
-
-![](https://skerritt.blog/favicon.png)Brandon SkerrittBrandon's Blog
-
-![](https://skerritt.blog/content/images/2019/10/Copy-of-Copy-of-Copy-of-Copy-of-Dynamic-Programming-with-Python-The-Ultimate-Guide-1.png)
-](/big-o/)
 ---
 
 ## Divide & Conquer vs Dynamic Programming vs Greedy
-Greedy vs Divide & Conquer vs Dynamic Programming**Greedy****Divide & Conquer****Dynamic Programming**Optimises by making the best choice at the momentOptimises by breaking down a subproblem into simpler versions of itself and using multi-threading & recursion to solveSame as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.Doesn't always find the optimal solution, but is very fastAlways finds the optimal solution, but is slower than GreedyAlways finds the optimal solution, but could be pointless on small datasets.Requires almost no memoryRequires some memory to remember recursive callsRequires a lot of memory for memoisation / tabulation![](/content/images/2019/06/image-10.png)
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Greedy vs Divide & Conquer vs Dynamic Programming</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><strong>Greedy</strong></td>
+          <td><strong>Divide & Conquer</strong></td>
+          <td><strong>Dynamic Programming</strong></td>
+        </tr>
+      <tr>
+        <td>Optimises by making the best choice at the moment</td>
+        <td>Optimises by breaking down a subproblem into simpler versions of itself and using multi-threading & recursion to solve</td>
+        <td>Same as Divide and Conquer, but optimises by caching the answers to each subproblem as not to repeat the calculation twice.</td>
+      </tr>
+      <tr>
+        <td>Doesn't always find the optimal solution, but is very fast</td>
+        <td>Always finds the optimal solution, but is slower than Greedy</td>
+        <td>Always finds the optimal solution, but could be pointless on small datasets.</td>
+      </tr>
+      <tr>
+        <td>Requires almost no memory</td>
+        <td>Requires some memory to remember recursive calls</td>
+        <td>Requires a lot of memory for memoisation / tabulation</td>
+    </tbody>
+</table>
+
+
 ---
 
 ## Conclusion 📕
@@ -363,42 +424,3 @@ Divide and conquer algorithms are one of the fastest and perhaps easiest ways to
 The next step is to explore multi-threading. Choose your programming language of choice and Google, as an example, "Python multi-threading". Figure out how it works and see if you can attack any problems in your own code from this new angle. 
 
 You can also learn about how to solve recurrences (finding out the asymptotic running time of a recurrence), which is the next article I'm going to write. If you don't want to miss it, or you liked this article do consider subscribing to my email list 😁✨
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
