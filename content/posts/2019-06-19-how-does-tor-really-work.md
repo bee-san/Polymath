@@ -9,6 +9,7 @@ tags:
     - Datastructures and Algorithms
     - Popular
 excerpt: An introduction to every aspect of how Tor works, from hidden onion addresses to the nodes that make up Tor.
+showToc: true
 ---
 
 Today, we're going to do a technical deep-dive into how Tor really works.
@@ -21,67 +22,7 @@ This article is designed to be read by anyone, with **ZERO **knowledge on networ
 
 Let's dive right in.
 
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
-
-# Table of Contents
-
-1. [Overview 🌎](#overview-)
-2. [Tor Itself 👈](#tor-itself-)
-
-2.1. [What Tor Isn't ❌](#what-tor-isn-t-)
-
-2.2. [The Difference Between Tor and a Vpn 💻](#the-difference-between-tor-and-a-vpn-)
-- [Table of Contents](#table-of-contents)
-  - [Overview 🌎](#overview-)
-  - [Tor Itself 👈](#tor-itself-)
-    - [What Tor Isn't ❌](#what-tor-isnt-)
-    - [The Difference Between Tor and a VPN 💻](#the-difference-between-tor-and-a-vpn-)
-    - [Onion Routing 🔐](#onion-routing-)
-  - [How Is a Circuit Created? 💻](#how-is-a-circuit-created-)
-    - [Guard Pinning 📌](#guard-pinning-)
-    - [What Is a Directory Node? 📂](#what-is-a-directory-node-)
-  - [What Are Bridge Nodes? 🌉](#what-are-bridge-nodes-)
-  - [Tor Hidden Services 🕵️‍♀️](#tor-hidden-services-️️)
-- [Attacks on Tor 🤺](#attacks-on-tor-)
-  - [Conclusion 📕](#conclusion-)
-  - [At least this isn't a full screen pop up! 😅](#at-least-this-isnt-a-full-screen-pop-up--1)
+## What is Tor? 🗻
 
 The United States Naval Research Laboratory developed The Onion Routing Protocol (Tor) to project U.S. intelligence communications online. Ironically, Tor has seen widespread use by everyone - even those organisations which the U.S. Navy fights against.
 
@@ -116,13 +57,23 @@ Now we have a basic overview of Tor, let's start exploring how each part of Tor 
 > *Onion Routing is a distributed overlay network designed to anonymise TCP-based applications like web browsing, secure shell and instant messaging.*
 
 Clients choose a *path *through the network and build a *circuit* where each onion router in the path knows the predecessor and the successor, but no other nodes in the circuit. Paths and circuits are synonyms.
-![](/content/images/2019/02/Blank-Diagram.png)
+
+![](/media/tor/1.png)
+
 The original author (the question mark on the far left) remains anonymous, unless you're the first path in the node as you know who sent you the packet.
-![](/content/images/2019/02/Blank-Diagram-4-.png)
+
+![](/media/tor/2.png)
+
 No one knows what data is being sent until it reaches the last node in the path; who knows the data but doesn't know who sent it. The second to last node in the path doesn't know what the data is, only the last node in the path does.
-![](/content/images/2019/02/Blank-Diagram-5-.png)
+
+![](/media/tor/3.png)
+
 This has led to attacks whereby large organisations with expansive resources create Tor servers which aim to be the first and last onion routers in a path. If the organisation can do this, they get to know who sent the data and what data was sent, effectively breaking Tor. 
-![](/content/images/2019/02/Blank-Diagram-3-.png)Oh no! Now large organisation knows you watch Netflix 🍿
+
+![](/media/tor/4.png)
+
+Oh no! Now large organisation knows you watch Netflix 🍿
+
 It's incredibly hard to do this without being physically close to the location of the organisations servers, we'll explore this more later.
 
 Throughout this article I'll be using Netflix as a normal service (Bob) and Amazon Prime Video as the adversary (Eve). In the real world, this is incredibly unlikely to be the case. I'm not here to speculate on what organisations might want to attack Tor, so I've used 2 unlikely examples to avoid the political side of it.
@@ -158,11 +109,15 @@ The student was caught, even though he took precautions to make sure he wasn’t
 Gurillar mail sends an originating IP address header along with the email that’s sent so the receiver knows where the original email came from. With Tor, the student expected the IP address to be scrambled but the authorities knew it came from a Tor exit node (Tor keeps a list of all nodes in the directory service) so the authorities simply looked for people who were accessing Tor (within the university) at the time the email was sent.
 
 Tor isn't an anonymising service, but it is a service that can encrypt all traffic from A to B (so long as an end-end attack isn't performed). Tor is also incredibly slow, so using it for Netflix isn't a good use case.
-![](/content/images/2019/02/image-25.png)
+
+![](/media/tor/5.png)
+
 ### The Difference Between Tor and a VPN 💻
 
 When you use a VPN, the VPN forwards all your internet traffic to the appropriate destination. When it does so, the VPN encrypts your traffic. All your internet service provider can see is encrypted traffic heading from your computer to the VPN.
-![](/content/images/2019/06/Blank-Diagram-45-.png)
+
+![](/media/tor/6.png)
+
 They can’t see inside your packets. They don’t know who you’re talking to - other than the VPN.
 
 VPN’s aren’t private in the same way that Tor is. VPNs protect you against ISPs or local adversaries (ones monitoring your laptop’s WiFi). But, they don’t protect you from themselves.
@@ -174,43 +129,70 @@ In Tor, one rogue node is survivable. If one of the nodes in our graph earlier w
 Tor protects you from the Tor network. One rogue node is survivable. They don’t expect you to trust the network.
 
 No one, apart from you, should know the IP addresses of the origin and destination - and know the contents of the message.
-![](/content/images/2019/06/image-11.png)
+
+![](/media/tor/7.png)
+
 Now that we have a good handle on what Tor is, let's explore *onion routing*. 
 
 ---
 
 ### Onion Routing 🔐
-![](/content/images/2019/02/Blank-Diagram-7-.png)
+![](/media/tor/8.png)
+
 Given the network above, we are going to simulate what Tor does. Your computer is the one on the far left, and you're sending a request to watch *Stranger Things *on Netflix (because what else is Tor used for 😉). This path of nodes is called a *circuit. *Later on, we're going to look into how circuits are made and how the encryption works. But for now we're trying to generalise how Tor works. 
-![](/content/images/2019/02/Blank-Diagram-12-.png)
+
+![](/media/tor/9.png)
+
 We start off with the message (we haven't sent it yet). We need to encrypt the message N times (where N is how many nodes are in the path). We encrypt it using AES, a symmetric key crypto-system. The key is agreed using [Diffie-Hellman](/diffie-hellman-merkle/). Don't worry, we'll discuss all of this later. There is 4 nodes in the path (minus your computer and Netflix) so we encrypt the message 4 times.
-![](/content/images/2019/02/Blank-Diagram-14-.png)
+
+![](/media/tor/10.png)
+
 Our packet (onion) has 4 layers. Blue, purple, orange, and teal. Each colour represents one layer of encryption.
-![](/content/images/2019/02/Blank-Diagram-15-.png)
+
+![](/media/tor/11.png)
+
 We send the onion to the first node in our path. That node then removes the first layer of encryption. 
 
 Each node in the path knows what the key to decrypt their layer is (via [Diffie-Hellman](/diffie-hellman-merkle/)). Node 1 removes the blue layer with their symmetric key (that you both agreed on).
-![](/content/images/2019/02/Blank-Diagram-16-.png)
+
+![](/media/tor/12.png)
+
 Node 1 knows you sent the message, but the message is still encrypted by 3 layers of encryption, it has no idea what the message is.
 
 As it travels down the path, more and more layers are stripped away. The next node does not know who sent the packet. All it knows is that Node 1 sent them the packet, and it's to be delivered to Node 3.
-![](/content/images/2019/02/Blank-Diagram-17-.png)
+
+![](/media/tor/13.png)
+
 Now Node 3 strips away a layer.
-![](/content/images/2019/02/Blank-Diagram-18-.png)
+
+![](/media/tor/14.png)
+
 The final node knows what the message is and where it’s going, but it doesn’t know who sent it. All it knows is that Node 3 sent them the message, but it doesn't know about anyone else in the path. One of the key properties here is that once a node decrypts a layer, it cannot tell how many more layers there are to decrypt. It could be as small as 1 or 2 or as large as 200 layers of encryption.
-![](/content/images/2019/02/Blank-Diagram-19-.png)
+
+![](/media/tor/15.png)
+
 Now there's no way Amazon can find out you watch Netflix! Netflix sends back a part of Stranger Things. 
 
 Let's see how it works in reverse. 
-![](/content/images/2019/02/Blank-Diagram-20-.png)
+
+![](/media/tor/16.png)
+
 Node 4 adds its layer of encryption now. It doesn't know who originally made the request, all it knows is that Node 3 sent the request to them so it sends the response message back to Node 3.
-![](/content/images/2019/02/Blank-Diagram-21-.png)
+
+![](/media/tor/17.png)
+
 And so on for the next few nodes.
-![](/content/images/2019/02/Blank-Diagram-22-.png)
+
+![](/media/tor/18.png)
+
 Now the response packet is fully encrypted.
-![](/content/images/2019/02/Blank-Diagram-23-.png)
+
+![](/media/tor/19.png)
+
 Now the packet is fully encrypted, the only one who still knows what the message contains is Node 4. The only one who knows who made the message is Node 1. Now that we have the fully encrypted response back, we can use all the symmetric keys to decrypt it.
-![](/content/images/2019/02/Blank-Diagram-25-.png)
+
+![](/media/tor/20.png)
+
 You might be thinking "I've seen snails 🐌 faster than this" and you would be right. This protocol isn't designed for speed, but at the same time it has to care about speed.
 
 The algorithm could be much slower, but much more secure (using entirely public key cryptography instead of symmetric key cryptography) but the usability of the system matters. So yes, it's slow. No it's not as slow as it could be. But it's all a balancing act here.
@@ -236,45 +218,64 @@ All paths in the circuit obey these rules:
 - We do not choose the same router twice for the same path.
 
 If you choose the same node twice, it's guaranteed that the node will either be the guard node (the node you enter at) or the exit node, both dangerous positions. There is a 2/3 chance of it being both the guard and exit nodes, which is even more dangerous. We want to avoid the entry / exit attacks.
-![](/content/images/2019/02/Blank-Diagram-30-.png)This isn't okay. Node colour changes to show it's the same.
+
+<figure>
+    <img src="/media/tor/21.png">
+    <figcaption>This isn't okay. Node colour changes to show it's the same.<figcaption>
+</figure>
+
 - We do not choose any router in the same family as another in the same path. (Two routers are in the same family if each one lists the other in the “family” entries of its descriptor.)
 
 Operators who run more than 1 Tor node can choose to signify their nodes as 'family'. This means that the nodes have all the same parent (the operator of their network). This is again a countermeasure against the entry / exit attacks, although operators do not have to declare family if they wish. If they want to become a guard node (discussed soon) it is recommended to declare family, although not required.
-![](/content/images/2019/02/Blank-Diagram-31-.png)Not allowed
+
+<figure>
+    <img src="/media/tor/22.png">
+    <figcaption>Not allowed.<figcaption>
+</figure>
+
 - We do not choose more than one router in a given /16 subnet.
 
 Subnets define networks. IP addresses are made up of 8 octets of bits. As an example, Google's IP address in binary is:
 
+```console
     01000000.11101001.10101001.01101010
+```
 
 The first 16 bits (the /16 subnet) is `01000000.11101001` which means that Tor does not choose any nodes which start with the same 16 bits as this IP address. Again, a counter-measure to the entry / exit attacks.
-![](/content/images/2019/02/Blank-Diagram-32-.png)Not allowed
+
+<figure>
+    <img src="/media/tor/23.png">
+    <figcaption>Not allowed.<figcaption>
+</figure>
+
 If subnets sound confusing, I've written this Python code to help explain them:
 
-    # ip addresses are in binary, not the usual base 10 subnets are usually powers of 2, this is 2^4.
-    IP = "01000000.11101001.10101001.01101010"
-    subnet = 16
-    
-    # this will store the subnet address once we find it
-    subnet_ip = []
-    IP_list = list(IP)
-    counter = 0
-    
-    for i in IP_list:
-      # we want to end the loop when we reach the subnet number
-      if counter >= subnet:
-        break
-      # the ip address segments each oclet of bits with full stops
-      # we don't want to count a fullstop as a number 
-      # but we want to include it in the final subnet
-      if i == ".":
-        subnet_ip.append(".")
-        continue
-      else:
-        # else it is a number so we append and increment counter
-        subnet_ip.append(i)
-        counter = counter + 1
-    print("Subnet is " + ''.join(subnet_ip))
+```python
+# ip addresses are in binary, not the usual base 10 subnets are usually powers of 2, this is 2^4.
+IP = "01000000.11101001.10101001.01101010"
+subnet = 16
+
+# this will store the subnet address once we find it
+subnet_ip = []
+IP_list = list(IP)
+counter = 0
+
+for i in IP_list:
+  # we want to end the loop when we reach the subnet number
+  if counter >= subnet:
+    break
+  # the ip address segments each oclet of bits with full stops
+  # we don't want to count a fullstop as a number 
+  # but we want to include it in the final subnet
+  if i == ".":
+    subnet_ip.append(".")
+    continue
+  else:
+    # else it is a number so we append and increment counter
+    subnet_ip.append(i)
+    counter = counter + 1
+print("Subnet is " + ''.join(subnet_ip))
+```
 
 - We don’t choose any non-running or non-valid router unless we have been configured to do so. By default, we are configured to allow non-valid routers in “middle” and “rendezvous” positions.
 
@@ -283,7 +284,9 @@ Non-running means the node currently isn't online. You don't want to pick things
 - The first node must be a ***Guard node***. 
 
 A ***guard node*** is a privileged node because it sees the real IP of the user. It’s ‘expensive’ to become a guard node (maintain a high uptime for weeks and have good bandwidth). 
-![](/content/images/2019/02/Blank-Diagram-33-.png)
+
+![](/media/tor/24.png)
+
 This is possible for large companies who have 99.9% uptime and high bandwidth (such as Netflix). Tor has no way to stop a powerful adversary from registering a load of guard nodes. Right now, Tor is configured to stick with a single guard node for 12 weeks at a time, so you choose 4 new guard nodes a year.
 
 This means that if you use Tor once to watch Amazon Prime Video, it is relatively unlikely for Netflix to be your guard node. Of course, the more guard nodes Netflix creates the more likely it is. Although, if Netflix knows you are connecting to the Tor network to watch Amazon Prime Video then they will have to wait 4 weeks for their suspicions to be confirmed, unless they attack the guard node and take it over.
@@ -291,11 +294,15 @@ This means that if you use Tor once to watch Amazon Prime Video, it is relativel
 Becoming a guard node is relatively easy for a large organisation. Becoming the exit node is slightly harder, but still possible. We have to assume that the large organisation has infinite computational power to be able to do this. The solution is to make the attack highly expensive with a low rate of success. 
 
 The more regular users of Tor, the harder is if for a large organisation to attack it. If Netflix controls $\frac{50}{100}$ nodes in the network:
-![](/content/images/2019/03/image-3.png)
+
+![](/media/tor/25.png)
+
 The chance of you choosing a guard node from Netflix is 50%. 
 
 If suddenly 50 more normal user nodes join then that's $\frac{50}{150}$, reducing the probability of Netflix owning a guard node (and thus, a potential attack) and making it even more expensive.
-![](/content/images/2019/03/image-2.png)
+
+![](/media/tor/26.png)
+
 There is strength in numbers within the Tor service.
 
 ### Guard Pinning 📌
@@ -304,29 +311,31 @@ When a Tor client starts up for the first time, it chooses a small & random set 
 
 The official proposal from the [Tor documentation states](https://github.com/torproject/torspec/blob/master/proposals/271-another-guard-selection.txt):
 
-    1. Introduction and motivation
-    
-      Tor uses entry guards to prevent an attacker who controls some
-      a fraction of the network from observing a fraction of every user's
-      traffic. If users chose their entries and exits uniformly at
-      random from the list of servers every time they build a circuit,
-      then an adversary who had (k/N) of the network would deanonymize
-      F=(k/N)^2 of all circuits... and after a given user had built C
-      circuits, the attacker would see them at least once with
-      probability 1-(1-F)^C.  With large C, the attacker would get a
-      sample of every user's traffic with probability 1.
-    
-      To prevent this from happening, Tor clients choose a small number
-      of guard nodes (currently 3).  These guard nodes are the only
-      nodes that the client will connect to directly.  If they are not
-      compromised, the user's paths are not compromised.
-    
-      But attacks remain.  Consider an attacker who can run a firewall
-      between a target user and the Tor network, and make many of the
-      guards they don't control appear to be unreachable.  Or consider
-      an attacker who can identify a user's guards, and mount
-      denial-of-service attacks on them until the user picks a guard
-    that the attacker controls.
+```
+1. Introduction and motivation
+
+   Tor uses entry guards to prevent an attacker who controls some
+   a fraction of the network from observing a fraction of every user's
+   traffic. If users chose their entries and exits uniformly at
+   random from the list of servers every time they build a circuit,
+   then an adversary who had (k/N) of the network would deanonymize
+   F=(k/N)^2 of all circuits... and after a given user had built C
+   circuits, the attacker would see them at least once with
+   probability 1-(1-F)^C.  With large C, the attacker would get a
+   sample of every user's traffic with probability 1.
+
+   To prevent this from happening, Tor clients choose a small number
+   of guard nodes (currently 3).  These guard nodes are the only
+   nodes that the client will connect to directly.  If they are not
+   compromised, the user's paths are not compromised.
+
+   But attacks remain.  Consider an attacker who can run a firewall
+   between a target user and the Tor network, and make many of the
+   guards they don't control appear to be unreachable.  Or consider
+   an attacker who can identify a user's guards, and mount
+   denial-of-service attacks on them until the user picks a guard
+   that the attacker controls.
+```
 
 Guard node pinning is important because of Tor’s threat model. Tor assumes that it may only take a single opening for an adversary to work out who you are talking to, or who you are. Since a single vulnerability circuit can destroy your integrity, Tor tries to minimise the probability that we will ever construct one or more vulnerable circuits.
 
@@ -343,21 +352,29 @@ Each node is a seperate organisation because it provides redundancy and distribu
 Directory nodes maintain a list of currently running relays (publicly listed node in the Tor network). Once per hour directory nodes publish a consensus together. The consensus is a single document compiled and voted on by each directory node. It ensures that all clients have the same information about the relays that make up Tor.
 
 When a Tor user (a client or a node) wants to know the current state of the network, it asks a directory node. As we’ll see later, directory nodes are essential for all parts of Tor, especially in hidden services.
-![](/content/images/2019/06/Blank-Diagram-46-.png)
+
+![](/media/tor/27.png)
+
 Relays keep the directory nodes up to date. They send directory node(s) a notification whenever they come online or updated. Whenever a directory node receives a notification, it updates its personal opinion on the current state of the Tor network. All directory nodes then use this opinion to form a consensus of the network.
-![](/content/images/2019/06/Blank-Diagram-47-.png)
+
+![](/media/tor/28.png)
+
 Let’s now look at what happens when disagreements arise in the directory services when forming a consensus.
 
 The first version of Tor took a simple approach to conflict resolution. Each directory node gave the state of the network as it personally saw it. Each client believed whichever directory node it had spoken to recently. There is no consensus here among all directory nodes.
 
 In Tor, this is a disaster. There was nothing ensuring that directory nodes were telling the truth. If an adversary took over one directory node, they would be able to lie about the state of the network.
-![](/content/images/2019/06/Blank-Diagram-48-.png)
+
+![](/media/tor/29.png)
+
 If a client asked this adversary controlled directory for the state of the network, it’d return a list. This list contains only nodes that the adversary controlled. The client would then connect to these adversary nodes.
 
 The second version of the Tor directory system made this attack harder. Instead of asking a single directory node for its opinion, clients asked every directory node and combined their opinions into a consensus. But, clients could form differing views on the network depending on when they had last spoken to each directory node. This gave way to statistical information leakage - not as bad as Tor 1.0. Besides, every client had to talk to every directory node, which took time and was expensive.
 
 The third and current version of the directory system moved the responsibility of calculating a consensus from clients to directory nodes.
-![](/content/images/2019/06/Blank-Diagram-50-.png)
+
+![](/media/tor/30.png)
+
 ## What Are Bridge Nodes? 🌉
 
 I’m not sure if you saw it earlier, but I made the distinction between nodes in the directory services and nodes that aren’t.
@@ -369,7 +386,9 @@ The state can query a directory node for a list of active Tor relays, and censor
 Tor keeps an [up-to-date listing](https://metrics.torproject.org/userstats-censorship-events.html) of countries where it is possibly blocked (censored) if you're interested.
 
 Tor helps its users circumvent the censorship by hiding the fact they are using Tor. They do this through a proxy known as a *Bridge Node*. Tor users send their traffic to the bridge node, which forwards the traffic onto the user’s chosen guard nodes.
-![](/content/images/2019/06/Blank-Diagram-51-.png)
+
+![](/media/tor/31.png)
+
 The full list of Bridge nodes is never published, making it difficult for states to completely block Tor. You can view some bridge nodes [here](https://bridges.torproject.org/). If this doesn’t work, Tor suggests:
 
 > Another way to get bridges is to send an email to [bridges@torproject.org](bridges@torproject.org). Please note that you must send the email using an address from one of the following email providers: Riseup or Gmail.
@@ -389,13 +408,19 @@ Ever heard those rumours "there are websites on the dark-web, on Tor that when y
 When people talk about these websites they are talking about ***Tor Hidden Services***.
 
 These are a wild concept and honestly deserve an entire blogpost on their own. Hidden services are servers, like any normal computer server.
-![](/content/images/2019/02/Blank-Diagram-34-.png)
+
+![](/media/tor/32.png)
+
 Except in a Tor Hidden Service it is possible to communicate without the user and server knowing who each other are.
-![](/content/images/2019/02/Blank-Diagram-35-.png)
+
+![](/media/tor/33.png)
+
 The device (the question mark) knows that it wants to access Netflix, but it doesn't know anything about the server and the server doesn't know anything about the device that's asked to access it. This is quite confusing, but don't worry, I'm going to explain it all with cool diagrams. ✨
 
 When a server is set up on Tor to act as a hidden service, the server sends a message to some selected Onion Routers asking if they want to be an introduction point to the server. It is entirely up to the server as to who gets chosen as an introduction point, although usually they ask 3 routers to be their introduction points.
-![](/content/images/2019/02/Blank-Diagram-36-.png)
+
+![](/media/tor/34.png)
+
 The introduction points know that they are going to be introducing people to the server.
 
 The server will then create something called a hidden service descriptor which has a public key and the IP address of each introduction point. It will then send this hidden service descriptor to a [distributed hash table](https://www.wikiwand.com/en/Distributed_hash_table) which means that every onion router (not just the introduction points) will hold some part of the information of the hidden service.
@@ -409,25 +434,40 @@ The idea is that the onion address isn’t publicised over the whole Tor network
 The way that the distributed hash table is programmed means that the vast majority of the nodes won't know what the descriptor is for a given key.
 
 So almost every single onion router will have minimal knowledge about the hidden service unless they explicitly want to find it.
-![](/content/images/2019/02/Blank-Diagram-2.png)
+
+![](/media/tor/35.png)
+
 Let's say someone gave you the onion address. You request the descriptor off the hash table and you get back the services introduction points.
 
 If you want to access an onion address you would first request the descriptor from the hash table and the descriptor has, let’s say 4 or 5 IP addresses of introductory nodes. You pick one at random let's say the top one.
-![](/content/images/2019/02/Blank-Diagram-1--2.png)
+
+![](/media/tor/36.png)
+
 You’re going to ask the introduction point to introduce you to the server and instead of making a connection directly to the server you make a rendezvous point at random in the network from a given set of Onion Routers. 
-![](/content/images/2019/02/Blank-Diagram-3--1.png)This should say "Tor node". I've lost the files for these graphs (thanks LucidChart). Terribly sorry I can't update this.
+
+![](/media/tor/37.png)
+
+This should say "Tor node". I've lost the files for these graphs (thanks LucidChart). Terribly sorry I can't update this.
 You then make a circuit to that rendezvous point and you send a message to the rendezvous point asking if it can introduce you to the server using the introduction point you just used.  You then send the rendezvous point a one time password (in this example, let's use 'Labrador').
 
 The rendezvous point makes a circuit to the introduction point and sends it the word 'Labrador' and its IP address. 
-![](/content/images/2019/02/Blank-Diagram-4--1.png)
+
+![](/media/tor/38.png)
+
 The introduction point sends the message to the server and the server can choose to accept it or do nothing.
-![](/content/images/2019/02/Blank-Diagram-5--1.png)
+
+![](/media/tor/39.png)
+
 If the server accepts the message it will then create a circuit to the rendezvous point.
-![](/content/images/2019/02/Blank-Diagram-6-.png)
+
+![](/media/tor/40.png)
+
 The server sends the rendezvous point a message. The rendezvous point looks at both messages from your computer and the server. It says "well, I've received a message from this computer saying it wants to connect with this service and I’ve also received a message from the service asking if it can connect to a computer, therefore they must want to talk to each other".
 
 The rendezvous point will then act as another hop on the circuit and connect them.
-![](/content/images/2019/02/Blank-Diagram-7--1.png)
+
+![](/media/tor/41.png)
+
 In short, a hidden service works like this, taken from [here](https://tor.stackexchange.com/questions/672/how-do-onion-addresses-exactly-work):
 
 1. A hidden service calculates its key pair (private and public key, asymmetric encryption).
@@ -457,8 +497,10 @@ Confirmation attacks are hard and need a lot of preparation and resources. The a
 
 If Alice sends a packet like this:
 
-    # (timestamp, size, port, protocol)
-    (17284812, 3, 21, SSH)
+```python
+# (timestamp, size, port, protocol)
+(17284812, 3, 21, SSH)
+```
 
 And Bob receives this packet, the attacker can see that the packets are the same - even though the attacker cannot see what the packet is as it is encrypted. Does Bob tend to receive packets at the same time that Alice sends them? Are they the same size? If so, it is reasonable to infer that Alice and Bob are communicating with each other.
 
@@ -506,7 +548,9 @@ Guerilla mail sends an originating IP address header along with the email that�
 
 If this person went to a coffee shop or something, he probably would of be fine.
 
-There’s a fantastic talk at [DEFCON 22 about how Tor users got caught](https://www.youtube.com/watch?v=eQ2OZKitRwc). None of the stories mentioned was caused by Tor, but rather bad OpSec.
+There’s a fantastic talk at [DEFCON 22 about how Tor users got caught](https://www.youtube.com/watch?v=). None of the stories mentioned was caused by Tor, but rather bad OpSec.
+
+{{ youtube eQ2OZKitRwc }}
 
 ---
 
@@ -525,44 +569,3 @@ Tor is a fascinating protocol full of algorithms that have been refined over the
 If you want to learn more, check out the paper on Tor titled "[Tor: The Second-Generation Onion Router](https://svn.torproject.org/svn/projects/design-paper/tor-design.pdf)".
 
 If you liked this article and want more like it, sign up to my email list below ✨ I'll only send you an email when I have something new, which is every month / 2 months or so.
-
-    #myemail {
-    background-color: #f0f0f0;
-    color: black;
-    padding: 15px;
-    border-radius: 25px;
-            width: 80%;
-        margin: 0 auto;
-    }
-    #little {
-    color: grey;
-        font-size: 10px;
-        }
-    #email {
-        width: 100%;
-        padding: 10px;
-        
-        }
-    #submit {
-        width: 100%;
-        background: rgb(36,255,204);
-        }
-        #gdpr { width: 15px; height: 15px; }
-    
-
-## At least this isn't a full screen pop up! 😅
-
-        Sign up now and get:
-       
-- A free 202 page book on algorithmic design paradigms
-- A free 107 page book on employability skills
-- And much more to help you become an awesome developer!
-
-Email
-
-GDPR: I consent to receive promotional emails about your products and services.
-HP
-
-One click unsubscribe anytime.
-
-If you're feeling extra generous, I have a [PayPal ](https://www.paypal.me/BrandonSkerritt) and even a [Patreon](https://www.patreon.com/user?u=15993188). I'm a university student who writes these articles in my spare time. This blog is my full time job, so any and all donations are appreciate
