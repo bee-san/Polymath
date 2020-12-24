@@ -9,6 +9,8 @@ tags:
     - Datastructures and Algorithms
     - Infosec
 excerpt: BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.
+showToc: true
+math: true
 ---
 
 No talk about downloading things on BitTorrent. Or the best clients to do so.
@@ -21,43 +23,11 @@ BitTorrent is one of the most common protocols for transferring large files. In 
 
 Let's dive right in.
 
-# Table of Contents
-
-1. [💭 Who Created BitTorrent?](#-who-created-bittorrent)
-2. [🥊 BitTorrent vs Cient-Server Downloading](#-bittorrent-vs-cient-server-downloading)
-3. [📑 High Level Overview](#-high-level-overview)
-4. [📁 What's in a Torrent Descriptor File, Anyway?](#-what-s-in-a-torrent-descriptor-file-anyway)
-5. [🧀 The Piece Selection Algorithm of BitTorrent](#-the-piece-selection-algorithm-of-bittorrent)
-6. [🌆 What Are Sub-Pieces and the Piece Selection Algorithm?](#-what-are-sub-pieces-and-the-piece-selection-algorithm)
-
-6.1. [1️⃣ Strict Policy](#1-strict-policy)
-
-6.2. [2️⃣ Rarest First](#2-rarest-first)
-
-6.3. [3️⃣ Random First Piece](#3-random-first-piece)
-
-6.4. [4️⃣ Endgame Mode](#4-endgame-mode)
-7. [🌱 Resource Allocation Using Tit-For-Tat](#-resource-allocation-using-tit-for-tat)
-8. [🎐 The Choking Algorithm](#-the-choking-algorithm)
-9. [😎 Optimistic Unchoking](#-optimistic-unchoking)
-10. [🤕 Anti-Snubbing](#-anti-snubbing)
-11. [🤔 What If We Upload Only?](#-what-if-we-upload-only)
-12. [🐝 What Is a Tracker?](#-what-is-a-tracker)
-
-12.1. [🗼 Public Trackers](#-public-trackers)
-
-12.2. [🔐 Private Trackers](#-private-trackers)
-
-12.3. [🔢 Multi-Tracker Torrents](#-multi-tracker-torrents)
-13. [🧲 Magnet Links - Trackerless Torrents](#-magnet-links-trackerless-torrents)
-14. [🐍 Distributed Hash Tables](#-distributed-hash-tables)
-15. [📌 Routing Table](#-routing-table)
-16. [🤺 Attacks on BitTorrent](#-attacks-on-bittorrent)
-
 ---
 
 # 💭 Who Created BitTorrent?
-![](/content/images/2019/08/undraw_Creation_process_ukbh.svg)
+![](/media/bittorrent/1.svg)
+
 [Bram Cohen](https://en.wikipedia.org/wiki/Bram_Cohen) invented the BitTorrent protocol in 2001. Cohen wrote the first client implementation in Python.
 
 Cohen collected free pornography to lure beta testers to use BitTorrent in the summer of 2002.
@@ -65,9 +35,11 @@ Cohen collected free pornography to lure beta testers to use BitTorrent in the s
 ---
 
 ## 🥊 BitTorrent vs Cient-Server Downloading
-![](/content/images/2019/08/undraw_selecting_1lx3.svg)
+
+![](/media/bittorrent/2.svg)
+
 In traditional downloading, the server uploads the file, and the client downloads the file.
-![Two objects, a laptop and a server. The laptop is asking Netflix to watch &quot;Stranger Things&quot;. Netflix replies with &quot;yes, here is Stranger Things&quot;](/content/images/2019/08/ClientServer.png)
+![Two objects, a laptop and a server. The laptop is asking Netflix to watch &quot;Stranger Things&quot;. Netflix replies with &quot;yes, here is Stranger Things&quot;](/media/bittorrent/3.svg)
 For popular files, this isn't very effective.
 
 500 people downloading the same file will put the server under strain. This strain will cap the upload speed, so clients can not download the file fast.
@@ -77,27 +49,38 @@ Second, client-server costs a lot of money. The amount we pay increases with how
 Third, it’s centralised. Say the system dies, the file no longer exists - no one can download it. 
 
 BitTorrent aims to solve these problems.
-![Two columns on this table. First column says &quot;Client-server downloading&quot;. Second column says &quot;BitTorrent&quot;. THE CLIENT-server downloading says &quot;centraliesd&quot;, &quot;popular files can cause strain&quot;, &quot;costs a lot of money&quot;. Bittorrent says &quot;decentralised, popular  files do not cause strain, ,cost does not scale with the popularity of a file. Sorry this alt text is slightly broken my blogging system just implemented alt text and it isn't that good :(](/content/images/2019/08/image-5.png)
+![Two columns on this table. First column says &quot;Client-server downloading&quot;. Second column says &quot;BitTorrent&quot;. THE CLIENT-server downloading says &quot;centraliesd&quot;, &quot;popular files can cause strain&quot;, &quot;costs a lot of money&quot;. Bittorrent says &quot;decentralised, popular  files do not cause strain, ,cost does not scale with the popularity of a file](/media/bittorrent/4.png)
+
 In a peer-to-peer network, every peer is connected to every other peer in the network.
-![](/content/images/2019/08/Peer-to-peer-network.svg)
+
+![](/media/bittorrent/4.svg)
+
 *Semi-centralised peer-to-peer networks* possess one or more peers with higher authority than most peers.
-![](/content/images/2019/08/Peer-to-peer-network-centralised.svg)
+
+![](/media/bittorrent/5.svg)
+
 ---
 
 # 📑 High Level Overview
-![](/content/images/2019/08/undraw_features_overview_jg7a.svg)
+![](/media/bittorrent/6.svg)
 BitTorrent is a way to share files. It’s often used for large files. BitTorrent is an alternative to a single source sharing a file, such as a server. BitTorrent can productively work on lower bandwidth.
 
 The first release of the BitTorrent client had no search engine and no peer exchange, users who wanted to upload a file had to create a small *torrent descriptor file* that they would upload to a torrent index site.
 
 When a user wants to share a file, they seed their file. This user is called a *seeder*. They upload a torrent descriptor file to an exchange (we’ll talk about this later). Anyone who wants to download that file will download this torrent descriptor.
-![Laptop downloading a torrent descriptor file](/content/images/2019/08/ClientServer-1.png)
+
+![Laptop downloading a torrent descriptor file](/media/bittorrent/8.png)
+
 We call those who download *peers*. Their torrent client will connect to a tracker (discussed later) and the tracker will send them a list of IP addresses of other seeds and peers in the swarm. The *swarm *is all PC’s related to a certain torrent.
 
 The torrent descriptor file contains a list of trackers and metadata on the file we’re downloading.
-![Laptop asking the tracker who else is downloading the file Ubuntu. Tracker replies with IP ddresses](/content/images/2019/08/ClientServer--2-.png)
+
+![Laptop asking the tracker who else is downloading the file Ubuntu. Tracker replies with IP ddresses](/media/bittorrent/9.png)
+
 A peer will connect to a seed and download parts of the file.
-![](/content/images/2019/08/peer-to-peer-bit-torrent.png)
+
+![](/media/bittorrent/10.png)
+
 Once the peer completes a download, they could function as a seed. Although, it is possible to function as a seed while also downloading (and is very common).
 
 Once the seed has shared the file to a peer, that peer will act as a seed. Instead of the client-server model where only 1 server exists to upload the file, in BitTorrent, multiple people can upload the same file.
@@ -122,7 +105,7 @@ And much more.
 ---
 
 ## 📁 What's in a Torrent Descriptor File, Anyway?
-![](/content/images/2019/08/undraw_file_manager_j85s.svg)
+![](/media/bittorrent/10.svg)
 It's a dictionary (or hashmap) file.
 
 The file is described as:
@@ -180,30 +163,32 @@ And I agree. [BitTorrent is moving from SHA-1 to SHA256.](http://bittorrent.org/
 
 Still confused? Not to worry! I designed this JSON file that describes what a torrent file looks like. Note: I’ve concatenated some things. This makes it easier to read and understand the general layout. I made the numbers up, following the rules of BitTorrent’s torrent descriptor.
 
-    {
-        "Announce": "url of tracker",
-        "Info": {
-            "Files": [
-                {
-                    "Length": 16,
-                    "path": "/folder/to/path"
-                },
-                {
-                    "length": 193,
-                    "path": "/another/folder"
-                }
-            ]
-        },
-        "length": 192,
-        "name":" Ubuntu.iso",
-        "Pieces length": 262144,
-        "Pieces": [AAF4C61DDCC5E8A2DABEDE0F3B482CD9AEA9434D, CFEA2496442C091FDDD1BA215D62A69EC34E94D0]
-    }
+```json
+{
+    "Announce": "url of tracker",
+    "Info": {
+        "Files": [
+            {
+                "Length": 16,
+                "path": "/folder/to/path"
+            },
+            {
+                "length": 193,
+                "path": "/another/folder"
+            }
+        ]
+    },
+    "length": 192,
+    "name":" Ubuntu.iso",
+    "Pieces length": 262144,
+    "Pieces": ["AAF4C61DDCC5E8A2DABEDE0F3B482CD9AEA9434D", "CFEA2496442C091FDDD1BA215D62A69EC34E94D0"]
+}
+```
 
 ---
 
 # 🧀 The Piece Selection Algorithm of BitTorrent
-![](/content/images/2019/08/undraw_selecting_1lx3-1.svg)
+![](/media/bittorrent/12.svg)
 One of the largest questions in BitTorrent is “what pieces should I select to download?”
 
 With a traditional client-server model, we download the whole file. But now, we get to pick what pieces to download. 
@@ -215,7 +200,12 @@ The idea is to download the pieces that no one else has - the rare pieces. By do
 BitTorrent uses TCP, a transmission protocol for packets. TCP has a mechanism called *[slow start](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/slow-start-tcp.html)*. 
 
 Slow start is a mechanism which balances the speed of a TCP network connection. It escalates the amount of data transmitted until it finds the network’s maximum carrying capacity. `cwdn` stands for the Congestion Window.
-![Image shows a server and a laptop. Laptop sends 1 request, server responds. congestion window (cwdn) increases to 2. Laptop sends 2 requests, gets 2 responses. congestion window increases to 4. Laptop sends 4 requests, gets 4 responses.](/content/images/2019/08/tcp_slow_start-3.svg)TCP Slow Start
+
+<figure>
+    <img src="/media/bittorrent/13.svg" alt="Image shows a server and a laptop. Laptop sends 1 request, server responds. congestion window (cwdn) increases to 2. Laptop sends 2 requests, gets 2 responses. congestion window increases to 4. Laptop sends 4 requests, gets 4 responses.">
+    <figcaption>TCP Slow Start.<figcaption>
+</figure>
+
 TCP does this because if we send 16 connections at once, the server may not be used to the traffic and congestion will happen on the network.
 
 If we’re not regularly sending data, TCP may cap our network connection at a slower speed than normal.
@@ -226,7 +216,7 @@ Each sub-piece is about 16KB in size. The size for a piece is not fixed, but it 
 
 The protocol always has some number of requests (five) for a sub-piece pipe-lined. When a new sub-piece is download, the client sends a new request. This helps speed things up.
 
-![Image showing one overall piece with multiple sub-pieces inside of it. The program has downloaded 1 sub-piece. There are 5 sub-pieces left to download and 1 ha already been downloaded for a total of 6 sub-pieces. 3 of the sub-pieces have a red arrow to indicate they are pipelined to be downloading next.](/content/images/2019/08/pipeline-bit-torrent-3.svg)
+![Image showing one overall piece with multiple sub-pieces inside of it. The program has downloaded 1 sub-piece. There are 5 sub-pieces left to download and 1 ha already been downloaded for a total of 6 sub-pieces. 3 of the sub-pieces have a red arrow to indicate they are pipelined to be downloading next.](/media/bittorrent/14.svg)
 Sub-pieces can be downloaded from other peers.
 
 Two core policies govern the Piece Selection Algorithm.
@@ -234,7 +224,9 @@ Two core policies govern the Piece Selection Algorithm.
 ### 1️⃣ Strict Policy
 
 Once the BitTorrent client requests a sub-piece of a piece, any remaining sub-pieces of that piece are requested before any sub-pieces from other pieces.
-![](/content/images/2019/08/piece-selection-policy-1.svg)
+
+![](/media/bittorrent/15.svg)
+
 In this image, it makes sense to download all the sub-pieces of this piece first rather than start downloading another piece.
 
 ### 2️⃣ Rarest First
@@ -254,7 +246,12 @@ The seed will begin as a bottleneck. The one peer with the file.
 A downloader can see what pieces their peers possess, and the rarest first policy will cause us to fetch the pieces from the seed which have not been uploaded by other peers.
 
 Let's visualise this. 
-![A list of peers, all downloading a file. No peer has one piece other than us. We are the only ones other than the seed with the rarest piece.](/content/images/2019/08/rarest_first--1--1.svg)Each peer is connected to every other peer. Not displayed as it's messy.
+
+<figure>
+    <img src="/media/bittorrent/16.svg" alt="A list of peers, all downloading a file. No peer has one piece other than us. We are the only ones other than the seed with the rarest piece.">
+    <figcaption>Each peer is connected to every other peer.<figcaption>
+</figure>
+
 The list of nodes (peers) is inter-connected. I cannot draw this as the diagram is unfavourable.
 
 Each arrow towards a sub-piece what that peer has downloaded. We downloaded a sub-piece that no one else has other than the seed. This means this sub-piece is rare.
@@ -287,23 +284,30 @@ Once we download, we have nothing to upload. We need the first piece, fast. The 
 
 Sometime’s a peer with a slow transfer rate will try to give us a sub-piece. Causing a delay of the download. To prevent this, there is “endgame mode”.
 
-[via GIPHY](https://giphy.com/gifs/avengers-endgame-gEYoiDrq2L8R9ddAM9)
-
 Remember the pipe-lining principle? There are always several requests for sub-pieces pending.
-![Our computer is missing a piece, so we enter endgame mode.](/content/images/2019/08/Peer-to-peer-network--1-.svg)Assume we are downloading from 2 peers, and there is 1 other peer we are not downloading from.
+
+<figure>
+    <img src="/media/bittorrent/17.svg" alt="Our computer is missing a piece, so we enter endgame mode.">
+    <figcaption>We are downloading from 2 peers, there is 1 other peer we are not downloading from. <figcaption>
+</figure>
+
 When all the sub-pieces a peer lacks are requested, they broadcast this request to all peers. This helps us get the last chunk of the file.
-![We find a peer with the sub-piece we need, so we get it from them.](/content/images/2019/08/Peer-to-peer-network--4-.svg)
+
+![We find a peer with the sub-piece we need, so we get it from them.](/media/bittorrent/18.svg)
+
 If a peer has the missing sub-piece, they will send that back to our computer.
 
 Once a sub-piece arrives, we send a cancel-message telling the other peers to ignore our request.
-![We cancel the request to all other peers](/content/images/2019/08/Peer-to-peer-network--5-.svg)
+
+![We cancel the request to all other peers](/media/bittorrent/19.svg)
 ---
 
 # 🌱 Resource Allocation Using Tit-For-Tat
-![](/content/images/2019/08/undraw_Gardening_eaf3-1.svg)
+![](/media/bittorrent/20.svg)
+
 No centralised resource allocation in BitTorrent exists. Instead, every peer maximises their download rate.
 
-A peer will download from whoever they can. To decide who to upload to, they will use a variant of the ["tit-for-tat"](https://en.wikipedia.org/wiki/Tit_for_tat)algorithm.
+A peer will download from whoever they can. To decide who to upload to, they will use a variant of the ["tit-for-tat"](https://en.wikipedia.org/wiki/Tit_for_tat) algorithm.
 
 The tit-for-tat strategy comes from game theory. The essence is:
 
@@ -316,11 +320,14 @@ The tit-for-tat strategy comes from game theory. The essence is:
 ---
 
 ## 🎐 The Choking Algorithm
-![](/content/images/2019/08/undraw_hang_out_h9ud.svg)
+![](/media/bittorrent/21.svg)
+
 Choking is a temporary refusal to upload to another peer, but we can still download from them.
 
 To cooperate peers upload, and to not cooperate they “choke” the connection to their peers. The principle is to upload to peers who have uploaded to us.
-![During cooperation, we can download pieces from peers. When the other peer does not cooperate, they do not tell us that we can't download the piece.](/content/images/2019/08/cooperate-vs-no-cooperation.svg)
+
+![During cooperation, we can download pieces from peers. When the other peer does not cooperate, they do not tell us that we can't download the piece.](/media/bittorrent/22.svg)
+
 We want several bidirectional connections at the same time and to achieve *Pareto Efficiency*.
 
 > We consider an allocation Pareto Efficient if there is no other allocation in which some individual is better off and no individual is worse off.
@@ -340,7 +347,8 @@ For a peer-to-peer network to be efficient, all peers need to contribute to the 
 ---
 
 # 😎 Optimistic Unchoking
-![](/content/images/2019/08/undraw_happy_feeling_slmw.svg)
+![](/media/bittorrent/23.svg)
+
 BitTorrent also allows an additional unchoked peer, where the download rate criteria aren’t used.
 
 We call this optimistic unchoking. Checking unused connections aren’t better than the ones in use.
@@ -354,7 +362,8 @@ This also allows peers who do not upload and only download to download the file,
 ---
 
 # 🤕 Anti-Snubbing
-![](/content/images/2019/08/undraw_Group_chat_unwm.svg)
+![](/media/bittorrent/24.svg)
+
 What happens if all peers uploading to another peer decide to choke it? We then have to find new peers, but the optimistic unchoking mechanism only checks one unused connection every 30 seconds. To help the download rate recover more, BitTorrent has snubbing.
 
 If a client hasn’t received anything from a particular peer for 60 seconds, it will presume that it has been ‘snubbed’.
@@ -366,7 +375,8 @@ The peer will then increase the number of optimistic unchokes to find new connec
 ---
 
 ## 🤔 What If We Upload Only?
-![](/content/images/2019/08/undraw_trends_a5mf.svg)
+![](/media/bittorrent/25.svg)
+
 We see that using the choking algorithm implemented in BitTorrent we favour peers who are kind to us. If I can download fast from them, we allow them to upload fast from me.
 
 What about no downloads? Then it’s impossible to know which peers to unchoke using this choking algorithm. When a download is completed, we use a new choking algorithm.
@@ -378,7 +388,8 @@ Peers with good upload rates are also not being served by others.
 ---
 
 # 🐝 What Is a Tracker?
-![](/content/images/2019/08/undraw_privacy_protection_nlwy.svg)
+![](/media/bittorrent/26.svg)
+
 Trackers are special types of server that help in communication between peers.
 
 Communication in BitTorrent is important. How do we learn what other peers exist?
@@ -408,7 +419,7 @@ With this configuration, it is possible to have multiple unconnected swarms for 
 ---
 
 ## 🧲 Magnet Links - Trackerless Torrents
-![](/content/images/2019/08/undraw_plans_y8ru.svg)
+![](/media/bittorrent/27.svg)
 Earlier, I talked about how the Pirate Bay got rid of trackers and started using trackerless torrents.
 
 When we download a torrent, we get a hash of that torrent. To download the torrent without a tracker, we need to find other peers also downloading the torrent. To do this, we need to use a *distributed hash table*.
@@ -416,7 +427,8 @@ When we download a torrent, we get a hash of that torrent. To download the torre
 Let's explore Distributed Hash Tables.
 
 # 🐍 Distributed Hash Tables
-![](/content/images/2019/08/undraw_special_event_4aj8.svg)
+![](/media/bittorrent/28.svg)
+
 Distributed Hash Tables (DHT) give us a dictionary-like interface, but the nodes are distributed across a network. The trick with DHTs is that the node that gets to store a particular key is found by hashing that key.
 
 In effect, each peer becomes a mini-tracker.
@@ -448,7 +460,9 @@ When a node wants to find peers for a torrent, they use the distance metric to c
 Then they contact the nodes in the routing table closet to the infohash and asks them for contact information of peers downloading the torrent.
 
 If a contacted node knows about peers for the torrent, they return the peer contact information with the response. Otherwise, the contacted node must respond with the contact information of the nodes in its routing table closet to the infohash of the torrent.
-![](/content/images/2019/08/known_nodes.svg)
+
+![](/media/bittorrent/29.svg)
+
 The original node queries nodes that are closer to the target infohash until it cannot find any closer nodes. After the node exhausts the search, the client then inserts the peer contact information for itself onto the responding nodes with IDs closest to the infohash of the torrent. In the future, other nodes can easily find us.
 
 The return value for a query for peers includes an opaque value known as the “token.” For a node to announce that its controlling peer is downloading a torrent, it must present the token received from the same queried node in a recent query for peers.
@@ -460,13 +474,16 @@ The querying node returns the token to the same node that they receive the token
 ---
 
 # 📌 Routing Table
-![](/content/images/2019/08/undraw_Map_dark_k9pw.svg)
+![](/media/bittorrent/30.svg)
+
 Every node maintains a routing table of known good nodes. We use the routing table starting points for queries in the DHT. We return nodes from the routing table in response to queries from other nodes.
 
 Not all nodes we learn about are equal. Some are “good” and some are not. Many nodes using the DHT can send queries and receive responses, but cannot respond to queries from other nodes. Each node’s routing table must contain only known good nodes.
 
 A good node is a node has responded to one of our queries within the last 15 minutes. A node is also good if it has ever responded to our queries and has sent us a query within the last 15 minutes. After 15 minutes of inactivity, a node becomes questionable. Nodes become bad when they fail to respond to multiple queries in a row. Nodes that we see are good are given priority over nodes with an unknown status.
-![](/content/images/2019/08/known_nodes--1-.svg)
+
+![](/media/bittorrent/31.svg)
+
 The routing table covers the entire node ID space from 0 to 2160. We subdivide the routing table into “buckets” that each cover a portion of the space.
 
 An empty table has one bucket with an ID space range of min=0, max=2160.
@@ -492,7 +509,8 @@ Buckets are refreshed if the last changed property has not been updated in the l
 ---
 
 # 🤺 Attacks on BitTorrent
-![](/content/images/2019/08/undraw_hacker_mind_6y85.svg)
+![](/media/bittorrent/32.svg)
+
 Few attacks on the BitTorrent network exist. Everything is public. Our IP address, what we’re downloading - everything.
 Why attack an open network?
 
@@ -509,6 +527,8 @@ The main attack on BitTorrent is *Torrent Poisoning*.
 This attack aims to get the IP addresses of peers pirating content or to poison the content in some way.
 
 Madonna’s American Life album release is an example of content poisoning. Before the release, tracks were released of similar length and file size. [The tracks featured a clip of Madonna saying](https://www.youtube.com/watch?v=XU5xC00m-gA):
+
+{{ youtube XU5xC00m-gA }}
 
 > "What the fuck do you think you're doing?"
 
