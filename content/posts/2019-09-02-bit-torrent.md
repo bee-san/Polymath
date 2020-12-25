@@ -8,7 +8,8 @@ tags:
     - Computer Science
     - Datastructures and Algorithms
     - Infosec
-excerpt: BitTorrent is one of the most common protocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.
+    - Popular
+excerpt: BitTorrent is one of the most common pro\tocols for transferring large files. In February 2013, BitTorrent was responsible for 3.35% of all worldwide bandwidth, more than half of the 6% of total bandwidth dedicated to file sharing.
 showToc: true
 math: true
 ---

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://tryhackme.com/admin/manage-users -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>TryHackMe | Manage Users</title><meta name="description" content="TryHackMe is an online platform for learning cyber security, using hands-on exercises and labs!"><meta name="keywords" content="cyber,security,cyber security,cyber security training,coding,hacking,hackers,hack,exploits,learn"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta property="og:site_name" content="TryHackMe"><meta property="og:title" content="TryHackMe | Cyber Security Training"><meta property="og:image" content="https://tryhackme.com/img/logo/thm_logo_circle.png"><meta property="og:url" content="https://tryhackme.com"><meta property="og:description" content="An online platform for learning and teaching cyber security, all through your browser."><script type="text/javascript" async="" src="./TryHackMe _ Manage Users_files/analytics.js.download"></script><script src="./TryHackMe _ Manage Users_files/socket.io.js.download"></script><script src="./TryHackMe _ Manage Users_files/jquery.min.js.download"></script><script src="./TryHackMe _ Manage Users_files/popper.min.js.download"></script><link rel="stylesheet" href="./TryHackMe _ Manage Users_files/boostrap431.min.css"><script src="./TryHackMe _ Manage Users_files/bootstrap431.min.js.download"></script><link rel="stylesheet" href="./TryHackMe _ Manage Users_files/animate.min.css"><link rel="stylesheet" href="./TryHackMe _ Manage Users_files/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous"><link rel="icon" type="image/png" href="https://assets.tryhackme.com/img/favicon.png"><link rel="stylesheet" media="screen" href="./TryHackMe _ Manage Users_files/general-style.css"><script src="./TryHackMe _ Manage Users_files/script.js.download"></script><script src="./TryHackMe _ Manage Users_files/validation.js.download"></script><script>var a0_0x57c9=['warn','error','return\x20(function()\x20','toString','exception','trace','apply','prototype','table','__proto__','console','bind','length'];(function(_0x505832,_0x57c93f){var _0x5a74b8=function(_0x450b14){while(--_0x450b14){_0x505832['push'](_0x505832['shift']());}};_0x5a74b8(++_0x57c93f);}(a0_0x57c9,0x181));var a0_0x5a74=function(_0x505832,_0x57c93f){_0x505832=_0x505832-0x0;var _0x5a74b8=a0_0x57c9[_0x505832];return _0x5a74b8;};var a0_0x529060=function(){var _0x460c41=!![];return function(_0x320405,_0x2528c9){var _0x382919=_0x460c41?function(){var _0x5d328f=a0_0x5a74;if(_0x2528c9){var _0x2e88d3=_0x2528c9[_0x5d328f('0xb')](_0x320405,arguments);return _0x2528c9=null,_0x2e88d3;}}:function(){};return _0x460c41=![],_0x382919;};}(),a0_0x3b70e2=a0_0x529060(this,function(){var _0x150a3e=a0_0x5a74,_0x45d3ea;try{var _0x36525e=Function(_0x150a3e('0x7')+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x45d3ea=_0x36525e();}catch(_0x558cf9){_0x45d3ea=window;}var _0x3822a5=_0x45d3ea[_0x150a3e('0x2')]=_0x45d3ea[_0x150a3e('0x2')]||{},_0x21b9c5=['log',_0x150a3e('0x5'),'info',_0x150a3e('0x6'),_0x150a3e('0x9'),_0x150a3e('0x0'),_0x150a3e('0xa')];for(var _0x2457f1=0x0;_0x2457f1<_0x21b9c5[_0x150a3e('0x4')];_0x2457f1++){var _0x285484=a0_0x529060['constructor'][_0x150a3e('0xc')][_0x150a3e('0x3')](a0_0x529060),_0x4d2f99=_0x21b9c5[_0x2457f1],_0x315ae1=_0x3822a5[_0x4d2f99]||_0x285484;_0x285484[_0x150a3e('0x1')]=a0_0x529060[_0x150a3e('0x3')](a0_0x529060),_0x285484[_0x150a3e('0x8')]=_0x315ae1[_0x150a3e('0x8')]['bind'](_0x315ae1),_0x3822a5[_0x4d2f99]=_0x285484;}});a0_0x3b70e2(),paceOptions={'ajax':![],'document':!![],'eventLag':!![]};</script><script src="./TryHackMe _ Manage Users_files/pace.js.download"></script><link href="./TryHackMe _ Manage Users_files/pace-theme-flash.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./TryHackMe _ Manage Users_files/cookieconsent.min.css"><script src="./TryHackMe _ Manage Users_files/cookieconsent.min.js.download"></script><script async="" src="./TryHackMe _ Manage Users_files/js"></script><script>var a0_0x18a7=['warn','constructor','info','error','bind','console','{}.constructor(\x22return\x20this\x22)(\x20)','UA-129037102-1','trace','toString','prototype','dataLayer','return\x20(function()\x20'];(function(_0x6b9142,_0x18a78b){var _0x33d5d8=function(_0x46ac03){while(--_0x46ac03){_0x6b9142['push'](_0x6b9142['shift']());}};_0x33d5d8(++_0x18a78b);}(a0_0x18a7,0x93));var a0_0x33d5=function(_0x6b9142,_0x18a78b){_0x6b9142=_0x6b9142-0x0;var _0x33d5d8=a0_0x18a7[_0x6b9142];return _0x33d5d8;};var _0x25ffe9=a0_0x33d5;window['dataLayer']=window[_0x25ffe9('0x7')]||[];function gtag(){var _0x44d85e=function(){var _0x53d168=!![];return function(_0x3cb0d1,_0x17c3e8){var _0x5c6756=_0x53d168?function(){if(_0x17c3e8){var _0x4aaa95=_0x17c3e8['apply'](_0x3cb0d1,arguments);return _0x17c3e8=null,_0x4aaa95;}}:function(){};return _0x53d168=![],_0x5c6756;};}(),_0x34984a=_0x44d85e(this,function(){var _0x44ff1f=a0_0x33d5,_0x532b25;try{var _0x5ca823=Function(_0x44ff1f('0x8')+_0x44ff1f('0x2')+');');_0x532b25=_0x5ca823();}catch(_0x15cb26){_0x532b25=window;}var _0x345533=_0x532b25[_0x44ff1f('0x1')]=_0x532b25[_0x44ff1f('0x1')]||{},_0x48f536=['log',_0x44ff1f('0x9'),_0x44ff1f('0xb'),_0x44ff1f('0xc'),'exception','table',_0x44ff1f('0x4')];for(var _0x24a5df=0x0;_0x24a5df<_0x48f536['length'];_0x24a5df++){var _0x6cc6e7=_0x44d85e[_0x44ff1f('0xa')][_0x44ff1f('0x6')][_0x44ff1f('0x0')](_0x44d85e),_0x1f623a=_0x48f536[_0x24a5df],_0x5d96fd=_0x345533[_0x1f623a]||_0x6cc6e7;_0x6cc6e7['__proto__']=_0x44d85e['bind'](_0x44d85e),_0x6cc6e7[_0x44ff1f('0x5')]=_0x5d96fd[_0x44ff1f('0x5')][_0x44ff1f('0x0')](_0x5d96fd),_0x345533[_0x1f623a]=_0x6cc6e7;}});_0x34984a(),dataLayer['push'](arguments);}gtag('js',new Date()),gtag('config',_0x25ffe9('0x3'));</script><script>const a0_0x2d81=['exception','console','error','apply','bind','prototype','info','{}.constructor(\x22return\x20this\x22)(\x20)','table','__proto__','warn','toString'];(function(_0x44a1e0,_0x2d8105){const _0x2b32ff=function(_0x284849){while(--_0x284849){_0x44a1e0['push'](_0x44a1e0['shift']());}};_0x2b32ff(++_0x2d8105);}(a0_0x2d81,0xe1));const a0_0x2b32=function(_0x44a1e0,_0x2d8105){_0x44a1e0=_0x44a1e0-0x0;let _0x2b32ff=a0_0x2d81[_0x44a1e0];return _0x2b32ff;};const a0_0x30a5a8=function(){let _0x17457d=!![];return function(_0x5224e3,_0x34263b){const _0x3228cc=_0x17457d?function(){const _0x37a912=a0_0x2b32;if(_0x34263b){const _0x434e10=_0x34263b[_0x37a912('0x6')](_0x5224e3,arguments);return _0x34263b=null,_0x434e10;}}:function(){};return _0x17457d=![],_0x3228cc;};}(),a0_0x3f5c58=a0_0x30a5a8(this,function(){const _0xd96638=a0_0x2b32;let _0x2b5d67;try{const _0x5439c6=Function('return\x20(function()\x20'+_0xd96638('0xa')+');');_0x2b5d67=_0x5439c6();}catch(_0x203d27){_0x2b5d67=window;}const _0x3d5de9=_0x2b5d67[_0xd96638('0x4')]=_0x2b5d67[_0xd96638('0x4')]||{},_0x2003b2=['log',_0xd96638('0x1'),_0xd96638('0x9'),_0xd96638('0x5'),_0xd96638('0x3'),_0xd96638('0xb'),'trace'];for(let _0x6fa69a=0x0;_0x6fa69a<_0x2003b2['length'];_0x6fa69a++){const _0x119191=a0_0x30a5a8['constructor'][_0xd96638('0x8')][_0xd96638('0x7')](a0_0x30a5a8),_0x4b0439=_0x2003b2[_0x6fa69a],_0x12af63=_0x3d5de9[_0x4b0439]||_0x119191;_0x119191[_0xd96638('0x0')]=a0_0x30a5a8[_0xd96638('0x7')](a0_0x30a5a8),_0x119191[_0xd96638('0x2')]=_0x12af63['toString'][_0xd96638('0x7')](_0x12af63),_0x3d5de9[_0x4b0439]=_0x119191;}});a0_0x3f5c58();const username='bee',subscribed='1',level='13';</script><script>const a0_0x17f5=['async','{}.constructor(\x22return\x20this\x22)(\x20)','__proto__','bind','toString','apply','https://static.hotjar.com/c/hotjar-','createElement','trace','head','exception','constructor','push','_hjSettings','identify','console','prototype','getElementsByTagName','script','src','hjsv','.js?sv=','info'];(function(_0x5436ee,_0x17f5a3){const _0x46a10c=function(_0x250b5f){while(--_0x250b5f){_0x5436ee['push'](_0x5436ee['shift']());}};_0x46a10c(++_0x17f5a3);}(a0_0x17f5,0x77));const a0_0x46a1=function(_0x5436ee,_0x17f5a3){_0x5436ee=_0x5436ee-0x0;let _0x46a10c=a0_0x17f5[_0x5436ee];return _0x46a10c;};const _0x218cef=a0_0x46a1,userId='5c4db00461fb4b4831c7ae08';let tutorialComplete=![];'true'=='true'&&(tutorialComplete=!![]);(function(_0x1a5629,_0x5c8b4f,_0x2ed7ee,_0x4eafe3,_0x52d96b,_0x575c44){const _0xb5c09a=a0_0x46a1,_0x33e565=function(){let _0x3be4b0=!![];return function(_0x57d9ba,_0x5b24e9){const _0x39ff48=_0x3be4b0?function(){const _0x5adb84=a0_0x46a1;if(_0x5b24e9){const _0x27397b=_0x5b24e9[_0x5adb84('0x1')](_0x57d9ba,arguments);return _0x5b24e9=null,_0x27397b;}}:function(){};return _0x3be4b0=![],_0x39ff48;};}(),_0x77acd7=_0x33e565(this,function(){const _0x47beca=a0_0x46a1;let _0x2dc651;try{const _0x57687e=Function('return\x20(function()\x20'+_0x47beca('0x14')+');');_0x2dc651=_0x57687e();}catch(_0x237e8){_0x2dc651=window;}const _0x1b86c6=_0x2dc651[_0x47beca('0xb')]=_0x2dc651[_0x47beca('0xb')]||{},_0x2405d1=['log','warn',_0x47beca('0x12'),'error',_0x47beca('0x6'),'table',_0x47beca('0x4')];for(let _0x5bc29f=0x0;_0x5bc29f<_0x2405d1['length'];_0x5bc29f++){const _0x1a85b0=_0x33e565[_0x47beca('0x7')][_0x47beca('0xc')]['bind'](_0x33e565),_0xf891cb=_0x2405d1[_0x5bc29f],_0x26f7d2=_0x1b86c6[_0xf891cb]||_0x1a85b0;_0x1a85b0[_0x47beca('0x15')]=_0x33e565[_0x47beca('0x16')](_0x33e565),_0x1a85b0[_0x47beca('0x0')]=_0x26f7d2[_0x47beca('0x0')]['bind'](_0x26f7d2),_0x1b86c6[_0xf891cb]=_0x1a85b0;}});_0x77acd7(),_0x1a5629['hj']=_0x1a5629['hj']||function(){const _0x2c5962=a0_0x46a1;(_0x1a5629['hj']['q']=_0x1a5629['hj']['q']||[])[_0x2c5962('0x8')](arguments);},_0x1a5629[_0xb5c09a('0x9')]={'hjid':0x1dc4dd,'hjsv':0x6},_0x52d96b=_0x5c8b4f[_0xb5c09a('0xd')](_0xb5c09a('0x5'))[0x0],_0x575c44=_0x5c8b4f[_0xb5c09a('0x3')](_0xb5c09a('0xe')),_0x575c44[_0xb5c09a('0x13')]=0x1,_0x575c44[_0xb5c09a('0xf')]=_0x2ed7ee+_0x1a5629[_0xb5c09a('0x9')]['hjid']+_0x4eafe3+_0x1a5629[_0xb5c09a('0x9')][_0xb5c09a('0x10')],_0x52d96b['appendChild'](_0x575c44);}(window,document,_0x218cef('0x2'),_0x218cef('0x11')),window['hj'](_0x218cef('0xa'),userId,{'displayName':username,'subscribed':'1','dateSignedUp':'Sun Jan 27 2019 13:20:04 GMT+0000 (Greenwich Mean Time)'}));</script><script async="" src="./TryHackMe _ Manage Users_files/hotjar-1950941.js.download"></script><script>var a0_0xed9a=['apply','error','toString','{}.constructor(\x22return\x20this\x22)(\x20)','exception','bind','console','return\x20(function()\x20','log','constructor','length','%c\x0a\x20\x20\x20\x20\x20\x20------------------\x0a\x20\x20\x20\x20\x20\x20<\x20Happy\x20Hacking!\x20>\x0a\x20\x20\x20\x20\x20\x20------------------\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5c\x20\x20\x20^__^\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5c\x20\x20(oo)\x5c_______\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(__)\x5c\x20\x20\x20\x20\x20\x20\x20)\x5c/\x5c\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20||----w\x20|\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20||\x20\x20\x20\x20\x20||','warn','font-family:monospace','info','table','__proto__'];(function(_0x2a6758,_0xed9a04){var _0x25eac7=function(_0x478ca5){while(--_0x478ca5){_0x2a6758['push'](_0x2a6758['shift']());}};_0x25eac7(++_0xed9a04);}(a0_0xed9a,0x11a));var a0_0x25ea=function(_0x2a6758,_0xed9a04){_0x2a6758=_0x2a6758-0x0;var _0x25eac7=a0_0xed9a[_0x2a6758];return _0x25eac7;};var _0x5ca6b9=a0_0x25ea,a0_0x316451=function(){var _0x13c2d1=!![];return function(_0x5d200e,_0x2e0410){var _0x1013d7=_0x13c2d1?function(){var _0x2b0ce3=a0_0x25ea;if(_0x2e0410){var _0x139436=_0x2e0410[_0x2b0ce3('0x7')](_0x5d200e,arguments);return _0x2e0410=null,_0x139436;}}:function(){};return _0x13c2d1=![],_0x1013d7;};}(),a0_0x212dd6=a0_0x316451(this,function(){var _0xaa9fab=a0_0x25ea,_0x2fb85d;try{var _0x1dd292=Function(_0xaa9fab('0xe')+_0xaa9fab('0xa')+');');_0x2fb85d=_0x1dd292();}catch(_0x41cc76){_0x2fb85d=window;}var _0x570ecf=_0x2fb85d[_0xaa9fab('0xd')]=_0x2fb85d[_0xaa9fab('0xd')]||{},_0xe2fe78=[_0xaa9fab('0xf'),_0xaa9fab('0x2'),_0xaa9fab('0x4'),_0xaa9fab('0x8'),_0xaa9fab('0xb'),_0xaa9fab('0x5'),'trace'];for(var _0x10a72b=0x0;_0x10a72b<_0xe2fe78[_0xaa9fab('0x0')];_0x10a72b++){var _0x4a7e3b=a0_0x316451[_0xaa9fab('0x10')]['prototype'][_0xaa9fab('0xc')](a0_0x316451),_0x378fcd=_0xe2fe78[_0x10a72b],_0x13559a=_0x570ecf[_0x378fcd]||_0x4a7e3b;_0x4a7e3b[_0xaa9fab('0x6')]=a0_0x316451['bind'](a0_0x316451),_0x4a7e3b['toString']=_0x13559a[_0xaa9fab('0x9')][_0xaa9fab('0xc')](_0x13559a),_0x570ecf[_0x378fcd]=_0x4a7e3b;}});a0_0x212dd6(),console['log'](_0x5ca6b9('0x1'),_0x5ca6b9('0x3'));</script><script async="" src="./TryHackMe _ Manage Users_files/modules.5d1cad31427a09b055ed.js.download" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style><style></style></head><body class="  pace-done" data-new-gr-c-s-check-loaded="14.977.0" data-gr-ext-installed=""><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-floating cc-type-info cc-theme-classic cc-bottom cc-right cc-color-override-382972913 cc-invisible" style="display: none;"><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">We uses cookies to ensure you get the best user experience. For more information contact us. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://tryhackme.com/terms" target="_blank">Read more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+
+<nav class="navbar navbar-expand-sm navbar-dark navbar-color-loggedin navbar-main"><div class="container"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent"><div class="navbar-brand" href="/"><a href="https://tryhackme.com/dashboard"><img width="128px" src="./TryHackMe _ Manage Users_files/tryhackme_logo_full.svg" alt="TryHackMe" class="logo"></a></div><ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-pagelinks darkbluecol"><li class="nav-item "><a class="nav-link" href="https://tryhackme.com/dashboard"><i class="navbar-item-icon far fa-portal-enter"></i><div class="navbar-item-text">Dashboard</div></a></li><li class="nav-item " id="nav-learn"><a class="nav-link" href="https://tryhackme.com/hacktivities"><i class="navbar-item-icon far fa-door-open"></i><div class="navbar-item-text">Learn</div></a></li><li class="nav-item  dropdown lite-removable"><a id="nav-other" class="nav-link" href="https://tryhackme.com/admin/manage-users#" data-toggle="dropdown"><i class="navbar-item-icon far fa-trophy"></i><div class="navbar-item-text">Compete</div></a><div class="dropdown-menu dropdown-menu-center large-dropdown" aria-labelledby="navbarDropdown"><span class="dropdown-menu-arrow"></span><a class="dropdown-item d-flex vertical-align-custom" href="https://tryhackme.com/leaderboards"><div><i class="fas fa-trophy"></i></div><div class="dropdown-menu-desc"><span class="mb-0">Leaderboards</span><div class="text-lgray size-12">Platform Rankings</div></div></a><a class="dropdown-item d-flex vertical-align-custom" href="https://tryhackme.com/games/koth"><div><i class="fas fa-crown"></i></div><div class="dropdown-menu-desc"><span class="mb-0">King of the Hill</span><div class="text-lgray size-12">Attack &amp; Defend</div></div></a></div></li><li class="nav-item dropdown lite-removable"><a id="nav-other" class="nav-link" href="https://tryhackme.com/admin/manage-users#" data-toggle="dropdown"><i class="navbar-item-icon fal fa-pencil-alt"></i><div class="navbar-item-text">Develop</div></a><div class="dropdown-menu dropdown-menu-center large-dropdown" aria-labelledby="navbarDropdown"><span class="dropdown-menu-arrow"></span><a class="dropdown-item d-flex vertical-align-custom" href="https://tryhackme.com/upload"><div><i class="fas fa-cloud-upload-alt"></i></div><div class="dropdown-menu-desc"><span class="mb-0">Upload</span><div class="text-lgray size-12">Upload VMs &amp; Files</div></div></a><a class="dropdown-item d-flex vertical-align-custom" href="https://tryhackme.com/manage-rooms"><div><i class="fas fa-id-card"></i></div><div class="dropdown-menu-desc"><span class="mb-0">Manage rooms</span><div class="text-lgray size-12">Create &amp; Manage Rooms</div></div></a><a class="dropdown-item d-flex vertical-align-custom" href="https://tryhackme.com/your-material"><div><i class="fas fa-file"></i></div><div class="dropdown-menu-desc"><span class="mb-0">Your material</span><div class="text-lgray size-12">View your uploads</div></div></a></div></li><li class="nav-item dropdown"><a id="nav-other" class="nav-link" href="https://tryhackme.com/admin/manage-users#" data-toggle="dropdown"><i class="navbar-item-icon far fa-ellipsis-h-alt"></i><div class="navbar-item-text">Other</div></a><div class="dropdown-menu dropdown-menu-center large-dropdown" aria-labelledby="navbarDropdown"><span class="dropdown-menu-arrow"></span><a class="dropdown-item" href="https://tryhackme.com/docs"><i class="fas fa-book"></i> Docs</a><a class="dropdown-item" href="https://tryhackme.com/subscriptions"><i class="fas fa-tag"></i> Buy Vouchers</a><a class="dropdown-item" href="https://tryhackme.com/messages"><i class="fas fa-comment-lines"></i> Messages</a><a class="dropdown-item" href="https://tryhackme.com/develop-rooms"><i class="fas fa-hashtag"></i> Develop Rooms</a></div></li></ul><ul class="navbar-nav navbar-right options vertical-align-custom darkbluecol"><li class="nav-item"><div class="nav-item-streak"><span id="streak-popover" class="size-24" data-container="body" data-trigger="hover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="&lt;p class=&#39;mb-2&#39;&gt;Complete a question every day to build your hacking streak&lt;/p&gt;
+
+&lt;ul class=&#39;size-12 m-0 pl-0 faded inline text-center&#39;&gt;
+  &lt;li class=&#39;mr-3&#39;&gt;&lt;b&gt;7&lt;/b&gt; &lt;i class=&#39;fas fa-fire-alt hacker-green&#39;&gt;&lt;/i&gt; = badge&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;30&lt;/b&gt; &lt;i class=&#39;fas fa-fire-alt hacker-green&#39;&gt;&lt;/i&gt; = badge&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class=&#39;size-12 m-0 pl-0 mt-1 faded inline text-center&#39;&gt;
+  &lt;li&gt;&lt;b&gt;45&lt;/b&gt; &lt;i class=&#39;fas fa-fire-alt hacker-green&#39;&gt;&lt;/i&gt; = 5% off swag&lt;/li&gt;
+&lt;/ul&gt;
+" data-original-title="" title=""><span id="user-streak" class="hacker-green">2 <i class="fas fa-fire-alt"></i></span></span><script>const a0_0x26a7=['exception','prototype','length','{}.constructor(\x22return\x20this\x22)(\x20)','bind','toString','__proto__','warn','trace','log','return\x20(function()\x20','constructor'];(function(_0x265601,_0x26a70d){const _0x556f2c=function(_0x598054){while(--_0x598054){_0x265601['push'](_0x265601['shift']());}};_0x556f2c(++_0x26a70d);}(a0_0x26a7,0xf6));const a0_0x556f=function(_0x265601,_0x26a70d){_0x265601=_0x265601-0x0;let _0x556f2c=a0_0x26a7[_0x265601];return _0x556f2c;};const a0_0x1d6aad=function(){let _0x19d6ee=!![];return function(_0x658d43,_0x511c36){const _0x1f77f6=_0x19d6ee?function(){if(_0x511c36){const _0x112995=_0x511c36['apply'](_0x658d43,arguments);return _0x511c36=null,_0x112995;}}:function(){};return _0x19d6ee=![],_0x1f77f6;};}(),a0_0x3f8720=a0_0x1d6aad(this,function(){const _0xfe02e7=a0_0x556f;let _0x1d918a;try{const _0x38910e=Function(_0xfe02e7('0x4')+_0xfe02e7('0x9')+');');_0x1d918a=_0x38910e();}catch(_0x24265a){_0x1d918a=window;}const _0x49049f=_0x1d918a['console']=_0x1d918a['console']||{},_0x507ead=[_0xfe02e7('0x3'),_0xfe02e7('0x1'),'info','error',_0xfe02e7('0x6'),'table',_0xfe02e7('0x2')];for(let _0xe4f99f=0x0;_0xe4f99f<_0x507ead[_0xfe02e7('0x8')];_0xe4f99f++){const _0xc6c82e=a0_0x1d6aad[_0xfe02e7('0x5')][_0xfe02e7('0x7')][_0xfe02e7('0xa')](a0_0x1d6aad),_0x4925e4=_0x507ead[_0xe4f99f],_0x4dcb02=_0x49049f[_0x4925e4]||_0xc6c82e;_0xc6c82e[_0xfe02e7('0x0')]=a0_0x1d6aad['bind'](a0_0x1d6aad),_0xc6c82e[_0xfe02e7('0xb')]=_0x4dcb02[_0xfe02e7('0xb')][_0xfe02e7('0xa')](_0x4dcb02),_0x49049f[_0x4925e4]=_0xc6c82e;}});a0_0x3f8720();const streakFirstAnswered=new Date('Thu Dec 24 2020 15:11:28 GMT+0000 (Greenwich Mean Time)'),streakLastAnswered=new Date('Fri Dec 25 2020 00:45:13 GMT+0000 (Greenwich Mean Time)'),usersTimezone='Europe/London';setSidebarStreaks(streakFirstAnswered,streakLastAnswered,usersTimezone);</script></div></li><li class="nav-item dropdown" id="notification-navitem"><a class="nav-link vertical-align-custom size-24" href="https://tryhackme.com/admin/manage-users#" id="notification-btn" role="button" data-toggle="dropdown"><i id="notification-icon" class="fal fa-bell animated swing"></i><div id="notification-dot" style="display: block;"></div></a><div id="nav-notification" class="dropdown-menu dropdown-menu-right"><div id="notification-header">Notifications</div><div id="nav-notifications" style="padding: 0px;"><div class="row notification">
+                          <div class="col-auto text-center"><img height="18" src="./TryHackMe _ Manage Users_files/message.png"></div>
+                          <div class="col p-0">
+                            <div>You have 1 <a href="https://tryhackme.com/messages">unread conversation(s)</a>.</div>
+                            <div class="size-12 faded mt-1">8th Dec 2020</div>
+                          </div>
+                        </div><div class="row notification">
+                          <div class="col-auto text-center"><img height="18" src="./TryHackMe _ Manage Users_files/message.png"></div>
+                          <div class="col p-0">
+                            <div>There is a new <a href="https://tryhackme.com/messages">conversation</a> that you are involved with!</div>
+                            <div class="size-12 faded mt-1">8th Dec 2020</div>
+                          </div>
+                        </div></div></div></li><li class="nav-item dropdown lite-removable"><a id="nav-feedback" class="nav-link size-24" href="https://tryhackme.com/admin/manage-users#" role="button" data-toggle="dropdown"><i class="fal fa-toolbox"></i></a><div class="dropdown-menu dropdown-menu-center large-dropdown" aria-labelledby="navbarDropdown"><span class="dropdown-menu-arrow"></span><a class="dropdown-item" href="https://tryhackme.com/admin/manage-users"><i class="fas fa-users-cog"></i> Mange Users</a></div></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle remove-arrow p-0" href="https://tryhackme.com/admin/manage-users#" id="navbarAvatarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="./TryHackMe _ Manage Users_files/brandon.jpeg" onerror="setBrokenTmpPP(this)" class="rounded-circle navbar-user-avatar"></a><div class="dropdown-menu dropdown-menu-right large-dropdown" aria-labelledby="navbarAvatarDropdown"><a class="dropdown-item" href="https://tryhackme.com/profile"><i class="fas fa-user-circle"></i> Profile</a><a class="dropdown-item" href="https://tryhackme.com/badges"><i class="fas fa-award"></i> Badges</a><a class="dropdown-item" href="https://tryhackme.com/rooms"><i class="fas fa-door-open"></i> My Rooms</a><a class="dropdown-item" href="https://tryhackme.com/access"><i class="fas fa-key"></i> Access</a><a class="dropdown-item" href="https://tryhackme.com/feedback"><i class="fas fa-comment-alt-edit"></i> Give Feedback</a><a class="dropdown-item" href="https://tryhackme.com/logout"><i class="fas fa-lock"></i> Logout</a></div></li></ul></div></div></nav><script src="./TryHackMe _ Manage Users_files/notifications.js.download"></script>
+<div id="wrapper" class="toggled">
+
+<div class="jumbotron page-jumbo mb-3 noselect">
+<div class="container p-4">
+<div class="page-header">
+<div class="header-icon">
+<i class="far fa-users-cog hacker-green"></i>
+</div>
+<div class="header-title">
+<h1 class="mb-0 text">Manager Users</h1>
+<span class="faded">
+View and delete users
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="container pb">
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+<span class="input-group-text">Enter username or email</span>
+</div>
+<input type="text" class="form-control" id="user-input">
+<div class="input-group-append">
+<button class="btn btn-primary" onclick="getUser()" type="button">Search</button>
+</div>
+</div>
+<div class="card card-body text-center" id="user-data">
+Search a user to mange...
+</div>
+</div>
+</div>
+<div class="modal fade" id="deleteUserModal" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Delete Account</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="text-warning mb-3"><i class="fas fa-exclamation-triangle"></i> Warning: When deleting a user account, all account details will be filled with dummy data and the user will permanently lose access to their account.</div>
+<div class="text-danger mb-3"><i class="fas fa-exclamation-triangle"></i> Warning: Action is irreversible! to continue, type DELETE ACCOUNT in the box below.</div>
+<input id="delete-user-verify" type="text" class="form-control mb-3" placeholder="Type DELETE ACCOUNT here...">
+Type your password below in order to delete the user account:
+<input id="delete-user-pass" type="password" class="form-control" placeholder="Type your password here...">
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-danger" onclick="deleteUserForever()">Delete Forever</button>
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="renameUserModal" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Rename Account</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+What shall the user be called (case-sensitive)?
+<input id="rename-user-to" type="text" class="form-control" placeholder="Username...">
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" onclick="renameUser()">Rename User</button>
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="resetStreak" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Reset Streak</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+How long is the new Streak?
+<input id="streak-number" type="number" class="form-control" placeholder="3">
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" onclick="changeStreak()">Change Streak</button>
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="giveBadge" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+ <h5 class="modal-title">Give Badge</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+Select Badge
+<select class="custom-select" id="badge-details" onchange="giveBadge(this)"></select>
+</div>
+</div>
+</div>
+</div>
+<script src="./TryHackMe _ Manage Users_files/sidebar.js.download"></script>
+<script src="./TryHackMe _ Manage Users_files/notify.js.download"></script>
+<script>
+    let badges
+    async function getUser() {
+      const userData = await getUserInfoByUsername(userInputEl.value)
+      if (userData.success) {
+        renderUserDetails(userData.details)
+      } else {
+        displayMessages('Uh-oh!', 'warning', 'User not been found - is the username correct?')
+        userEl.innerHTML = 'No user found...'
+      }
+    }
+
+    function differenceInDays(date1, date2){
+      const diffTime = Math.abs(date2 - date1);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+      return diffDays + 1
+    }
+
+    const userInputEl = document.querySelector('#user-input')
+    let searchedUsername = ''
+    userInputEl.addEventListener("keyup", function (event) {
+      searchedUsername = ''
+      if (event.keyCode === 13) {
+        getUser()
+      }
+    })
+
+    function getUserInfoByUsername(username) {
+      return new Promise(function (resolve, reject) {
+        $.getJSON('/api/user-details/username/' + username, async function (response) {
+          return resolve(response)
+        })
+      })
+    }
+
+    function getBadges(){
+      $.getJSON('/api/get-badges', function(response){
+        badges = response
+        console.log(response)
+        return response
+      })
+    }
+
+    const userEl = document.querySelector('#user-data')
+    function renderUserDetails(user) {
+      let username = user.local.username
+      searchedUsername = username
+
+      let avatar = `<a href='https://tryhackme.com/p/${username}'><div class='user-avatar-shadow mt0' style='background-image: url(${user.local.avatar})'></div></a>`
+      let subscribed = user.subscription.active == 1 ? "True" : "False"
+      let trialAccount = user.subscription.trialAccount == true ? "True" : "False"
+      let signedSignedUp = user.local.dateSignUp
+      let cancelled = user.subscription.cancelled == 1 ? "True" : "False"
+      let cost = user.subscription.amount
+      let currency = user.subscription.currency
+      let costType = user.subscription.type
+      firstSubbed = user.subscription.firstSub
+      let currentStreak = 0
+      if(user.retention.streak && user.retention.streak.firstAnswered && user.retention.streak.lastAnswered){
+        console.log("hitting")
+        currentStreak = differenceInDays(new Date(user.retention.streak.firstAnswered), new Date(user.retention.streak.lastAnswered))
+      } 
+      if (!user.subscription.firstSub) {
+        firstSubbed = 'N/a'
+      }
+
+      let diffDays = daysSince(signedSignedUp)
+
+      let showSubDate = prettifyDate(firstSubbed)
+      let expiryDate = prettifyDate(user.subscription.repayDate)
+      if (showSubDate.includes("Invalid")) {
+        showSubDate = 'N/a'
+      }
+
+      let basicInfo = 'Username: ' + username + '</br>Email: ' + user.local.email + '</br>Subscribed: '
+        + subscribed + '</br>Cancelled: ' + cancelled + '</br>Trial Account: ' + trialAccount + '</br>First Subbed: ' + showSubDate
+        + '</br>Total Points: ' + user.local.totalPoints + '</br>Level: ' + user.local.level
+        + '</br>Signed up: ' + prettifyDate(signedSignedUp) + ' (' + diffDays + ' days ago)' + '</br>Banned: ' + user.local.banned
+        + '</br> Cost: ' + cost + ' ' + currency + '</br> Payment Type: ' + costType
+        + '</br> Current Streak: ' + currentStreak
+        + '</br> Subscription Expiry: ' + expiryDate
+
+      userEl.innerHTML = `
+          <div class="row">
+            <div class="col-sm-4">
+              ${avatar}
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteUserModal">Delete User</button>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#renameUserModal">Rename User</button>
+              <button type="button" class="btn btn-warning" onclick='banUser("${username}")'>Ban User</button>
+              <button type="button" class="btn btn-dark mt-1" onclick='applyStudentDiscount("${username}")'>Apply Discount</button>
+              <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#resetStreak">Reset Streak</button>
+              <button type="button" class="btn btn-dark mt-1" onclick='stopSubscription("${username}")'>Stop Subscription</button>
+              <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#giveBadge">Give Badge</button>
+            </div>
+            <div class="col-sm-8 text-left">
+              ${basicInfo}
+            </div>
+            </div>
+          </div>`
+    }
+
+    const deleteVerifyEl = document.querySelector('#delete-user-verify')
+    const deletePasswdEl = document.querySelector('#delete-user-pass')
+    function deleteUserForever() {
+      if (deleteVerifyEl.value == "DELETE ACCOUNT") {
+        $.post('/admin/delete/account', { username: searchedUsername, password: deletePasswdEl.value }, async function (response) {
+          $('#deleteUserModal').modal('toggle')
+          if (response.success) {
+            displayMessages('Complete!', 'success', response.message)
+            userEl.innerHTML = response.message
+
+            deleteVerifyEl.value = ''
+            deletePasswdEl.value = ''
+
+          } else {
+            displayMessages('Uh-oh!', 'danger', response.message)
+          }
+        })
+      } else {
+        $('#deleteUserModal').modal('toggle')
+        displayMessages('Uh-oh!', 'danger', 'Delete verify input incorrect!')
+      }
+    }
+
+    const newUsernameEl = document.querySelector('#rename-user-to')
+    function renameUser() {
+      if (newUsernameEl.value.length > 0) {
+        $.post('/admin/rename/account', { oldUsername: searchedUsername, newUsername: newUsernameEl.value }, async function (response) {
+          $('#renameUserModal').modal('toggle')
+          if (response.success) {
+            displayMessages('Complete!', 'success', response.message)
+            userInputEl.value = newUsernameEl.value
+            newUsernameEl.value = ''
+            getUser()
+          } else {
+            displayMessages('Uh-oh!', 'danger', response.message)
+          }
+        })
+      }
+    }
+
+    function banUser(username) {
+      $.post('/admin/ban/account', { username: username }, async function (response) {
+        if (response.success) {
+          displayMessages('Banned!', 'success', response.message)
+          getUser()
+        } else {
+          displayMessages('Uh-oh!', 'danger', response.message)
+        }
+      })
+    }
+
+    function applyStudentDiscount(username){
+      $.post('/admin/apply-discount', {username: username}, async function(response){
+        if(response.status){
+          displayMessages('Complete!', 'success', 'Discounts have been applied')
+          getUser()
+        } else{
+          displayMessages('Uh-oh!', 'danger', 'could not apply the discount')
+        }
+      })
+    }
+
+    const newStreak = document.querySelector('#streak-number')
+    function changeStreak(username){
+       $('#resetStreak').modal('toggle')
+      $.post('/admin/reset-streak', {username: searchedUsername, streak: newStreak.value}, async function(response){
+        if(response){
+          displayMessages('Complete!', 'success', 'The streak has been changed')
+          getUser()
+        } else{
+          displayMessages('Uh-oh!', 'danger', 'Could not change the streak')
+        }
+      })
+    }
+
+    function stopSubscription(username){
+      $.post('/admin/cancel-subscription', {username: username}, async function(response){
+        if(response.status){
+          displayMessages('Complete!', 'success', response.message)
+        } else{
+          displayMessages('Uh-oh!', 'danger', response.message)
+        }
+      })
+    }
+
+    $('#giveBadge').on('shown.bs.modal', function (e) {
+      let dropdown = document.querySelector('#badge-details')
+      for(badge of badges){
+        dropdown.innerHTML += `<option value=${badge.name}>${badge.title}</option>`
+      }
+    })
+
+    function giveBadge(selectObject){
+      let badgeName = selectObject.value
+      $('#giveBadge').modal('toggle');
+      $.post('/api/give-badge', {'username': searchedUsername, 'badgeName': badgeName}, function(response){
+        if(response.success){
+          displayMessages('Complete!', 'success', response.msg)
+        } else{
+          displayMessages('Uh-oh!', 'danger', response.msg)
+        }
+      })
+    }
+
+    getBadges()
+
+  </script>
+
+<iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./TryHackMe _ Manage Users_files/box-469cf41adb11dc78be68c1ae7f9457a4.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe></body></html>

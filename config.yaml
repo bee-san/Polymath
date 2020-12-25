@@ -20,6 +20,9 @@ languages:
                 - name: Tags
                   url: tags/
                   weight: 10
+                - name: Popular
+                  url: tags/popular/
+                  weight: 15
 
 permalinks:
   posts: :slug
