@@ -70,9 +70,9 @@ params:
             
     socialIcons:
         - name: twitter
-          url: "#"
-        - name: linkedin
           url: "https://twitter.com/bee_sec_san"
+        - name: linkedin
+          url: "https://www.linkedin.com/in/brandonls"
         - name: github
           url: "https://github.com/bee-san"
         - name: buymeacoffee

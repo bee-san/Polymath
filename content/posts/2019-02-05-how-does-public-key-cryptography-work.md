@@ -9,6 +9,7 @@ tags:
     - Datastructures and Algorithms
     - Infosec
 excerpt: Public key cryptography seems magical to everyone, even those who understand it. In this post, I'm going to explain public key cryptography. Public Key Cryptography is based on asymmetric cryptography, so first let us talk about symmetric cryptography.
+math: true
 ---
 
 Public key cryptography seems magical to everyone, even those who understand it. In this post, I'm going to explain public key cryptography. Public Key Cryptography is based on asymmetric cryptography, so first let us talk about symmetric cryptography.
@@ -28,7 +29,12 @@ Let's take this from an analogy to a real-life example of symmetric cryptography
 ### Caeser's Cipher
 
 Julius Caeser used a cipher to send messages that no one else could read other than the intended recipient. Mainly because no one could read back in 100 BC, and those that could wouldn't understand a random string of letters. That's the whole point of cryptography. To create ways to communicate without third parties listening in. This cipher is *Caeser's Cipher*. Given an alphabet and a key (the key is an integer between 1 and 25), shift all of the alphabet letters by key. 
-![](/content/images/2019/01/image.png)Image from [GeeksForGeeks](https://www.geeksforgeeks.org/caesar-cipher/) showing Caeser's Cipher shift of 3
+
+<figure>
+    <img src="/media/rsa/1.png">
+    <figcaption><a href="https://www.geeksforgeeks.org/caesar-cipher/">Caeser's Cipher shift of 3</a><figcaption>
+</figure>
+
 With a shift of 3, as seen in the image above, A becomes D, B becomes E and so on until it wraps around with X = A. The original message is called the *plaintext *and the encrypted message is called the *ciphertext*.
 
 The easiest way to perform Caesar's Cipher is to turn all of the letters into numbers, a = 1, b = 2, c = 3 and so on.
@@ -58,7 +64,12 @@ The latter isn't very feasible, but it is a lot more secure than telling your fr
 Now, imagine you brought your lunch to work in a special lunchbox - the same you've had since nursery school. Someone steals your food and your lunchbox. You don't mind losing the food, but you do want the lunchbox back. You want a way for them to securely return your lunchbox without you knowing who took it - because that takes the pressure off of them.
 
 You place a box in the staff room with a lock & key. You give copies of keys to everyone in the office and hope for the best - that someone will return the lunchbox by placing it in the box.
-![](/content/images/2019/02/image-17.png)Image of a lock box from [Amazon](https://www.amazon.co.uk/Metal-File-Box-Storage-Suspension/dp/B06Y3CD5G5/ref=sr_1_16?ie=UTF8&amp;qid=1549211348&amp;sr=8-16&amp;keywords=lock+box)
+
+<figure>
+    <img src="/media/rsa/2.png">
+    <figcaption><a href="https://www.amazon.co.uk/Metal-File-Box-Storage-Suspension/dp/B06Y3CD5G5/ref=sr_1_16?ie=UTF8&amp;qid=1549211348&amp;sr=8-16&amp;keywords=lock+box">Image of a lock box from</a><figcaption>
+</figure>
+
 Unfortunately, the keys everyone has also unlocks the box as well as locks it. This means that someone could unlock the box and re-steal your lunchbox.
 
 We need to find a way to get rid of this idea of sharing keys, get rid of the idea of 'any key can lock and unlock', and this is where asymmetric cryptography comes in.
@@ -66,7 +77,10 @@ We need to find a way to get rid of this idea of sharing keys, get rid of the id
 ---
 
 ## Asymmetric cryptography
-![](/content/images/2019/02/IMG_20190112_221157.jpg)Not my key, not my lock, is my image.
+<figure>
+    <img src="/media/rsa/3.png">caption>
+</figure>
+
 You install an extraordinary lock on this box, one that has two separate keys. The first key 🔑 can only turn clockwise, from **A** (locked) to **B** (unlocked) to **C** (locked).
 
 The second key 🗝️ can only turn anti-clockwise, from **C** to **B** to **A**. You pick the first key and keep it to yourself. This is called a private key. The second key is called the public key. This key is given out to everyone in the office. You want everyone to have this key.
@@ -110,7 +124,12 @@ But it is also computationally infeasible to:
 We want to turn a message into numbers. Previously we assigned a number to each letter, A = 1 and so on. The *American Standard Code for Information Interchange* (ASCII) is a table of all English letters and most symbols along with their associated ASCII code & Binary output.
 
 When you press a key on the keyboard, the keyboard converts this to Ascii as numbers are easier to work with than letters for a computer. If you want to learn more about ASCII, check out this [video](https://www.youtube.com/watch?v=MijmeoH9LT4).
-![](/content/images/2019/01/image-506.png)http://sticksandstones.kstrom.com/appen.html
+
+<figure>
+    <img src="/media/rsa/4.png">
+    <figcaption><figcaption>
+</figure>
+
 Let's encrypt the word "cats". In binary, according to Ascii, this is:
 
 $$c = 01100011$$
@@ -125,16 +144,18 @@ If you add them all together and convert to base 10, you get 4430123. For our ex
 
 Below is a calculator I created for turning ASCII into Binary.
 
-    # https://stackoverflow.com/a/40949538
-    def string2bits(s=''):
-        return [bin(ord(x))[2:].zfill(8) for x in s]
-    
-    # edit the text below to see how this works
-    text = 'cats'
-    bits = string2bits(text)
-    
-    for x in bits:
-        print(x)
+```python
+# https://stackoverflow.com/a/40949538
+def string2bits(s=''):
+    return [bin(ord(x))[2:].zfill(8) for x in s]
+
+# edit the text below to see how this works
+text = 'cats'
+bits = string2bits(text)
+
+for x in bits:
+    print(x)
+```
     
 
 ---
@@ -173,25 +194,27 @@ $$key_{private} = (35, 29)$$
 
 Below is code to generate RSA keys. Note that we have overlap on d with p = 5 and q = 7, as discussed above.
 
-    def rsa(p, q):
-      n = p * q
-      z = (p - 1) * (q - 1)
-      
-      # calculate e such that e is less than z
-      # and e has no common factors with z
-      for i in range(1, z - 1):
-        if z % i != 0:
-          e = i
-          break
-          
-      d = (filter(lambda x: ((x * 5) - 1) % 24 == 0, range(1, 200)))[0]
-      return{"Public key": [n, d], "Private Key": [n, e]}
+```python
+def rsa(p, q):
+    n = p * q
+    z = (p - 1) * (q - 1)
     
-    # change p and q here to any prime numbers of your choice
-    p = 5
-    q = 7
-    
-    print(rsa(p, q))
+    # calculate e such that e is less than z
+    # and e has no common factors with z
+    for i in range(1, z - 1):
+    if z % i != 0:
+        e = i
+        break
+        
+    d = (filter(lambda x: ((x * 5) - 1) % 24 == 0, range(1, 200)))[0]
+    return{"Public key": [n, d], "Private Key": [n, e]}
+
+# change p and q here to any prime numbers of your choice
+p = 5
+q = 7
+
+print(rsa(p, q))
+```
     
 
 To send an encrypted message, Bob computes $C = m^e \; mod \; n$ for message m and key e. To decrypt the message, Alice computes $m = c^d \; mod \; n$.
@@ -215,7 +238,12 @@ This is known as a trap-door function or a one-way function. While it is easy to
 ### Back to modular arithmetic
 
 Imagine a finite range of numbers, for example, 1 to 12. These numbers are arranged in a circle, much like a clock (modular arithmetic is sometimes called clock arithmetic because of this)
-![](/content/images/2019/01/image-507.png)https://commons.wikimedia.org/wiki/File:Animated_analog_SVG_clock.svg
+
+<figure>
+    <img src="/media/rsa/5.png">
+    <figcaption><figcaption>
+</figure>
+
 Count 13 around this clock. You get to 12 and then you need to count 1 more - so you go back to 1. Modular arithmetic is still defined as the remainder of division, however it can also be defined (and is more commonly defined) as a clock.
 
 Functions using modular arithmetic tend to perform erratically, which in turn sometimes makes them one-way functions. Let's see this with an example by taking a regular function and seeing how it works when it becomes a modular arithmetic function.
@@ -290,15 +318,13 @@ Without this special mathematical property it wouldn't be possible to reverse th
 
 The [modular multiplicative inverse](https://www.wikiwand.com/en/Modular_multiplicative_inverse) of the encryption algorithm $c = m^e \; mod \; n$ is $m = c^d \; mod \; n$. All of this maths has built up to this. Modular arithmetic and one-way functions are heavily involved here. In order to encrypt, you calculate c. In order to decrypt, you calculate m. Both of these require knowledge of $n$, which is the special number we talked about earlier.
 
-If you want to learn more about the maths of RSA, I highly reccomend the readable, [origianl RSA paper](https://people.csail.mit.edu/rivest/Rsapaper.pdf).
+If you want to learn more about the maths of RSA, I highly recommend the readable, [original RSA paper](https://people.csail.mit.edu/rivest/Rsapaper.pdf).
 
 ---
 
 ## Authentication
 
 How do you prove that a message sent by Bob was actually sent by Bob, and not sent by Eve? You need a way to authenticate them. In the real world, we authenticate using signatures. Although these can be forged, you can authenticate using a biometric scanner, but your fingerprints can be lifted and copied.
-
-You can use a passcode, but again much like how Caeser cipher and its single key is useless, authentication methods that use single keys aren't as perfect.
 
 You can use a passcode, but again much like how Caeser's cipher and its single key is useless, authentication methods that use single keys aren't as perfect.
 
@@ -310,7 +336,7 @@ This method sucks for encrypting because if Bob encrypts his message with his pr
 
 To learn more about hash functions, I wrote a sister article which explains them [here](/hash-functions/).
 
-### Back to cyprotgraphy
+### Back to cryptography
 
 By encrypting the hash of the message we speed up the process of encrypting it, which makes authentication a lot faster. Now, let's play a prank on Bob.
 
@@ -323,9 +349,19 @@ The pizza store verifies the signature and sends 4 pepperoni pizzas 🍕 to Bob.
 Certificate authorities (CA) bind a public key to a specific entity. This entity provides proof of identity to the CA, the CA then creates a certificate binding the entity to its public key. The idea is to take the trust out of trusting an individual for public keys. You still have to trust an organisation, but many people find trusting an organisation is better than trusting an individual.
 
 The certificate containing the entities public key is digitally signed by the CA. This signing is the CA saying "this is the entities public key".
-![](/content/images/2019/02/image-21.png)https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/
+
+<figure>
+    <img src="/media/rsa/7.png">
+    <figcaption><figcaption>
+</figure>
+
 When Alice want's Bob's public key, she gets Bob's certificate. She then applies the CA's public key to Bob's certificate to get Bob's public key.
-![](/content/images/2019/02/image-22.png)https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/
+
+<figure>
+    <img src="/media/rsa/7.png">
+    <figcaption><figcaption>
+</figure>
+
 Cloudflare has an amazing article on certificate authorities [here](https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/).
 
 ---
@@ -334,7 +370,7 @@ Cloudflare has an amazing article on certificate authorities [here](https://blog
 
 [Phil Zimmerman](https://www.wikiwand.com/en/Phil_Zimmerman) invented [Pretty Good Privacy](https://www.wikiwand.com/en/Pretty_Good_Privacy) (PGP), the de facto standard for email encryption. Zimmerman used RSA in PGP. RSA is patented and he did not have permission from RSA inc (the company that holds the patent) to publish another cipher using RSA.
 
- Zimmerman was also a target of a 3-year U.S federal investigation because at the time cryptography programs were considered munitions under U.S law. When asked whether all of the trouble was worth it to publish PGP, he [said ](https://philzimmermann.com/EN/essays/index.html)he had "no regrets". Let's look at how this used to be illegal algorithm works.
+Zimmerman was also a target of a 3-year U.S federal investigation because at the time cryptography programs were considered munitions under U.S law. When asked whether all of the trouble was worth it to publish PGP, he [said ](https://philzimmermann.com/EN/essays/index.html)he had "no regrets". Let's look at how this used to be illegal algorithm works.
 
 When Alice wants to send a confidental email to Bob, she:
 
@@ -345,7 +381,12 @@ When Alice wants to send a confidental email to Bob, she:
 5. Alice sends Bob both $k_s(m)$ , $k^+_b(k_s))$ and her digital signature.
 
 In total, Alice uses three keys. Her private key, Bob's public key, and the newly created symmetric key.
-![](/content/images/2019/02/3.png)https://www.wikiwand.com/en/Pretty_Good_Privacy
+
+<figure>
+    <img src="/media/rsa/8.png">
+    <figcaption>Pretty Good Privacy (PGP). <figcaption>
+</figure>
+
 This idea of encrypting a symmetric key with a public key is called a [Hybrid Cryptosystem](https://www.wikiwand.com/en/Hybrid_cryptosystem). Some email messages can be incredibly large, encrypting these with a public key system would take a very long time. 
 
 Use a symmetric key system such as [AES](https://www.wikiwand.com/en/Advanced_Encryption_Standard), which is incredibly hard to break (but not as hard as RSA). Encrypt the AES key (and only the key, not the whole email) with the public key. This way, the receiver can apply their private key and find out the AES symmetric key to decrypt the email.
@@ -354,8 +395,7 @@ Not many people use PGP, because of how difficult it is to set up. At most, you 
 
 Not to mention how suspicious it looks for one person to send encrypted emails on a network of non-encrypted emails. The only email client (and address provider) which enables PGP by default is ProtonMail, but even then it's only for Proton-to-Proton emails and you have to trust the company to implement it correctly.
 
-> Most of them do a good job, but we understand your point. We built ProtonMail to make PGP encryption accessible to non-technical people. We will make sure this goal is reached 100%. ;) Thanks again!
-> &mdash; ProtonMail (@ProtonMail) [January 21, 2018](https://twitter.com/ProtonMail/status/955192767952629760?ref_src=twsrc%5Etfw)
+{{< tweet 955192767952629760 >}}
 
 ---
 
