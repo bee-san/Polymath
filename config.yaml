@@ -75,8 +75,8 @@ params:
           url: "https://twitter.com/bee_sec_san"
         - name: github
           url: "https://github.com/bee-san"
-        - name: kofi
-          url: "https://ko-fi.com/hacker"
+        - name: buymeacoffee
+          url: "buymeacoffee.com/beecodes"
         - name: rss 
           url: "https://polymath.cloud/index.xml"
 
