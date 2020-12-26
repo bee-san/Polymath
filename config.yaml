@@ -45,6 +45,8 @@ params:
     defaultTheme: auto
     ShowShareButtons: true
     displayFullLangName: true
+    cover:
+      responsiveImages: true
     # images: ""
     # assets:
     #   favicon: '<path / external url>'
@@ -76,7 +78,7 @@ params:
         - name: github
           url: "https://github.com/bee-san"
         - name: buymeacoffee
-          url: "buymeacoffee.com/beecodes"
+          url: "https://buymeacoffee.com/beecodes"
         - name: rss 
           url: "https://polymath.cloud/index.xml"
 

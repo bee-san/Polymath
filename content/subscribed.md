@@ -10,7 +10,6 @@ Ahhhhhhhhhh!
 Thank you for subscribing to my newsletter!
 
 It means a lot to me. **I have so much knowledge to share with you**
-* 
 
 Thank you so much for subscribing!
 

@@ -11,6 +11,8 @@ tags:
   - "CCP"
 description: "Basics of disaster & recovery with AWS for Certified Cloud Practioner"
 socialImage: "/media/p2p.jpg"
+cover:
+    image: "/media/p2p.jpg"
 ---
 
 We'll need to invoke our disaster recovery plans to restore our data if our storage or server fails.
