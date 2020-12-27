@@ -5,6 +5,9 @@ theme: "hugo-PaperMod"
 enableInlineShortcodes: true
 enableRobotsTXT: true
 
+cover:
+        image: "/media/p2p.jpg" 
+
 languages:
     en:
         languageName: "English"
@@ -17,7 +20,7 @@ languages:
                 - name: Search
                   url: search/
                   weight: 10
-                - name: Tags
+                - name: tags
                   url: tags/
                   weight: 10
                 - name: Popular
