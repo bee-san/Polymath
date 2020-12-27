@@ -4,9 +4,7 @@ title: "Polymath.cloud"
 theme: "hugo-PaperMod"
 enableInlineShortcodes: true
 enableRobotsTXT: true
-
-cover:
-        image: "/media/p2p.jpg" 
+image: "/media/p2p.jpg" 
 
 languages:
     en:
@@ -57,7 +55,7 @@ params:
     profileMode:
         enabled: false
         title: PaperMod
-        imageUrl: "#"
+        imageUrl: "/media/p2p.jpg"
         imageTitle: my image
         # imageWidth: 120
         # imageHeight: 120
