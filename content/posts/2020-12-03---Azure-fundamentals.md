@@ -11,8 +11,6 @@ tags:
     - "Cloud"
     - "AZ-900"
 category: "Cloud"
-cover:
-    image: "/media/p2p.jpg"
 ---
 
 - [Compute](#compute)

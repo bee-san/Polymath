@@ -3,13 +3,11 @@ template: post
 title: "Azure Pricing & Support"
 slug: azure-pricing-support
 socialImage: /media/image-3.jpg
-cover:
-    image: "/media/p2p.jpg"
 date: 2020-12-02T01:37:42.899Z
 description: "Intro to pricing with Azure"
 category: "Azure"
 -tags:
-    - "AZ-900"
+  - "AZ-900"
 ---
 
 In order to use Azure, we need an Azure subscription.
