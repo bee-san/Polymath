@@ -1,10 +1,9 @@
-baseURL: "https://polymath.cloud"
+baseURL: "https://skerritt.blog"
 languageCode: "en-us"
-title: "Polymath.cloud"
+title: "Skerritt.blog"
 theme: "hugo-PaperMod"
 enableInlineShortcodes: true
 enableRobotsTXT: true
-image: "/media/p2p.jpg" 
 
 languages:
     en:
@@ -40,7 +39,13 @@ outputs:
 params:
     env: production
     description: "Computer Science Blog"
+    images:
+            - /media/header.png
     author: Bee
+    header:
+            title: 'Skerritt.blog'
+            imageUrl: '/media/header.png'
+            subtitle: 'Learn Computer Science for free'
     # author: ["Me", "You"] # multiple authors
     ShowReadingTime: true
     defaultTheme: auto
@@ -81,7 +86,7 @@ params:
         - name: buymeacoffee
           url: "https://buymeacoffee.com/beecodes"
         - name: rss 
-          url: "https://polymath.cloud/index.xml"
+          url: "https://skerritt.blog/index.xml"
 
 taxonomies:
     category: categories
