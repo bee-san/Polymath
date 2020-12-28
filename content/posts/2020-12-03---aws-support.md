@@ -7,8 +7,6 @@ draft: false
 date: 2020-12-02T23:42:12.596Z
 description: A quick introduction to cost management & customer support in AWS
 category: Cloud
-cover:
-    image: "/media/p2p.jpg"
 tags:
     - "AWS"
     - "Cloud"
