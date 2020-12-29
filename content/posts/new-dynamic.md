@@ -558,6 +558,117 @@ Congrats! 🥳 We've just written our first dynamic program!  Now that we’ve 
 
 ---
 
+## Problems
+
+Let's go thrugh a bunch of Dyanmic Programming problems to understand how it works.
+
+There are 5 main patterns to dynamic programming. If you learn these patterns, you will be able to solve 99% of all problems.
+
+This [Leetcode post](https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns) explains what the patterns are and how to use them. Within this section I will use these patterns and explain one core problem from each. 
+
+### Minimum (Maximum) Path to Reach a Target
+
+We know we have this type of problem when the question asks:
+
+> "Find the maximum/minimum cost / path / sum to reach the target"
+
+The solution to this will always be to choose the minimum/maximum path among all possible paths before the current state, then add the values for the curent state.
+
+The optimal solution generally looks like:
+
+```python
+for i in range(0, target):
+	for y in range(0, len(ways)):
+		if ways[j] <= i:
+			dp[i] = min(dp[i], dp[i - ways[j]] + cost)
+```
+
+This is a bottom-up solution. We have an array/table `dp`, we have a `target` and we want to calculate the minimum path to the target. 
+
+`ways` is every possible way to get to the current state.
+
+We've already seen a solution to a similar problem -- Fibonacci sequence!
+
+Let's look at a similar problem, [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs)
+
+> On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
+>
+> Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
+
+```
+Input: cost = [10, 15, 20]
+Output: 15
+Explanation: Cheapest is start on cost[1], pay that cost and go to the top.
+```
+
+Given a `cost` array, find the minimum cost.
+
+Unlike Fibonacci, the first 2 steps pre-calculated for us. As we can either walk one step, or two steps.
+
+We can choose to start on step 1, or step 2 -- meaning we don't pay a cost. Thus we do not need to calculate the cost for step 2.
+
+We loop through the `cost` array from 2:
+
+```python
+for i in range(2, len(cost)):
+```
+
+And at each step we:
+
+> Choose the minimum path among all possible paths to the current step, and then add the current step.
+
+Since we can go up either 1 step or 2 steps, the minimum cost is either taking 2 steps (i - 2) or taking 1 step (i - 1).
+
+We then add the current cost of the step to it.
+
+This gives us:
+
+```python
+for i in range(2, len(cost)):
+	cost[i] = min(cost[i] + cost[i - 1], cost[i] + cost[i - 2])
+```
+
+The current step `cost[i]` is the minimum of either taking a single step `[i - 1]` or a double step `[i - 2]`.
+
+For every step, we are calculating the minimum cost to reach that step.
+
+Since we can get to the top of the steps with a double step or a single step, we want to calculate the min cost for that too.
+
+This gives us:
+
+```python
+for i in range(2, len(cost)):
+	cost[i] = min(cost[i] + cost[i - 1], cost[i] + cost[i - 2])
+    return min(cost[-1], cost[-2])
+```
+
+
+The solution to this will always be to choose the minimum/maximum path among all possible paths before the current state, then add the values for the curent state.
+
+
+We set the first 2 values to be 0
+
+
+
+```python
+def fibonacciVal(n):
+    memo[0], memo[1] = 0, 1
+    for i in range(2, n+1):
+        memo[i] = memo[i-1] + memo[i-2]
+    return memo[n]
+```
+
+
+
+### Diistinct Ways
+
+### Merging Intervals
+
+### DP on Strings
+
+### Decision Making
+
+
 # Knapsack Problem
 ![](/content/images/2019/06/undraw_travelers_qlt1.svg)
 Imagine you are a criminal. Dastardly smart. You break into Bill Gates’s mansion. Wow, okay!?!? How many rooms is this? His washing machine room is larger than my entire house??? Ok, time to stop getting distracted. You brought a small bag with you. A knapsack - if you will. 
@@ -2012,7 +2123,7 @@ else:
 	# previous row, subtracting the weight of the item from the total weight or without including ths item
 ```
 
-This is what the core heart of the program does. I've copied some code from [here ](https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/)to help explain this. I'm not going to explain this code much, as there isn't much more to it than what I've already explained. If you're confused by it, leave a comment below or email me 😁
+This is what the core heart of the program does. I've copied some code from [here](https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/) to help explain this. I'm not going to explain this code much, as there isn't much more to it than what I've already explained. If you're confused by it, leave a comment below or email me 😁
 
 ```python
 # Returns the maximum value that can be put in a knapsack of 

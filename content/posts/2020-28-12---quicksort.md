@@ -37,12 +37,12 @@ Quicksort wins out if we are assuming constant time access to any element, such 
 
 In Quicksort, there are 2 main functions we use.
 
-1. Split 
-2. Partioning
+1. Split. 
+2. Partioning.
 
 ### Split 
 
-Quicksoort is similar to Mergesort. The first thing it does is splits the data, it's a [Divide & Conquer](https://skerritt.blog/divide-and-conquer-algorithms/) algorithm. 
+Quicksort is similar to Mergesort. The first thing it does is splits the data, it's a [Divide & Conquer](https://skerritt.blog/divide-and-conquer-algorithms/) algorithm. 
 
 The algorithm breaks a large problem down into smaller sub-problems and recursively solves them to get an sorted array.
 
@@ -67,18 +67,53 @@ Quicksort has 2 main functions, split (quicksort) which splits the input, and th
 * Split
 * Partiioning
 
-The partitioning function chooses a _pivot_ The pivot is the value within the partioning space which I want to find a position for.
+### Splitting
+
+The partitioning function chooses a _pivot_.
+
+_How_ it chooses the pivot is important, but for now let's choose the last element. What's more important is that we understand how the splitting function works before we learn how pivoting works.
 
 Let's look at a quick example.
 
-```
-3 7 8 2 1
-l	r
+![We have a list consisting of 3, 4, 5, 8, 9, 7. We have 2 pointers. "L" is at 3 (position 0), "R" is at 7 (last position). Our pivot is 7 (last element)](/media/quicksort/split1.svg)
 
-pivot = 1
-```
+We set the pivot point to the last element. No reason, it was just simpler to explain.
 
 We have a left (l) bound and a right (r) bound. Our left starts at 0 and our right starts at the end of the array (length - 1).
+
+With recursion, we ask the question:
+
+> "Within this iteration, what am I trying to do?"
+
+And by solving the problem in each iteration, we build up to a solution for the whole.
+
+For our split function, our answer is:
+
+> "In this iteration we need to split the array in half. Elements smaller than the pivot on the left, elements larger than the pivot on the right."
+
+To work this out, we introduce 2 new pointers.
+
+![](/media/quicksort/split2.svg)
+
+* i - Remember the last position that an element was inserted into, before the pivot. Keeps track of the tail.
+* j - Scan from the left boundary to the right boundary to see if any elements are less than or equal to the pivot.
+
+At this iteration, `j` advances. This is because we're at the lower boundary and `j` cannot touch boundaries.
+
+![j moves to 4](/media/quicksort/split3.svg)
+
+`j` asks the questtion:
+
+> "Is 4 less than or equal to the pivot (7)?"
+
+This is true, we swap `i` and `j`'s values. Position 0 now contains "4", and position 1 is "3".
+
+![3 and 4 swap](/media/quicksort/split4.svg)
+
+`i` then advances. Remember, **`i`'s job is to keep track of the last element we swapped, the tail.**
+
+
+![i advances to 3](/media/quicksort/split5.svg)
 
 Here we need to think "what is my job within this iteration?" and our job ist ofind the position for the pivot. Quicksort's job wqithin the paritioning subroutine is to find a position for the pivot.
 
@@ -88,64 +123,9 @@ Think of pivot as the item we want to find a position for.
 
 Search the array and bring all the elements less than the pivot to the left, and all the elements greater than the pivot to the right.
 
-```
-3 7 8 2 1
-l	r
-i
-j
-
-pivot = 1
-```
-
-We have 2 pointers, i and j which start at the left boundary.
-
-`i`'s job is to remember the last position that an element was placed in, that was less than the pivot.
-`j`'s job is to scan from the left boundary to the right boundary to see if its greater than or less than the pivot.
 
 is 3 less than or equal to pivot? 3 is greater so we do not execute a swap. 
 
-We move on.
-
-```
-3 7 8 2 1
-l	r
-i
-  j
-
-pivot = 1
-```
-
-Is 7 less than or equal to the pivot? We move on.
-```
-3 7 8 2 1
-l	r
-i
-    j
-
-pivot = 1
-```
-
-Move on with 8.
-
-```
-3 7 8 2 1
-l	r
-i
-      j
-
-pivot = 1
-```
-
-Move on with 2, as its not less than or equal to.
-
-```
-3 7 8 2 1
-l	r
-i
-        j
-
-pivot = 1
-```
 
 j hits the right boundary, so we don't do anything -- we exit. 
 
