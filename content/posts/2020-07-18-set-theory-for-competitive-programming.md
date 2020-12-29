@@ -6,6 +6,7 @@ date: 2020-07-25T11:56:39.000Z
 tags: 
     - Computer Science
 excerpt: The best introduction to using set theory in competitive programming
+draft: true
 ---
 
 If you've spent time on [HackerRank](https://www.hackerrank.com/) or [LeetCode](https://leetcode.com/), you might have noticed most of the optimal solutions use Set Theory.

@@ -13,9 +13,52 @@ tags:
 
 ## What is Quicksort?
 
-Quicksort is a sorting algorithm. It's Big O is $O(n log n)$, which is the same as mergesort. However, Quicksort on average is $\theta(n log 2n)$ whereas Mergesort on average is $O(n log n)$.
-https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort
-^^ this doesnt look good 
+Quicksort is a sorting algorithm designed by British computer scientist [Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare).
+
+Quicksort is fast. When implemented correctly it is 2 or 3 times faster than Mergesort or Heapsort. 
+
+However, let's compare the [Big O](https://skerritt.blog/big-o-notation/) run times of these.
+
+| Quicksort |    Mergesort     |     Heapsort     |
+| --------  |   -----------    |     --------     |
+| $O(n^2)$  | $O(n \ log \ n)$ | $O(n \ log \ n)$ |
+
+Quicksort is wore in the worst case time than the other two, but it's fasteer -- how?
+
+This is because of [amoretized time](https://skerritt.blog/big-o-notation/). In Big O it's slower, but in the real world it's faster.
+
+These are the things that make quicksort faster on average than the others:
+* Caching - Quicksort requires little additional memory, so more elements will be in our cache compared to Mergesort.
+* We can avoid Quicksort's $O(n^2)$ runtime by using an appropriate pivot (discussed later).
+
+Quicksort wins out if we are assuming constant time access to any element, such as in a [set](https://skerritt.blog/sets/). If our data structure lived on a hard drive, it would be much slower.
+
+## The 2 functions 
+
+In Quicksort, there are 2 main functions we use.
+
+1. Split 
+2. Partioning
+
+### Split 
+
+Quicksoort is similar to Mergesort. The first thing it does is splits the data, it's a [Divide & Conquer](https://skerritt.blog/divide-and-conquer-algorithms/) algorithm. 
+
+The algorithm breaks a large problem down into smaller sub-problems and recursively solves them to get an sorted array.
+
+Given a pivot point, the algorithm splits the array into 2 and calcualtes a new pivot point. 
+
+The code is:
+
+```python
+def quicksort(array, pivot, length):
+	if pivot < length:
+		q = partition(array, pivot, length)
+		quicksort(array, pivot, q - 1)
+		quicksort(array, q + 1, length)
+```
+
+
 
 ## The 2 functions
 
