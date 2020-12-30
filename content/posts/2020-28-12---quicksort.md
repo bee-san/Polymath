@@ -19,6 +19,8 @@ This article will show you all the ways, explain each one without errors and don
 
 We'll primarily use the [Lomuto Partition Scheme](https://dlang.org/blog/2020/05/14/lomutos-comeback/). This is because it's taught in [Introduction to Algorithms (CLRS)](https://mitpress.mit.edu/books/introduction-algorithms-third-edition), and if you're learning this for a univeersity class your professor will most likely also use the same scheme due to it being taught in CLRS.
 
+Note that it's worse than the [Hoare Scheme](https://www.geeksforgeeks.org/hoares-vs-lomuto-partition-scheme-quicksort/) in terms of speed, but is easier to code and understand.
+
 ## What is Quicksort?
 
 Quicksort is a sorting algorithm designed by British computer scientist [Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare).
@@ -41,6 +43,67 @@ These are the things that make quicksort faster on average than the others:
 
 Quicksort wins out if we are assuming constant time access to any element, such as in a [set](https://skerritt.blog/sets/). If our data structure lived on a hard drive, it would be much slower.
 
+## Simple Example
+
+Before we drill down into the technical details, let's quickly go over a small example.
+
+Given this list, let's Quicksort it.
+
+![7, 4, 7, 4, 10, 3, 5](/media/quicksort/quick1.svg)
+
+We pick 5 as the pivot. This is the Lomuto Partioning Scheme, as it picks the last element as the pivot.
+
+![](/media/quicksort/quick2.svg)
+
+And then we begin the split. Every element less than or equal to 5 goes on the left.
+
+Grater than goes on the right.
+
+![](/media/quicksort/quick3.svg)
+
+7, 8, 7, and 10 go on the right.
+
+3 and 4 go on the left.
+
+![](/media/quicksort/quick4.svg)
+
+We then break it down again. 4 as the pivot on the left. 10 as the pivot on the right.
+
+![](/media/quicksort/quick5.svg)
+
+All the elements in the right of the original list follow the new pivot 10. On the left, they follow the new pivot 4.
+
+We then break down until we get 1 element in each box.
+
+![](/media/quicksort/quick6.svg)
+
+And once we do, we bubble it back up.
+
+If it's less than, it goes on the left. If it's greater than, it goes on the right.
+
+![](/media/quicksort/quick7.svg)
+
+Here we bubble "7,  8" back into "7, 7, 8" where the middle 7 is the pivot. We do the same for all the elements.
+
+
+![](/media/quicksort/quick8.svg)
+
+And eventually we get the sorted list!
+
+
+![](/media/quicksort/quick9.svg)
+
+The key thing to know here is that when we build back up, if it's in the less than section it goes in on the left of the pivot.
+
+Greater than section it goes on the right of the pivot.
+
+Imagine a binary tree with 2 branches, less than and grater than.
+
+When we go back up, It always goes:
+
+```
+Less than, Parent Node (pivot), Greater than
+```
 ## The 2 functions 
 
 In Quicksort, there are 2 main functions we use.
