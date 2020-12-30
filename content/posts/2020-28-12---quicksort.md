@@ -11,6 +11,14 @@ tags:
   - "Datastructures and Algorithms"
 ---
 
+**Have you tried to learn about Quicksort before and gotten too confused to continue?**. 
+
+This is likely because there are **8** [different ways](https://en.wikipedia.org/wiki/Quicksort) to make Quicksort. Many authors get confused and mix the ways up, or you watch a video on one way and a different video on a different way and because neither of the videos mentioned what methods they were using, you got confused.
+
+This article will show you all the ways, explain each one without errors and don't worry, I won't get confused by all the different variations.
+
+We'll primarily use the [Lomuto Partition Scheme](https://dlang.org/blog/2020/05/14/lomutos-comeback/). This is because it's taught in [Introduction to Algorithms (CLRS)](https://mitpress.mit.edu/books/introduction-algorithms-third-edition), and if you're learning this for a univeersity class your professor will most likely also use the same scheme due to it being taught in CLRS.
+
 ## What is Quicksort?
 
 Quicksort is a sorting algorithm designed by British computer scientist [Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare).
