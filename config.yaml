@@ -87,6 +87,8 @@ params:
           url: "https://buymeacoffee.com/beecodes"
         - name: rss 
           url: "https://skerritt.blog/index.xml"
+        - name: email
+          url: "https://skerritt.blog/"
 
 taxonomies:
     category: categories
