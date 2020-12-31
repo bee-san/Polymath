@@ -11,6 +11,9 @@ tags:
   - "Datastructures and Algorithms"
 ---
 
+
+![](/media/quicksort/lomuto.svg)
+
 **Have you tried to learn about Quicksort before and gotten too confused to continue?**. 
 
 This is likely because there are **8** [different ways](https://en.wikipedia.org/wiki/Quicksort) to make Quicksort. Many authors get confused and mix the ways up, or you watch a video on one way and a different video on a different way and because neither of the videos mentioned what methods they were using, you got confused.
@@ -150,6 +153,18 @@ The partitioning function chooses a _pivot_.
 _How_ it chooses the pivot is important, but for now let's choose the last element. What's more important is that we understand how the splitting function works before we learn how pivoting works.
 
 Let's look at a quick example.
+
+Given this array:
+
+```
+8, 7, 6, 1, 0, 9, 2
+```
+
+Let's sort it, step by step. 
+
+First, we pick a pivot. In Lomuto's scheme we choose the last element, which is `2`.
+
+# NOT MINE
 
 ![We have a list consisting of 3, 4, 5, 8, 9, 7. We have 2 pointers. "L" is at 3 (position 0), "R" is at 7 (last position). Our pivot is 7 (last element)](/media/quicksort/split1.svg)
 
@@ -365,3 +380,18 @@ $$\frac{n(n + 1)}{2} = \frac{n - 1 ((n - 1) - 1)}{2} = \frac{(n - 1) n}{2}$$
 comparisons at worst. Our big O upper bound is $O(n^2)$.
 
 We make our recursion tree very, very deep.
+
+### Partitioniing
+
+Now we know how to split and how it sorts, let's look at how partitioning works.
+
+There are 2 core schemes
+1. Hoare
+2. Lomuto 
+
+Lomuto is what we've been using so far, but is slower in time complexity and easier to implement.
+
+In Lomuto, we pick the last element in the parition space.
+
+## Code Walkthrough
+

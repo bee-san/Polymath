@@ -1,10 +1,11 @@
 ---
 title: What Is Dynamic Programming With Python Examples
-slug: dynamic-programming
+slug: dynamic-programming-2
 date_published: 2019-06-05T16:03:32.000Z
 date: 2019-11-19T01:44:21.000Z
 math: true
 ShowToc: true
+draft: true
 tags: 
     - University
     - Computer Science
@@ -558,7 +559,7 @@ Congrats! 🥳 We've just written our first dynamic program!  Now that we’ve 
 
 ---
 
-## Problems
+# Problems
 
 Let's go thrugh a bunch of Dyanmic Programming problems to understand how it works.
 
