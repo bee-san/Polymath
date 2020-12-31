@@ -73,6 +73,8 @@ We then break it down again. 4 as the pivot on the left. 10 as the pivot on the 
 
 All the elements in the right of the original list follow the new pivot 10. On the left, they follow the new pivot 4.
 
+Note: Our 2 "grater thans" have no elements.
+
 We then break down until we get 1 element in each box.
 
 ![](/media/quicksort/quick6.svg)
@@ -104,6 +106,9 @@ When we go back up, It always goes:
 ```
 Less than, Parent Node (pivot), Greater than
 ```
+
+It's an [in-order traversal](https://www.educative.io/edpresso/what-is-in-order-traversal).
+
 ## The 2 functions 
 
 In Quicksort, there are 2 main functions we use.
