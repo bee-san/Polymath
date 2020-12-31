@@ -2,7 +2,7 @@
 title: What Is Dynamic Programming With Python Examples
 slug: dynamic-programming-2
 date_published: 2019-06-05T16:03:32.000Z
-date: 2019-11-19T01:44:21.000Z
+date: 2020-12-31T01:44:21.000Z
 math: true
 ShowToc: true
 draft: true
@@ -171,7 +171,8 @@ Dynamic Programming can solve many problems, but that does not mean there isn't 
 </figure>
 ---
 
-## Tabulation (Bottom-Up) vs Memoisation (Top-Down)![](/media/dp/undraw10.svg)
+## Tabulation (Bottom-Up) vs Memoisation (Top-Down)
+![](/media/dp/undraw10.svg)
 
 There are 2 types of dynamic programming. Tabulation and Memoisation. 
 
@@ -590,6 +591,8 @@ This is a bottom-up solution. We have an array/table `dp`, we have a `target` an
 
 We've already seen a solution to a similar problem -- Fibonacci sequence!
 
+#### Minimum Cost Climbing Stairs
+
 Let's look at a similar problem, [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs)
 
 > On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
@@ -658,6 +661,67 @@ def fibonacciVal(n):
         memo[i] = memo[i-1] + memo[i-2]
     return memo[n]
 ```
+
+#### Coin Change
+
+[Leetcode Problem](https://leetcode.com/problems/coin-change/).
+
+Our first thought when seeing "Make Change" is [Greedy](https://skerritt.blog/greedy-algorithms/). But, that doesn't always work.
+
+Given the coins:
+
+```
+[1, 15, 25]
+```
+
+And being told to make change for `30`, our Greedy algorithm does:
+
+```
+5x 1 pence coins
+1x 25 pence coin
+```
+
+This works so long as:
+* The first coin is $1$.
+* Our second coin is $\frac{n}{2}$.
+* Our final coin is between our second coin and the change amount.
+
+To make change for $30$, that means if our coins were:
+* 1
+* 15
+* 25 (between 15 and 30)
+
+It would fail. It'd also fail if our coin was 16. So long as our largest coin is larger than the most optimal 2nd coin, we can never pick the 2nd coin in Greedy so it will always fail.
+
+In the case it does work, it's called a [Canonical Coin System](https://graal.ens-lyon.fr/~abenoit/algo09/coins2.pdf).
+
+Dynamic Programming allows us to solve this problem efficiently.
+
+Given a sum, `changee`, we want to find the optimal path that minimises the amount of coins we use.
+
+
+```python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int: 
+            
+	            dp = [float("inf")] * (amount + 1)
+		            
+			            dp[0] = 0
+				            
+					            for y in range(1, amount + 1):
+						                for coin in coins:
+								                
+										                if y - coin < 0:
+												                    continue
+														                    
+																                    dp[y] = min(dp[y], dp[y - coin] + 1)
+																		                    
+																				            if dp[-1] == float("inf"):
+																					                return -1
+																							        
+																								        return dp[-1]
+																				```
+
 
 
 
