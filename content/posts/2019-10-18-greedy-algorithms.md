@@ -168,7 +168,7 @@ print(returnChange(30, denominations))
 # 1x 10p, 1x 20p
 ```
 
-The [runtime ](/you-need-to-understand-big-o-notation-now/)of this algorithm is dominated by the 2 loops, thus it is $O(n^2)$.
+The [runtime ](/big-o/)of this algorithm is dominated by the 2 loops, thus it is $O(n^2)$.
 
 ---
 
@@ -457,7 +457,7 @@ knapsack weight = 7
 
 The greedy algorithm can optimally solve the fractional knapsack problem, but it cannot optimally solve the {0, 1} knapsack problem. In this problem instead of taking a fraction of an item, you either take it {1} or you don't {0}. To solve this, you need to use [Dynamic Programming](/dynamic-programming/).
 
-The [runtime ](/you-need-to-understand-big-o-notation-now/)for this algorithm is O(n log n). Calculating $\frac{value}{weight}$ is O(1). Our main step is sorting from largest $\frac{value}{weight}$, which takes O(n log n) time.
+The [runtime ](/big-o/) for this algorithm is O(n log n). Calculating $\frac{value}{weight}$ is O(1). Our main step is sorting from largest $\frac{value}{weight}$, which takes O(n log n) time.
 
 ---
 

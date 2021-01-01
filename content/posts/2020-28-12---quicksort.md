@@ -30,7 +30,7 @@ Quicksort is a sorting algorithm designed by British computer scientist [Tony Ho
 
 Quicksort is fast. When implemented correctly it is 2 or 3 times faster than Mergesort or Heapsort. 
 
-However, let's compare the [Big O](https://skerritt.blog/big-o-notation/) run times of these.
+However, let's compare the [Big O](https://skerritt.blog/big-o/) run times of these.
 
 | Quicksort |    Mergesort     |     Heapsort     |
 | --------  |   -----------    |     --------     |
@@ -38,7 +38,7 @@ However, let's compare the [Big O](https://skerritt.blog/big-o-notation/) run ti
 
 Quicksort is wore in the worst case time than the other two, but it's fasteer -- how?
 
-This is because of [amoretized time](https://skerritt.blog/big-o-notation/). In Big O it's slower, but in the real world it's faster.
+This is because of [amoretized time](https://skerritt.blog/big-o/). In Big O it's slower, but in the real world it's faster.
 
 These are the things that make quicksort faster on average than the others:
 * Caching - Quicksort requires little additional memory, so more elements will be in our cache compared to Mergesort.

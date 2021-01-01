@@ -4,6 +4,7 @@ slug: dynamic-programming-2
 date_published: 2019-06-05T16:03:32.000Z
 date: 2020-12-31T01:44:21.000Z
 math: true
+draft: true
 ShowToc: true
 tags: 
     - University
@@ -17,7 +18,27 @@ cover:
 excerpt: Dynamic programming (DP) is breaking down an optimisation problem into smaller sub-problems, and storing the solution to each sub-problems so that each sub-problem is only solved once.
 ---
 
+# ToDo
+DP is just fancy bruteforcing 
+
+Backtracing? 
+* Fibonnacci 
+* Spell check
+* Make images accessible 
+* Every single DP problem is about solving the problem at each step, make sure its obvious
+* Start with top down and then bottom-up
+# SEO
+* Subsequence
+* Interview
+* How to get better at dynamic programming
+* What is dynamic programming?
+* leetcode dynamic programming
+
+# What is Dynamic Programming?
+
 Dynamic programming is breaking down a problem into smaller sub-problems, solving each sub-problem and storing the solutions to each of these sub-problems in an array (or similar data structure) so each sub-problem is only calculated once. 
+
+It's smart bruteforcing. We bruteforce, but remember what we've done along the way.
 
 It is both a [mathematical optimisation](https://en.wikipedia.org/wiki/Mathematical_optimization) method and a computer programming method.
 
@@ -701,6 +722,33 @@ In the case it does work, it's called a [Canonical Coin System](https://graal.en
 Dynamic Programming allows us to solve this problem efficiently.
 
 Given a sum, `change`, we want to find the optimal path that minimises the amount of coins we use.
+
+We're going to solve this in a bottom-up approach, and then a top-down approach.
+
+##### Bottom-Up Coin Change
+
+Using a smaller example:
+
+```
+coins = [1, 2, 5]
+change = 11
+```
+
+We need to build the array before we calculate. For bottom-up, we are calculating the minimum amount of coins for each amount up to the target amount.
+
+We start at 0 and go up to target.
+
+Therefore our array is size `amount + 1`
+
+We want to include 0 coins and 0 amount because of the [powerset](https://skerritt.blog/sets/#-power-set).
+
+If we perform the calculations without it, our code fails.
+
+* The first element is not set to 0
+We cannot calculate the first step, the second step and so on.
+* Our array is not amount + 1
+Our last element is incorrect.
+
 
 
 ```python
@@ -2309,10 +2357,6 @@ But, Greedy is different. It aims to optimise by making the best choice at that 
 
 
 ---
-
-# ToDo
-- [ ] Add bottom up more
-
 
 ## Conclusion
 

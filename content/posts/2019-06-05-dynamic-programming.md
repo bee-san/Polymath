@@ -1942,7 +1942,7 @@ print(knapSack(W , wt , val , n))
 ## Time Complexity of a Dynamic Programming Problem
 ![](/media/dp/undraw9.svg)
 
-[Time complexity](/you-need-to-understand-big-o-notation-now/) is calculated in Dynamic Programming as:
+[Time complexity](/big-o/) is calculated in Dynamic Programming as:
 
 $$Number \ of \ unique \ states * time \ taken \ per \ state$$
 

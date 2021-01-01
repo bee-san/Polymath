@@ -1,6 +1,6 @@
 ---
 title: All You Need to Know About Big O Notation [Python Examples]
-slug: big-o-notation
+slug: big-o
 date: 2020-10-08T16:43:37.000Z
 draft: false
 math: true
