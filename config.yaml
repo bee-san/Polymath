@@ -41,6 +41,7 @@ params:
     description: "Computer Science Blog"
     images:
             - /media/header.png
+
     author: Bee
     header:
             title: 'Skerritt.blog'
@@ -88,7 +89,11 @@ params:
         - name: rss 
           url: "https://skerritt.blog/index.xml"
         - name: email
-          url: "https://skerritt.blog/"
+          url: "mailto:brandon@skerritt.blog"
+    cover:
+            hidden: true # hide everywhere but not in structured data
+            hiddenInList: true # hide on list pages and home
+            hiddenInSingle: true # hide on single page
 
 taxonomies:
     category: categories

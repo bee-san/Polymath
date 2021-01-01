@@ -5,12 +5,15 @@ date_published: 2019-06-05T16:03:32.000Z
 date: 2020-12-31T01:44:21.000Z
 math: true
 ShowToc: true
-draft: true
 tags: 
     - University
     - Computer Science
     - Datastructures and Algorithms
     - Popular
+draft: true
+cover:
+    image: "/media/p2p.jpg"
+
 excerpt: Dynamic programming (DP) is breaking down an optimisation problem into smaller sub-problems, and storing the solution to each sub-problems so that each sub-problem is only solved once.
 ---
 
@@ -697,32 +700,38 @@ In the case it does work, it's called a [Canonical Coin System](https://graal.en
 
 Dynamic Programming allows us to solve this problem efficiently.
 
-Given a sum, `changee`, we want to find the optimal path that minimises the amount of coins we use.
+Given a sum, `change`, we want to find the optimal path that minimises the amount of coins we use.
 
 
 ```python
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int: 
-            
-	            dp = [float("inf")] * (amount + 1)
-		            
-			            dp[0] = 0
-				            
-					            for y in range(1, amount + 1):
-						                for coin in coins:
-								                
-										                if y - coin < 0:
-												                    continue
-														                    
-																                    dp[y] = min(dp[y], dp[y - coin] + 1)
-																		                    
-																				            if dp[-1] == float("inf"):
-																					                return -1
-																							        
-																								        return dp[-1]
-																				```
+	def coinChange(self, coins: List[int], amount: int) -> int: 
 
+	# Generate the bottom-up array which is amount + 1
+	dp = [float("inf")] * (amount + 1)
 
+	# We can make 0 change with 0 coins
+	dp[0] = 0
+
+	# for every possible amount up to our amount + 1
+	for y in range(1, amount + 1):
+		# for every possible coin
+		for coin in coins:
+			# If our coin doesn't fit, go to the next loop
+			if y - coin < 0:
+				continue
+
+		# Else calculate what the minimum amount of coins 
+		# for that amount is
+		dp[y] = min(dp[y], dp[y - coin] + 1)
+
+	# If we couldn't make change, return -1
+	if dp[-1] == float("inf"):
+		return -1
+
+	return dp[-1]
+
+```
 
 
 ### Diistinct Ways
