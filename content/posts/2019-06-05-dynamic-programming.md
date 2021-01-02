@@ -451,7 +451,7 @@ Congrats! 🥳 We've just written our first dynamic program!  Now that we’ve 
 ---
 
 # Knapsack Problem
-![](/content/images/2019/06/undraw_travelers_qlt1.svg)
+
 Imagine you are a criminal. Dastardly smart. You break into Bill Gates’s mansion. Wow, okay!?!? How many rooms is this? His washing machine room is larger than my entire house??? Ok, time to stop getting distracted. You brought a small bag with you. A knapsack - if you will. 
 
 You can only fit so much into it. Let’s give this an arbitrary number. The bag will support weight 15, but no more. What we want to do is maximise how much money we'll make, $b$.
@@ -483,7 +483,7 @@ You can see we already have a rough idea of the solution and what the problem is
 ---
 
 ## Maths Behind {0, 1} Knapsack Problem
-![](/content/images/2019/06/undraw_to_do_list_a49b.svg)
+
 Imagine we had a listing of every single thing in Bill Gates's house. We stole it from some insurance papers. Now, think about the future. What is the optimal solution to this problem?
 
 We have a subset, L, which is the optimal solution. L is a subset of S, the set containing all of Bill Gates's stuff.
