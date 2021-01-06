@@ -2454,7 +2454,14 @@ We know Dynamic Programming is Fancy Bruteforcing™, which means we want to cal
 
 For each amount, we want to loop through all of the coins. That means for every amount X, there is Y rows for each of the coins.
 
+|   |0p | 1p | 2p | 3p |
+|  ---- | ---- | ----- | ----- | ---- |  
+| 1 pence coin | 0 | 1 | 2 | 3 |
+| 2 pence coin| 0 | 1 | 1| 2 | 
+
 This means our Dynamic Programming Table would be `X, Y` dimensions.
+
+In the above case, we have 2 coins and 4 amounts we want to make change for. That means our Dynamic Programming table is `4, 2`.
 
 But! We only care about the minimum amount of coins to make change, not all the possible ways. This means we do not need to have a 2-dimensional table with the Y column.
 
