@@ -2448,6 +2448,8 @@ Bottom-up is much simpler, as we only need 2 for loops which is similar to our o
 
 ##### Bottom-Up Coin Change
 
+# Visual Solution
+
 Earlier I said that this was a "multi-dimensionsal" problem. To me, that means more than a 1-dimensional array. Let's explore _why_ I said this.
 
 We know Dynamic Programming is Fancy Bruteforcing™, which means we want to calculate the minimum amount of coins for the change of 1, 2, 3, 4, ...., n where n is the amount we want to change.
@@ -2568,6 +2570,26 @@ dp[to_make_change] = min(dp[to_make_change], dp[to_make_change - coin] + 1)
 
 Where `to_make_chage` is the amount to make change for at step `y`, and `coin` is the current coin being used in the iteration.
 
+So we know:
+* The dimensions of our DP Array.
+* The recurrence.
+* That we need to loop over the coins.
+
+We'll quickly build our program.
+
+```python
+class Solution:
+	def coinChange(self, coins: List[int], amount: int) -> int: 
+
+	# Generate the bottom-up array which is amount + 1
+	dp = [float("inf")] * (amount + 1)
+
+	# We can make 0 change with 0 coins
+	dp[0] = 0
+```
+
+We start with our DP array and our basecase.
+
 ```python
 class Solution:
 	def coinChange(self, coins: List[int], amount: int) -> int: 
@@ -2582,21 +2604,87 @@ class Solution:
 	for y in range(1, amount + 1):
 		# for every possible coin
 		for coin in coins:
-			# If our coin doesn't fit, go to the next loop
+```
+
+And now we loop over the amount and every coin.
+
+```python
+class Solution:
+def coinChange(self, coins: List[int], amount: int) -> int: 
+
+# Generate the bottom-up array which is amount + 1
+dp = [float("inf")] * (amount + 1)
+
+# We can make 0 change with 0 coins
+dp[0] = 0
+
+# for every possible amount up to our amount + 1
+for y in range(1, amount + 1):
+	# for every possible coin
+	for coin in coins:
+		# If our coin doesn't fit, go to the next loop
+		if y - coin < 0:
+			continue
+```
+
+If our coin is 50, and our amount is 5, we get $5 - 50 = -45$. Negative change is impossible, so we tell our loop to skip this combination.
+
+```python
+class Solution:
+def coinChange(self, coins: List[int], amount: int) -> int: 
+
+# Generate the bottom-up array which is amount + 1
+dp = [float("inf")] * (amount + 1)
+
+# We can make 0 change with 0 coins
+dp[0] = 0
+
+# for every possible amount up to our amount + 1
+for y in range(1, amount + 1):
+	# for every possible coin
+	for coin in coins:
+		# If our coin doesn't fit, go to the next loop
+		if y - coin < 0:
+			continue
+
+	# Else calculate what the minimum amount of coins 
+	# for that amount is
+	dp[y] = min(dp[y], dp[y - coin] + 1)
+```
+
+If we didn't skip it, we calculate the minimum using our recurrence from earlier.
+
+```python
+class solution:
+	def coinchange(self, coins: list[int], amount: int) -> int: 
+
+	# generate the bottom-up array which is amount + 1
+	dp = [float("inf")] * (amount + 1)
+
+	# we can make 0 change with 0 coins
+	dp[0] = 0
+
+	# for every possible amount up to our amount + 1
+	for y in range(1, amount + 1):
+		# for every possible coin
+		for coin in coins:
+			# if our coin doesn't fit, go to the next loop
 			if y - coin < 0:
 				continue
 
-		# Else calculate what the minimum amount of coins 
+		# else calculate what the minimum amount of coins 
 		# for that amount is
 		dp[y] = min(dp[y], dp[y - coin] + 1)
 
-	# If we couldn't make change, return -1
+	# if we couldn't make change, return -1
 	if dp[-1] == float("inf"):
 		return -1
 
 	return dp[-1]
 
 ```
+
+And finally, we return -1 if we couldn't make change, otherwise we return the last element of the DP array which is the answer.
 
 
 ### Diistinct Ways

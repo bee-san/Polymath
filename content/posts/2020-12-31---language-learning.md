@@ -1,3 +1,12 @@
+---
+title: Lessons from 500 days of language learning
+slug: language-learning
+date: 2020-12-31T01:44:21.000Z
+ShowToc: true
+tags: 
+    - Languages
+---
+
 The only thing more annoying than your friend banging their pints on the table is your friend drunkenly suggesting you all do Duolingo together.
 
 I wasn't sure what was more shocking, the fact that the pub had ran out of Vodka or that my friend was suggesting, at 1am, that we should all download Duolingo and learn some Spanish together.
