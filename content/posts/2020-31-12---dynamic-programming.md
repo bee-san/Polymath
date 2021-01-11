@@ -2482,61 +2482,76 @@ coins = [1, 2, 5]
 change = 11
 ```
 
+![an array of size 12 with boxes labelled from 0 to 11](/media/dp/coin-bottom-1.svg)
+
 We need to build the array before we calculate. For bottom-up, we are calculating the minimum amount of coins for each amount up to the target amount.
 
 We start at 0 and go up to target.
 
 Therefore our array is size `amount + 1`
 
-We want to include 0 coins and 0 amount because of the [powerset](https://skerritt.blog/sets/#-power-set).
-
-If we perform the calculations without it, our code fails.
-
-* The first element is not set to 0
-We cannot calculate the first step, the second step and so on.
-* Our array is not amount + 1
-Our last element is incorrect.
-
-Our array looks like:
-
 ```python
-dp = [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf]
+class Solution:
+	def coinChange(self, coins: List[int], amount: int) -> int: 
+
+	# Generate the bottom-up array which is amount + 1
+	dp = [float("inf")] * (amount + 1)
+
+	# We can make 0 change with 0 coins
+	dp[0] = 0
 ```
 
-12 items, each at infinity. We chose infinity because Python doesn't allow us to use empty values and any value will always be less than infinity.
+We start with our DP array and our basecase.
+
+We chose infinity because Python doesn't allow us to use empty values and any value will always be less than infinity.
 
 * Minimum == infinity.
 * Maximum == -infinity.
 
 For max problems, use negative infinity. Otherwise, positive infinity.
 
-In our top-down approach the basecase is that 0 coins makes 0 change. For our bottom-up approach we write:
+![Every item in the array is now "infinite" for it has infinite value.](/media/dp/bottom-coin2.svg)
 
-```python
-dp[0] = 0
-```
+We want to include 0 coins and 0 amount because of the [powerset](https://skerritt.blog/sets/#-power-set).
 
-Our array now looks like:
+The most important question for all dynamic programming problems is:
+> What is the solution to the subproblem?
 
-```python
-dp = [0, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf]
-```
+Each of these cells is asking us a question, and we know previious answers to that question. 
 
-Now we've dealt with the basecase, let's discover the recurrence.
+For cell 0, the question is:
+
+> How many coins do we need to make 0 change?
+
+The answer is 0, this will serve as our basecase. We cannot make any coins with 0.
+
+![](/media/dp/bottom-coin3.svg)
+
+Our next step is **discovering the recurrence**.
 
 The problem states that a single pence coin `1` will always be in the coins array.
 
 That means we can always make any amount with a bunch of 1 pence coins.
 
+$$60 \ change / 1p = 60 \ coins$$
+
 We also have other values of coins. For example, to make change for `5` the 5 pence coin would be the minimal amount needed.
 
-So actually, we can calculate the minimum amount of coins needed to be the nearest whole coin with additional 1's.
+Our first thought is that we can calculcate the minimum amount of coins to be the nearest whole coin with additional 1's with this algorithm:
 
-For example, given the change `7`. Our nearest whole coin is `5`. We perform $7 - 5 = 2$ which tells us we need 2x1 pence coins to make the change. In total, we have used 3 coins. Given the change `10`, our nearest whole coin is `5` which we can use twice. 
+1. Given an amount, X.
+2. Find the maximum coin that is less than X.
+3. Use that coin, and then calculate:
 
-However, this algorithm won't work for the 2nd example. _How_ do we calculate we need 2x5 pence coins?
+$$X - coin$$
 
-Let's say we have an array:
+4. $X - coin$ is how many 1 pence coins we need.
+
+However, this algorithm won't work. 
+
+Given the change 10, our algorithm would select 6 coins (1x 5 pence coin, 5x 1 pence coins). _How_ do we make it work for all amounts?
+
+We have an array:
 
 ```
 [x, x, x, x, 1, x, x, x, x, Y]
@@ -2577,18 +2592,8 @@ So we know:
 
 We'll quickly build our program.
 
-```python
-class Solution:
-	def coinChange(self, coins: List[int], amount: int) -> int: 
 
-	# Generate the bottom-up array which is amount + 1
-	dp = [float("inf")] * (amount + 1)
 
-	# We can make 0 change with 0 coins
-	dp[0] = 0
-```
-
-We start with our DP array and our basecase.
 
 ```python
 class Solution:
