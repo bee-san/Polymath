@@ -2617,8 +2617,6 @@ So we know:
 We'll quickly build our program.
 
 
-
-
 ```python
 class Solution:
 	def coinChange(self, coins: List[int], amount: int) -> int: 
