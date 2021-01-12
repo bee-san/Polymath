@@ -2557,25 +2557,49 @@ We have an array:
 [x, x, x, x, 1, x, x, x, x, Y]
 ```
 
+![](/media/dp/bottom-coin4.svg)
+
 We can change 1x5 pence coin for the amount `5`, so `[5] = 1`. For the last amount, `Y`, which is 10 we can change 2 coins.
 
 We calculate this by performing `10 - coin`. Eventually we hit `10 - 5` which takes us to the 5th element which is 1 coin. 
 
+$$10 - 1 = 9$$
+$$10 - 2 = 8$$
+$$10 - 5 = 5$$
+
+We find the maximum coin that can fit in the amount.
+
 Because we take away the denomination of the coin from our current amount, we find out the optimal minimum number of coins the last time we effectively used that coin.
+
+For our example:
+
+![](/media/dp/bottom-coin5.svg)
+
+We take our highest coin, $5$, away from our amount $10$.
+
+$$10 - 5 = 5$$.
+
+We then go to position 5, which is amount 5.
+
+![](/media/dp/bottom-coin6.svg)
 
 This comes out to `1`, so we add `+ 1` to our counter meaning at spot `10` we have `2 coins`.
 
-When we reach amount 15, we look back at amount 10 and see it took 2 coins to make that. So we say amountn 15 takes 3 coins.
+![](/media/dp/bottom-coin7.svg)
+
+When we reach amount 15, we look back at amount 10 and see it took 2 coins to make that. So we say amount 15 takes 3 coins.
+
+![](/media/dp/bottom-coin8.svg)
 
 This method lets us use the most optimal amount of whole coins each time.
 
-Unforunately, if we only havve change for 1's, or we have not yet reached the latest whole coin then this formula doesn't work. That's why we resort back to only using 1 pence coins.
+Unforunately if we only have 1 pence coins to change, this algorithm doesn't work. Because at position 5 it'd be 5, which means position 10 would be 6 coins which is not true. It'd be 10 coins as it's amount 10 with only 1 pence coins.
 
 This means our recurrence is:
 
 > Calculate the minimum of:
 > * The amount to be changed in 1 pence coins
-> * The minimum amount of times the whole coin was used for the amount + 1.
+> * The minimum amount of times the whole coin was used for the previous amount + 1.
 
 In code, this algorithm is:
 
