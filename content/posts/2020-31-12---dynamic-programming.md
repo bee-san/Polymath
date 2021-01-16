@@ -2448,8 +2448,6 @@ Bottom-up is much simpler, as we only need 2 for loops which is similar to our o
 
 ##### Bottom-Up Coin Change
 
-# Visual Solution
-
 Earlier I said that this was a "multi-dimensionsal" problem. To me, that means more than a 1-dimensional array. Let's explore _why_ I said this.
 
 We know Dynamic Programming is Fancy Bruteforcing™, which means we want to calculate the minimum amount of coins for the change of 1, 2, 3, 4, ...., n where n is the amount we want to change.
@@ -2633,7 +2631,9 @@ class Solution:
 		for coin in coins:
 ```
 
-And now we loop over the amount and every coin.
+We start off by building the DP array and setting the basecase.
+
+Then we loop through all possible amounts and all coins.
 
 ```python
 class Solution:
@@ -2714,7 +2714,7 @@ class solution:
 And finally, we return -1 if we couldn't make change, otherwise we return the last element of the DP array which is the answer.
 
 
-### Diistinct Ways
+### Distinct Ways
 
 ### Merging Intervals
 
@@ -2802,6 +2802,16 @@ But, Greedy is different. It aims to optimise by making the best choice at that 
 
 
 ---
+
+# BackTracking
+Backtracking is conceptually easy to understand. As we search for a solution, sometimes we reach a dead end and haev to go back.
+
+The idea is easy, but implementing it isn't. Backtracking typically works with recursion, but it's tricky to understand.
+
+We'll start with non-recursive backtracking code.
+
+## Defining a maze
+
 
 ## Conclusion
 
