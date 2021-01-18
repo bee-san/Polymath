@@ -420,8 +420,6 @@ I don’t understand how it’s 2020 and people still forgo the use of these bas
 
 It’s just bad practice and takes more work than using regular HTML.
 
-The worst part is that the editor for writing this has buttons you can click which use HTML tags. But instead, people forgo clicking a single button to make their own tags, or to use some weird ASCII markup to “look cool”. You are not cool for deliberately excluding a vast majority of people from using your work.
-
 ## Testing your Box
 There are 2 tools you can use to test your room which are better than nothing.
 
