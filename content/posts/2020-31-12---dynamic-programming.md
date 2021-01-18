@@ -2716,6 +2716,69 @@ And finally, we return -1 if we couldn't make change, otherwise we return the la
 
 ### Distinct Ways
 
+Given some target, find all the distinct ways there are to reach the target. 
+
+The way we do this is by summing up all the possible ways to reach the target.
+
+$$ routes[i] = routes[i - 1] + routes[i - 2] + , ... , + routes[i - k]$$
+
+Generally we can solve this by:
+
+```python
+for i in range(0, target):
+		for i in range(0, ways.size()):
+				if ways[j] <= i:
+						dp[i] += dp[i - ways[j]]
+```
+
+Imagine an array like so:
+
+```
+[1, 2, 3]
+```
+
+We calculate how many ways there are to reach the target 1. And then to reach theh target 2, and then 3. We use dynamic programming such that to calculate how many ways there is to reach 2, we do not need to re-calculate how many ways there is to reach 1.
+
+#### Climbing Stairs
+
+Using [this problem](https://leetcode.com/problems/climbing-stairs/).
+
+This is very similar to Fibonacci sequence. For each step, we can either climb 1 step or 2 steps. We calculate the optimal way to reach step 3, then step 4, then step 5 and so on.
+
+We know it's Fibonacci because we can either go up once or twice, it's the same with Fibonacci.
+
+Our code looks like:
+
+```python
+def ClimbStairs(n):
+		if n == 1:
+				return 1
+		res = [0 for i in range(n)]
+		res[0], res[1] = 1, 2
+
+		for i in range(2, n):
+				res[i] = res[i - 1] + res[i - 2]
+		return res[-1]	
+```
+
+Now, here's a neat trick. We only care about the last 2 steps. We can either go up one step, or go up two steps.
+
+Knowing this, we can make our algorithm constant space O(1) instead of O(n).
+
+```python
+def ClimbStairs(n):
+		if n == 1:
+				return 1
+		res = [0 for i in range(n)]
+		a, b = 1, 2
+
+		for i in range(2, n):
+				a, b = a + b, b
+		return b	
+```
+
+
+
 ### Merging Intervals
 
 ### DP on Strings
