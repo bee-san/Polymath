@@ -50,6 +50,8 @@ Be creative!
 
 # Markdown Version
 
+Copy and paste this into your favourite editor, use `- [x]` to keep track of the rooms you have done.
+
 ```
 - [ ] Ra https://tryhackme.com/room/ra
 - [ ] Ra2 https://tryhackme.com/room/ra2
