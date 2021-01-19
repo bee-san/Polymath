@@ -1,6 +1,15 @@
+---
+title: Lessons from 500 days of language learning
+slug: language-learning
+date: 2020-12-31T01:44:21.000Z
+ShowToc: true
+tags: 
+    - Languages
+---
+
 The only thing more annoying than your friend banging their pints on the table is your friend drunkenly suggesting you all do Duolingo together.
 
-I wasn't sure what was more shocking, the fact that the pub had ran out of Vodka or that my friend was suggesting, at 1am, that we should all download Duolingo and learn some Spanish together.
+I wasn't sure what was more shocking, the fact that the pub had run out of Vodka or that my friend was suggesting, at 1 am, that we should all download Duolingo and learn some Spanish together.
 
 500 days later, and I'm still at it. They are not.
 
@@ -23,26 +32,26 @@ And likely many more.
 
 The problem is that we procrastinate what study method to use.
 
-> Deciding on the best study method is another form of procrastinaton.
+> Deciding on the best study method is another form of procrastination.
 
 While some apps are better than others (Duolingo isn't that good), the differences aren't so large that they make a significant change in your study.
 
-I'd Google "best language app for {LANGUAGE} reddit" and just choose the first ones.
+I'd Google "best language app for {LANGUAGE} Reddit" and just choose the first ones.
 
 My favourites were:
-* Busuu (for German). It required you to study 10 minutes / day instead of X lessons / day. This helped me learn **a lot** more than the usual.
-* Duolingo (German, Hawaian, Hindi, Russian, Chinese, Korean, Spanish, Gaelic, Latin, Arabic). Duolingo is a bad app in the sense that it doesn't teach you the specific rules of a language so much. But for developing a habit and easiily checking out many languages it's a great app.
+* Busuu (for German). It required you to study 10 minutes/day instead of X lessons/day. This helped me learn **a lot** more than the usual.
+* Duolingo (German, Hawaiian, Hindi, Russian, Chinese, Korean, Spanish, Gaelic, Latin, Arabic). Duolingo is a bad app in the sense that it doesn't teach you the specific rules of a language so much. But for developing a habit and easily checking out many languages it's a great app.
 * Wanikani (Japanese). Superb app to learn Kanji && Hiragana. The best! Highly suggest.
 * Anki (Japanese / German). Good for learning vocab, not good for using that vocab.
-* HelloChinese - Probably the only good Chinese learniing app.
+* HelloChinese - Probably the only good Chinese learning app.
 
-## Specificty vs Generalisation
+## Specificity vs Generalisation
 
-Some people pick one language and learn it well, others people many languages and get a little good at them. Some even pick many languages and lie that their experts in it after only 4 days of study.
+Some people pick one language and learn it well, other people many languages and get a little good at them. Some even pick many languages and lie that their experts in it after only 4 days of study.
 
-I prefer picking 1 or 2 languages to study, but experimenting in a lot of different languages. 
+I prefer picking 1 or 2 languages to study but experimenting in a lot of different languages. 
 
-I find studying the same language everyday gets boring after a while, so I tend to experiment.
+I find studying the same language every day gets boring after a while, so I tend to experiment.
 
 My core languages are:
 * German (A1 level)
@@ -64,11 +73,11 @@ These have been:
 
 I would suggest if you feel burnt out, explore something else. 
 
-It's important to keep the habit going, but at the same time you don't want to burn out.
+It's important to keep the habit going, but at the same time, you don't want to burn out.
 
 ## Habits build Habits
 
-One of the most surprising benefits of learning a language from the Green Bird was that habits built habits. 
+One of the most surprising benefits of learning a language from Green Bird was that habits built habits. 
 
 It started small. I'd do my Duolingo lesson and drink a litre of water.
 
@@ -98,4 +107,4 @@ Understanding is implementation. You can't know a language and not use it.
 
 500 days down, 500 days to go! And then another 1000 days.
 
-Maybe in another 500 days I'll be able to speak Mandarin or German rather well 😉
+Maybe in another 500 days, I'll be able to speak Mandarin or German rather well 😉

@@ -2392,9 +2392,86 @@ Dynamic Programming allows us to solve this problem efficiently.
 
 Given a sum, `change`, we want to find the optimal path that minimises the amount of coins we use.
 
-We're going to solve this in a bottom-up approach, and then a top-down approach.
+We're going to use bottom-up here, as it's much easier than top-down. Some problems are easieir with bottom-up, some are easier with top-down. This is a bottom-up problem.
+
+We can tell it is because we have to think in multiple dimensions, and we know it's multiple dimensions because of the recurrence.
+
+Let's take a small look at it.
+
+For every amount up to 15 we want to calculate:
+* The smallest amount of coins up to that point.
+
+This means our code, iin iterative, looks roughly like:
+
+```python
+for i in range(0, 15):
+		for y in coins:
+				# do stuff
+```
+
+For each level of the recurrence, we need to loop through all the coins to find the ones that optimally fit. 
+
+In a top-down approach, our recurrence function would need to have a `for` loop which iterates over the coins and works out the smallest possible denomination of coins for that amount.
+
+Essentially, our top-down would look like:
+
+```python
+def top_down(amount, coins):
+		for i in coins:
+				top_down(amount, i)
+```
+
+Which gets messy, fast. It's easier for us to debug code if we used bottom-up here. Here's what the top-down approach looks like in C++ from [here](https://www.bogotobogo.com/Algorithms/dynamic_programming.php):
+
+```cpp
+int CoinChange(int amount, int d[], int size)
+{
+    if(amount <= 0) return 0;
+	    int min_coins =(int)INT_MAX;
+
+		for(int i = 0; i < size; i++) {
+				if(d[i] <= amount) 
+						    min_coins = min(min_coins, CoinChange(amount-d[i], d, size) + 1);
+							    
+		}
+		    return min_coins;
+			
+}
+```
+
+We have to:
+* Initialise min_coins each iteration.
+* Loop through all coins each iteration.
+* Calculate new min coins each iteration, which recursively calls the function again.
+
+Bottom-up is much simpler, as we only need 2 for loops which is similar to our original bruteforce method, except memoised.
 
 ##### Bottom-Up Coin Change
+
+Earlier I said that this was a "multi-dimensionsal" problem. To me, that means more than a 1-dimensional array. Let's explore _why_ I said this.
+
+We know Dynamic Programming is Fancy Bruteforcing™, which means we want to calculate the minimum amount of coins for the change of 1, 2, 3, 4, ...., n where n is the amount we want to change.
+
+For each amount, we want to loop through all of the coins. That means for every amount X, there is Y rows for each of the coins.
+
+|   |0p | 1p | 2p | 3p |
+|  ---- | ---- | ----- | ----- | ---- |  
+| 1 pence coin | 0 | 1 | 2 | 3 |
+| 2 pence coin| 0 | 1 | 1| 2 | 
+
+This means our Dynamic Programming Table would be `X, Y` dimensions.
+
+In the above case, we have 2 coins and 4 amounts we want to make change for. That means our Dynamic Programming table is `4, 2`.
+
+But! We only care about the minimum amount of coins to make change, not all the possible ways. This means we do not need to have a 2-dimensional table with the Y column.
+
+So for example, given the change `10` and the coins `1, 5, 10` our table would report we can make change with:
+* 1x10p coin.
+* 2x5p coins.
+* 10x1p coins.
+
+We don't care about the 5p or the 1p, we only care about the minimum amount which is 1x10p coin. If we cared about the total amount of ways to make change, we'd have to us a 2d array. 
+
 
 Using a smaller example:
 
@@ -2403,21 +2480,139 @@ coins = [1, 2, 5]
 change = 11
 ```
 
+![an array of size 12 with boxes labelled from 0 to 11](/media/dp/coin-bottom-1.svg)
+
 We need to build the array before we calculate. For bottom-up, we are calculating the minimum amount of coins for each amount up to the target amount.
 
 We start at 0 and go up to target.
 
 Therefore our array is size `amount + 1`
 
+```python
+class Solution:
+	def coinChange(self, coins: List[int], amount: int) -> int: 
+
+	# Generate the bottom-up array which is amount + 1
+	dp = [float("inf")] * (amount + 1)
+
+	# We can make 0 change with 0 coins
+	dp[0] = 0
+```
+
+We start with our DP array and our basecase.
+
+We chose infinity because Python doesn't allow us to use empty values and any value will always be less than infinity.
+
+* Minimum == infinity.
+* Maximum == -infinity.
+
+For max problems, use negative infinity. Otherwise, positive infinity.
+
+![Every item in the array is now "infinite" for it has infinite value.](/media/dp/bottom-coin2.svg)
+
 We want to include 0 coins and 0 amount because of the [powerset](https://skerritt.blog/sets/#-power-set).
 
-If we perform the calculations without it, our code fails.
+The most important question for all dynamic programming problems is:
+> What is the solution to the subproblem?
 
-* The first element is not set to 0
-We cannot calculate the first step, the second step and so on.
-* Our array is not amount + 1
-Our last element is incorrect.
+Each of these cells is asking us a question, and we know previious answers to that question. 
 
+For cell 0, the question is:
+
+> How many coins do we need to make 0 change?
+
+The answer is 0, this will serve as our basecase. We cannot make any coins with 0.
+
+![](/media/dp/bottom-coin3.svg)
+
+Our next step is **discovering the recurrence**.
+
+The problem states that a single pence coin `1` will always be in the coins array.
+
+That means we can always make any amount with a bunch of 1 pence coins.
+
+$$60 \ change / 1p = 60 \ coins$$
+
+We also have other values of coins. For example, to make change for `5` the 5 pence coin would be the minimal amount needed.
+
+Our first thought is that we can calculcate the minimum amount of coins to be the nearest whole coin with additional 1's with this algorithm:
+
+1. Given an amount, X.
+2. Find the maximum coin that is less than X.
+3. Use that coin, and then calculate:
+
+$$X - coin$$
+
+4. $X - coin$ is how many 1 pence coins we need.
+
+However, this algorithm won't work. 
+
+Given the change 10, our algorithm would select 6 coins (1x 5 pence coin, 5x 1 pence coins). _How_ do we make it work for all amounts?
+
+We have an array:
+
+```
+[x, x, x, x, 1, x, x, x, x, Y]
+```
+
+![](/media/dp/bottom-coin4.svg)
+
+We can change 1x5 pence coin for the amount `5`, so `[5] = 1`. For the last amount, `Y`, which is 10 we can change 2 coins.
+
+We calculate this by performing `10 - coin`. Eventually we hit `10 - 5` which takes us to the 5th element which is 1 coin. 
+
+$$10 - 1 = 9$$
+$$10 - 2 = 8$$
+$$10 - 5 = 5$$
+
+We find the maximum coin that can fit in the amount.
+
+Because we take away the denomination of the coin from our current amount, we find out the optimal minimum number of coins the last time we effectively used that coin.
+
+For our example:
+
+![](/media/dp/bottom-coin5.svg)
+
+We take our highest coin, $5$, away from our amount $10$.
+
+$$10 - 5 = 5$$.
+
+We then go to position 5, which is amount 5.
+
+![](/media/dp/bottom-coin6.svg)
+
+This comes out to `1`, so we add `+ 1` to our counter meaning at spot `10` we have `2 coins`.
+
+![](/media/dp/bottom-coin7.svg)
+
+When we reach amount 15, we look back at amount 10 and see it took 2 coins to make that. So we say amount 15 takes 3 coins.
+
+![](/media/dp/bottom-coin8.svg)
+
+This method lets us use the most optimal amount of whole coins each time.
+
+Unforunately if we only have 1 pence coins to change, this algorithm doesn't work. Because at position 5 it'd be 5, which means position 10 would be 6 coins which is not true. It'd be 10 coins as it's amount 10 with only 1 pence coins.
+
+This means our recurrence is:
+
+> Calculate the minimum of:
+> * The amount to be changed in 1 pence coins
+> * The minimum amount of times the whole coin was used for the previous amount + 1.
+
+In code, this algorithm is:
+
+```python
+dp[to_make_change] = min(dp[to_make_change], dp[to_make_change - coin] + 1)
+```
+
+Where `to_make_chage` is the amount to make change for at step `y`, and `coin` is the current coin being used in the iteration.
+
+So we know:
+* The dimensions of our DP Array.
+* The recurrence.
+* That we need to loop over the coins.
+
+We'll quickly build our program.
 
 
 ```python
@@ -2434,15 +2629,81 @@ class Solution:
 	for y in range(1, amount + 1):
 		# for every possible coin
 		for coin in coins:
-			# If our coin doesn't fit, go to the next loop
+```
+
+We start off by building the DP array and setting the basecase.
+
+Then we loop through all possible amounts and all coins.
+
+```python
+class Solution:
+def coinChange(self, coins: List[int], amount: int) -> int: 
+
+# Generate the bottom-up array which is amount + 1
+dp = [float("inf")] * (amount + 1)
+
+# We can make 0 change with 0 coins
+dp[0] = 0
+
+# for every possible amount up to our amount + 1
+for y in range(1, amount + 1):
+	# for every possible coin
+	for coin in coins:
+		# If our coin doesn't fit, go to the next loop
+		if y - coin < 0:
+			continue
+```
+
+If our coin is 50, and our amount is 5, we get $5 - 50 = -45$. Negative change is impossible, so we tell our loop to skip this combination.
+
+```python
+class Solution:
+def coinChange(self, coins: List[int], amount: int) -> int: 
+
+# Generate the bottom-up array which is amount + 1
+dp = [float("inf")] * (amount + 1)
+
+# We can make 0 change with 0 coins
+dp[0] = 0
+
+# for every possible amount up to our amount + 1
+for y in range(1, amount + 1):
+	# for every possible coin
+	for coin in coins:
+		# If our coin doesn't fit, go to the next loop
+		if y - coin < 0:
+			continue
+
+	# Else calculate what the minimum amount of coins 
+	# for that amount is
+	dp[y] = min(dp[y], dp[y - coin] + 1)
+```
+
+If we didn't skip it, we calculate the minimum using our recurrence from earlier.
+
+```python
+class solution:
+	def coinchange(self, coins: list[int], amount: int) -> int: 
+
+	# generate the bottom-up array which is amount + 1
+	dp = [float("inf")] * (amount + 1)
+
+	# we can make 0 change with 0 coins
+	dp[0] = 0
+
+	# for every possible amount up to our amount + 1
+	for y in range(1, amount + 1):
+		# for every possible coin
+		for coin in coins:
+			# if our coin doesn't fit, go to the next loop
 			if y - coin < 0:
 				continue
 
-		# Else calculate what the minimum amount of coins 
+		# else calculate what the minimum amount of coins 
 		# for that amount is
 		dp[y] = min(dp[y], dp[y - coin] + 1)
 
-	# If we couldn't make change, return -1
+	# if we couldn't make change, return -1
 	if dp[-1] == float("inf"):
 		return -1
 
@@ -2450,8 +2711,10 @@ class Solution:
 
 ```
 
+And finally, we return -1 if we couldn't make change, otherwise we return the last element of the DP array which is the answer.
 
-### Diistinct Ways
+
+### Distinct Ways
 
 ### Merging Intervals
 
@@ -2539,6 +2802,16 @@ But, Greedy is different. It aims to optimise by making the best choice at that 
 
 
 ---
+
+# BackTracking
+Backtracking is conceptually easy to understand. As we search for a solution, sometimes we reach a dead end and haev to go back.
+
+The idea is easy, but implementing it isn't. Backtracking typically works with recursion, but it's tricky to understand.
+
+We'll start with non-recursive backtracking code.
+
+## Defining a maze
+
 
 ## Conclusion
 
