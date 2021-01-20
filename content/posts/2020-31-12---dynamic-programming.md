@@ -2716,6 +2716,74 @@ And finally, we return -1 if we couldn't make change, otherwise we return the la
 
 ### Distinct Ways
 
+Given a target, find the number of distinct ways to reach that target.
+
+To do so, we need to sum all the possible ways to reach the state.
+
+We've seen this pattern a lot already. Let's look at Fibonacci numbers.
+
+$$[1, 2, x]$$
+
+We calculate x as:
+
+$$list[-1] + list[-2]$$.
+
+Now let's say there are multiple ways to reach the number 3. For example, if we're on a staircase and can go up either one step or two steps.
+
+We calculate this with:
+
+`How many steps it takes to get to list[-2] and how many steps it takes to get to list[-1]`
+
+This is the min cost climbing stair problem from earlier, and is actually a great example of this small paradigm!
+
+Since we've already gone over the cliimbing stairs problem, let's go over a different one.
+
+#### Unique Paths
+
+This [problem](https://leetcode.com/problems/unique-paths/) iis a more interesting one we can play with.
+
+The first thing you'll notice is that we're no longer in a 1-dimensional world but rather a 2-dimensional world.
+
+![](/static/dp/robot_maze.png)
+
+The first step in any dynamic programming problem is understanding the basecase.
+
+The basecase of these problems are the first squares we can touch. In this case, our robot can:
+* Move down.
+* Move right.
+
+Therefore our basecase is to the right and down from the robot.
+
+From the robots starting point, there is only 1 unique path to either the square below it or to the left of it.
+
+![](/static/dp/maze1.svg)
+
+
+
+To create a 2-dimensional DP array, we need 2 for loops. I like using [list comprehensions](https://skerritt.blog/functional/#-list-comprehensions) for this.
+
+```python
+def uniquePaths(m, n):
+    dp = [[1 for x in range(n)] for y in range(m)]
+```
+
+This creates an n by n grid where all values are `1`.
+
+This is our basecase. At the top-left the robot can only move down or right, which results in 1 unique path. We fill in all the squares with 1 because it can never be less than 1.
+
+
+```python
+def uniquePaths(m, n):
+    dp = [[1 for x in range(n)] for y in range(m)]
+    for i in range(1, m):
+        for j in range(1, n):
+            # do work
+```
+
+Our next step is looping over the grid itself. The robot starts in `[0, 0]` so we loop starting from there.
+
+
+
 ### Merging Intervals
 
 ### DP on Strings
