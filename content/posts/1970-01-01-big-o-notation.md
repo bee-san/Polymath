@@ -64,7 +64,6 @@ Instead of saying the input is 10 billion, or infinite - we say the input is n s
 Big O is easy to read once we learn this table:
 The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponential
 
-{{< rawhtml >}}
 <table style="font-size: 18px;">
     <thead style="font-size: 0;">
         <tr>
@@ -91,15 +90,12 @@ The Big O Notation's Order of GrowthConstant Logarithm Linear Polynomial Exponen
 </table>
 
 
-{{< /rawhtml >}}
-
 Where the further right they are, the longer it takes. `n` is the size of the input. Big O notation uses these functions to describe algorithm efficiency. 
 
 In our shopping list example, in the worst-case of our algorithm it prints out every item in the list sequentially. Since there are `n` items in the list, it takes $O(n)$ polynomial time to complete the algorithm. 
 
 Other asymptotic (time-measuring) notations are:
 
-{{< rawhtml >}}
 <table style="font-size: 18px;">
     <thead style="font-size: 0;">
         <tr>
@@ -122,8 +118,6 @@ Other asymptotic (time-measuring) notations are:
 
     </tbody>
 </table>
-
-{{< /rawhtml >}}
 
 **Informally** this is:
 
