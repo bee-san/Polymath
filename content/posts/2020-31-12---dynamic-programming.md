@@ -2744,7 +2744,7 @@ This [problem](https://leetcode.com/problems/unique-paths/) iis a more interesti
 
 The first thing you'll notice is that we're no longer in a 1-dimensional world but rather a 2-dimensional world.
 
-![](/static/dp/robot_maze.png)
+![](/static/dp/robot_maze.svg)
 
 The first step in any dynamic programming problem is understanding the basecase.
 
@@ -2756,8 +2756,7 @@ Therefore our basecase is to the right and down from the robot.
 
 From the robots starting point, there is only 1 unique path to either the square below it or to the left of it.
 
-![](/static/dp/maze1.svg)
-
+![](/static/dp/robot_maze2.svg)
 
 
 To create a 2-dimensional DP array, we need 2 for loops. I like using [list comprehensions](https://skerritt.blog/functional/#-list-comprehensions) for this.
@@ -2771,6 +2770,8 @@ This creates an n by n grid where all values are `1`.
 
 This is our basecase. At the top-left the robot can only move down or right, which results in 1 unique path. We fill in all the squares with 1 because it can never be less than 1.
 
+![](/static/dp/robot_maze3.svg)
+
 
 ```python
 def uniquePaths(m, n):
@@ -2782,7 +2783,56 @@ def uniquePaths(m, n):
 
 Our next step is looping over the grid itself. The robot starts in `[0, 0]` so we loop starting from there.
 
+The robot can only move left or right, and we want to calculate all the unique paths possible.
 
+![](/static/dp/robot_maze4.svg)
+
+That means our recurrence is:
+* Calculate all the unique paths it takes to get to the below square.
+* Calculate all the unique paths it takes to get to the right square.
+
+We do this by adding the previous square we were just on to the current square. 
+
+And because we want to calculate them in total, we add both the right and the down square. Let's see this in action.
+
+![](/static/dp/robot_maze5.svg)
+
+Imagine our robot went right and down, or down and right. That means there are 2 ways to reach that point.
+
+That means:
+
+```
+dp[1][1] = dp[1 - 1][1] + dp[1][1 - 1] = dp[0][1] + dp[1][0] = 1 + 1 = 2
+```
+
+We calculate how many unique paths there are to all unique squares that will let us reach this current square.
+
+We know we can only go right or down, therefore we calculate with the above square or left square (as we have just traversed and want to look backwards).
+
+![](/static/dp/robot_maze6.svg)
+
+This is our recurrence, and so our code is now:
+
+```python
+def uniquePaths(m, n):
+    dp = [[1 for x in range(n)] for y in range(m)]
+    for i in range(1, m):
+        for j in range(1, n):
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+```
+
+What's important to note here is that we took a very small example and tried to find how it could be applied generally. Instead of using specific indices, we loop over it and use those variables.
+
+Now we want to calculate our final sum, which is at `[-1][-1]`. We can do this with:
+
+```python
+def uniquePaths(m, n):
+    dp = [[1 for x in range(n)] for y in range(m)]
+    for i in range(1, m):
+        for j in range(1, n):
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+		return dp[-1][-1]
+```
 
 ### Merging Intervals
 
