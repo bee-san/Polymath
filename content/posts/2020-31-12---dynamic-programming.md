@@ -2836,6 +2836,17 @@ def uniquePaths(m, n):
 
 ### Merging Intervals
 
+Given a set of numbers, find an optimal solution for a problem considering the current number, the left side and the right side.
+
+We approach it like:
+```py
+dp[i][j] = dp[i][k] + result[k] + dp[k+1][j]
+```
+
+Now, this sounds confusing so let's get right into an example.
+
+
+
 ### DP on Strings
 
 ### Decision Making
