@@ -1,0 +1,108 @@
+<!-- Head custom content area start -->
+<!--
+Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. Can be overwritten by partial with the same name in the global layouts.
+-->
+{{ if or .Params.math .Site.Params.math }}
+{{ partial "math.html" . }}
+{{ end }}
+
+<style>
+    td, th {
+    border: thin solid #999 !important;
+    padding: 12px 15px;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table  {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    overflow: auto;
+    display: table;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr{
+    border-bottom: thin solid #dddddd;
+}
+
+
+tbody tr:last-of-type {
+    /* border-bottom: 2px solid #E9DF00; */
+    border-bottom: 2px solid #dddddd;
+}
+
+tbody td.active-item {
+    font-weight: bold;
+    color: #E9DF00;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+
+body.dark tbody tr:nth-of-type(even) {
+    background-color: #383838;
+}
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+    transition: transform .5s;
+
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #888;
+	border-bottom: 1px solid #888;
+	background-color: #fcfcfc;
+    padding: 1px;
+    margin-block: 10px;
+    
+}
+
+
+img:hover
+{
+    transition-delay:0.22s;
+    -ms-transform: scale(2, 2);
+    -webkit-transform: scale(2, 2);
+    transform: scale(2, 2);
+}
+
+img.unstyled {
+    border: 0px black solid !important;
+    transition: unset;
+}
+
+figure {
+    text-align: center;
+    line-height: 0.1em;
+    padding: 1em;
+    margin: 5px; /* adjust as needed */
+    overflow-wrap: break-word;
+}
+
+figure img {
+  vertical-align: top;
+}
+
+figure figcaption{
+    text-align: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+
+
+</style>
+
+<!-- Head custom content area end -->
