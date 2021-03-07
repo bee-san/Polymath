@@ -2849,6 +2849,130 @@ Now, this sounds confusing so let's get right into an example.
 
 ### DP on Strings
 
+This pattern is harder to spot, but usually involves:
+> "Given two strings, return some result based on them"
+
+These strings are often small, because larger strings result in larger DP tables which results in more memory required.
+
+DP on Strings is often solved in $O(n^2)$ as there are two strings we are computing over.
+
+#### Longest Common Subsequence
+
+Given two strings text1 and text2, return the length of their longest common subsequence.
+
+A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings.
+
+If there is no common subsequence, return 0.
+
+Let's look at some examples to get our head around it.
+
+```
+"A B C D G H"
+"A E D F H R"
+```
+
+They both share A, D, and H. So the longest common subsequence is `ADH` which has length 3. So we return 3.
+
+```
+"A G G T A B"
+"G X T X A B"
+```
+
+They share `GTAB` which has length 4.
+
+Subsequences don't have to be contiguous, so for example:
+
+```
+"A B C"
+"C P B"
+```
+
+String 2 starts with C, and string 1 ends with C. We still include them as subsequences do not have to be contiguous.
+
+This raises some questions:
+* How do we compute this without being contiguous?
+* How do we make sure we don't use the same letter twice?
+
+I find drawing execution trees helps.
+
+![](/static/dp/Recursion_tree_common_sub.svg)
+
+Here we only care about the last character. We want to cut this up into subproblems. 
+
+These characters are the same. That means we have a lengthing of our longest common subsequence by 1.
+
+![](/static/dp/Recursion_tree_common_sub1.svg)
+
+The answer os `lcs("aab", "azb")` is 1 + the answer to `lcs("aa", "az")`.
+
+NNow what is the answer to this subproblem? Our eyes go to the last character. 
+
+![](/static/dp/Recursion_tree_common_sub2.svg)
+
+They are not the same. So our problem is now:
+* If we delete either of these characters, which subproblem will yield us a better longer subsequence?
+
+![](/static/dp/Recursion_tree_common_sub3.svg)
+
+At this point we calculate the maximum given by these 2 recurrences. Whichever of these yields a bigger common subsequence we will take that as the longest common subsequence given the subproblem `lcs("aa", "az")`.
+
+When we have mismatching characters like "a" and "z" we have to remove one from each and compute the maximum.
+
+But, our maximums don't match either.
+
+```max(lcs("a", "az"), lcs("aa", "a"))```
+
+For our first problem `lcs("a", "az")` we have to rip "a" from the left-hand side or "z" from the right-hand side.
+
+![](/static/dp/Recursion_tree_common_sub4.svg)
+
+And now for the left-hand side, they match `lcs("aa", "a")` so we do 1+ removing these characters.
+
+
+![](/static/dp/Recursion_tree_common_sub5.svg)
+
+When we see an empty string, we can't have anything in common with an empty string. Because nothing vs something has nothing in common.
+
+SO we'll evaluate `lcs("", "az")` to 0.
+
+![](/static/dp/Recursion_tree_common_sub6.svg)
+
+Now we compare `lcs("a", "a")`. It's a match so we do 1 + removing both of them.
+
+![](/static/dp/Recursion_tree_common_sub7.svg)
+
+We now compare empty string vs an empty string. Nothing is in common so we return 0 from that recursive call.
+
+![](/static/dp/Recursion_tree_common_sub8.svg)
+
+The longest common subsequence between "a" and "a" is 1. 
+
+![](/static/dp/Recursion_tree_common_sub9.svg)
+
+The maximum of `max(0, 1)` is 1. So we return 1.
+
+We drilled down into sub-problems until we got to a solid answer, and now we ride it back all the way up to the top with the solutions to these sub-problems.
+
+![](/static/dp/Recursion_tree_common_sub10.svg)
+
+Now the first half of the `max` is computed. We compute the 2nd half.
+
+![](/static/dp/Recursion_tree_common_sub11.svg)
+
+Skipping a step, we do 1 + 0 (as the maximum substring of empty string & empty string is 0). We evaluate it to 1. 
+
+![](/static/dp/Recursion_tree_common_sub12.svg)
+
+Our competition is finished. We evaluate `max(1, 1)` from both of our sub-problems.
+
+![](/static/dp/Recursion_tree_common_sub13.svg)
+
+Our competition is over, so we calculate $1 + 1$. Which is 2.
+
+![](/static/dp/Recursion_tree_common_sub14.svg)
+
+Now our output is 2. The answer to the overarching subproblem is 2.
+
 ### Decision Making
 
 
