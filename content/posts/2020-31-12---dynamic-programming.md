@@ -2744,7 +2744,7 @@ This [problem](https://leetcode.com/problems/unique-paths/) iis a more interesti
 
 The first thing you'll notice is that we're no longer in a 1-dimensional world but rather a 2-dimensional world.
 
-![](/static/dp/robot_maze.svg)
+![](/media/dp/robot_maze.svg)
 
 The first step in any dynamic programming problem is understanding the basecase.
 
@@ -2756,7 +2756,7 @@ Therefore our basecase is to the right and down from the robot.
 
 From the robots starting point, there is only 1 unique path to either the square below it or to the left of it.
 
-![](/static/dp/robot_maze2.svg)
+![](/media/dp/robot_maze2.svg)
 
 
 To create a 2-dimensional DP array, we need 2 for loops. I like using [list comprehensions](https://skerritt.blog/functional/#-list-comprehensions) for this.
@@ -2770,7 +2770,7 @@ This creates an n by n grid where all values are `1`.
 
 This is our basecase. At the top-left the robot can only move down or right, which results in 1 unique path. We fill in all the squares with 1 because it can never be less than 1.
 
-![](/static/dp/robot_maze3.svg)
+![](/media/dp/robot_maze3.svg)
 
 
 ```python
@@ -2785,7 +2785,7 @@ Our next step is looping over the grid itself. The robot starts in `[0, 0]` so w
 
 The robot can only move left or right, and we want to calculate all the unique paths possible.
 
-![](/static/dp/robot_maze4.svg)
+![](/media/dp/robot_maze4.svg)
 
 That means our recurrence is:
 * Calculate all the unique paths it takes to get to the below square.
@@ -2795,7 +2795,7 @@ We do this by adding the previous square we were just on to the current square.
 
 And because we want to calculate them in total, we add both the right and the down square. Let's see this in action.
 
-![](/static/dp/robot_maze5.svg)
+![](/media/dp/robot_maze5.svg)
 
 Imagine our robot went right and down, or down and right. That means there are 2 ways to reach that point.
 
@@ -2809,7 +2809,7 @@ We calculate how many unique paths there are to all unique squares that will let
 
 We know we can only go right or down, therefore we calculate with the above square or left square (as we have just traversed and want to look backwards).
 
-![](/static/dp/robot_maze6.svg)
+![](/media/dp/robot_maze6.svg)
 
 This is our recurrence, and so our code is now:
 
@@ -2895,24 +2895,24 @@ This raises some questions:
 
 I find drawing execution trees helps.
 
-![](/static/dp/Recursion_tree_common_sub.svg)
+![](/media/dp/Recursion_tree_common_sub.svg)
 
 Here we only care about the last character. We want to cut this up into subproblems. 
 
 These characters are the same. That means we have a lengthing of our longest common subsequence by 1.
 
-![](/static/dp/Recursion_tree_common_sub1.svg)
+![](/media/dp/Recursion_tree_common_sub1.svg)
 
 The answer os `lcs("aab", "azb")` is 1 + the answer to `lcs("aa", "az")`.
 
 NNow what is the answer to this subproblem? Our eyes go to the last character. 
 
-![](/static/dp/Recursion_tree_common_sub2.svg)
+![](/media/dp/Recursion_tree_common_sub2.svg)
 
 They are not the same. So our problem is now:
 * If we delete either of these characters, which subproblem will yield us a better longer subsequence?
 
-![](/static/dp/Recursion_tree_common_sub3.svg)
+![](/media/dp/Recursion_tree_common_sub3.svg)
 
 At this point we calculate the maximum given by these 2 recurrences. Whichever of these yields a bigger common subsequence we will take that as the longest common subsequence given the subproblem `lcs("aa", "az")`.
 
@@ -2924,52 +2924,52 @@ But, our maximums don't match either.
 
 For our first problem `lcs("a", "az")` we have to rip "a" from the left-hand side or "z" from the right-hand side.
 
-![](/static/dp/Recursion_tree_common_sub4.svg)
+![](/media/dp/Recursion_tree_common_sub4.svg)
 
 And now for the left-hand side, they match `lcs("aa", "a")` so we do 1+ removing these characters.
 
 
-![](/static/dp/Recursion_tree_common_sub5.svg)
+![](/media/dp/Recursion_tree_common_sub5.svg)
 
 When we see an empty string, we can't have anything in common with an empty string. Because nothing vs something has nothing in common.
 
 SO we'll evaluate `lcs("", "az")` to 0.
 
-![](/static/dp/Recursion_tree_common_sub6.svg)
+![](/media/dp/Recursion_tree_common_sub6.svg)
 
 Now we compare `lcs("a", "a")`. It's a match so we do 1 + removing both of them.
 
-![](/static/dp/Recursion_tree_common_sub7.svg)
+![](/media/dp/Recursion_tree_common_sub7.svg)
 
 We now compare empty string vs an empty string. Nothing is in common so we return 0 from that recursive call.
 
-![](/static/dp/Recursion_tree_common_sub8.svg)
+![](/media/dp/Recursion_tree_common_sub8.svg)
 
 The longest common subsequence between "a" and "a" is 1. 
 
-![](/static/dp/Recursion_tree_common_sub9.svg)
+![](/media/dp/Recursion_tree_common_sub9.svg)
 
 The maximum of `max(0, 1)` is 1. So we return 1.
 
 We drilled down into sub-problems until we got to a solid answer, and now we ride it back all the way up to the top with the solutions to these sub-problems.
 
-![](/static/dp/Recursion_tree_common_sub10.svg)
+![](/media/dp/Recursion_tree_common_sub10.svg)
 
 Now the first half of the `max` is computed. We compute the 2nd half.
 
-![](/static/dp/Recursion_tree_common_sub11.svg)
+![](/media/dp/Recursion_tree_common_sub11.svg)
 
 Skipping a step, we do 1 + 0 (as the maximum substring of empty string & empty string is 0). We evaluate it to 1. 
 
-![](/static/dp/Recursion_tree_common_sub12.svg)
+![](/media/dp/Recursion_tree_common_sub12.svg)
 
 Our competition is finished. We evaluate `max(1, 1)` from both of our sub-problems.
 
-![](/static/dp/Recursion_tree_common_sub13.svg)
+![](/media/dp/Recursion_tree_common_sub13.svg)
 
 Our competition is over, so we calculate $1 + 1$. Which is 2.
 
-![](/static/dp/Recursion_tree_common_sub14.svg)
+![](/media/dp/Recursion_tree_common_sub14.svg)
 
 Now our output is 2. The answer to the overarching subproblem is 2.
 
