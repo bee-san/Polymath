@@ -6491,12 +6491,102 @@ The time & space complexity of our algorithm is:
 
 Where n = the length of string 1 and m = the length of string 2.
 
+#### String DP Conclusion
 
+The table we created is important. Every single String DP problem requires the use of a similar table.
+
+Similar problems are:
+* [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/).
+* [Shortest Common Subsequence](https://leetcode.com/problems/shortest-common-supersequence/).
+* [Edit Distance](https://leetcode.com/problems/edit-distance/).
 
 
 ### Decision Making
 
+Given a situation, at each step, decide whether or not to use the current step in the final calculation.
 
+We make a decision at each step.
+
+We most often see this when we use the `max()` or `min()` of something. Let's look at an example:
+
+#### House Robbers
+
+[House Robbers](https://leetcode.com/problems/house-robber/) is a fun problem.
+
+> You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+>
+> Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+```
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+```
+
+Our first step is to figure out the basecases, the recursion.
+
+A robber has two options:
+1. Rob current house.
+2. Don't rob current house.
+
+If _rob current house_ is selected than they can#t rob the previous `i - 1` house but can safely preceed to the one before the previous `i - 2` and get all the tems that follow.
+
+If _don't rob current house_ is chosen the robber gets all the items from the robbery of `i - 1` and all the following buildings.
+
+We have to calculate what is most profitable, the maximum of:
+* Robbery of current house + items from houses before the previous.
+* Items from the previous house robbery and any items captured before that.
+
+```py
+rob(i) = max(rob(i - 2) + currentHouseValue, rob(i - 1))
+```
+
+That means our basecases are:
+
+```py
+def rob(nums):
+  # Because there is nothing to rob
+  if not nums:
+    return 0
+  
+  # We can only rob one house
+  if len(nums) == 1:
+    return nums[0]
+
+  dp = [0] * len(nums)
+  dp[0] = nums[0]
+
+  # Deciding where to start
+  dp[1] = max(nums[0], nums[1])
+  for i in range(2, len(nums)):
+    dp[i] = max(nums[i] + dp[i-2], dp[i-1])
+  
+  # returns the last element which is the maximum
+  return dp[-1]
+```
+
+We can further reduce this by moving to a 2-variable model.
+
+We only need to keep track of the previous and current house (like Fibonacci) which we can do with:
+
+```py
+def rob(nums):
+  prev = curr = 0
+  for num in nums:
+    # nums[i-2]th value
+    temp = prev 
+    # nums[i-1]th value
+    prev = curr
+    # the max recursion formula we found earlier
+    curr = max(num + temp, prev)
+  return curr
+```
+
+#### Similar Problems
+* [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+* [Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)
+* [Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
 
 
 ## Time Complexity of a Dynamic Programming Problem
