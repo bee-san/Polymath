@@ -2124,11 +2124,11 @@ print(knapSack(W , wt , val , n))
 
 # Problems
 
-Let's go thrugh a bunch of Dyanmic Programming problems to understand how it works.
+Let's go through a bunch of Dynamic Programming problems to understand how it works.
 
 There are 5 main patterns to dynamic programming. If you learn these patterns, you will be able to solve 99% of all problems.
 
-This [Leetcode post](https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns) explains what the patterns are and how to use them. Within this section I will use these patterns and explain one core problem from each. 
+This [Leetcode post](https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns) explains what the patterns are and how to use them. Within this section, I will use these patterns and explain one core problem from each. 
 
 ### Minimum (Maximum) Path to Reach a Target
 
@@ -2136,9 +2136,9 @@ We know we have this type of problem when the question asks:
 
 > "Find the maximum/minimum cost / path / sum to reach the target"
 
-The solution to this will always be to choose the minimum/maximum path among all possible paths before the current state, then add the values for the curent state.
+The solution will always be the minimum/maximum path among all possible paths before the current state. Then add the values for the current state.
 
-The optimal solution generally looks like:
+The optimal solution generally looks like this:
 
 ```python
 for i in range(0, target):
@@ -2149,17 +2149,13 @@ for i in range(0, target):
 
 This is a bottom-up solution. We have an array/table `dp`, we have a `target` and we want to calculate the minimum path to the target. 
 
-`ways` is every possible way to get to the current state.
-
-We've already seen a solution to a similar problem -- Fibonacci sequence!
-
 #### Minimum Cost Climbing Stairs
 
 Let's look at a similar problem, [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs)
 
-> On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
+> On a staircase, the i-th step has some non-negative cost `cost[i]` assigned (0 indexed).
 >
-> Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
+> Once you pay the cost, you can either climb one or two steps. You need to find the minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
 
 ```
 Input: cost = [10, 15, 20]
@@ -2173,9 +2169,9 @@ Given a `cost` array, find the minimum cost.
 
 Let's look at a top-down approach.
 
-Unlike Fibonacci, the first 2 steps pre-calculated for us. As we can either walk one step, or two steps.
+Unlike Fibonacci, the first 2 steps pre-calculated for us. As we can walk one step, or two steps.
 
-We can choose to start on step 1, or step 2 -- meaning we don't pay a cost. Thus we do not need to calculate the cost for step 2.
+We can choose to start on step 1, or step 2 -- meaning we don't pay a cost. We do not need to calculate the cost for step 2.
 
 Our base case is then:
 
@@ -2191,19 +2187,19 @@ Because:
 * `[0] = 0`
 * `[1] = 1`
 
-
-
 Imagine we are on the 3rd step. We do not care about any further steps. 
 
-What is our action at the third step? This is the most important part of Dynamic Programming. **We only care about what one step is doing, and all steps follow the same pattern and we recurse to get the answer.**
+The most important part of Dynamic Programming is determining the action at our third step. **We only care about what one step is doing, and all steps follow the same pattern.We recurse to get the answer.**
 
 Our choices at step 3 are:
 * 3 (current step number) + step 2
 * 3 + step 1
 
-Remember, we can start on either step 1 or 2 and can move forward 1 step or 2. 
+Remember, we can start on either step 1 or 2 and move forward 1 step or 2. 
 
-And we want to calculate the minimum cost to get to the current step. To calculate the minimum to get to the current step, we need to calculat the minimum to get to the steps before us and so on.
+To calculate the minimum to get to the current step, we need to calculate the minimum to get to the steps before us and so on.
+
+To calculate the minimum to get to step `5`. We calculate the minimum to get to step `4`, `3`, `2`, `1`.
 
 Therefore our recurrence relation is:
 
@@ -2216,7 +2212,7 @@ We start at `n` steps, and we calculate the cost of `n` by calculating the cost 
 
 _if_ we solve the subproblem at `n`, we only need to pass it to recursion to solve all of our subproblems.
 
-Our total recursive code looks like:
+Our total recursive code looks like this:
 
 ```python
 def main(cost):
@@ -2229,8 +2225,6 @@ def min_cost(cost, n):
 				return cost[n]
 		return cost[n] + min(min_cost(cost, n - 1), min_cost(cost, n - 2))
 ```
-
-# Check the above ********************************************************************************
 
 Recurrence is all about:
 * Solving one small subproblem.
@@ -2259,9 +2253,9 @@ def min_cost(cost, n):
 
 ##### Bottom-Up
 
-Now let's convert out top-down memoisation approach to a bottom-up approach. 
+Now let's convert our top-down memoisation approach to a bottom-up approach. 
 
-When we finish our top-down approach, we have a memoised array of the answers. When we start from bottom-up, we start with that array already but the values aren't computed yet.
+When we finish our top-down approach, we have a memoised array of the answers. When we start from the bottom-up, we start with that array already but the values aren't computed yet.
 
 Bottom-up is the exact opposite of top-down, just imagine you're at the bottom of the execution tree and you're working upwards.
 
@@ -2273,7 +2267,9 @@ def main(cost):
 		dp = [float("inf")] * n
 ```
 
-This makes an array of size `n` where each value is infinity. In Python, we can't make an array of sizie `n` without initialising the values. We use `float("inf")` for minima problems, and `float("-inf")` for maxima problems.
+This makes an array of size `n` where each value is infinity. In Python, we can't make an array of size `n` without initialising the values. We use `float("inf")` for minima problems, and `float("-inf")` for maxima problems.
+
+This is because the maximum will always be `> -inf`, and the minimum will always be `< -inf`. 
 
 In top-down, we started at `n` and our answer was at `0` (well, it was the result of all the nodes that have hit the base case). 
 
@@ -2282,9 +2278,9 @@ In bottom-up, we start at `0` and our answer is the last element in the array.
 
 ![](/content/images/2019/06/image-8.png)
 
-Instead of starting at the top of the tree, in bottom-up we start at the basecases.
+In bottom-up we start from the base-cases, whereas in top-down we finish at the base-cases.
 
-Since we start at the start of the array, the basecases go there too.
+The base cases are at the start of the array:
 
 ```python
 def main(cost):
@@ -2295,8 +2291,6 @@ def main(cost):
 ```
 
 Now we need to loop through all of our values.
-
-Our loop will then look like:
 
 We loop through the `cost` array from 2:
 
@@ -2309,10 +2303,8 @@ def main(cost):
 ```
 
 Remember:
-* Top-down we start at the top and end at the basecases.
-* Bottom-up we start from the basecases and end at the top.
-
-Our basecases start at index 2.
+* **Top-down** Finish at base-cases.
+* **Bottom-up** Start at base-cases.
 
 Now, the recurrence. We've already calculated our recurrence from earlier. All we need to do is insert it into the `dp` array.
 
@@ -2325,7 +2317,9 @@ def main(cost):
 				
 ```
 
-Since we have already calculated the previous values, we do not need to use any recursion here. However, the recurrence is being used to calculate the values
+You'll notice that our recursion is odd. We aren't recursing. We're just using the maths part of the recurrence to calculate the current value based on the previous values.
+
+"Ain't it strange?" I once said. But, we are starting from the base-cases. Whereas in top-down we recurse down to the base-cases.
 
 Remember our `main` function from the top-down approach:
 
@@ -2336,7 +2330,7 @@ def main(cost):
 		return min(min_cost(cost, n - 1), min_cost(cost, n - 2))
 ```
 
-At the end of the stairs, we can either finish it by climing 2 steps or 1.
+At the end of the stairs, we can either finish it by climbing 2 steps or 1.
 
 We need to do the same here.
 
@@ -2349,17 +2343,31 @@ def main(cost):
 		return min(dp[n - 1], dp[n - 2])
 ```
 
-We've now turned a recursive approach into top-down dynamic programming, and flipped that into bottom-up dynamic programming.
+We've now turned a recursive approach into top-down dynamic programming and flipped that into bottom-up dynamic programming. The whole process sounds silly looking back, but I hope you've learnt something 😊
 
-If you remember one thing, it's this:
+<iframe src="https://giphy.com/embed/xKSB7TTLav6g0" width="480" height="324" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/spinning-perfectloops-helicopter-xKSB7TTLav6g0">via GIPHY</a></p>
 
-> The most important part about solving any dynamic programming problem is to solve a single subproblem.
+If you remember one thing, make it this:
+
+> Solving a single problem is the most important part of solving any dynamic programming problem.
 
 #### Coin Change
 
-[Leetcode Problem](https://leetcode.com/problems/coin-change/).
+Let's look at a similar problem, [Coin Change](https://leetcode.com/problems/coin-change/).
 
-Our first thought when seeing "Make Change" is [Greedy](https://skerritt.blog/greedy-algorithms/). But, that doesn't always work.
+> You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+>
+> Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+> 
+> You may assume that you have an infinite number of each kind of coin.
+
+```
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+```
+
+Our first thought when seeing "Make Change" is a [Greedy Algorithm](https://skerritt.blog/greedy-algorithms/). But, that doesn't always work. Let's see why.
 
 Given the coins:
 
@@ -2384,24 +2392,24 @@ To make change for $30$, that means if our coins were:
 * 15
 * 25 (between 15 and 30)
 
-It would fail. It'd also fail if our coin was 16. So long as our largest coin is larger than the most optimal 2nd coin, we can never pick the 2nd coin in Greedy so it will always fail.
+It would fail. It'd also fail if our coin was 16. So long as our largest coin is larger than the most optimal 2nd coin, **we can never pick the 2nd coin in Greedy so it will always fail**.
 
 In the case it does work, it's called a [Canonical Coin System](https://graal.ens-lyon.fr/~abenoit/algo09/coins2.pdf).
 
 Dynamic Programming allows us to solve this problem efficiently.
 
-Given a sum, `change`, we want to find the optimal path that minimises the amount of coins we use.
+Given a sum, `change`, we want to find the optimal path that minimises the number of coins we use.
 
-We're going to use bottom-up here, as it's much easier than top-down. Some problems are easieir with bottom-up, some are easier with top-down. This is a bottom-up problem.
+We're going to use bottom-up here, as it's much easier than top-down. Some problems are easier with bottom-up, some are easier with top-down. This is a bottom-up problem.
 
-We can tell it is because we have to think in multiple dimensions, and we know it's multiple dimensions because of the recurrence.
+We can tell it is bottom-up because we have to think in multiple dimensions, and we know it's multiple dimensions because of the recurrence.
 
-Let's take a small look at it.
+Let's take a small look at it to wrap my head around it.
 
 For every amount up to 15 we want to calculate:
 * The smallest amount of coins up to that point.
 
-This means our code, iin iterative, looks roughly like:
+This means our code, in iterative, looks roughly like:
 
 ```python
 for i in range(0, 15):
@@ -2409,11 +2417,11 @@ for i in range(0, 15):
 				# do stuff
 ```
 
-For each level of the recurrence, we need to loop through all the coins to find the ones that optimally fit. 
+For each level of the recurrence, we need to loop through all the coins to find the ones that fit. 
 
 In a top-down approach, our recurrence function would need to have a `for` loop which iterates over the coins and works out the smallest possible denomination of coins for that amount.
 
-Essentially, our top-down would look like:
+Essentially, our top-down would look like this:
 
 ```python
 def top_down(amount, coins):
@@ -2421,7 +2429,7 @@ def top_down(amount, coins):
 				top_down(amount, i)
 ```
 
-Which gets messy, fast. It's easier for us to debug code if we used bottom-up here. Here's what the top-down approach looks like in C++ from [here](https://www.bogotobogo.com/Algorithms/dynamic_programming.php):
+Which gets messy, **fast**. It's easier for us to debug code if we used bottom-up here. Here's what the top-down approach looks like in C++ from [here](https://www.bogotobogo.com/Algorithms/dynamic_programming.php):
 
 ```cpp
 int CoinChange(int amount, int d[], int size)
@@ -2444,7 +2452,7 @@ We have to:
 * Loop through all coins each iteration.
 * Calculate new min coins each iteration, which recursively calls the function again.
 
-Bottom-up is much simpler, as we only need 2 for loops which is similar to our original bruteforce method, except memoised.
+Bottom-up is much simpler, as we only need 2 for loops. It's similar to what we did earlier, but memoised.
 
 ##### Bottom-Up Coin Change
 
