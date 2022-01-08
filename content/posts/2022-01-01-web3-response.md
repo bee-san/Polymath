@@ -6,6 +6,8 @@ date: 2021-01-1T13:17:32.000Z
 draft: false
 ---
 
+This a response to [Moxie Marlinspike's "My First Impression of Web3"](https://moxie.org/2022/01/07/web3-first-impressions.html)
+
 > Both gave me a feeling for how the space works. To be clear, there is nothing particularly “distributed” about the apps themselves: they’re just normal react websites. The “distributedness” refers to where the state and the logic/permissions for updating the state lives: on the blockchain instead of in a “centralized” database.
 
 Just to clarify, this is what the author wanted to do. You can create distributed apps easily using [Fleek](https://fleek.co/) or by manually uploading to IPFS, Arweave or Filecoin.
