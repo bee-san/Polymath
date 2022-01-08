@@ -17,7 +17,7 @@ This is a guide on packaging your Python project for:
 
 # Ideas
 
-Publish each one seperately, and include a pdf containing the full book
+Publish each one seperately, and include a pdf containing the full book.
 
 Include github actions for these
 
