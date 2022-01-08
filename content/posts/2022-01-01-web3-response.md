@@ -57,7 +57,7 @@ I think this is a very fair comment from Moxie and we should dunk on wallets and
 
 This is how markets work, and why arbitrage exists. See [Flash Boys](https://en.wikipedia.org/wiki/Flash_Boys) for how this works in the stock market. Your NFT is only worth what someone wants to pay. Someone on Opensea may pay 5 eth for it, but someone on Discord may pay 10 eth.
 
-You chose to use Opensea to get the value of what people on Opensea will pay you for. That data isn't on chain because that's not how markets work. This is like saying that you expect the price of Apples to be the same in the UK as it is in China. They're going to be priced differently and deciding on one single price is impossible. 
+You chose to use Opensea to get the value of what people on Opensea will pay you for. That data isn't on chain because that's not how markets work, although it'd be cool if every market place used the same market-order book on-chain.
 
 > People are excited about NFT royalties for the way that can benefit creators, but royalties aren’t specified in ERC-721
 
