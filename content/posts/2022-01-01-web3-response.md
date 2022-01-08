@@ -24,7 +24,7 @@ Moxie then goes on to say....
 
 > These client APIs are not using anything to verify blockchain state or the authenticity of responses. The results aren’t even signed.
 
-Both of the proposed solutions solve this.
+Both of the proposed solutions (Pockt, Light Clients) solve this.
 
 Moxie then talks about:
 
