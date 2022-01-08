@@ -95,12 +95,13 @@ Which is fair. I just thought I'd write this and explain what's being done to fi
 * Fuck Opensea.
 * Every user will have to pay for everything. I am actually working on this myself, I think staking and using the proceeds from staking to pay for non-web3 users would work. I'm interested to hear how others are letting web2 users use web3 without paying. [DM me](https://twitter.com/bee_sec_san)!
 
-There is some genuinely cool tech being worked on here, but due to the monetrary aspect there are scams up to my eyeballs. And those scams make the whole industry look bad. 
+There is some genuinely cool tech being worked on here, but due to the monetrary aspect there are scams up to my eyeballs. And those scams make the whole industry look bad. I think Moxie focussed on the NFT side too much which is arguably the side with the most scams / problems. There's still a lot of genuinely cool technology that exists **outside** of NFTs.
 
 For some of the cool uses, please check out:
 * [Axie Infinity and how it's bringing entire nations out of poverty](https://www.notboring.co/p/infinity-revenue-infinity-possibilities)
 * [Terra Luna and the mission to create the perfect stablecoin](https://www.readthegeneralist.com/briefing/terra)
 * [Decentralised Finance and being your own bank](https://www.youtube.com/watch?v=17QRFlml4pA)
+* [Flash Loans, you can only do these in Defi](https://aave.com/flash-loans)
 
 Note: Not everyone should be their own bank, but it's helpful for some who want to be.
 
