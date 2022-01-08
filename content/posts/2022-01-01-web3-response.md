@@ -103,6 +103,8 @@ For some of the cool uses, please check out:
 * [Decentralised Finance and being your own bank](https://www.youtube.com/watch?v=17QRFlml4pA)
 * [Flash Loans, you can only do these in Defi](https://aave.com/flash-loans)
 
-Note: Not everyone should be their own bank, but it's helpful for some who want to be.
+You also need to realise that Web3 is world-wide, not just America or Europe. Some countries have unstable currencies and to use USD you need to pay a hefty fee. Web3 lets them have the safety of USD without this fee. Or you can use decentralised finance to invest, bank or do other things not available to you. You can earn money in pay-2-earn games, a lot more than you could with a job in some countries.
+
+A lot of people who criticise Web3 come from a privileged position and do not see it benefitting them. It does, however, benefit everyone else in the world.
 
 WAGMI (ps: love you Moxie. Big big fan!)
