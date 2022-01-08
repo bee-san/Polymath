@@ -75,7 +75,9 @@ This is because it is early days, still. As you could read from my article there
 > For example, to accept a bid on my NFT, I would have had to pay over $80-$150+ just in ethereum transaction fees.
 
 
-This sounds like you're describing a layer-2 solution, thankfully Opensea supports polygon which does make it cheaper, faster, and easier to use. I am personally hoping for zk-rollups to really make it cheaper, easier to use.
+This sounds like you're describing a [layer-2 solution](https://www.youtube.com/watch?v=BgCgauWVTs0), thankfully Opensea supports polygon which does make it cheaper, faster, and easier to use. I am personally hoping for [zk-rollups](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/zk-rollups/) to really make it cheaper, easier to use.
+
+I will say we shouldn't strive for "cheaper", we should strive for "so cheap it's possible to make it free". Opensea lets you mint NFTs for free using Polygon, but I want Web3 to become so cheap that Web2 users can use Web3 technology without paying. The benefits of fully decentralised technologies without the downside of a microtransaction at every aspect of it. I talk more about this later.
 
 > So the money draws people into OpenSea, they improve the experience by building a platform that iterates on the underlying web3 protocols in web2 space, they eventually offer the ability to “mint” NFTs through OpenSea itself instead of through your own smart contract, and eventually this all opens the door for Coinbase to offer access to the validated NFT market with their own platform via your debit card. That opens the door to Coinbase managing the tokens themselves through dark pools that Coinbase holds, which helpfully eliminates the transaction fees and makes it possible to avoid having to interact with smart contracts at all. Eventually, all the web3 parts are gone, and you have a website for buying and selling JPEGS with your debit card. The project can’t start as a web2 platform because of the market dynamics, but the same market dynamics and the fundamental forces of centralization will likely drive it to end up there.
 
@@ -90,7 +92,7 @@ I think was this a fair article that accurately portrays some parts of web3 at t
 Which is fair. I just thought I'd write this and explain what's being done to fix this and go further. My personal pet hates for crypto are:
 
 * Illegal images being sent to your wallet, forcing you to go to prison in some places.
-* Fuck Opensea and fuck any provider who uses centralised tech.
+* Fuck Opensea.
 * Every user will have to pay for everything. I am actually working on this myself, I think staking and using the proceeds from staking to pay for non-web3 users would work. I'm interested to hear how others are letting web2 users use web3 without paying. [DM me](https://twitter.com/bee_sec_san)!
 
 There is some genuinely cool tech being worked on here, but due to the monetrary aspect there are scams up to my eyeballs. And those scams make the whole industry look bad. 
@@ -102,4 +104,4 @@ For some of the cool uses, please check out:
 
 Note: Not everyone should be their own bank, but it's helpful for some who want to be.
 
-WAGMI (ps: love you Moxie)
+WAGMI (ps: love you Moxie. Big big fan!)
