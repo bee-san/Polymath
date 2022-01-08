@@ -69,7 +69,7 @@ This is true, but also, fuck Opensea.
 
 > “It’s early days still” is the most common refrain I see from people in the web3 space when discussing matters like these. In some ways, cryptocurrency’s failure to scale beyond relatively nascent engineering is what makes it possible to consider the days “early,” since objectively it has already been a decade or more.
 
-This is because it is early days, still. As you could read from my article there is so much work being done. NFTs are only 3 years old. There is so much work being done on layer 2s and layer-1 solutions.
+This is because it is early days, still. As you could read from my article there is so much work being done. NFTs are only 3 years old. Layer 1's and 2's are arguably only around a year old. 
 
 > When you think about it, OpenSea would actually be much “better” in the immediate sense if all the web3 parts were gone. It would be faster, cheaper for everyone, and easier to use. 
 > For example, to accept a bid on my NFT, I would have had to pay over $80-$150+ just in ethereum transaction fees.
