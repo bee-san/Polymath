@@ -285,7 +285,7 @@ No seed! You just need the majority of keyholders to restore a wallet.
 
 The number 1 problem with hardware wallets is their single point of failure is their seed. Using multi-sig fixes this. There is no alternative at this level or higher, we **need** multi-sig wallets.
 
-Now, here is where it gets cool. Because Argent is a mobile app with a nice UI, its availability isn't that demanding. We have the same level of integrity (Argent's integrity matches your phones) & availability as a ledger, but much more security. 
+Now, here is where it gets cool. Because Argent is a mobile app with a nice UI, its availability isn't as bad as what we'd normally expect at this level. We have the same level of integrity (Argent's integrity matches your phones) & availability as a ledger, but much more security. 
 
 <figure>
 	<img src="/media/wallets/argent.png" alt="">
