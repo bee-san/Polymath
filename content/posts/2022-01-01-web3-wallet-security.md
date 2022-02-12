@@ -4,6 +4,9 @@ slug: wallet-security
 date: 2022-02-11T23:42:12.596Z
 draft: false
 toc: true
+socialImage: "/media/p2p.jpg"
+cover:
+    image: "/media/p2p.jpg"
 ---
 
 
