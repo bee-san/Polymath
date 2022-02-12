@@ -218,7 +218,7 @@ Availability score: 10, as we'd need to invent this and that could take 100+ yea
 
 **Vladimir Putin comes over**
 Solution: Make it so I do not know the seed phrase, require multi-signature or Sharmir Sharing
-Availability score: 10, as it requires a key ceremony which can take up to a month to plan. And if we ever need to use our wallet it will likely take 5 whole days just to buy an NFT on Opensea!
+Availability score: 8, as it requires a key ceremony which can take up to a month to plan. And if we ever need to use our wallet it will likely take 5 whole days just to buy an NFT on Opensea!
 
 The thing we can do at this level to increase our security without decreasing our availability is to solve "Metamask runs on my computer", which is to get a hardware wallet!
 
