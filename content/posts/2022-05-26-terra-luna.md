@@ -11,6 +11,9 @@ description: "and the shorters who made billions betting against crypto’s Enro
 socialImage: "/media/p2p.jpg"
 cover:
   image: "/media/p2p.jpg"
+  alt: ""
+  caption: ""
+  relative: true
 ---
 
 “Cool, I’m in. Would prefer to ask whatever your net worth is and bet 90% But maybe this is what that is already”, snidely states Do Kwon, the Founder of Terra Luna, on the 13th of March to an anonymous account asking to make a 1 million dollar bet against Luna.

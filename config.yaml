@@ -40,12 +40,12 @@ params:
     env: production
     description: "Computer Science Blog"
     images:
-            - /media/header.png
+            - /media/p2p.jpg
 
     author: Bee
     header:
             title: 'Skerritt.blog'
-            imageUrl: '/media/header.png'
+            imageUrl: '/media/p2p.jpg'
             subtitle: 'Learn Computer Science for free'
     # author: ["Me", "You"] # multiple authors
     ShowReadingTime: true
