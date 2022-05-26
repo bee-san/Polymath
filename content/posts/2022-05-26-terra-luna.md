@@ -8,9 +8,9 @@ category: "Web3"
 tags:
   - "Web3"
 description: "and the shorters who made billions betting against crypto’s Enron"
-socialImage: "/media/thumbnail.jpg"
+socialImage: "/media/p2p.jpg"
 cover:
-  image: "/media/thumbnail.jpg"
+  image: "/media/p2p.jpg"
 ---
 
 “Cool, I’m in. Would prefer to ask whatever your net worth is and bet 90% But maybe this is what that is already”, snidely states Do Kwon, the Founder of Terra Luna, on the 13th of March to an anonymous account asking to make a 1 million dollar bet against Luna.
